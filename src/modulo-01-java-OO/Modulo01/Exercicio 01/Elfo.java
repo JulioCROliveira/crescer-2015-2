@@ -31,12 +31,13 @@ public class Elfo {
     }
 
     
-    public String atacar(Armas arma){
+    public String atacar(Armas arma, Dwarf alvo){
         if (arma.usaFlechas == true) {
             if (this.flechas > 0) {
                 flechas--;
                 if(arma.acertar() == true){
                     experiencia++;
+                    alvo.addVida(-1*arma.getDano());
                     return "Acertou alvo";
                 }else{
                     return "Errou alvo";
@@ -47,10 +48,13 @@ public class Elfo {
         } else {
             if(arma.acertar() == true){
                     experiencia++;
+                    alvo.addVida(-1*arma.getDano());
                     return "Acertou alvo";
                 } else {
                     return "Errou alvo";
-                }
             }
         }
     }
+    
+    
+}

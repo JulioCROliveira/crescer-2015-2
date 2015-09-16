@@ -34,5 +34,9 @@ public class Armas
         } else {
             return false;
         }
-    }    
+    }
+    
+    public int getDano() {
+        return this.dano;
+    }
 }
