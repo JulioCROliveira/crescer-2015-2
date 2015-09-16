@@ -9,8 +9,7 @@ public class Elfo {
     }
     
     public Elfo(String n) {
-        nome = n;
-        flechas = 42;
+        this(n, 42);
     }
     
     public String equiparArma(Armas arma) {
@@ -32,15 +31,14 @@ public class Elfo {
     }
 
     
-    public String atirarFlechaRefactory(Armas arma){
+    public String atacar(Armas arma){
         if (arma.usaFlechas == true) {
             if (this.flechas > 0) {
+                flechas--;
                 if(arma.acertar() == true){
-                    flechas--;
                     experiencia++;
                     return "Acertou alvo";
                 }else{
-                    flechas--;
                     return "Errou alvo";
                 }
             } else {

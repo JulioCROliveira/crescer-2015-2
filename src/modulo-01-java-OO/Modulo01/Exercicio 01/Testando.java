@@ -13,19 +13,19 @@ public class Testando
         Armas espada = new Armas(15,60,"Espada");
         
         for (int i = 0; i <= 10; i++) {
-            System.out.println(elfo1.atirarFlechaRefactory(elfo1.armaEquipada()));
+            System.out.println(elfo1.atacar(elfo1.armaEquipada()));
         }
         
         System.out.println(elfo1.equiparArma(arco));
         
         for (int i = 0; i <= 10; i++) {
-            System.out.println(elfo1.atirarFlechaRefactory(elfo1.armaEquipada()));
+            System.out.println(elfo1.atacar(elfo1.armaEquipada()));
         }
         
         System.out.println(elfo1.equiparArma(espada));
         
         for (int i = 0; i <= 10; i++) {
-            System.out.println(elfo1.atirarFlechaRefactory(elfo1.armaEquipada()));
+            System.out.println(elfo1.atacar(elfo1.armaEquipada()));
         }
     }
 }
