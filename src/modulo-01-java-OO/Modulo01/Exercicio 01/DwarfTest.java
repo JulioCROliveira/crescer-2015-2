@@ -38,4 +38,34 @@ public class DwarfTest
         }
         assertEquals(40, gimli.getVida());
     }
+    
+    @Test
+    public void dwarfNasceVivo() {
+        Dwarf dd = new Dwarf();
+        
+        assertEquals(Status.VIVO, dd.getStatus());
+    }
+    
+     @Test
+    public void dwarfNasceVivoELevaDanoEMorre() {
+        Dwarf dd = new Dwarf();
+        for( int i = 0; i < 11; i++) { dd.receberFlechada(); }
+        
+        assertEquals(Status.MORTO, dd.getStatus());
+    }
+    
+     @Test
+    public void dwarfNasceVivoELevaDanoENaoMorre() {
+        Dwarf dd = new Dwarf();
+        for( int i = 0; i < 6; i++) { dd.receberFlechada(); }
+        
+        assertEquals(Status.VIVO, dd.getStatus());
+    }
+    
+    @Test
+    public void dwarfNasceComNome() {
+        Dwarf nn = new Dwarf("Elias");
+        
+        assertEquals("Elias", nn.getNome());
+    }
 }
