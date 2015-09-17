@@ -7,6 +7,11 @@ public class Elfo {
         flechas = flech;
     }
     
+    public String toString() {
+        return this.nome + " possui " + this.flechas + " flechas e " + this.experiencia +
+            " níveis de experiência";
+    }
+    
     public Elfo(String n) {
         this(n, 42);
     }
@@ -34,5 +39,13 @@ public class Elfo {
    
     public int getFlechas() {
         return this.flechas;
+    }
+    
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public int getExperiencia() {
+        return this.experiencia;
     }
 }
