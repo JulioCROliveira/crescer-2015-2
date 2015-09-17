@@ -18,15 +18,9 @@ public class DwarfTest
         assertEquals(110, gimli.getVida());
     }
     
-    @Test public void addVidaTeste() {
+    @Test public void receberFlechada() {
         Dwarf gimli = new Dwarf();
-        gimli.addVida(20);
-        assertEquals(130, gimli.getVida());
-    }
-    
-    @Test public void addVidaNegativaTeste() {
-        Dwarf gimli = new Dwarf();
-        gimli.addVida(-20);
-        assertEquals(90, gimli.getVida());
+        gimli.receberFlechada();
+        assertEquals(100, gimli.getVida());
     }
 }

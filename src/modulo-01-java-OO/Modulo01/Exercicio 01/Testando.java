@@ -9,25 +9,12 @@ public class Testando
 {
     public static void main(String[] args) {
         Elfo elfo1 = new Elfo("sem nome",6);
-        Arma arco = new Arma(15,75,"Arco", true);
-        Arma espada = new Arma(15,60,"Espada");
         Dwarf dwarf = new Dwarf();
         
         for (int i = 0; i <= 10; i++) {
-            System.out.println(elfo1.atacar(elfo1.armaEquipada(), dwarf));
-        }
+            System.out.println(elfo1.atirarFlecha(dwarf));
+        }       
         
-        System.out.println(elfo1.equiparArma(arco));
-        
-        for (int i = 0; i <= 10; i++) {
-            System.out.println(elfo1.atacar(elfo1.armaEquipada(), dwarf));
-        }
-        
-        System.out.println(elfo1.equiparArma(espada));
-        
-        for (int i = 0; i <= 10; i++) {
-            System.out.println(elfo1.atacar(elfo1.armaEquipada(), dwarf));
-        }
             System.out.println("Vida do dwarf = " + dwarf.getVida());
     }    
 }
