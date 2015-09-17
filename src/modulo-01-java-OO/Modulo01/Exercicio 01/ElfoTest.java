@@ -105,9 +105,15 @@ public class ElfoTest
     @Test public void testeElfoToString() {
         Elfo elfo1 = new Elfo("Legolas");
         String teste = "";
-        teste = "Legolas possui 42 flechas e 0 níveis de experiência";
+        teste = "Legolas possui 42 flechas e 0 níveis de experiência.";
 
         assertEquals(teste, elfo1.toString());
+    }
+    
+    @Test
+    public void elfoNasceVivo() {
+        Elfo elfo = new Elfo("aa");
+        assertEquals(Status.VIVO, elfo.getStatus());
     }
 
     @Test public void testeElfoToStringDepoisDeAtirarFlecha() {
@@ -115,16 +121,16 @@ public class ElfoTest
         Dwarf aa = new Dwarf();
         String teste = "";
         elfo1.atirarFlecha(aa);
-        teste = "Legolas possui 41 flechas e 1 níveis de experiência";
+        teste = "Legolas possui 41 flechas e 1 nível de experiência.";
 
         assertEquals(teste, elfo1.toString());
     }
 
-    @Test public void testeElfoToStringComNomeAAe10flechas() {
-        Elfo elfo1 = new Elfo("AA", 10);
+    @Test public void testeElfoToStringComNomeAAe1flecha() {
+        Elfo elfo1 = new Elfo("AA", 1);
         Dwarf aa = new Dwarf();
         String teste = "";        
-        teste = "AA possui 10 flechas e 0 níveis de experiência";
+        teste = "AA possui 1 flecha e 0 níveis de experiência.";
 
         assertEquals(teste, elfo1.toString());
     }
