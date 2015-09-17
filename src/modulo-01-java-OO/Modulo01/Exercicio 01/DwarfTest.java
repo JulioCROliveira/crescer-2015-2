@@ -13,8 +13,20 @@ import org.junit.Test;
  */
 public class DwarfTest
 {
-    @Test void dwarfNasceCom110DeVida() {
+    @Test public void dwarfNasceCom110DeVida() {
         Dwarf gimli = new Dwarf();
         assertEquals(110, gimli.getVida());
+    }
+    
+    @Test public void addVidaTeste() {
+        Dwarf gimli = new Dwarf();
+        gimli.addVida(20);
+        assertEquals(130, gimli.getVida());
+    }
+    
+    @Test public void addVidaNegativaTeste() {
+        Dwarf gimli = new Dwarf();
+        gimli.addVida(-20);
+        assertEquals(90, gimli.getVida());
     }
 }

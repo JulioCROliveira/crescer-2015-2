@@ -1,22 +1,22 @@
 public class Dwarf {
     private String nome; 
-    Armas armaEquipada = new Armas(3,20,"Punhos");
-    private int vida = 115, experiencia = 0;
+    Arma armaEquipada = new Arma(3,20,"Punhos");
+    private int vida = 110, experiencia = 0;
         
     public Dwarf() {
     }
     
-    public String equiparArma(Armas arma) {
+    public String equiparArma(Arma arma) {
         this.armaEquipada = arma;
         return "\nDwarve " + this.nome + " equipou " + arma.nome+"\n";
     }
     
-    public Armas armaEquipada() {
+    public Arma armaEquipada() {
         return this.armaEquipada;
     }
     
     
-    public String atacar(Armas arma){        
+    public String atacar(Arma arma){        
         if(arma.acertar() == true){
                 experiencia++;
                 return "Acertou alvo";

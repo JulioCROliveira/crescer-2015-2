@@ -1,6 +1,6 @@
 public class Elfo {
-    private String nome; 
-    Armas armaEquipada = new Armas(3,20,"Punhos");
+    private String nome;
+    private Arma armaEquipada = new Arma(3,20,"Punhos");
     private int flechas, experiencia = 0;
     
     public Elfo(String n, int flech) {
@@ -12,27 +12,27 @@ public class Elfo {
         this(n, 42);
     }
     
-    public String equiparArma(Armas arma) {
+    public String equiparArma(Arma arma) {
         this.armaEquipada = arma;
         return "\nElfo " + this.nome + " equipou " + arma.nome+"\n";
     }
     
-    public Armas armaEquipada() {
+    public Arma armaEquipada() {
         return this.armaEquipada;
     }
     
-    public void atirarFlecha() {
+    /* public void atirarFlecha() {
         if (this.flechas > 0) {
             this.flechas -= 1;
             this.experiencia += 3;
         } else {
             System.out.println("Sem flechas");
         }
-    }
+    } */
 
     
-    public String atacar(Armas arma, Dwarf alvo){
-        if (arma.usaFlechas == true) {
+    public String atacar(Arma arma, Dwarf alvo){
+        if (arma.getUsaFlechas() == true) {
             if (this.flechas > 0) {
                 flechas--;
                 if(arma.acertar() == true){
@@ -55,6 +55,8 @@ public class Elfo {
             }
         }
     }
-    
-    
+   
+    public int getFlechas() {
+        return this.flechas;
+    }
 }

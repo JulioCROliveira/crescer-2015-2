@@ -9,8 +9,8 @@ public class Testando
 {
     public static void main(String[] args) {
         Elfo elfo1 = new Elfo("sem nome",6);
-        Armas arco = new Armas(15,75,"Arco", true);
-        Armas espada = new Armas(15,60,"Espada");
+        Arma arco = new Arma(15,75,"Arco", true);
+        Arma espada = new Arma(15,60,"Espada");
         Dwarf dwarf = new Dwarf();
         
         for (int i = 0; i <= 10; i++) {
