@@ -27,15 +27,20 @@ public class  DataTerceiraEra
         return this.ano;
     }
     
-    public boolean  ehBissexto() {
-        boolean ehBissexto = (((this.ano % 4 == 0) && (this.ano % 100 != 0)) || (this.ano % 400 == 0)) ? true: false;
-        return ehBissexto;
+    public boolean  ehBissexto() {       
+        return (this.ano % 4 == 0 && this.ano % 100 != 0) || (this.ano % 400 == 0);
     }
     
     public String getData() {
         String dia2Num, mes2Num;
-        return String.format("%s/%s/%d", dia2Num = this.dia > 9 ? ""+this.dia : "0"+this.dia , mes2Num = this.mes > 9 ? ""+this.mes : "0"+this.mes , this.ano);
+        return String.format("%s/%s/%d", dia2Num = this.dia > 9 ? ""+this.dia : "0"+this.dia , 
+            mes2Num = this.mes > 9 ? ""+this.mes : "0"+this.mes , this.ano);
     }
     
-    
+    public boolean equals(Object obj) {
+        DataTerceiraEra outroObj = (DataTerceiraEra)obj;
+        return this.dia == outroObj.getDia() &&
+            this.mes == outroObj.getMes() &&
+            this.ano == outroObj.getAno();
+    }
 }

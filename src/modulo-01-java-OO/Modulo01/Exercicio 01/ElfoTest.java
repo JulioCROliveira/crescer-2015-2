@@ -46,7 +46,7 @@ public class ElfoTest
 
     @Test public void testeElfoAtiraFlechaEDwarfPerde10DeVidaEElfoFicaSemFlechasDwarfNaoPerdeVida() {
         Elfo elfo1 = new Elfo("A", 1);        
-        Dwarf alvo = new Dwarf("a",1,1,1);        
+        Dwarf alvo = new Dwarf("a",new DataTerceiraEra(1,1,1));        
         String teste = "";
 
         teste = elfo1.atirarFlecha(alvo);
@@ -65,8 +65,8 @@ public class ElfoTest
     @Test
     public void elfoAtiraFlechasEm2Dwarfs() {
         Elfo elfo1 = new Elfo("A", 20);        
-        Dwarf alvo = new Dwarf("a",1,1,1);   
-        Dwarf alvo2 = new Dwarf("a",1,1,1);
+        Dwarf alvo = new Dwarf("a",new DataTerceiraEra(1,1,1));   
+        Dwarf alvo2 = new Dwarf("a",new DataTerceiraEra(1,1,1));   
 
         elfo1.atirarFlecha(alvo);
         elfo1.atirarFlecha(alvo2);
@@ -80,7 +80,7 @@ public class ElfoTest
     @Test public void ElfoAtirarFlechaOutroElfoAtira5FlechasDwarfFicaCom50Vida() {
         Elfo elfo1 = new Elfo("A", 1);
         Elfo elfo2 = new Elfo("A", 10);      
-        Dwarf alvo = new Dwarf("a",1,1,1);        
+        Dwarf alvo = new Dwarf("a",new DataTerceiraEra(1,1,1));        
         String teste = "";
 
         teste = elfo1.atirarFlecha(alvo);
@@ -118,7 +118,7 @@ public class ElfoTest
 
     @Test public void testeElfoToStringDepoisDeAtirarFlecha() {
         Elfo elfo1 = new Elfo("Legolas");
-        Dwarf aa = new Dwarf("a",1,1,1);
+        Dwarf aa = new Dwarf("a",new DataTerceiraEra(1,1,1));
         String teste = "";
         elfo1.atirarFlecha(aa);
         teste = "Legolas possui 41 flechas e 1 nível de experiência.";
@@ -128,7 +128,7 @@ public class ElfoTest
 
     @Test public void testeElfoToStringComNomeAAe1flecha() {
         Elfo elfo1 = new Elfo("AA", 1);
-        Dwarf aa = new Dwarf("a",1,1,1);
+        Dwarf aa = new Dwarf("a",new DataTerceiraEra(1,1,1));
         String teste = "";        
         teste = "AA possui 1 flecha e 0 níveis de experiência.";
 

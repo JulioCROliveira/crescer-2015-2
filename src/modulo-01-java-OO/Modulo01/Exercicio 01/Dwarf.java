@@ -8,9 +8,9 @@ public class Dwarf {
         this.nome = nome;        
     }
         
-    public Dwarf(String nome, int dia, int mes, int ano) {
+    public Dwarf(String nome, DataTerceiraEra data) {
         this(nome);
-        this.dataNascimento = new DataTerceiraEra(dia, mes, ano);
+        this.dataNascimento = data;
     }
     
     public void receberFlechada() {
@@ -52,14 +52,16 @@ public class Dwarf {
     }
     
     public double getNumeroSorte() {
-        double numeroSorte = 101.0;
-        DataTerceiraEra data = this.getDataNascimento();
+        double numeroSorte = 101.0;        
         boolean vidaEntre80E90 = ((this.vida > 79) && (this.vida < 91)) ? true : false;
-        boolean nomeDeSorte = ((this.nome == "Seixas") || (this.nome == "Meireles")) ? true : false;
-        if (data.ehBissexto() && vidaEntre80E90) {
+        boolean nomeDeSorte = this.nome != null ? true: false; 
+        if (nomeDeSorte) { 
+            nomeDeSorte = ((this.nome == "Seixas") || (this.nome == "Meireles")) ? true : false;
+        }
+        if (this.dataNascimento.ehBissexto() && vidaEntre80E90) {
             numeroSorte *= -33;
         }
-        if (data.ehBissexto() == false && nomeDeSorte) {
+        if (!this.dataNascimento.ehBissexto() && nomeDeSorte) {
             numeroSorte = (numeroSorte*33)%100;
         }
         return numeroSorte;

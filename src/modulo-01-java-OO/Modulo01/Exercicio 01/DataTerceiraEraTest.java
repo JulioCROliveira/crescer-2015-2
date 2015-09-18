@@ -42,4 +42,18 @@ public class DataTerceiraEraTest
         DataTerceiraEra teste = new DataTerceiraEra(5,10,2002);
         assertEquals("05/10/2002", teste.getData());
     }
+    
+    @Test
+    public void metodoEqualsComDatasIguais() {
+        DataTerceiraEra teste = new DataTerceiraEra(5,10,2002);
+        DataTerceiraEra teste2 = new DataTerceiraEra(5,10,2002);
+        assertEquals(true, teste.equals(teste2));
+    }
+    
+    @Test
+    public void metodoEqualsComDatasDiferetes() {
+        DataTerceiraEra teste = new DataTerceiraEra(5,10,2002);
+        DataTerceiraEra teste2 = new DataTerceiraEra(5,1,2002);
+        assertEquals(false, teste.equals(teste2));
+    }
 }
