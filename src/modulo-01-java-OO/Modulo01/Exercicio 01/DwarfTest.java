@@ -113,7 +113,7 @@ public class DwarfTest
     }
     
     @Test
-    public void dwarfQualquerComSortePadrão() {
+    public void dwarfQualquerComSortePadrão101() {
         Dwarf dwarf = new Dwarf("Elias",3,11,1915);
         assertEquals(101.0, dwarf.getNumeroSorte(), 1e-15);
     }
@@ -128,7 +128,7 @@ public class DwarfTest
     }
     
     @Test
-    public void dwarfSortudoComMaisDe90DeVidaEAnoBissextoComSorteMenos33333() {
+    public void dwarfSortudoComMaisDe90DeVidaEAnoBissextoComSorte101() {
         Dwarf dwarf = new Dwarf("Elias",3,11,2000);
         dwarf.receberFlechada();        
         assertEquals(101, dwarf.getNumeroSorte(), 1e-15);
@@ -150,7 +150,7 @@ public class DwarfTest
     }
     
     @Test
-    public void dwarfSeixasEAnoBissextoComSorte133() {
+    public void dwarfSeixasEAnoBissextoComSorte1101() {
         Dwarf dwarf = new Dwarf("Seixas",3,11,2000);     
         assertEquals(101, dwarf.getNumeroSorte(), 1e-15);
     }
