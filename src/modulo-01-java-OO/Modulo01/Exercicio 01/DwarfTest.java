@@ -135,13 +135,14 @@ public class DwarfTest
         assertEquals(100, dwarf.getVida());
     }
     
-    /*@Test
+    @Test
     public void dwarfSortudoComMenosDe80DeVidaEAnoBissextoComSorteMenos33333() {
         Dwarf dwarf = new Dwarf("Elias",3,11,2000);
-        for (int i = 0; i < 5; i++){ dwarf.receberFlechada(); }        
+        dwarf.receberFlechadaHacker();
+        dwarf.receberFlechada();       
         assertEquals(101, dwarf.getNumeroSorte(), 1e-15);
-        assertEquals(60, dwarf.getVida());
-    } */
+        assertEquals(50, dwarf.getVida());
+    }
     
     @Test
     public void dwarfSeixasEAnoNaoBissextoComSorte133() {

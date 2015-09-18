@@ -26,6 +26,14 @@ public class Dwarf {
         }
     }
     
+    public void receberFlechadaHacker() {
+        this.vida -= 50;
+        if (this.vida <= 0) {
+            this.status = Status.MORTO;
+            this.vida = 0;
+        }
+    }
+    
     public int getVida() {
         return this.vida;
     } 
