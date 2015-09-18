@@ -162,7 +162,7 @@ public class DwarfTest
     }
     
     @Test
-    public void dwarfMeirelesEAnoBissextoComSorte133() {
+    public void dwarfMeirelesEAnoBissextoComSorte1101() {
         Dwarf dwarf = new Dwarf("Meireles",3,11,2000);     
         assertEquals(101, dwarf.getNumeroSorte(), 1e-15);
     }
