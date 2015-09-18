@@ -15,6 +15,6 @@ public class Testando
             System.out.println(elfo1.atirarFlecha(dwarf));
         }       
         
-            System.out.println("Vida do dwarf = " + dwarf.getVida());
+            System.out.println("Vida do dwarf = " + dwarf.getVida()+"\n"+elfo1.toString());
     }    
 }

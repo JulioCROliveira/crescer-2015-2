@@ -1,10 +1,22 @@
 public class Elfo {
     private String nome;
     private int flechas, experiencia = 0;
+    private Status status = Status.VIVO;
     
     public Elfo(String n, int flech) {
         nome = n;
         flechas = flech;
+    }
+    
+    public Status getStatus() {
+        return this.status;
+    }
+    
+    public String toString() {
+        String singF = (this.flechas == 1) ? "flecha" : "flechas";
+        String singE = (this.experiencia == 1) ? "nível" : "níveis";
+        return String.format("%s possui %d %s e %d %s de experiência.", this.nome, 
+            this.flechas, singF, this.experiencia, singE);        
     }
     
     public Elfo(String n) {
@@ -34,5 +46,13 @@ public class Elfo {
    
     public int getFlechas() {
         return this.flechas;
+    }
+    
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public int getExperiencia() {
+        return this.experiencia;
     }
 }
