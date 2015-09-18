@@ -9,7 +9,7 @@ public class Testando
 {
     public static void main(String[] args) {
         Elfo elfo1 = new Elfo("sem nome",6);
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("a",1,1,1);
         
         for (int i = 0; i <= 10; i++) {
             System.out.println(elfo1.atirarFlecha(dwarf));
