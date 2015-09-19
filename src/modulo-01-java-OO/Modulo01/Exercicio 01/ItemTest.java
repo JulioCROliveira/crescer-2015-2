@@ -29,11 +29,60 @@ public class ItemTest
        assertEquals(-2, item.getQuantidade());
     }
     
-    @Test
+   @Test
    public void itemDescricaoPocaoEquantidade2() {
        Item item = new Item("Poção", 2);
        
        assertEquals("Poção", item.getDescricao());
        assertEquals(2, item.getQuantidade());
+    }
+    
+    @Test
+   public void itemDescricaoPocaoEquantidade2RecebeMais1000() {
+       Item item = new Item("Poção", 2);
+       item.add1000Quantidade();
+
+       assertEquals(1002, item.getQuantidade());
+    }
+    
+    @Test
+   public void itemDescricaoPocaoEquantidade2RecebeMais2000() {
+       Item item = new Item("Poção", 2);
+       item.add1000Quantidade();
+       item.add1000Quantidade();
+
+       assertEquals(2002, item.getQuantidade());
+    }
+    
+    @Test 
+    public void equalsComDoisObjetosIguais() {
+        Item item = new Item("Poção", 2);
+        Item item2 = new Item("Poção", 2);
+        
+        assertEquals(true, item.equals(item2));
+    }
+    
+    @Test 
+    public void equalsComDoisObjetosComQuantidadesDiferentes() {
+        Item item = new Item("Poção", 2);
+        Item item2 = new Item("Poção", 3);
+        
+        assertEquals(false, item.equals(item2));
+    }
+    
+    @Test 
+    public void equalsComDoisObjetosComQuantidadesDescriçoesDiferentes() {
+        Item item = new Item("Poção", 2);
+        Item item2 = new Item("Poço", 2);
+        
+        assertEquals(false, item.equals(item2));
+    }
+    
+    @Test 
+    public void equalsComDoisObjetosIguaisComDescricaoNulas() {
+        Item item = new Item(null, 2);
+        Item item2 = new Item(null, 2);
+        
+        assertEquals(true, item.equals(item2));
     }
 }
