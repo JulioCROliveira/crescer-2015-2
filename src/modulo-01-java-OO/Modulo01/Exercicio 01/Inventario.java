@@ -60,7 +60,7 @@ public class Inventario {
     public void ordenarItens() {        
         Item aux;
         for (int i = 0; i < inventario.size(); i++) {
-            for (int j = 0; j < inventario.size()-1; j++) {                
+            for (int j = 0; j < inventario.size(); j++) {                
                  if (inventario.get(i).getQuantidade() < inventario.get(j).getQuantidade()) {
                     aux  = inventario.get(j);
                     inventario.set(j, inventario.get(i));
