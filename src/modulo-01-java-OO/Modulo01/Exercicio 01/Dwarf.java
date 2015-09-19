@@ -3,6 +3,7 @@ public class Dwarf {
     private Status status = Status.VIVO;
     private String nome;
     private DataTerceiraEra dataNascimento = new DataTerceiraEra(1,1,1);
+    private Inventario inventario = new Inventario();
     
     public Dwarf(String nome) {
         this.nome = nome;        
@@ -69,5 +70,17 @@ public class Dwarf {
     
     public int getExperiencia() {
         return this.experiencia;
+    }
+    
+    public void tentarSorte() {
+        if (this.getNumeroSorte() == (double) -3333) {
+            for (int i = 0; i < inventario.getQuantidadeDeItens(); i++) {
+                inventario.getItem(i).add1000Quantidade();
+            }
+        }
+    }    
+    
+    public Inventario getInventario() {
+        return this.inventario;
     }
 }

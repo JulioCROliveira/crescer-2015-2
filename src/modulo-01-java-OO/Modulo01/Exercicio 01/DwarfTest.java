@@ -180,4 +180,86 @@ public class DwarfTest
         assertEquals(101, dwarf.getNumeroSorte(), 1e-15);
     }
     
+    @Test
+    public void dwarfAgoraTemItens() {
+        Dwarf dwarf = new Dwarf("Dwarfino");
+        Item item1 = new Item("poção",3);
+        Item item2 = new Item("moedas",10);
+        Item item3 = new Item("machado",1);
+        
+        dwarf.getInventario().adicionarItem(item1);
+        dwarf.getInventario().adicionarItem(item2);
+        dwarf.getInventario().adicionarItem(item3);
+        
+        assertEquals(true,  dwarf.getInventario().getItem(0).equals(item1));
+        assertEquals(true,  dwarf.getInventario().getItem(1).equals(item2));
+        assertEquals(true,  dwarf.getInventario().getItem(2).equals(item3));
+    }
+    
+    @Test
+    public void dwarfNaoSortudoTentaSorte() {
+        Dwarf dwarf = new Dwarf("Dwarfino");
+        Item item1 = new Item("poção",3);
+        Item item2 = new Item("moedas",10);
+                
+        dwarf.getInventario().adicionarItem(item1);
+        dwarf.getInventario().adicionarItem(item2);
+        
+        dwarf.tentarSorte();
+        
+        assertEquals(3,  dwarf.getInventario().getItem(0).getQuantidade());
+        assertEquals(10,  dwarf.getInventario().getItem(1).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfQuaseSortudoTentaSorte() {
+        Dwarf dwarf = new Dwarf("Dwarfino", new DataTerceiraEra(1,1,2004));
+        Item item1 = new Item("poção",3);
+        Item item2 = new Item("moedas",10);
+                
+        dwarf.getInventario().adicionarItem(item1);
+        dwarf.getInventario().adicionarItem(item2);
+        
+        dwarf.receberFlechada();
+        dwarf.tentarSorte();
+        
+        assertEquals(3,  dwarf.getInventario().getItem(0).getQuantidade());
+        assertEquals(10,  dwarf.getInventario().getItem(1).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfSortudoTentaSorte() {
+        Dwarf dwarf = new Dwarf("Dwarfino", new DataTerceiraEra(1,1,2004));
+        Item item1 = new Item("poção",3);
+        Item item2 = new Item("moedas",10);
+                
+        dwarf.getInventario().adicionarItem(item1);
+        dwarf.getInventario().adicionarItem(item2);
+        
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.tentarSorte();
+        
+        assertEquals(1003,  dwarf.getInventario().getItem(0).getQuantidade());
+        assertEquals(1010,  dwarf.getInventario().getItem(1).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfSortudoTentaSorte2Vezes() {
+        Dwarf dwarf = new Dwarf("Dwarfino", new DataTerceiraEra(1,1,2004));
+        Item item1 = new Item("poção",3);
+        Item item2 = new Item("moedas",10);
+                
+        dwarf.getInventario().adicionarItem(item1);
+        dwarf.getInventario().adicionarItem(item2);
+        
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.tentarSorte();
+        dwarf.tentarSorte();
+        
+        assertEquals(2003,  dwarf.getInventario().getItem(0).getQuantidade());
+        assertEquals(2010,  dwarf.getInventario().getItem(1).getQuantidade());
+    }
+    
 }
