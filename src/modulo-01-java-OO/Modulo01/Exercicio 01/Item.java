@@ -43,10 +43,12 @@ public class Item
         n = n * (n+1)/2;
         this.quantidade += n * 1000;
     }
-    
+   
+    /*
+     * Exercicio correção
     public void shimbalaie() {
         int pa = this.quantidade * (this.quantidade +1) / 2;
         this.quantidade += 1000 * pa;
-    }
+    } */
 
 }
