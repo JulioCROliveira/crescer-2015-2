@@ -15,11 +15,7 @@ public class Inventario {
     }
     
     public void perderItem(Item item) {
-        for (int i = 0; i < this.inventario.size(); i++) {
-            if (this.inventario.get(i).equals(item)) {
-                this.inventario.remove(i);
-            }
-        }
+       this.inventario.remove(item);
     }
     
     public int getQuantidadeDeItens() {
@@ -69,5 +65,17 @@ public class Inventario {
             }
         }
     }   
+    
+    public void aumentar1000CadaItem() {
+        for (int i = 0; i < this.getQuantidadeDeItens(); i++) {
+            this.getItem(i).add1000Quantidade();
+        }
+    }
+    
+    public void aumentarNVezes1000CadaItem() {
+        for (int i = 0; i < this.getQuantidadeDeItens(); i++) {
+            this.getItem(i).addItensComSorteIrish();
+        }
+    }
     
 }

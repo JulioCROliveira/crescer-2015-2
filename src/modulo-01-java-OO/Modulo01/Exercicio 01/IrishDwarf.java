@@ -1,15 +1,22 @@
-public class Dwarf {
+
+/**
+ * Write a description of class aaa here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class IrishDwarf {
     private int vida = 110, experiencia;
     private Status status = Status.VIVO;
     private String nome;
     private DataTerceiraEra dataNascimento = new DataTerceiraEra(1,1,1);
     private Inventario inventario = new Inventario();
     
-    public Dwarf(String nome) {
+    public IrishDwarf(String nome) {
         this.nome = nome;        
     }
         
-    public Dwarf(String nome, DataTerceiraEra data) {
+    public IrishDwarf(String nome, DataTerceiraEra data) {
         this(nome);
         this.dataNascimento = data;
     }
@@ -74,7 +81,7 @@ public class Dwarf {
     
     public void tentarSorte() {
         if (this.getNumeroSorte() == (double) -3333) {
-            this.getInventario().aumentar1000CadaItem();
+            this.getInventario().aumentarNVezes1000CadaItem();
         }
     }    
     
