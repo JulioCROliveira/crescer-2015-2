@@ -8,8 +8,12 @@
 public class OrcSnaga extends OrcUrukHai
 {    
     public OrcSnaga() {
-        this.inventario.adicionarItem(new Item("Arco", 1));
+        adicionaItensIniciais();
         this.vida = 70;
         this.flechas = 5;
-    }    
+    }
+    
+    public void adicionaItensIniciais() {
+        this.inventario.adicionarItem(new Item("Arco", 1));
+    }
 }

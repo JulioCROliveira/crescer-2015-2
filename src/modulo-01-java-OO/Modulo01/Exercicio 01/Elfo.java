@@ -52,6 +52,10 @@ public class Elfo {
         return this.nome;
     }
     
+    public int getVida() {
+        return this.vida;
+    } 
+    
     public int getExperiencia() {
         return this.experiencia;
     }
