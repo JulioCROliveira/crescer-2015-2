@@ -1,12 +1,9 @@
-public class Dwarf {
-    protected int vida = 110, experiencia;
-    protected Status status = Status.VIVO;
-    protected String nome;
+public class Dwarf extends Personagem{    
     protected DataTerceiraEra dataNascimento = new DataTerceiraEra(1,1,1);
-    protected Inventario inventario = new Inventario();
-    
+        
     public Dwarf(String nome) {
-        this.nome = nome;        
+        super(nome);
+        this.vida = 110;
     }
         
     public Dwarf(String nome, DataTerceiraEra data) {
@@ -36,18 +33,6 @@ public class Dwarf {
         }
     }
     
-    public int getVida() {
-        return this.vida;
-    } 
-    
-    public Status getStatus() {
-        return this.status;
-    }
-    
-    public String getNome() {
-        return this.nome;
-    }
-    
     public DataTerceiraEra getDataNascimento() {
         return this.dataNascimento;
     }
@@ -68,34 +53,9 @@ public class Dwarf {
         return numeroSorte;
     }
     
-    public int getExperiencia() {
-        return this.experiencia;
-    }
-    
     public void tentarSorte() {
         if (this.getNumeroSorte() == (double) -3333) {
             this.getInventario().aumentar1000CadaItem();
-        }
-    }    
-    
-    public Inventario getInventario() {
-        return this.inventario;
-    }
-    
-    public void receberFlechadaDeOrc() {
-        this.vida -= 8;
-        verificaVida();
-    }
-    
-    public void receberEspadadaDeOrc() {
-        this.vida -= 12;
-        verificaVida();
-    }
-    
-    public void verificaVida() {
-        if (this.vida <= 0) {
-            status = Status.MORTO;
-            this.vida = 0;
         }
     }
     

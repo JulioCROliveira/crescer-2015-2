@@ -10,13 +10,6 @@ import java.util.ArrayList;
 public class Inventario {
     private ArrayList<Item> inventario = new ArrayList<>();
     
-    public void adicionarItem(Item item) {
-                this.inventario.add(item);
-    }
-    
-    public void perderItem(Item item) {
-       this.inventario.remove(item);
-    }
     
     public int getQuantidadeDeItens() {
         return this.inventario.size();
@@ -109,5 +102,13 @@ public class Inventario {
             }
         }
         return teste;
+    } 
+    
+    public void adicionarItem(Item item) {
+        this.inventario.add(item);
+    }
+    
+    public void perderItem(Item item) {
+       this.inventario.remove(item);
     }
 }

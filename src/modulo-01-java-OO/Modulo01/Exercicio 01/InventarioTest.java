@@ -14,191 +14,175 @@ import org.junit.Test;
 public class InventarioTest
 {
     @Test
-    public void adicionado3ItensDiferentes() {
-        Inventario inventario = new Inventario();
-        Item item1 = new Item("poção",3);
-        Item item2 = new Item("moedas",10);
-        Item item3 = new Item("machado",1);
-                
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
-        
-        assertEquals(true, inventario.getItem(0).equals(item1));
-        assertEquals(true, inventario.getItem(1).equals(item2));
-        assertEquals(true, inventario.getItem(2).equals(item3));
-    }
-    
-    @Test
     public void getDescricaoCom3ItensDiferentes() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(true, inventario.getItem(0).getDescricao().equals("poção"));
-        assertEquals(true, inventario.getItem(1).getDescricao().equals("moedas"));
-        assertEquals(true, inventario.getItem(2).getDescricao().equals("machado"));
+        assertEquals(true, personagem.getInventario().getItem(0).getDescricao().equals("poção"));
+        assertEquals(true, personagem.getInventario().getItem(1).getDescricao().equals("moedas"));
+        assertEquals(true, personagem.getInventario().getItem(2).getDescricao().equals("machado"));
     }
     
     @Test
     public void getQuantidadeCom3ItensDiferentes() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(3, inventario.getItem(0).getQuantidade());
-        assertEquals(10, inventario.getItem(1).getQuantidade());
-        assertEquals(1, inventario.getItem(2).getQuantidade());
+        assertEquals(3, personagem.getInventario().getItem(0).getQuantidade());
+        assertEquals(10, personagem.getInventario().getItem(1).getQuantidade());
+        assertEquals(1, personagem.getInventario().getItem(2).getQuantidade());
     }
     
     @Test
     public void recebendoItemComMaiorQuantidade() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(true, inventario.getItemComMaiorQuantidade().equals(item2)); 
+        assertEquals(true, personagem.getInventario().getItemComMaiorQuantidade().equals(item2)); 
     }
     
     @Test
     public void negandoAReceberItemSemSerComMaiorQuantidade() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(false, inventario.getItemComMaiorQuantidade().equals(item1)); 
-        assertEquals(false, inventario.getItemComMaiorQuantidade().equals(item3)); 
+        assertEquals(false, personagem.getInventario().getItemComMaiorQuantidade().equals(item1)); 
+        assertEquals(false, personagem.getInventario().getItemComMaiorQuantidade().equals(item3)); 
     }
     
     @Test
     public void removendoUmItem() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        inventario.perderItem(item2);
+        personagem.perderItem(item2);
         
-        assertEquals(true, inventario.getItem(0).equals(item1)); 
-        assertEquals(true, inventario.getItem(1).equals(item3)); 
+        assertEquals(true, personagem.getInventario().getItem(0).equals(item1)); 
+        assertEquals(true, personagem.getInventario().getItem(1).equals(item3)); 
     }
     
     @Test
     public void removendoDoisItens() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        inventario.perderItem(item2);
-        inventario.perderItem(item1);
+        personagem.perderItem(item2);
+        personagem.perderItem(item1);
 
-        assertEquals(true, inventario.getItem(0).equals(item3)); 
+        assertEquals(true, personagem.getInventario().getItem(0).equals(item3)); 
     }
     
     @Test
     public void ordenandoItensBagunçados() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
         Item item4 = new Item("moedas",7);
         Item item5 = new Item("machado",6);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
-        inventario.adicionarItem(item4);
-        inventario.adicionarItem(item5);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
+        personagem.adicionarItem(item4);
+        personagem.adicionarItem(item5);
         
-        inventario.ordenarItens();
+        personagem.getInventario().ordenarItens();
 
-        assertEquals(true, inventario.getItem(0).equals(item3)); 
-        assertEquals(true, inventario.getItem(1).equals(item1)); 
-        assertEquals(true, inventario.getItem(2).equals(item5));
-        assertEquals(true, inventario.getItem(3).equals(item4)); 
-        assertEquals(true, inventario.getItem(4).equals(item2));
+        assertEquals(true, personagem.getInventario().getItem(0).equals(item3)); 
+        assertEquals(true, personagem.getInventario().getItem(1).equals(item1)); 
+        assertEquals(true, personagem.getInventario().getItem(2).equals(item5));
+        assertEquals(true, personagem.getInventario().getItem(3).equals(item4)); 
+        assertEquals(true, personagem.getInventario().getItem(4).equals(item2));
     }
     
     @Test
     public void ordenandoItensQueJaEstavamOrdenadosAoContrario() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",5);
         Item item2 = new Item("moedas",4);
         Item item3 = new Item("machado",3);
         Item item4 = new Item("moedas",2);
         Item item5 = new Item("machado",1);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
-        inventario.adicionarItem(item4);
-        inventario.adicionarItem(item5);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
+        personagem.adicionarItem(item4);
+        personagem.adicionarItem(item5);
         
-        inventario.ordenarItens();
+        personagem.getInventario().ordenarItens();
 
-        assertEquals(true, inventario.getItem(0).equals(item5)); 
-        assertEquals(true, inventario.getItem(1).equals(item4)); 
-        assertEquals(true, inventario.getItem(2).equals(item3));
-        assertEquals(true, inventario.getItem(3).equals(item2)); 
-        assertEquals(true, inventario.getItem(4).equals(item1));
+        assertEquals(true, personagem.getInventario().getItem(0).equals(item5)); 
+        assertEquals(true, personagem.getInventario().getItem(1).equals(item4)); 
+        assertEquals(true, personagem.getInventario().getItem(2).equals(item3));
+        assertEquals(true, personagem.getInventario().getItem(3).equals(item2)); 
+        assertEquals(true, personagem.getInventario().getItem(4).equals(item1));
     }
     
     @Test
     public void ordenandoItensQueJaEstavamOrdenados() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",1);
         Item item2 = new Item("moedas",2);
         Item item3 = new Item("machado",3);
         Item item4 = new Item("moedas",4);
         Item item5 = new Item("machado",5);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
-        inventario.adicionarItem(item4);
-        inventario.adicionarItem(item5);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
+        personagem.adicionarItem(item4);
+        personagem.adicionarItem(item5);
         
-        inventario.ordenarItens();
+        personagem.getInventario().ordenarItens();
 
-        assertEquals(true, inventario.getItem(0).equals(item1)); 
-        assertEquals(true, inventario.getItem(1).equals(item2)); 
-        assertEquals(true, inventario.getItem(2).equals(item3));
-        assertEquals(true, inventario.getItem(3).equals(item4)); 
-        assertEquals(true, inventario.getItem(4).equals(item5));
+        assertEquals(true, personagem.getInventario().getItem(0).equals(item1)); 
+        assertEquals(true, personagem.getInventario().getItem(1).equals(item2)); 
+        assertEquals(true, personagem.getInventario().getItem(2).equals(item3));
+        assertEquals(true, personagem.getInventario().getItem(3).equals(item4)); 
+        assertEquals(true, personagem.getInventario().getItem(4).equals(item5));
     }
     
     @Test
     public void ordenandoItensQueJaEstavamOrdenadosCom20Itens() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item1 = new Item("poção",7);
         Item item2 = new Item("moedas",4);
         Item item3 = new Item("machado",3);
@@ -220,123 +204,123 @@ public class InventarioTest
         Item item19 = new Item("moedas",9);
         Item item20 = new Item("machado",11);
                 
-        inventario.adicionarItem(item1);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
-        inventario.adicionarItem(item4);
-        inventario.adicionarItem(item5);
-         inventario.adicionarItem(item6);
-        inventario.adicionarItem(item7);
-        inventario.adicionarItem(item8);
-        inventario.adicionarItem(item9);
-        inventario.adicionarItem(item10);
-         inventario.adicionarItem(item11);
-        inventario.adicionarItem(item12);
-        inventario.adicionarItem(item13);
-        inventario.adicionarItem(item14);
-        inventario.adicionarItem(item15);
-         inventario.adicionarItem(item16);
-        inventario.adicionarItem(item17);
-        inventario.adicionarItem(item18);
-        inventario.adicionarItem(item19);
-        inventario.adicionarItem(item20);
+        personagem.adicionarItem(item1);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
+        personagem.adicionarItem(item4);
+        personagem.adicionarItem(item5);
+        personagem.adicionarItem(item6);
+        personagem.adicionarItem(item7);
+        personagem.adicionarItem(item8);
+        personagem.adicionarItem(item9);
+        personagem.adicionarItem(item10);
+        personagem.adicionarItem(item11);
+        personagem.adicionarItem(item12);
+        personagem.adicionarItem(item13);
+        personagem.adicionarItem(item14);
+        personagem.adicionarItem(item15);
+        personagem.adicionarItem(item16);
+        personagem.adicionarItem(item17);
+        personagem.adicionarItem(item18);
+        personagem.adicionarItem(item19);
+        personagem.adicionarItem(item20);
         
-        inventario.ordenarItens();
+        personagem.getInventario().ordenarItens();
 
-        assertEquals(true, inventario.getItem(0).equals(item13)); 
-        assertEquals(true, inventario.getItem(1).equals(item8)); 
-        assertEquals(true, inventario.getItem(2).equals(item3));
-        assertEquals(true, inventario.getItem(3).equals(item2)); 
-        assertEquals(true, inventario.getItem(4).equals(item11));
-        assertEquals(true, inventario.getItem(5).equals(item9)); 
-        assertEquals(true, inventario.getItem(6).equals(item1)); 
-        assertEquals(true, inventario.getItem(7).equals(item17));
-        assertEquals(true, inventario.getItem(8).equals(item19)); 
-        assertEquals(true, inventario.getItem(9).equals(item15));
-        assertEquals(true, inventario.getItem(10).equals(item20)); 
-        assertEquals(true, inventario.getItem(11).equals(item5)); 
-        assertEquals(true, inventario.getItem(12).equals(item7));
-        assertEquals(true, inventario.getItem(13).equals(item6)); 
-        assertEquals(true, inventario.getItem(14).equals(item4));
-        assertEquals(true, inventario.getItem(15).equals(item10)); 
-        assertEquals(true, inventario.getItem(16).equals(item14)); 
-        assertEquals(true, inventario.getItem(17).equals(item18));
-        assertEquals(true, inventario.getItem(18).equals(item16)); 
-        assertEquals(true, inventario.getItem(19).equals(item12));
+        assertEquals(true, personagem.getInventario().getItem(0).equals(item13)); 
+        assertEquals(true, personagem.getInventario().getItem(1).equals(item8)); 
+        assertEquals(true, personagem.getInventario().getItem(2).equals(item3));
+        assertEquals(true, personagem.getInventario().getItem(3).equals(item2)); 
+        assertEquals(true, personagem.getInventario().getItem(4).equals(item11));
+        assertEquals(true, personagem.getInventario().getItem(5).equals(item9)); 
+        assertEquals(true, personagem.getInventario().getItem(6).equals(item1)); 
+        assertEquals(true, personagem.getInventario().getItem(7).equals(item17));
+        assertEquals(true, personagem.getInventario().getItem(8).equals(item19)); 
+        assertEquals(true, personagem.getInventario().getItem(9).equals(item15));
+        assertEquals(true, personagem.getInventario().getItem(10).equals(item20)); 
+        assertEquals(true, personagem.getInventario().getItem(11).equals(item5)); 
+        assertEquals(true, personagem.getInventario().getItem(12).equals(item7));
+        assertEquals(true, personagem.getInventario().getItem(13).equals(item6)); 
+        assertEquals(true, personagem.getInventario().getItem(14).equals(item4));
+        assertEquals(true, personagem.getInventario().getItem(15).equals(item10)); 
+        assertEquals(true, personagem.getInventario().getItem(16).equals(item14)); 
+        assertEquals(true, personagem.getInventario().getItem(17).equals(item18));
+        assertEquals(true, personagem.getInventario().getItem(18).equals(item16)); 
+        assertEquals(true, personagem.getInventario().getItem(19).equals(item12));
     }
     
     @Test
     public void metodoPossuiEspada() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
-        inventario.adicionarItem(item);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(true, inventario.possuiEspada());
+        assertEquals(true, personagem.getInventario().possuiEspada());
     }
     
     @Test
     public void metodoPossuiEspadaFalso() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
-        inventario.adicionarItem(item);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item);
+        personagem.adicionarItem(item3);
         
-        assertEquals(false, inventario.possuiEspada());
+        assertEquals(false, personagem.getInventario().possuiEspada());
     }
     
     @Test
     public void metodoPossuiEscudo() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
-        inventario.adicionarItem(item);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(true, inventario.possuiEscudoUrukHai());
+        assertEquals(true, personagem.getInventario().possuiEscudoUrukHai());
     }
     
     @Test
     public void metodoPossuiEscudoFalso() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(false, inventario.possuiEscudoUrukHai());
+        assertEquals(false, personagem.getInventario().possuiEscudoUrukHai());
     }
     
     @Test
     public void metodoPossuiArco() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
-        inventario.adicionarItem(item);
-        inventario.adicionarItem(item2);
-        inventario.adicionarItem(item3);
+        personagem.adicionarItem(item);
+        personagem.adicionarItem(item2);
+        personagem.adicionarItem(item3);
         
-        assertEquals(true, inventario.possuiArco());
+        assertEquals(true, personagem.getInventario().possuiArco());
     }
     
     @Test
     public void metodoPossuiArcoFalso() {
-        Inventario inventario = new Inventario();
+        Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
-        inventario.adicionarItem(item);
-        inventario.adicionarItem(item2);
+        personagem.adicionarItem(item);
+        personagem.adicionarItem(item2);
         
-        assertEquals(false, inventario.possuiArco());
+        assertEquals(false, personagem.getInventario().possuiArco());
     }
 }

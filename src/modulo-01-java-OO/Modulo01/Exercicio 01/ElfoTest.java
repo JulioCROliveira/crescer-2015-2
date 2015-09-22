@@ -134,4 +134,14 @@ public class ElfoTest
 
         assertEquals(teste, elfo1.toString());
     }
+    
+    @Test
+    public void elfoTemItem() {
+        Elfo elfo = new Elfo("Elfo");
+        Item item = new Item("A", 1);
+        
+        elfo.getInventario().adicionarItem(item);
+        
+        assertEquals(item, elfo.getInventario().getItem(0));
+    }
 }
