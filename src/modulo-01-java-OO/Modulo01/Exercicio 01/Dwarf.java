@@ -81,4 +81,29 @@ public class Dwarf {
     public Inventario getInventario() {
         return this.inventario;
     }
+    
+    public void receberFlechadaDeOrc() {
+        this.vida -= 8;
+        verificaVida();
+    }
+    
+    public void receberEspadadaDeOrc() {
+        this.vida -= 12;
+        verificaVida();
+    }
+    
+    public void verificaVida() {
+        if (this.vida <= 0) {
+            status = Status.MORTO;
+            this.vida = 0;
+        }
+    }
+    
+    public void atacarOrc(OrcUrukHai orc) {
+        orc.atacadoPeloDwarf(this);
+    }
+    
+    public void atacarOrc(OrcSnaga orc) {
+        orc.atacadoPeloDwarf(this);
+    }
 }

@@ -43,6 +43,18 @@ public class Item
         n = n * (n+1)/2;
         this.quantidade += n * 1000;
     }
+    
+    public boolean ehEscudoUrukHai() {
+        return this.descricao.equals("Escudo Uruk-Hai");
+    }
+    
+    public boolean ehEspada() {
+        return this.descricao.equals("Espada");
+    }
+    
+    public boolean ehArco() {
+        return this.descricao.equals("Arco");
+    }
    
     /*
      * Exercicio correção

@@ -85,4 +85,16 @@ public class ItemTest
         
         assertEquals(true, item.equals(item2));
     }
+    
+    @Test 
+    public void metodosPossuiEscudoEspadaArco() {
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        
+        assertEquals(true, item.ehEscudoUrukHai());
+        assertEquals(true, item2.ehEspada());
+        assertEquals(true, item3.ehArco());
+        assertEquals(false, item2.ehEscudoUrukHai());
+    }
 }

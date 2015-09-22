@@ -264,4 +264,79 @@ public class InventarioTest
         assertEquals(true, inventario.getItem(18).equals(item16)); 
         assertEquals(true, inventario.getItem(19).equals(item12));
     }
+    
+    @Test
+    public void metodoPossuiEspada() {
+        Inventario inventario = new Inventario();
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        inventario.adicionarItem(item);
+        inventario.adicionarItem(item2);
+        inventario.adicionarItem(item3);
+        
+        assertEquals(true, inventario.possuiEspada());
+    }
+    
+    @Test
+    public void metodoPossuiEspadaFalso() {
+        Inventario inventario = new Inventario();
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        inventario.adicionarItem(item);
+        inventario.adicionarItem(item3);
+        
+        assertEquals(false, inventario.possuiEspada());
+    }
+    
+    @Test
+    public void metodoPossuiEscudo() {
+        Inventario inventario = new Inventario();
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        inventario.adicionarItem(item);
+        inventario.adicionarItem(item2);
+        inventario.adicionarItem(item3);
+        
+        assertEquals(true, inventario.possuiEscudoUrukHai());
+    }
+    
+    @Test
+    public void metodoPossuiEscudoFalso() {
+        Inventario inventario = new Inventario();
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        inventario.adicionarItem(item2);
+        inventario.adicionarItem(item3);
+        
+        assertEquals(false, inventario.possuiEscudoUrukHai());
+    }
+    
+    @Test
+    public void metodoPossuiArco() {
+        Inventario inventario = new Inventario();
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        inventario.adicionarItem(item);
+        inventario.adicionarItem(item2);
+        inventario.adicionarItem(item3);
+        
+        assertEquals(true, inventario.possuiArco());
+    }
+    
+    @Test
+    public void metodoPossuiArcoFalso() {
+        Inventario inventario = new Inventario();
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);
+        Item item3 = new Item("Arco", 2);
+        inventario.adicionarItem(item);
+        inventario.adicionarItem(item2);
+        
+        assertEquals(false, inventario.possuiArco());
+    }
 }

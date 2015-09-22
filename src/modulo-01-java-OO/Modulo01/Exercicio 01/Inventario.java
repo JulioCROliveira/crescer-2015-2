@@ -78,4 +78,36 @@ public class Inventario {
         }
     }
     
+    public boolean possuiEscudoUrukHai() {
+        boolean teste = false;
+        for (Item item : inventario) {
+            if (item.ehEscudoUrukHai()) {
+                teste = true;
+                break;
+            }
+        }
+        return teste;
+    }
+    
+    public boolean possuiEspada() {
+        boolean teste = false;
+        for (Item item : inventario) {
+            if (item.ehEspada()) {
+                teste = true;
+                break;
+            }
+        }
+        return teste;
+    }
+    
+    public boolean possuiArco() {
+        boolean teste = false;
+        for (Item item : inventario) {
+            if (item.ehArco()) {
+                teste = true;
+                break;
+            }
+        }
+        return teste;
+    }
 }

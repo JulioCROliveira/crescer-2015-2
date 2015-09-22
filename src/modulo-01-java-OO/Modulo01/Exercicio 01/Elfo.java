@@ -1,6 +1,6 @@
 public class Elfo {
     private String nome;
-    private int flechas, experiencia = 0;
+    private int flechas, experiencia = 0, vida = 80;
     private Status status = Status.VIVO;
     
     public Elfo(String n, int flech) {
@@ -54,5 +54,30 @@ public class Elfo {
     
     public int getExperiencia() {
         return this.experiencia;
+    }
+    
+    public void receberFlechadaDeOrc() {
+        this.vida -= 8;
+        verificaVida();
+    }
+    
+    public void receberEspadadaDeOrc() {
+        this.vida -= 12;
+        verificaVida();
+    }
+    
+    public void verificaVida() {
+        if (this.vida <= 0) {
+            status = Status.MORTO;
+            this.vida = 0;
+        }
+    }
+    
+    public void atacarOrc(OrcUrukHai orc) {
+        orc.atacadoPeloElfo(this);
+    }
+    
+    public void atacarOrc(OrcSnaga orc) {
+        orc.atacadoPeloElfo(this);
     }
 }
