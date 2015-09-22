@@ -75,7 +75,7 @@ public class OrcSnagaTest
         
         orc.atacarDwarf(dwarf);
         
-        assertEquals(110, dwarf.getVida());
+        assertEquals(102, dwarf.getVida());
         assertEquals(70, orc.getVida());
     }
     
@@ -88,7 +88,7 @@ public class OrcSnagaTest
         orc.atacarDwarf(dwarf);
         orc.atacarDwarf(dwarf);
         
-        assertEquals(110, dwarf.getVida());
+        assertEquals(86, dwarf.getVida());
         assertEquals(Status.VIVO, dwarf.getStatus());
         assertEquals(70, orc.getVida());
     }
@@ -152,7 +152,7 @@ public class OrcSnagaTest
         dwarf.atacarOrc(orc);
         
         assertEquals(true, orc.possuiEscudoUrukHai());
-        assertEquals(70, orc.getVida());
+        assertEquals(65, orc.getVida());
     }
     
     @Test

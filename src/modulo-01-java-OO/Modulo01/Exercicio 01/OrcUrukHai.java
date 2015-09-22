@@ -58,51 +58,43 @@ public class OrcUrukHai
     
     public void atacarElfo(Elfo elfo) {
         if (this.status == Status.VIVO && elfo.getStatus() != Status.MORTO) {
-            int dano = getDano(), danoInimigo = 8;
-            if (dano >= danoInimigo) {
-                if (dano == 8) {
-                    elfo.receberFlechadaDeOrc();
-                    flechas--;
-                    atualizarStatus();
-                } else {
-                    elfo.receberEspadadaDeOrc();
-                }
-            }
+            int dano = getDano(), danoInimigo = 8;           
+            if (dano == 8) {
+                elfo.receberFlechadaDeOrc();
+                flechas--;
+                atualizarStatus();
+            } else {
+                elfo.receberEspadadaDeOrc();
+            }            
         }        
     }
     
     public void atacadoPeloElfo(Elfo elfo) {
         if (this.status == Status.VIVO && elfo.getStatus() != Status.MORTO) {
-            int dano = getDano(), danoInimigo = 8;
-            if (dano <= danoInimigo) {
-                this.vida -= 8;
-                verificaVida();
-            }
+            int dano = getDano();            
+            this.vida -= 8;
+            verificaVida();            
         }        
     }
     
     public void atacarDwarf(Dwarf dwarf) {
         if (this.status == Status.VIVO && dwarf.getStatus() != Status.MORTO) {
-            int dano = getDano(), danoInimigo = getDanoDeDwarfs();
-            if (dano >= danoInimigo) {
-                if (dano == 8) {
-                    dwarf.receberFlechadaDeOrc();
-                    flechas--;
-                    atualizarStatus();
-                } else {
-                    dwarf.receberEspadadaDeOrc();
-                }
-            }
+            int dano = getDano();            
+            if (dano == 8) {
+                dwarf.receberFlechadaDeOrc();
+                flechas--;
+                atualizarStatus();
+            } else {
+                dwarf.receberEspadadaDeOrc();
+            }            
         }        
     }
     
     public void atacadoPeloDwarf(Dwarf dwarf) {
         if (this.status == Status.VIVO && dwarf.getStatus() != Status.MORTO) {
-            int dano = getDano(), danoInimigo = getDanoDeDwarfs();
-            if (dano <= danoInimigo) {
-                this.vida -= danoInimigo;
-                verificaVida();
-            }
+            int dano = getDano(), danoInimigo = getDanoDeDwarfs();            
+            this.vida -= danoInimigo;
+            verificaVida();            
         }        
     }
     

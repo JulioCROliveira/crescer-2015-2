@@ -126,7 +126,7 @@ public class OrcUrukHaiTest
         
         elfo.atacarOrc(orc);
         
-        assertEquals(150, orc.getVida());
+        assertEquals(142, orc.getVida());
     }
     
     @Test
@@ -137,7 +137,7 @@ public class OrcUrukHaiTest
         orc.getInventario().perderItem(new Item("Escudo Uruk-Hai", 1));
         elfo.atacarOrc(orc);
         
-        assertEquals(150, orc.getVida());
+        assertEquals(142, orc.getVida());
     }
     
     @Test
@@ -147,7 +147,7 @@ public class OrcUrukHaiTest
         
         dwarf.atacarOrc(orc);
         
-        assertEquals(150, orc.getVida());
+        assertEquals(145, orc.getVida());
     }
     
     @Test
@@ -159,6 +159,6 @@ public class OrcUrukHaiTest
         dwarf.atacarOrc(orc);
         
         assertEquals(false, orc.possuiEscudoUrukHai());
-        assertEquals(150, orc.getVida());
+        assertEquals(140, orc.getVida());
     }
 }
