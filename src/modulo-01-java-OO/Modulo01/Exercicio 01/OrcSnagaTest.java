@@ -15,7 +15,7 @@ public class OrcSnagaTest
 {
     @Test
     public void inventarioSnagaSemEspadaEEscudoComArcoVida70Flechas5() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         
         assertEquals(false, orc.possuiEscudoUrukHai());
         assertEquals(false, orc.possuiEspada());
@@ -26,10 +26,10 @@ public class OrcSnagaTest
     
     @Test
     public void atacarElfo() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Elfo elfo = new Elfo("Elfo");
         
-        orc.atacarElfo(elfo);
+        orc.atacarPersonagem(elfo);
         
         assertEquals(72, elfo.getVida());
         assertEquals(70, orc.getVida());
@@ -38,12 +38,12 @@ public class OrcSnagaTest
     
     @Test
     public void atacar3VezesElfo() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Elfo elfo = new Elfo("Elfo");
         
-        orc.atacarElfo(elfo);
-        orc.atacarElfo(elfo);
-        orc.atacarElfo(elfo);
+        orc.atacarPersonagem(elfo);
+        orc.atacarPersonagem(elfo);
+        orc.atacarPersonagem(elfo);
         
         assertEquals(56, elfo.getVida());
         assertEquals(Status.VIVO, elfo.getStatus());
@@ -53,11 +53,11 @@ public class OrcSnagaTest
     
     @Test
     public void atacar10VezesElfo() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Elfo elfo = new Elfo("Elfo");
         
         for (int i = 0; i < 10; i++) {
-            orc.atacarElfo(elfo);
+            orc.atacarPersonagem(elfo);
         }
         
         
@@ -70,10 +70,10 @@ public class OrcSnagaTest
     
     @Test
     public void atacarDwarf() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
-        orc.atacarDwarf(dwarf);
+        orc.atacarPersonagem(dwarf);
         
         assertEquals(102, dwarf.getVida());
         assertEquals(70, orc.getVida());
@@ -81,12 +81,12 @@ public class OrcSnagaTest
     
     @Test
     public void atacar3VezesDwarf() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
-        orc.atacarDwarf(dwarf);
-        orc.atacarDwarf(dwarf);
-        orc.atacarDwarf(dwarf);
+        orc.atacarPersonagem(dwarf);
+        orc.atacarPersonagem(dwarf);
+        orc.atacarPersonagem(dwarf);
         
         assertEquals(86, dwarf.getVida());
         assertEquals(Status.VIVO, dwarf.getStatus());
@@ -95,12 +95,12 @@ public class OrcSnagaTest
     
     @Test
     public void orcGanhaEscudoEAtaca10VezesDwarf() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
         orc.getInventario().adicionarItem(new Item("Escudo Uruk-Hai", 1));
         for (int i = 0; i < 10; i++) {
-            orc.atacarDwarf(dwarf);
+            orc.atacarPersonagem(dwarf);
         }
         
         
@@ -111,17 +111,17 @@ public class OrcSnagaTest
         
     @Test
     public void elfoAtaca() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Elfo elfo = new Elfo("Elfo");
         
         elfo.atacarOrc(orc);
         
-        assertEquals(62, orc.getVida());
+        assertEquals(60, orc.getVida());
     }
     
     @Test
     public void elfoAtaca20Vezes() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Elfo elfo = new Elfo("Elfo");
         
         for (int i = 0; i < 20; i++) {
@@ -135,7 +135,7 @@ public class OrcSnagaTest
     
     @Test
     public void dwarfAtaca() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
         dwarf.atacarOrc(orc);
@@ -145,28 +145,45 @@ public class OrcSnagaTest
     
     @Test
     public void orcGanhaEscudoEDwarfAtaca() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
         orc.getInventario().adicionarItem(new Item("Escudo Uruk-Hai", 1));
         dwarf.atacarOrc(orc);
         
         assertEquals(true, orc.possuiEscudoUrukHai());
-        assertEquals(65, orc.getVida());
+        assertEquals(64, orc.getVida());
     }
     
     @Test
     public void atacar5VezesElfoEFoge() {
-        OrcSnaga orc = new OrcSnaga();
+        OrcSnaga orc = new OrcSnaga("A");
         Elfo elfo = new Elfo("Elfo");
         
         for (int i = 0; i < 5; i++) {
-            orc.atacarElfo(elfo);
+            orc.atacarPersonagem(elfo);
         }
         
         
         assertEquals(40, elfo.getVida());
         assertEquals(Status.VIVO, elfo.getStatus());
+        assertEquals(70, orc.getVida());
+        assertEquals(0, orc.getFlechas());
+        assertEquals(Status.FUGINDO, orc.getStatus());
+    }
+    
+    @Test
+    public void orcSnagaAtaca5VezesOrcUrukHaiEFoge() {
+        OrcSnaga orc = new OrcSnaga("A");
+        OrcUrukHai orc2 = new OrcUrukHai("A");
+        
+        for (int i = 0; i < 5; i++) {
+            orc.atacarPersonagem(orc2);
+        }
+        
+        
+        assertEquals(110, orc2.getVida());
+        assertEquals(Status.VIVO, orc2.getStatus());
         assertEquals(70, orc.getVida());
         assertEquals(0, orc.getFlechas());
         assertEquals(Status.FUGINDO, orc.getStatus());

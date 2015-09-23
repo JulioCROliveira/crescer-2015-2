@@ -7,13 +7,14 @@
  */
 public class OrcSnaga extends OrcUrukHai
 {    
-    public OrcSnaga() {
+    public OrcSnaga(String nome) {
+        super(nome);
         adicionaItensIniciais();
-        this.vida = 70;
-        this.flechas = 5;
+        this.vida = 70;        
     }
     
     public void adicionaItensIniciais() {
         this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", 5));
     }
 }

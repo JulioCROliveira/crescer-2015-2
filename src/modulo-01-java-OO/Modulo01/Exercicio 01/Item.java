@@ -53,9 +53,21 @@ public class Item
     }
     
     public boolean ehArco() {
-        return this.descricao.equals("Arco");
+        return this.descricao.equals("Arco");        
     }
-   
+    
+    public boolean ehFlecha() {
+        return this.descricao.equals("Flecha") && this.quantidade > 0;        
+    }
+    
+    public void itemAddQuantidade(int n) {
+        this.quantidade += n;
+    }
+    
+    public void menosUmaFlecha() {
+        this.quantidade -= 1;
+    }
+    
     /*
      * Exercicio correção
     public void shimbalaie() {

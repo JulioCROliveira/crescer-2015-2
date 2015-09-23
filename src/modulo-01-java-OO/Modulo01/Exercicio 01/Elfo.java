@@ -42,12 +42,4 @@ public class Elfo extends Personagem{
     public int getFlechas() {
         return this.flechas;
     }
-    
-    public void atacarOrc(OrcUrukHai orc) {
-        orc.atacadoPeloElfo(this);
-    }
-    
-    public void atacarOrc(OrcSnaga orc) {
-        orc.atacadoPeloElfo(this);
-    }
 }

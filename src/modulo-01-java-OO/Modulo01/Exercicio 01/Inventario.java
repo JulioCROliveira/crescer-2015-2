@@ -93,13 +93,20 @@ public class Inventario {
         return teste;
     }
     
-    public boolean possuiArco() {
-        boolean teste = false;
+    public boolean possuiArcoeFlecha() {
+        return jaPossuiItem(new Item ("Arco",1)) != -1 &&
+            jaPossuiItem(new Item("Flechas",0)) != -1;
+    }
+    
+    public int jaPossuiItem(Item itemNovo) {
+        int teste = -1, index = 0;
         for (Item item : inventario) {
-            if (item.ehArco()) {
-                teste = true;
-                break;
+            if ((item.getDescricao() != null || itemNovo.getDescricao() != null) &&
+                item.getDescricao().equals(itemNovo.getDescricao())) {
+                teste = index;                 
+                break;                
             }
+            index++;
         }
         return teste;
     } 

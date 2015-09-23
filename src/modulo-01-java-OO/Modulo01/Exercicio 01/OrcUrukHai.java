@@ -5,35 +5,18 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class OrcUrukHai
+public class OrcUrukHai extends Personagem
 {
-    protected int vida = 150, flechas = 0;
-    protected Inventario inventario = new Inventario();
-    protected Status status = Status.VIVO;
-    
-    public OrcUrukHai() {
+      
+    public OrcUrukHai(String nome) {
+        super(nome);
         adicionaItensIniciais();
+        this.vida = 150;
     }
     
     public void adicionaItensIniciais() {
         this.inventario.adicionarItem(new Item("Escudo Uruk-Hai", 1));
         this.inventario.adicionarItem(new Item("Espada", 1));
-    }
-    
-    public Inventario getInventario() {
-        return this.inventario;
-    }
-    
-    public Status getStatus() {
-        return this.status;
-    }
-    
-    public int getVida() {
-        return this.vida;
-    } 
-    
-    public int getFlechas() {
-        return this.flechas;
     }
     
     public boolean possuiEscudoUrukHai() {
@@ -45,54 +28,33 @@ public class OrcUrukHai
     }
     
     public boolean possuiArcoEFlechas() {
-        return this.inventario.possuiArco() && this.flechas > 0;
+        return this.inventario.possuiArcoeFlecha();
     }
     
     public void atualizarStatus() {
         if (this.status != Status.MORTO) {
-            if (!possuiArcoEFlechas() && !possuiEspada()) {
+            if ((!possuiArcoEFlechas() || getFlechas() <= 0) && !possuiEspada()) {
                 status = Status.FUGINDO;
             }
         }
     }
     
-    public void atacarElfo(Elfo elfo) {
-        if (this.status == Status.VIVO && elfo.getStatus() != Status.MORTO) {
-            int dano = getDano(), danoInimigo = 8;           
+    public void atacarPersonagem(Personagem personagem) {
+        if (this.status == Status.VIVO && personagem.getStatus() != Status.MORTO) {
+            int dano = getDano();           
             if (dano == 8) {
-                elfo.receberFlechadaDeOrc();
-                flechas--;
+                personagem.receberFlechadaDeOrc();
+                perderUmaFlecha();
                 atualizarStatus();
-            } else {
-                elfo.receberEspadadaDeOrc();
+            } else if (dano == 12) {
+                personagem.receberEspadadaDeOrc();
             }            
         }        
     }
     
-    public void atacadoPeloElfo(Elfo elfo) {
-        if (this.status == Status.VIVO && elfo.getStatus() != Status.MORTO) {
-            int dano = getDano();            
-            this.vida -= 8;
-            verificaVida();            
-        }        
-    }
-    
-    public void atacarDwarf(Dwarf dwarf) {
-        if (this.status == Status.VIVO && dwarf.getStatus() != Status.MORTO) {
-            int dano = getDano();            
-            if (dano == 8) {
-                dwarf.receberFlechadaDeOrc();
-                flechas--;
-                atualizarStatus();
-            } else {
-                dwarf.receberEspadadaDeOrc();
-            }            
-        }        
-    }
-    
-    public void atacadoPeloDwarf(Dwarf dwarf) {
-        if (this.status == Status.VIVO && dwarf.getStatus() != Status.MORTO) {
-            int dano = getDano(), danoInimigo = getDanoDeDwarfs();            
+    public void receberAtaque(Personagem personagem) {
+        if (this.status == Status.VIVO && personagem.getStatus() != Status.MORTO) {
+            int dano = getDano(), danoInimigo = getDanoRecebido();            
             this.vida -= danoInimigo;
             verificaVida();            
         }        
@@ -111,18 +73,23 @@ public class OrcUrukHai
         return dano;
     }
     
-    public int getDanoDeDwarfs() {
+    public int getDanoRecebido() {
         int dano = 10; 
         if (possuiEscudoUrukHai()) {
-            dano = 5; 
+            dano = 6; 
         }
         return dano;
     }
     
-    public void verificaVida() {
-        if (this.vida <= 0) {
-            status = Status.MORTO;
-            this.vida = 0;
+    public int getFlechas() {
+        if (this.getInventario().jaPossuiItem(new Item("Flechas",1)) != -1) {
+            return this.getInventario().getItem(this.getInventario().jaPossuiItem(new Item("Flechas",1))).getQuantidade();
+        } else {
+            return 0;
         }
-    }    
+    }
+    
+    public void perderUmaFlecha() {
+        this.getInventario().getItem(this.getInventario().jaPossuiItem(new Item("Flechas",1))).menosUmaFlecha();
+    }
 }

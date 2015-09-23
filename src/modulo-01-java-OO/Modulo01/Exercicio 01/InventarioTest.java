@@ -111,11 +111,11 @@ public class InventarioTest
     @Test
     public void ordenandoItensBagunçados() {
         Personagem personagem = new Personagem("AA");
-        Item item1 = new Item("poção",3);
-        Item item2 = new Item("moedas",10);
-        Item item3 = new Item("machado",1);
-        Item item4 = new Item("moedas",7);
-        Item item5 = new Item("machado",6);
+        Item item1 = new Item("a",3);
+        Item item2 = new Item("b",10);
+        Item item3 = new Item("c",1);
+        Item item4 = new Item("d",7);
+        Item item5 = new Item("e",6);
                 
         personagem.adicionarItem(item1);
         personagem.adicionarItem(item2);
@@ -135,11 +135,11 @@ public class InventarioTest
     @Test
     public void ordenandoItensQueJaEstavamOrdenadosAoContrario() {
         Personagem personagem = new Personagem("AA");
-        Item item1 = new Item("poção",5);
-        Item item2 = new Item("moedas",4);
-        Item item3 = new Item("machado",3);
-        Item item4 = new Item("moedas",2);
-        Item item5 = new Item("machado",1);
+        Item item1 = new Item("pocção",5);
+        Item item2 = new Item("moevdas",4);
+        Item item3 = new Item("macbhado",3);
+        Item item4 = new Item("moendas",2);
+        Item item5 = new Item("macmhado",1);
                 
         personagem.adicionarItem(item1);
         personagem.adicionarItem(item2);
@@ -159,11 +159,11 @@ public class InventarioTest
     @Test
     public void ordenandoItensQueJaEstavamOrdenados() {
         Personagem personagem = new Personagem("AA");
-        Item item1 = new Item("poção",1);
-        Item item2 = new Item("moedas",2);
-        Item item3 = new Item("machado",3);
-        Item item4 = new Item("moedas",4);
-        Item item5 = new Item("machado",5);
+        Item item1 = new Item("poçaão",1);
+        Item item2 = new Item("moedsas",2);
+        Item item3 = new Item("macdhado",3);
+        Item item4 = new Item("moefdas",4);
+        Item item5 = new Item("macghado",5);
                 
         personagem.adicionarItem(item1);
         personagem.adicionarItem(item2);
@@ -183,26 +183,26 @@ public class InventarioTest
     @Test
     public void ordenandoItensQueJaEstavamOrdenadosCom20Itens() {
         Personagem personagem = new Personagem("AA");
-        Item item1 = new Item("poção",7);
-        Item item2 = new Item("moedas",4);
-        Item item3 = new Item("machado",3);
-        Item item4 = new Item("moedas",15);
-        Item item5 = new Item("machado",12);
-        Item item6 = new Item("poção",14);
-        Item item7 = new Item("moedas",13);
-        Item item8 = new Item("machado",2);
-        Item item9 = new Item("moedas",6);
-        Item item10 = new Item("machado",16);
-        Item item11 = new Item("poção",5);
-        Item item12 = new Item("moedas",20);
-        Item item13 = new Item("machado",1);
-        Item item14 = new Item("moedas",17);
-        Item item15 = new Item("machado",10);
-        Item item16 = new Item("poção",19);
-        Item item17 = new Item("moedas",8);
-        Item item18 = new Item("machado",18);
-        Item item19 = new Item("moedas",9);
-        Item item20 = new Item("machado",11);
+        Item item1 = new Item("poação",7);
+        Item item2 = new Item("mosedas",4);
+        Item item3 = new Item("madchado",3);
+        Item item4 = new Item("moefdas",15);
+        Item item5 = new Item("macghado",12);
+        Item item6 = new Item("poçhão",14);
+        Item item7 = new Item("moejdas",13);
+        Item item8 = new Item("machkado",2);
+        Item item9 = new Item("moeldas",6);
+        Item item10 = new Item("macçhado",16);
+        Item item11 = new Item("poçxão",5);
+        Item item12 = new Item("moevdas",20);
+        Item item13 = new Item("macchado",1);
+        Item item14 = new Item("moebdas",17);
+        Item item15 = new Item("macnhado",10);
+        Item item16 = new Item("poçmão",19);
+        Item item17 = new Item("moe,das",8);
+        Item item18 = new Item("mach.ado",18);
+        Item item19 = new Item("moeduas",9);
+        Item item20 = new Item("macthado",11);
                 
         personagem.adicionarItem(item1);
         personagem.adicionarItem(item2);
@@ -303,13 +303,13 @@ public class InventarioTest
     public void metodoPossuiArco() {
         Personagem personagem = new Personagem("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
-        Item item2 = new Item("Espada", 2);
+        Item item2 = new Item("Flechas", 2);
         Item item3 = new Item("Arco", 2);
         personagem.adicionarItem(item);
         personagem.adicionarItem(item2);
         personagem.adicionarItem(item3);
         
-        assertEquals(true, personagem.getInventario().possuiArco());
+        assertEquals(true, personagem.getInventario().possuiArcoeFlecha());
     }
     
     @Test
@@ -321,6 +321,27 @@ public class InventarioTest
         personagem.adicionarItem(item);
         personagem.adicionarItem(item2);
         
-        assertEquals(false, personagem.getInventario().possuiArco());
+        assertEquals(false, personagem.getInventario().possuiArcoeFlecha());
+    }
+    
+    @Test
+    public void metodoJaPossuiItem() {
+        Personagem personagem = new Personagem("AA");
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);        
+        personagem.adicionarItem(item);
+        personagem.adicionarItem(item2);
+        
+        assertEquals(false, personagem.getInventario().jaPossuiItem(item2) == -1);
+    }
+    
+    @Test
+    public void metodoJaPossuiItemFalso() {
+        Personagem personagem = new Personagem("AA");
+        Item item = new Item("Escudo Uruk-Hai", 1);
+        Item item2 = new Item("Espada", 2);        
+        personagem.adicionarItem(item);        
+        
+        assertEquals(-1, personagem.getInventario().jaPossuiItem(item2));
     }
 }

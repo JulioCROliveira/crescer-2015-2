@@ -54,11 +54,23 @@ public class Personagem
     }
     
     public void adicionarItem(Item item) {
-        this.getInventario().adicionarItem(item);
+        int index =possuiItemComMesmaDescricao(item);
+        if (index == -1) {
+            this.getInventario().adicionarItem(item);
+        } else {
+            this.getInventario().getItem(index).itemAddQuantidade(item.getQuantidade());
+        }
+    }
+    
+    public int possuiItemComMesmaDescricao(Item item) {
+        return this.getInventario().jaPossuiItem(item);
     }
     
     public void perderItem(Item item) {
        this.getInventario().perderItem(item);
-    }
+    }    
     
+    public void atacarOrc(OrcUrukHai orc) {
+        orc.receberAtaque(this);
+    }
 }

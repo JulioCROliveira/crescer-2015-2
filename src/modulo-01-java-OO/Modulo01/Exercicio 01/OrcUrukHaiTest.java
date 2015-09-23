@@ -15,7 +15,7 @@ public class OrcUrukHaiTest
 {
     @Test
     public void inventarioComEspadaEEscudoSemArcoVida150SemFlechas() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         
         assertEquals(true, orc.possuiEscudoUrukHai());
         assertEquals(true, orc.possuiEspada());
@@ -26,10 +26,10 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacarElfo() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Elfo elfo = new Elfo("Elfo");
         
-        orc.atacarElfo(elfo);
+        orc.atacarPersonagem(elfo);
         
         assertEquals(68, elfo.getVida());
         assertEquals(150, orc.getVida());
@@ -37,12 +37,12 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacar3VezesElfo() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Elfo elfo = new Elfo("Elfo");
         
-        orc.atacarElfo(elfo);
-        orc.atacarElfo(elfo);
-        orc.atacarElfo(elfo);
+        orc.atacarPersonagem(elfo);
+        orc.atacarPersonagem(elfo);
+        orc.atacarPersonagem(elfo);
         
         assertEquals(44, elfo.getVida());
         assertEquals(Status.VIVO, elfo.getStatus());
@@ -51,11 +51,11 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacar10VezesElfo() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Elfo elfo = new Elfo("Elfo");
         
         for (int i = 0; i < 10; i++) {
-            orc.atacarElfo(elfo);
+            orc.atacarPersonagem(elfo);
         }
         
         
@@ -66,10 +66,10 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacarDwarf() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
-        orc.atacarDwarf(dwarf);
+        orc.atacarPersonagem(dwarf);
         
         assertEquals(98, dwarf.getVida());
         assertEquals(150, orc.getVida());
@@ -77,12 +77,12 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacar3VezesDwarf() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
-        orc.atacarDwarf(dwarf);
-        orc.atacarDwarf(dwarf);
-        orc.atacarDwarf(dwarf);
+        orc.atacarPersonagem(dwarf);
+        orc.atacarPersonagem(dwarf);
+        orc.atacarPersonagem(dwarf);
         
         assertEquals(74, dwarf.getVida());
         assertEquals(Status.VIVO, dwarf.getStatus());
@@ -91,11 +91,11 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacar10VezesDwarf() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
         for (int i = 0; i < 10; i++) {
-            orc.atacarDwarf(dwarf);
+            orc.atacarPersonagem(dwarf);
         }
         
         
@@ -106,11 +106,11 @@ public class OrcUrukHaiTest
     
     @Test
     public void atacar10VezesDwarfSemSorte() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Dwarf dwarf = new Dwarf("Dwarf", new DataTerceiraEra(1,1,2000));
         
         for (int i = 0; i < 10; i++) {
-            orc.atacarDwarf(dwarf);
+            orc.atacarPersonagem(dwarf);
         }
         
         
@@ -121,38 +121,38 @@ public class OrcUrukHaiTest
     
     @Test
     public void elfoTentaAtacar() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Elfo elfo = new Elfo("Elfo");
         
         elfo.atacarOrc(orc);
         
-        assertEquals(142, orc.getVida());
+        assertEquals(144, orc.getVida());
     }
     
     @Test
     public void orcPerdeEscudoEElfoAtaca() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Elfo elfo = new Elfo("Elfo");
         
         orc.getInventario().perderItem(new Item("Escudo Uruk-Hai", 1));
         elfo.atacarOrc(orc);
         
-        assertEquals(142, orc.getVida());
+        assertEquals(140, orc.getVida());
     }
     
     @Test
     public void dwarfTentaAtacar() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
         dwarf.atacarOrc(orc);
         
-        assertEquals(145, orc.getVida());
+        assertEquals(144, orc.getVida());
     }
     
     @Test
     public void orcPerdeEscudoEDwarfAtaca() {
-        OrcUrukHai orc = new OrcUrukHai();
+        OrcUrukHai orc = new OrcUrukHai("A");
         Dwarf dwarf = new Dwarf("Dwarf");
         
         orc.getInventario().perderItem(new Item("Escudo Uruk-Hai", 1));

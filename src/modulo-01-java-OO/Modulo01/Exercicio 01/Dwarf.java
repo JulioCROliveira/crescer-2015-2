@@ -58,12 +58,4 @@ public class Dwarf extends Personagem{
             this.getInventario().aumentar1000CadaItem();
         }
     }
-    
-    public void atacarOrc(OrcUrukHai orc) {
-        orc.atacadoPeloDwarf(this);
-    }
-    
-    public void atacarOrc(OrcSnaga orc) {
-        orc.atacadoPeloDwarf(this);
-    }
 }
