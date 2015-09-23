@@ -181,8 +181,13 @@ public class OrcSnagaTest
             orc.atacarPersonagem(orc2);
         }
         
+        for (int i = 0; i < 5; i++) {
+            orc2.atacarPersonagem(orc);
+        }
         
-        assertEquals(110, orc2.getVida());
+        
+        assertEquals(120, orc2.getVida());
+        assertEquals(20, orc.getVida());
         assertEquals(Status.VIVO, orc2.getStatus());
         assertEquals(70, orc.getVida());
         assertEquals(0, orc.getFlechas());

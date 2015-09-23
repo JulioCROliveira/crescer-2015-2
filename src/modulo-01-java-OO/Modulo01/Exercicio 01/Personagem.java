@@ -70,7 +70,7 @@ public class Personagem
        this.getInventario().perderItem(item);
     }    
     
-    public void atacarOrc(OrcUrukHai orc) {
+    public void atacarOrc(Orc orc) {
         orc.receberAtaque(this);
     }
 }
