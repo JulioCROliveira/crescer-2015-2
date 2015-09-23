@@ -31,7 +31,7 @@ public class OrcUrukHaiTest
         
         orc.atacarPersonagem(elfo);
         
-        assertEquals(68, elfo.getVida());
+        assertEquals(88, elfo.getVida());
         assertEquals(150, orc.getVida());
     }
     
@@ -44,7 +44,7 @@ public class OrcUrukHaiTest
         orc.atacarPersonagem(elfo);
         orc.atacarPersonagem(elfo);
         
-        assertEquals(44, elfo.getVida());
+        assertEquals(64, elfo.getVida());
         assertEquals(Status.VIVO, elfo.getStatus());
         assertEquals(150, orc.getVida());
     }

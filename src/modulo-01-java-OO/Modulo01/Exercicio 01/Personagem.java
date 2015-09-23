@@ -73,4 +73,8 @@ public class Personagem
     public void atacarOrc(Orc orc) {
         orc.receberAtaque(this);
     }
+    
+    public int hashCode() {
+        return this.nome.hashCode() + "Personagem".hashCode();
+    }
 }

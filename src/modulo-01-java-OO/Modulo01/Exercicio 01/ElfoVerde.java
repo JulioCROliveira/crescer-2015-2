@@ -25,7 +25,7 @@ public class ElfoVerde extends Elfo
         } else {
             return "Sem flechas";
         }
-    }
+   }
     
     public void adicionarItem(Item item) {
         boolean itensValidos;

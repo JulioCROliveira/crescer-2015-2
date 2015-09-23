@@ -3,7 +3,7 @@ public class Elfo extends Personagem{
     
     public Elfo(String nome) {
         super(nome);
-        this.vida = 80;
+        this.vida = 100;
     }
     
     public Elfo(String nome, int flech) {
@@ -29,7 +29,7 @@ public class Elfo extends Personagem{
 
     
     public String atirarFlecha(Dwarf alvo){
-        if (this.flechas > 0) {
+        if (this.flechas > 0 && this.status != Status.MORTO) {
             flechas--;
             experiencia++;
             alvo.receberFlechada();
