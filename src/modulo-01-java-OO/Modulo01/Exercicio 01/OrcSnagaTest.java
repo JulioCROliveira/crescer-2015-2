@@ -172,7 +172,7 @@ public class OrcSnagaTest
         assertEquals(Status.FUGINDO, orc.getStatus());
     }
     
-    /*@Test
+    @Test
     public void orcSnagaAtaca5VezesOrcUrukHaiEFoge() {
         OrcSnaga orc = new OrcSnaga("A");
         OrcUrukHai orc2 = new OrcUrukHai("A");
@@ -189,8 +189,7 @@ public class OrcSnagaTest
         assertEquals(120, orc2.getVida());
         assertEquals(20, orc.getVida());
         assertEquals(Status.VIVO, orc2.getStatus());
-        assertEquals(70, orc.getVida());
         assertEquals(0, orc.getFlechas());
         assertEquals(Status.FUGINDO, orc.getStatus());
-    }*/
+    }
 }

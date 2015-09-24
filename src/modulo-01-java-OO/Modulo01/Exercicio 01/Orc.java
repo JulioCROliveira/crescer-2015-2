@@ -50,13 +50,13 @@ public class Orc extends Personagem
             if (dano == 8) {
                 perderUmaFlecha();
             }
-            atualizarStatus();           
+            atualizarStatus();                
             orc.receberAtaque(this);                      
         }        
     }
     
     public void receberAtaque(Personagem personagem) {
-        if (this.status == Status.VIVO && personagem.getStatus() != Status.MORTO) {
+        if (this.status != Status.MORTO && personagem.getStatus() != Status.MORTO) {
             int danoInimigo = getDanoRecebido();            
             this.vida -= danoInimigo;
             verificaVida();            
