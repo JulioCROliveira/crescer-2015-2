@@ -38,4 +38,8 @@ public class ElfoVerde extends Elfo
             }
         }
     }
+    
+    public int hashCode() {
+        return this.nome.hashCode() + "ElfoVerde".hashCode();
+    }
 }

@@ -23,4 +23,8 @@ public class ElfoNoturno extends Elfo
         super.verificaVida(); //
         return super.atirarFlecha(alvo);  
     }
+    
+    public int hashCode() {
+        return this.nome.hashCode() + "ElfoNoturno".hashCode();
+    }
 }

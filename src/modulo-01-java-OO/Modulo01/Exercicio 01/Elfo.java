@@ -48,4 +48,9 @@ public class Elfo extends Personagem{
     public static int getNumeroDeElfos() {
         return numeroDeElfos;
     }
+    
+    public boolean equals(Object obj) {
+        Elfo outroElfo = (Elfo)obj;
+        return this.hashCode() == outroElfo.hashCode();
+    }
 }
