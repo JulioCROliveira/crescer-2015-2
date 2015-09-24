@@ -15,7 +15,7 @@ public class InventarioTest
 {
     @Test
     public void getDescricaoCom3ItensDiferentes() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
@@ -31,7 +31,7 @@ public class InventarioTest
     
     @Test
     public void getQuantidadeCom3ItensDiferentes() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
@@ -47,7 +47,7 @@ public class InventarioTest
     
     @Test
     public void recebendoItemComMaiorQuantidade() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
@@ -61,7 +61,7 @@ public class InventarioTest
     
     @Test
     public void negandoAReceberItemSemSerComMaiorQuantidade() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
@@ -76,7 +76,7 @@ public class InventarioTest
     
     @Test
     public void removendoUmItem() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
@@ -93,7 +93,7 @@ public class InventarioTest
     
     @Test
     public void removendoDoisItens() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);
@@ -110,7 +110,7 @@ public class InventarioTest
     
     @Test
     public void ordenandoItensBagunçados() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("a",3);
         Item item2 = new Item("b",10);
         Item item3 = new Item("c",1);
@@ -134,7 +134,7 @@ public class InventarioTest
     
     @Test
     public void ordenandoItensQueJaEstavamOrdenadosAoContrario() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("pocção",5);
         Item item2 = new Item("moevdas",4);
         Item item3 = new Item("macbhado",3);
@@ -158,7 +158,7 @@ public class InventarioTest
     
     @Test
     public void ordenandoItensQueJaEstavamOrdenados() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("poçaão",1);
         Item item2 = new Item("moedsas",2);
         Item item3 = new Item("macdhado",3);
@@ -182,7 +182,7 @@ public class InventarioTest
     
     @Test
     public void ordenandoItensQueJaEstavamOrdenadosCom20Itens() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item1 = new Item("poação",7);
         Item item2 = new Item("mosedas",4);
         Item item3 = new Item("madchado",3);
@@ -251,7 +251,7 @@ public class InventarioTest
     
     @Test
     public void metodoPossuiEspada() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
@@ -264,7 +264,7 @@ public class InventarioTest
     
     @Test
     public void metodoPossuiEspadaFalso() {
-        Personagem personagem = new Personagem("AA");
+        Elfo personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
@@ -276,7 +276,7 @@ public class InventarioTest
     
     @Test
     public void metodoPossuiEscudo() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
@@ -289,7 +289,7 @@ public class InventarioTest
     
     @Test
     public void metodoPossuiEscudoFalso() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
@@ -301,7 +301,7 @@ public class InventarioTest
     
     @Test
     public void metodoPossuiArco() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Flechas", 2);
         Item item3 = new Item("Arco", 2);
@@ -314,7 +314,7 @@ public class InventarioTest
     
     @Test
     public void metodoPossuiArcoFalso() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);
         Item item3 = new Item("Arco", 2);
@@ -326,7 +326,7 @@ public class InventarioTest
     
     @Test
     public void metodoJaPossuiItem() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);        
         personagem.adicionarItem(item);
@@ -337,7 +337,7 @@ public class InventarioTest
     
     @Test
     public void metodoJaPossuiItemFalso() {
-        Personagem personagem = new Personagem("AA");
+        Personagem personagem = new Elfo("AA");
         Item item = new Item("Escudo Uruk-Hai", 1);
         Item item2 = new Item("Espada", 2);        
         personagem.adicionarItem(item);        

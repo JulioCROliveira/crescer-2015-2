@@ -15,16 +15,6 @@ import java.util.ArrayList;
 public class ExercitoDeElfosTest
 {
     @Test
-    public void criar3ElfosEVerificarContador() {
-        int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos();  
-        Elfo elfo1 = new Elfo("A");
-        Elfo elfo2 = new ElfoVerde("A");
-        Elfo elfo3 = new ElfoNoturno("A");
-        
-        assertEquals(numeroDeElfosAnteriormente + 3, Elfo.getNumeroDeElfos());        
-    }
-    
-    @Test
     public void criar3ElfosE1OrcE1DwarfEVerificarContador() {
         int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos();  
         Elfo elfo1 = new Elfo("A");

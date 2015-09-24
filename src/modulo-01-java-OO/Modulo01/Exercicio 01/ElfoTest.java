@@ -12,6 +12,17 @@ import org.junit.Test;
  */
 public class ElfoTest
 {
+    
+    @Test
+    public void criar3ElfosEVerificarContador() {
+        int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos();  
+        Elfo elfo1 = new Elfo("A");
+        ElfoVerde elfo2 = new ElfoVerde("A");
+        Elfo elfo3 = new ElfoNoturno("A");
+        
+        assertEquals(numeroDeElfosAnteriormente + 3, Elfo.getNumeroDeElfos());        
+    }
+    
     @Test public void testeCriandoElfoCom42FlechasPadraoEQuantidadeInformada() {
         Elfo elfo1 = new Elfo("A", 20);
         Elfo elfo2 = new Elfo("B");

@@ -53,4 +53,7 @@ public class Elfo extends Personagem{
         Elfo outroElfo = (Elfo)obj;
         return this.hashCode() == outroElfo.hashCode();
     }
+    
+    public void tentarSorte() {
+    }
 }

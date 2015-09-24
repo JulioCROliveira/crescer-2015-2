@@ -95,4 +95,7 @@ public class Orc extends Personagem
     public void perderUmaFlecha() {
         this.getInventario().getItem(this.getInventario().jaPossuiItem(new Item("Flechas",1))).menosUmaFlecha();
     }
+    
+    public void tentarSorte() {
+    }
 }

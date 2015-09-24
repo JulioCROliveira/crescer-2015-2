@@ -15,7 +15,7 @@ public class PersonagemTest
 {
     @Test
     public void adicionado3ItensDiferentes() {
-        Personagem personagem = new Personagem("Hav");
+        Personagem personagem = new Elfo("AA");
         Item item1 = new Item("poção",3);
         Item item2 = new Item("moedas",10);
         Item item3 = new Item("machado",1);

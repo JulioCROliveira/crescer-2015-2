@@ -5,7 +5,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Personagem
+public abstract class Personagem
 {
     protected String nome;
     protected int experiencia = 0, vida;
@@ -77,4 +77,6 @@ public class Personagem
     public int hashCode() {
         return this.nome.hashCode() + "Personagem".hashCode();
     }
+    
+    public abstract void tentarSorte();
 }
