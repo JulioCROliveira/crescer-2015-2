@@ -38,5 +38,13 @@ public class ExercitoDeElfos
     public static ArrayList getExercitoPorStatus(Status status) {
         ArrayList<Elfo> retornar = elfoPorStatus.get(status);            
         return retornar;
-    }    
+    }
+    
+    public static ArrayList getElfosDoExercito() {
+        ArrayList<Elfo> retornar = new ArrayList<>();
+        for (Elfo elfo : exercito.values()) {
+            retornar.add(elfo);
+        }
+        return retornar;
+    }
 }

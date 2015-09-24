@@ -82,4 +82,34 @@ public class ExercitoDeElfosTest
         assertEquals(elfosVivos, ExercitoDeElfos.getExercitoPorStatus(Status.VIVO));
         assertEquals(elfosMortos, ExercitoDeElfos.getExercitoPorStatus(Status.MORTO));       
     }
+    
+    @Test
+    public void retornarElfoAtrvesDoNome() {
+        int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos();  
+        Elfo elfo1 = new Elfo("A");
+        Elfo elfo2 = new ElfoVerde("B",10);
+        Elfo elfo3 = new ElfoNoturno("C");
+        ExercitoDeElfos.alistarElfo(elfo1);
+        ExercitoDeElfos.alistarElfo(elfo2);
+        ExercitoDeElfos.alistarElfo(elfo3);
+        
+        assertEquals(elfo2, ExercitoDeElfos.getExercito().get("B"));        
+    }
+    
+    @Test
+    public void testandoMetodoGetElfosDoExercito() {
+        int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos(); 
+        ExercitoDeElfos.getExercito().clear();
+        Elfo elfo1 = new Elfo("A");
+        Elfo elfo2 = new ElfoVerde("B",10);
+        Elfo elfo3 = new ElfoNoturno("C");
+        ExercitoDeElfos.alistarElfo(elfo1);
+        ExercitoDeElfos.alistarElfo(elfo2);
+        ExercitoDeElfos.alistarElfo(elfo3);
+        ArrayList<Elfo> listaDeElfos = new ArrayList<>();
+        listaDeElfos.add(elfo2);
+        listaDeElfos.add(elfo3);
+        
+        assertEquals(listaDeElfos, ExercitoDeElfos.getElfosDoExercito());        
+    }
 }
