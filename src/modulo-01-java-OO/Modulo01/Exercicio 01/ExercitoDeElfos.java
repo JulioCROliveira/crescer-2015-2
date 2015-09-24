@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ExercitoDeElfos
 {
     private static HashMap<String, Elfo> exercito = new HashMap<>();    
-    private static HashMap<Status, ArrayList> elfoPorStatus = new HashMap<>();
+    private static HashMap<Status, ArrayList<Elfo>> elfoPorStatus = new HashMap<>();
     
     public static void alistarElfo(Elfo elfo) {
         String classe = elfo.getClass().getName();
@@ -46,5 +46,9 @@ public class ExercitoDeElfos
             retornar.add(elfo);
         }
         return retornar;
+    }
+    
+    public static Elfo buscar(String nome) {
+        return exercito.get(nome);
     }
 }

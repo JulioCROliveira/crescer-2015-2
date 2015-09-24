@@ -93,7 +93,7 @@ public class ExercitoDeElfosTest
         ExercitoDeElfos.alistarElfo(elfo2);
         ExercitoDeElfos.alistarElfo(elfo3);
         
-        assertEquals(elfo2, ExercitoDeElfos.getExercito().get("B"));        
+        assertEquals(elfo2, ExercitoDeElfos.buscar("B"));        
     }
     
     @Test
