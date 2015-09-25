@@ -10,17 +10,26 @@ import java.util.ArrayList;
 
 public class ExercitoDeElfos
 {
-    private static HashMap<String, Elfo> exercito = new HashMap<>();    
-    private static HashMap<Status, ArrayList<Elfo>> elfoPorStatus = new HashMap<>();
+    private HashMap<String, Elfo> exercito = new HashMap<>();    
+    private HashMap<Status, ArrayList<Elfo>> elfoPorStatus = new HashMap<>();
+    private EstrategiaDeAtaque estrategia = new AArteDaGuerra();
     
-    public static void alistarElfo(Elfo elfo) {
+    public EstrategiaDeAtaque getEstrategia() {
+        return this.estrategia;
+    }
+    
+    public void atacar(ArrayList<Dwarf> dwarves) {
+        this.getEstrategia().atacar(this, dwarves);
+    }
+    
+    public void alistarElfo(Elfo elfo) {
         String classe = elfo.getClass().getName();
         if (classe.equals("ElfoNoturno") || classe.equals("ElfoVerde")) {
             exercito.put(elfo.getNome(), elfo);         
         }
     }
     
-    public static void ordenarPorStatus() {
+    public void ordenarPorStatus() {
         elfoPorStatus.clear();
         for (Elfo elfo : exercito.values()) {
             if(elfoPorStatus.get(elfo.getStatus()) == null) 
@@ -31,16 +40,16 @@ public class ExercitoDeElfos
         }
     }
     
-    public static HashMap getExercito() {
+    public HashMap getExercito() {
         return exercito;
     }
     
-    public static ArrayList getExercitoPorStatus(Status status) {
+    public ArrayList getExercitoPorStatus(Status status) {
         ArrayList<Elfo> retornar = elfoPorStatus.get(status);            
         return retornar;
     }
     
-    public static ArrayList getElfosDoExercito() {
+    public ArrayList getElfosDoExercito() {
         ArrayList<Elfo> retornar = new ArrayList<>();
         for (Elfo elfo : exercito.values()) {
             retornar.add(elfo);
@@ -48,7 +57,7 @@ public class ExercitoDeElfos
         return retornar;
     }
     
-    public static Elfo buscar(String nome) {
+    public Elfo buscar(String nome) {
         return exercito.get(nome);
     }
 }

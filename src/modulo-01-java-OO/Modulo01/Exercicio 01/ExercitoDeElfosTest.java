@@ -29,28 +29,30 @@ public class ExercitoDeElfosTest
     @Test
     public void criar3ElfosEVerificarEOsAlistam() {
         int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos();  
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfo1 = new Elfo("A");
         Elfo elfo2 = new ElfoVerde("B",10);
         Elfo elfo3 = new ElfoNoturno("C");
-        ExercitoDeElfos.alistarElfo(elfo1);
-        ExercitoDeElfos.alistarElfo(elfo2);
-        ExercitoDeElfos.alistarElfo(elfo3);
+        exercito.alistarElfo(elfo1);
+        exercito.alistarElfo(elfo2);
+        exercito.alistarElfo(elfo3);
         
-        assertEquals("{B=B possui 10 flechas e 0 níveis de experiência., C=C possui 42 flechas e 0 níveis de experiência.}", ExercitoDeElfos.getExercito().toString());        
+        assertEquals("{B=B possui 10 flechas e 0 níveis de experiência., C=C possui 42 flechas e 0 níveis de experiência.}", exercito.getExercito().toString());        
     }
     
     @Test
-    public void criar53ElfosEOrdenarPorStatus() {        
+    public void criar53ElfosEOrdenarPorStatus() { 
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfo1 = new ElfoVerde("A");
         Elfo elfo2 = new ElfoVerde("B",10);
         Elfo elfo3 = new ElfoNoturno("C");
         Elfo elfo4 = new ElfoNoturno("E");
         Elfo elfo5 = new ElfoVerde("D");
-        ExercitoDeElfos.alistarElfo(elfo1);
-        ExercitoDeElfos.alistarElfo(elfo2);
-        ExercitoDeElfos.alistarElfo(elfo3);
-        ExercitoDeElfos.alistarElfo(elfo4);
-        ExercitoDeElfos.alistarElfo(elfo5);
+        exercito.alistarElfo(elfo1);
+        exercito.alistarElfo(elfo2);
+        exercito.alistarElfo(elfo3);
+        exercito.alistarElfo(elfo4);
+        exercito.alistarElfo(elfo5);
         Orc orc = new OrcUrukHai("A");
         ArrayList<Elfo> elfosVivos = new ArrayList<>();
         ArrayList<Elfo> elfosMortos = new ArrayList<>();
@@ -67,39 +69,41 @@ public class ExercitoDeElfosTest
         elfosMortos.add(elfo4);
         
         
-        ExercitoDeElfos.ordenarPorStatus();
+        exercito.ordenarPorStatus();
         
-        assertEquals(elfosVivos, ExercitoDeElfos.getExercitoPorStatus(Status.VIVO));
-        assertEquals(elfosMortos, ExercitoDeElfos.getExercitoPorStatus(Status.MORTO));       
+        assertEquals(elfosVivos, exercito.getExercitoPorStatus(Status.VIVO));
+        assertEquals(elfosMortos, exercito.getExercitoPorStatus(Status.MORTO));       
     }
     
     @Test
     public void retornarElfoAtrvesDoNome() {
         int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos();  
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfo1 = new Elfo("A");
         Elfo elfo2 = new ElfoVerde("B",10);
         Elfo elfo3 = new ElfoNoturno("C");
-        ExercitoDeElfos.alistarElfo(elfo1);
-        ExercitoDeElfos.alistarElfo(elfo2);
-        ExercitoDeElfos.alistarElfo(elfo3);
+        exercito.alistarElfo(elfo1);
+        exercito.alistarElfo(elfo2);
+        exercito.alistarElfo(elfo3);
         
-        assertEquals(elfo2, ExercitoDeElfos.buscar("B"));        
+        assertEquals(elfo2, exercito.buscar("B"));        
     }
     
     @Test
     public void testandoMetodoGetElfosDoExercito() {
         int numeroDeElfosAnteriormente = Elfo.getNumeroDeElfos(); 
-        ExercitoDeElfos.getExercito().clear();
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        exercito.getExercito().clear();
         Elfo elfo1 = new Elfo("A");
         Elfo elfo2 = new ElfoVerde("B",10);
         Elfo elfo3 = new ElfoNoturno("C");
-        ExercitoDeElfos.alistarElfo(elfo1);
-        ExercitoDeElfos.alistarElfo(elfo2);
-        ExercitoDeElfos.alistarElfo(elfo3);
+        exercito.alistarElfo(elfo1);
+        exercito.alistarElfo(elfo2);
+        exercito.alistarElfo(elfo3);
         ArrayList<Elfo> listaDeElfos = new ArrayList<>();
         listaDeElfos.add(elfo2);
         listaDeElfos.add(elfo3);
         
-        assertEquals(listaDeElfos, ExercitoDeElfos.getElfosDoExercito());        
+        assertEquals(listaDeElfos, exercito.getElfosDoExercito());        
     }
 }
