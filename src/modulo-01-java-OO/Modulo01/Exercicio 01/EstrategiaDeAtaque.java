@@ -10,4 +10,5 @@ import java.util.ArrayList;
 public interface EstrategiaDeAtaque {
     void atacar(ExercitoDeElfos elfos, ArrayList<Dwarf> dwarves);
    
+    String getOrdemDoUltimoAtaque();
 }

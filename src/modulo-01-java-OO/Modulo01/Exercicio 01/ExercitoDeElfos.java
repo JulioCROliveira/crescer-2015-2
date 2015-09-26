@@ -18,6 +18,10 @@ public class ExercitoDeElfos
         return this.estrategia;
     }
     
+    public void mudarEstrategia(EstrategiaDeAtaque estrategia) {
+        this.estrategia = estrategia;
+    }
+    
     public void atacar(ArrayList<Dwarf> dwarves) {
         this.getEstrategia().atacar(this, dwarves);
     }
@@ -44,7 +48,7 @@ public class ExercitoDeElfos
         return exercito;
     }
     
-    public ArrayList getExercitoPorStatus(Status status) {
+    public ArrayList<Elfo> getExercitoPorStatus(Status status) {
         ArrayList<Elfo> retornar = elfoPorStatus.get(status);            
         return retornar;
     }
