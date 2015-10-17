@@ -34,4 +34,8 @@ public class AArteDaGuerra implements EstrategiaDeAtaque{
     public String getOrdemDoUltimoAtaque(){
         return "";
     }
+    
+    public String metodoDeExemplo(){
+        return "";
+    }
 }

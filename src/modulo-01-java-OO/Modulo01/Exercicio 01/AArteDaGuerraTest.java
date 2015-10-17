@@ -102,4 +102,12 @@ public class AArteDaGuerraTest
        assertEquals(30, dwarf2.getVida());
        assertEquals(30, dwarf3.getVida());
     }
+    
+    @Test
+    public void string() {
+        EstrategiaDeAtaque estrategia = new AArteDaGuerra();
+        AArteDaGuerra estrategia2 = new AArteDaGuerra();
+        estrategia2.metodoDeExemplo(); 
+        
+    }
 }
