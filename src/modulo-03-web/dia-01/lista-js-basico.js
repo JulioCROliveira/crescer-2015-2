@@ -105,3 +105,23 @@ excelis('AAA')
 excelis('aab')
 704
 
+//=================================
+
+function queroCafe(valor, arr) {
+	var valMen = new Array;
+	if (!isNaN(valor) && arr.constructor == Array) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] <= valor) {
+				valMen.push(arr[i]);
+			}
+		}
+		if (valMen.length >= 0) {
+		valMen.sort();
+		} else {
+			valMen = 'Sem retorno.'
+		}
+	} else {
+		 valMen = "Insira valor numerico no primeiro parametro e array no segundo";
+	 }
+	return valMen.toString();
+}
