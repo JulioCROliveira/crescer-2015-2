@@ -1,25 +1,21 @@
 function daisyGame(n) {
-	var texto = 'Love me';
-	if ((n % 2) === 0) {
-		texto = 'Love mot not';
+	var texto = 'Parametro não numerico';
+	if (!isNaN(n)) {		
+		if ((n % 2) === 0) {
+			texto = 'Love me not';
+		} else {
+			texto = 'Love me';
+		}
 	}
 	return texto;
-}
-
-daisyGame(3)
-
-daisyGame(4)
-
-daisyGame(10)
-
-daisyGame(7)
+};
 
 //====================================
 
 function maiorTexto(arr) {
 	var maior = 0;
-	var texto = 'Nenhum texto inserido';
-	if (arguments.length > 0) {
+	var texto = 'Nenhuma array inserido';
+	if (arr.constructor == Array) {
 		for (var i = 0; i < arr.length; i++) {
 			if (arr[i].length > maior) {
 				maior = arr[i].length;
@@ -28,17 +24,12 @@ function maiorTexto(arr) {
 		}
 	}
 	return texto;
-}
-
-maiorTexto(['bernardo', 'nunes', 'dudu', 'ben-hur', 'fabrício', 'zanatta'])
-
-maiorTexto(['bernardo', 'nunes', 'dudu', 'Pneumoultramicroscopicossilicovulcanoconiótico' ,'ben-hur', 'fabrício', 'zanatta'])
-
+};
 //====================================
 
 function fn(texto) {
 	console.log('olá querido instrutor:', texto);
-}
+};
 
 function imprime(arr, fn) {
 	var texto = '';
@@ -50,10 +41,7 @@ function imprime(arr, fn) {
 		}
 	}
 	return texto;
-}
-
-imprime(['bernardo', 'nunes', 'dudu', 'ben-hur', 'fabrício', 'zanatta'], fn)
-
+};
 //====================================
 
 function fiboSum(inteiro) {
@@ -70,10 +58,7 @@ function fiboSum(inteiro) {
 		}
 	}
 	return resultado;
-}
-
-fiboSum(7)
-
+};
 //====================================
 
 function excelis(texto) {
@@ -86,42 +71,10 @@ function excelis(texto) {
 		}
 	}
 	return resultado;
-}
-
-excelis('a')
-1
-excelis('Z')
-26
-excelis('AA')
-27
-excelis('AZ')
-52
-excelis('BA')
-53
-excelis('ZZ')
-702
-excelis('AAA')
-703
-excelis('aab')
-704
+};
 
 //=================================
 
-function queroCafe(valor, arr) {
-	var valMen = new Array;
-	if (!isNaN(valor) && arr.constructor == Array) {
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] <= valor) {
-				valMen.push(arr[i]);
-			}
-		}
-		if (valMen.length >= 0) {
-		valMen.sort();
-		} else {
-			valMen = 'Sem retorno.'
-		}
-	} else {
-		 valMen = "Insira valor numerico no primeiro parametro e array no segundo";
-	 }
-	return valMen.toString();
-}
+function queroCafe(valor, arr) {	
+	return arr.filter(function(elem) {return elem <= valor;}).sort(function (elem1, elem2) {return elem1 > elem2;}).toString();
+};
