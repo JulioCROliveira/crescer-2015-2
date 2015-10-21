@@ -199,3 +199,18 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+src/modulo-01-java-OO/ExercicioPizzaria/RefriLataTest.java
+src/modulo-01-java-OO/ExercicioPizzaria/Refrigerante.java
+src/modulo-01-java-OO/ExercicioPizzaria/package.bluej
+src/modulo-01-java-OO/Modulo01/BreakContinue.java
+src/modulo-01-java-OO/Modulo01/BreakContinueTest.java
+src/modulo-01-java-OO/Modulo01/DataTerceiraEra.java
+src/modulo-01-java-OO/Modulo01/DataTerceiraEraTest.java
+src/modulo-01-java-OO/Modulo01/Dwarf.java
+src/modulo-01-java-OO/Modulo01/DwarfTest.java
+src/modulo-01-java-OO/Modulo01/Elfo.java
+src/modulo-01-java-OO/Modulo01/ElfoNoturnoTest.java
+src/modulo-01-java-OO/Modulo01/ElfoTest.java
+src/modulo-01-java-OO/Modulo01/ElfoVerde.java
+src/modulo-01-java-OO/Modulo01/ElfoVerdeTest.java
+src/modulo-01-java-OO/Modulo01/EstrategiaAntiNoturnos.java
