@@ -1,7 +1,21 @@
 function Item(sku, descricao, quantidade, valorUnitario) { 
 	this.sku = sku; 
 	this.descricao = descricao; 
+	if (typeof quantidade != "number") {
+		if (!isNaN(quantidade)) {
+			quantidade = parseFloat(quantidade);
+		} else {
+			throw new Error ('Quantidade deve ser numerica');
+		}
+	}
 	this.quantidade = quantidade; 
+	if (typeof valorUnitario != "number") {
+		if (!isNaN(valorUnitario)) {
+			valorUnitario = parseFloat(valorUnitario);
+		} else {
+			throw new Error ('valorUnitario deve ser numerico');
+		}
+	}
 	this.valorUnitario = valorUnitario; 
 }
  
