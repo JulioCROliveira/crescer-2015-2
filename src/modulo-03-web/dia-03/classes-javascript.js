@@ -1,24 +1,16 @@
+function validarCamposNumericos(campo) {	
+	if (isNaN(campo)) {
+		throw new Error ('Quantidade e valor devem ser numericos');
+	}
+	return parseFloat(campo);
+};
+
 function Item(sku, descricao, quantidade, valorUnitario) { 
 	this.sku = sku; 
 	this.descricao = descricao; 
-	if (typeof quantidade != "number") {
-		if (!isNaN(quantidade)) {
-			quantidade = parseFloat(quantidade);
-		} else {
-			throw new Error ('Quantidade deve ser numerica');
-		}
-	}
-	this.quantidade = quantidade; 
-	if (typeof valorUnitario != "number") {
-		if (!isNaN(valorUnitario)) {
-			valorUnitario = parseFloat(valorUnitario);
-		} else {
-			throw new Error ('valorUnitario deve ser numerico');
-		}
-	}
-	this.valorUnitario = valorUnitario; 
+	this.quantidade = validarCamposNumericos(quantidade); 
+	this.valorUnitario = validarCamposNumericos(valorUnitario); 
 }
- 
  
 function CarrinhoDeCompras() { 
 	this.carrinho = new Array(); 	 
