@@ -9,11 +9,11 @@ function Item(sku, descricao, quantidade, valorUnitario) {
 	this.sku = sku; 
 	this.descricao = descricao; 
 	this.quantidade = validarCamposNumericos(quantidade); 
-	this.valorUnitario = validarCamposNumericos(valorUnitario); 
+	this.valorUnitario = validarCamposNumericos(valorUnitario); 	
 }
  
 function CarrinhoDeCompras() { 
-	this.carrinho = new Array(); 	 
+	this.carrinho = new Array();
 }
 
 CarrinhoDeCompras.prototype.adicionarItem = function (itemAdd) { 
@@ -95,3 +95,20 @@ CarrinhoDeCompras.prototype.calcularTotal = function() {
 	}
 	return 'Valor total ' + desconto + 'R$' + total.toFixed(2);
 };
+
+CarrinhoDeCompras.prototype.forcarCompra = function() {
+	if (!this.intervalo) {
+		var self = this;
+		this.intervalo = setInterval(function () {
+			self.carrinho.map(function(elem) {
+				return elem.valorUnitario *= 1.1;
+			});
+			console.log(self.carrinho);
+		}, 5000);
+	}
+};
+
+CarrinhoDeCompras.prototype.concluirPedido = function() {
+	clearInterval(this.intervalo);
+	delete this.intervalo;
+}
