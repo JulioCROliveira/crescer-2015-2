@@ -6,9 +6,19 @@
 	</head>
 	
 	<body>
-		<script src="lista-js-basico.js"></script>
-		<script src="../dia-02/exercicio-football.js"></script>
+		<!--<script src="lista-js-basico.js"></script>
+		<script src="../dia-02/exercicio-football.js"></script>-->
 		<script src="../dia-03/classes-javascript.js"></script>
+		<script>
+			var item1 = new Item('AF8', 'Café', 2, 10.99);
+			var item2 = new Item('EI8', 'Leite', 3, 2.79);
+			var item3 = new Item('ÇU8', 'Açugar', 4, 2.55);
+			var carrinho = new CarrinhoDeCompras();
+			carrinho.adicionarItem(item1);
+			carrinho.adicionarItem(item2);
+			carrinho.adicionarItem(item3);
+			console.log("Adicionado 'carrinho' com três itens");			
+		</script>
 	</body>
 </html>
 	
