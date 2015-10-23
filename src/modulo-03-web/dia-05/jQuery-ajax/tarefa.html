@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      h2 {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Exercicio</h2>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+      $.get('http://localhost:3000/pessoas').done(function(data) {
+		data.foreach(function(data) {
+			$('h2').append($('p').attr(data.nome)
+		});		
+	  });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
