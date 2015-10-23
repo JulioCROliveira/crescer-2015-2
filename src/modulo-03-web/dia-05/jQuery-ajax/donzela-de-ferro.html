@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      h2 {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2></h2>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+		$.get('https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/albums?limit=50')
+			.done(function(data) {
+			var albuns = data.items;
+			albuns.forEach(function(elem) {
+				$('h2').append(
+				$('<img>')
+				.attr('src', elem.images[0].url)				
+				.attr('width', '300').attr('height', '300')
+				)
+			});
+		});
+    });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
