@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+      h2 {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+	<input type="text" id="pesquisa" />
+	<input type="button" id="submit" value="Submit" onclick="onSubmitFunction();" />
+    <h2></h2>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+		var onSubmitFunction = function() {
+			$('h2').empty();
+			var linkPesquisa = 'https://api.spotify.com/v1/search?q='+$('#pesquisa').val()+'&type=artist';
+			$.get(linkPesquisa).done(function(elem) {
+				if ($('#pesquisa').val() === 'Justin Bieber' && Math.random() < 0.79) {
+					linkPesquisa = 'https://api.spotify.com/v1/artists/douchebag/albums?limit=50';
+				} else {
+					linkPesquisa = 'https://api.spotify.com/v1/artists/'+elem.artists.items[0].id+'/albums?limit=50';
+				}
+				console.log(linkPesquisa);
+				$.get(linkPesquisa)
+					.done(function(data) {
+					var albuns = data.items;
+					albuns.forEach(function(elem) {
+						$('h2').append(
+						$('<img>')
+						.attr('src', elem.images[0].url)				
+						.attr('width', '300').attr('height', '300')
+						)
+					});
+				})
+				.error(function(data) {
+					console.log(data);
+					$('h2').append('<p>').html('Caro usuário, devido a um erro '+data.status+', não foi possível pesquisar por '+$('#pesquisa').val());
+				});
+			});
+		};
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
