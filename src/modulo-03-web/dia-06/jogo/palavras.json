@@ -1,0 +1,55 @@
+{
+  "dificuldades": [
+    {
+      "id": 1,
+      "dificuldade": "normal"
+    },
+    {
+      "id": 2,
+      "dificuldade": "nunes"
+    }
+  ],
+  "palavras": [
+    {
+      "palavra": "arroz",
+      "dica": "cereal",
+      "idDificuldade": 1
+    },
+    {
+      "palavra": "garrafa",
+      "dica": "objeto",
+      "idDificuldade": 1
+    },
+    {
+      "palavra": "notebook",
+      "dica": "objeto",
+      "idDificuldade": 1
+    },
+    {
+      "palavra": "letreiro",
+      "dica": "objeto",
+      "idDificuldade": 1
+    },
+    {
+      "palavra": "refrigerante",
+      "dica": "cereal",
+      "idDificuldade": 2
+    },
+    {
+      "palavra": "companheirismo",
+      "dica": "começa com c",
+      "idDificuldade": 2
+    },
+    {
+      "palavra": "perfeccionista",
+      "dica": "adjetivo",
+      "idDificuldade": 2
+    },
+    {
+      "palavra": "CONTEXTUALIZAR",
+      "dica": "verbo",
+      "idDificuldade": 2,
+      "id": "99a12a1e-33d3-479b-93ab-ae91ee518057"
+    }
+  ]
+}
