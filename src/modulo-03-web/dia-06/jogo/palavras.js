@@ -14,7 +14,7 @@ function buscarPalavra(dificultade) {
 			palavraDeRetorno = palavras[indiceDaPalavra];
 		} while (containsPalavra(listaPalavras[indice].palavrasRepetidas, palavraDeRetorno));
 		localStorage.setItem('palavraAtual', palavraDeRetorno.nome);
-		localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
+		adicionarPalavraRepetida();		
 	});
 	return;
 };
@@ -69,7 +69,7 @@ function adicionarPalavra(palavra, dica) {
 function adicionarPalavraRepetida() {
 	var indice = criarListaDePalavrasParaUsuario();
 	var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
-	listaPalavras[indice].palavrasRepetidas.push({'nome': palavraDeRetorno.nome});
+	listaPalavras[indice].palavrasRepetidas.push({'nome': localStorage.palavraAtual});
 	localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
 };
 
