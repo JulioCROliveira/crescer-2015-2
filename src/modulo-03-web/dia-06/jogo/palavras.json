@@ -11,45 +11,59 @@
   ],
   "palavras": [
     {
-      "palavra": "arroz",
+      "palavra": "ARROZ",
       "dica": "cereal",
-      "idDificuldade": 1
+      "idDificuldade": 1,
+      "id": "21ee61da-0379-4798-8fd8-767bea869d7a"
     },
     {
-      "palavra": "garrafa",
+      "palavra": "GARRAFA",
       "dica": "objeto",
-      "idDificuldade": 1
+      "idDificuldade": 1,
+      "id": "23706dbf-76fa-4130-a759-f8b8c842ec57"
     },
     {
-      "palavra": "notebook",
+      "palavra": "NOTEBOOK",
       "dica": "objeto",
-      "idDificuldade": 1
+      "idDificuldade": 1,
+      "id": "9b164b82-3f9b-4a96-9729-64c18256599a"
     },
     {
-      "palavra": "letreiro",
+      "palavra": "LETREIRO",
       "dica": "objeto",
-      "idDificuldade": 1
+      "idDificuldade": 1,
+      "id": "c8b272dd-d404-427d-8e9f-e84f376e33e8"
     },
     {
-      "palavra": "refrigerante",
-      "dica": "cereal",
-      "idDificuldade": 2
+      "palavra": "REFRIGERANTE",
+      "dica": "bebida",
+      "idDificuldade": 2,
+      "id": "b47ee5cd-0076-4756-b9ad-27b531797e98"
     },
     {
-      "palavra": "companheirismo",
-      "dica": "começa com c",
-      "idDificuldade": 2
+      "palavra": "COMPANHEIRISMO",
+      "dica": "começa com C",
+      "idDificuldade": 2,
+      "id": "f4a6fa2b-71fe-406b-864a-596f7e80c84b"
     },
     {
-      "palavra": "perfeccionista",
+      "palavra": "PERFECCIONISTA",
       "dica": "adjetivo",
-      "idDificuldade": 2
+      "idDificuldade": 2,
+      "id": "b8bd925e-f398-45a3-b0d6-0a2277644d89"
     },
     {
       "palavra": "CONTEXTUALIZAR",
       "dica": "verbo",
       "idDificuldade": 2,
-      "id": "99a12a1e-33d3-479b-93ab-ae91ee518057"
+      "id": "ea9d7316-a69d-403d-aa62-cd70283ceb96"
+    }
+  ],
+  "palavrasRepetidas": [
+    {
+      "listaDePalavras": "[{\"palavra\":\"CONTEXTUALIZAR\",\"dica\":\"verbo\",\"idDificuldade\":2,\"id\":\"ea9d7316-a69d-403d-aa62-cd70283ceb96\"},{\"palavra\":\"PERFECCIONISTA\",\"dica\":\"adjetivo\",\"idDificuldade\":2,\"id\":\"b8bd925e-f398-45a3-b0d6-0a2277644d89\"},{\"palavra\":\"COMPANHEIRISMO\",\"dica\":\"começa com C\",\"idDificuldade\":2,\"id\":\"f4a6fa2b-71fe-406b-864a-596f7e80c84b\"},{\"palavra\":\"REFRIGERANTE\",\"dica\":\"bebida\",\"idDificuldade\":2,\"id\":\"b47ee5cd-0076-4756-b9ad-27b531797e98\"}]",
+      "idUsuario": "idUsuario",
+      "id": 1
     }
   ]
 }
