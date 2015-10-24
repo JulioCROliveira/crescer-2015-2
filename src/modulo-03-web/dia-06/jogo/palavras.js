@@ -13,7 +13,7 @@ function buscarPalavra(dificultade) {
 			var indiceDaPalavra = Math.floor(Math.random() * palavras.length);
 			palavraDeRetorno = palavras[indiceDaPalavra];
 		} while (containsPalavra(listaPalavras[indice].palavrasRepetidas, palavraDeRetorno));
-		localStorage.setItem('palavraAtual', palavraDeRetorno.palavra);
+		localStorage.setItem('palavraAtual', palavraDeRetorno.nome);
 		localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
 	});
 	return;
@@ -21,7 +21,7 @@ function buscarPalavra(dificultade) {
 
 function containsPalavra(arr, palavras) {
     for (var i = 0; i < arr.length; i++) {
-        if (arr[i].palavra === palavras.palavra) {
+        if (arr[i].nome === palavras.nome) {
             return true;
         }
     }
@@ -62,14 +62,14 @@ function adicionarPalavra(palavra, dica) {
 	});
 	var indicePalavrasPorDificultade = palavra.length < 12 ? 1 : 2;
 	$.post('http://localhost:3000/palavras?_sort=number(idpalavra)&_order=DESC&_limit=1', 
-	{"palavra": palavra.toUpperCase(), "dica": dica, 
+	{"nome": palavra.toUpperCase(), "dica": dica, 
 		"idDificuldade": indicePalavrasPorDificultade, "id": parseInt(localStorage.proximoIDPalavra)});	
 };
 
 function adicionarPalavraRepetida() {
 	var indice = criarListaDePalavrasParaUsuario();
 	var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
-	listaPalavras[indice].palavrasRepetidas.push({'palavra': palavraDeRetorno.palavra});
+	listaPalavras[indice].palavrasRepetidas.push({'nome': palavraDeRetorno.nome});
 	localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
 };
 

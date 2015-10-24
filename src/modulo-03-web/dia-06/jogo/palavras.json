@@ -11,571 +11,571 @@
   ],
   "palavras": [
     {
-      "palavra": "ARROZ",
+      "nome": "ARROZ",
       "dica": "cereal",
       "idDificuldade": 1,
       "id": 1
     },
     {
-      "palavra": "GARRAFA",
+      "nome": "GARRAFA",
       "dica": "objeto",
       "idDificuldade": 1,
       "id": 2
     },
     {
-      "palavra": "NOTEBOOK",
+      "nome": "NOTEBOOK",
       "dica": "objeto",
       "idDificuldade": 1,
       "id": 3
     },
     {
-      "palavra": "LETREIRO",
+      "nome": "LETREIRO",
       "dica": "objeto",
       "idDificuldade": 1,
       "id": 4
     },
     {
-      "palavra": "REFRIGERANTE",
+      "nome": "REFRIGERANTE",
       "dica": "bebida",
       "idDificuldade": 2,
       "id": 5
     },
     {
-      "palavra": "COMPANHEIRISMO",
+      "nome": "COMPANHEIRISMO",
       "dica": "começa com C",
       "idDificuldade": 2,
       "id": 6
     },
     {
-      "palavra": "PERFECCIONISTA",
+      "nome": "PERFECCIONISTA",
       "dica": "adjetivo",
       "idDificuldade": 2,
       "id": 7
     },
     {
-      "palavra": "CONTEXTUALIZAR",
+      "nome": "CONTEXTUALIZAR",
       "dica": "verbo",
       "idDificuldade": 2,
       "id": 8
     },
     {
-      "palavra": "SUPERFICIALIDADE",
+      "nome": "SUPERFICIALIDADE",
       "dica": "você foi trollado",
       "idDificuldade": 2,
       "id": 9
     },
     {
-      "palavra": "RESPONSABILIDADE",
+      "nome": "RESPONSABILIDADE",
       "dica": "caracteristica importante no Crescer",
       "idDificuldade": 2,
       "id": 10
     },
     {
-      "palavra": "PROFISSIONALISMO",
+      "nome": "PROFISSIONALISMO",
       "dica": "caracteristica importante no Crescer",
       "idDificuldade": 2,
       "id": 11
     },
     {
-      "palavra": "CONFRATERNIZAÇAO",
+      "nome": "CONFRATERNIZAÇAO",
       "dica": "palavra com 16 letras",
       "idDificuldade": 2,
       "id": 14
     },
     {
-      "palavra": "SUSTENTABILIDADE",
+      "nome": "SUSTENTABILIDADE",
       "dica": "meio ambiente",
       "idDificuldade": 2,
       "id": 12
     },
     {
-      "palavra": "COMUNICABILIDADE",
+      "nome": "COMUNICABILIDADE",
       "dica": "termina com ...idade",
       "idDificuldade": 2,
       "id": 13
     },
     {
-      "palavra": "ASSISTENCIALISMO",
+      "nome": "ASSISTENCIALISMO",
       "dica": "precisa de assistencia?",
       "idDificuldade": 2,
       "id": 15
     },
     {
-      "palavra": "REAPROVEITAMENTO",
+      "nome": "REAPROVEITAMENTO",
       "dica": "... de código",
       "idDificuldade": 2,
       "id": 16
     },
     {
-      "palavra": "COMPARTILHAMENTO",
+      "nome": "COMPARTILHAMENTO",
       "dica": "lembra redes sociais",
       "idDificuldade": 2,
       "id": 17
     },
     {
-      "palavra": "FUNCIONABILIDADE",
+      "nome": "FUNCIONABILIDADE",
       "dica": "capacidade de fazer algo",
       "idDificuldade": 2,
       "id": 18
     },
     {
-      "palavra": "CONSEQUENTEMENTE",
+      "nome": "CONSEQUENTEMENTE",
       "dica": "ação e reação",
       "idDificuldade": 2,
       "id": 19
     },
     {
-      "palavra": "INSTANTANEAMENTE",
+      "nome": "INSTANTANEAMENTE",
       "dica": "rápido",
       "idDificuldade": 2,
       "id": 20
     },
     {
-      "palavra": "SUBESTIMAR",
+      "nome": "SUBESTIMAR",
       "dica": "desqualificar sem motivos",
       "idDificuldade": 1,
       "id": 21
     },
     {
-      "palavra": "CONCERTEZA",
+      "nome": "CONCERTEZA",
       "dica": "Forma incorreta de se escrever \"com certeza\"",
       "idDificuldade": 1,
       "id": 22
     },
     {
-      "palavra": "RECORRENTE",
+      "nome": "RECORRENTE",
       "dica": "ressurge após haver desaparecido",
       "idDificuldade": 1,
       "id": 23
     },
     {
-      "palavra": "PRIORIDADE",
+      "nome": "PRIORIDADE",
       "dica": "importancia",
       "idDificuldade": 1,
       "id": 24
     },
     {
-      "palavra": "COMUNIDADE",
+      "nome": "COMUNIDADE",
       "dica": "espaço onde vivemos",
       "idDificuldade": 1,
       "id": 25
     },
     {
-      "palavra": "PRAGMATISMO",
+      "nome": "PRAGMATISMO",
       "dica": "A valorização da prática (pela prática continuada)",
       "idDificuldade": 1,
       "id": 26
     },
     {
-      "palavra": "CONTUNDENTE",
+      "nome": "CONTUNDENTE",
       "dica": "Objetivo, marcante, determinante",
       "idDificuldade": 1,
       "id": 27
     },
     {
-      "palavra": "PROSOPOPEIA",
+      "nome": "PROSOPOPEIA",
       "dica": "É uma figura de linguagem* que atribui características humanas",
       "idDificuldade": 1,
       "id": 28
     },
     {
-      "palavra": "SUPRACITADO",
+      "nome": "SUPRACITADO",
       "dica": "Mencionado acima ou mencionado anteriormente",
       "idDificuldade": 1,
       "id": 29
     },
     {
-      "palavra": "IRREVERENTE",
+      "nome": "IRREVERENTE",
       "dica": " é alguém que vai contra as normas da sociedade e da boa educação",
       "idDificuldade": 1,
       "id": 30
     },
     {
-      "palavra": "ACURACIDADE",
+      "nome": "ACURACIDADE",
       "dica": "conferência de estoque",
       "idDificuldade": 1,
       "id": 31
     },
     {
-      "palavra": "DEFERIMENTO",
+      "nome": "DEFERIMENTO",
       "dica": "é quando o juiz considera a alegação do processo como procedente",
       "idDificuldade": 1,
       "id": 32
     },
     {
-      "palavra": "ADVERSIDADE",
+      "nome": "ADVERSIDADE",
       "dica": "desgraça",
       "idDificuldade": 1,
       "id": 33
     },
     {
-      "palavra": "REINCIDENTE",
+      "nome": "REINCIDENTE",
       "dica": "praticar repetidamente a mesma conduta",
       "idDificuldade": 1,
       "id": 34
     },
     {
-      "palavra": "GALANTEADOR",
+      "nome": "GALANTEADOR",
       "dica": "chavequeiro",
       "idDificuldade": 1,
       "id": 35
     },
     {
-      "palavra": "AMBIGUIDADE",
+      "nome": "AMBIGUIDADE",
       "dica": "É a possibilidade de uma mensagem ter dois sentidos",
       "idDificuldade": 1,
       "id": 36
     },
     {
-      "palavra": "FACULTATIVO",
+      "nome": "FACULTATIVO",
       "dica": "opcional",
       "idDificuldade": 1,
       "id": 37
     },
     {
-      "palavra": "PIRANGUEIRO",
+      "nome": "PIRANGUEIRO",
       "dica": "pão duro",
       "idDificuldade": 1,
       "id": 38
     },
     {
-      "palavra": "VIABILIDADE",
+      "nome": "VIABILIDADE",
       "dica": "quando há possibilidade de realização",
       "idDificuldade": 1,
       "id": 39
     },
     {
-      "palavra": "CARISMATICO",
+      "nome": "CARISMATICO",
       "dica": "Aquele que tem poder ou graça de seduzir as pessoas com sentimento de bondade",
       "idDificuldade": 1,
       "id": 40
     },
     {
-      "palavra": "BALZAQUIANO",
+      "nome": "BALZAQUIANO",
       "dica": "adjetivo que refere-se a alguém cuja ídade é próxima ou igual a trinta anos",
       "idDificuldade": 1,
       "id": 41
     },
     {
-      "palavra": "PROSPECTIVO",
+      "nome": "PROSPECTIVO",
       "dica": "Que faz ver adiante ou ao longe",
       "idDificuldade": 1,
       "id": 42
     },
     {
-      "palavra": "GOOGLE",
+      "nome": "GOOGLE",
       "dica": "procura no 1º amigo",
       "idDificuldade": 1,
       "id": 43
     },
     {
-      "palavra": "PELEGO",
+      "nome": "PELEGO",
       "dica": "traidor",
       "idDificuldade": 1,
       "id": 44
     },
     {
-      "palavra": "CURICA",
+      "nome": "CURICA",
       "dica": "Gíria para empregada doméstica",
       "idDificuldade": 1,
       "id": 45
     },
     {
-      "palavra": "INSANO",
+      "nome": "INSANO",
       "dica": "Sem senso",
       "idDificuldade": 1,
       "id": 46
     },
     {
-      "palavra": "PIEGAS",
+      "nome": "PIEGAS",
       "dica": "Que apela excessivamente para o sentimento",
       "idDificuldade": 1,
       "id": 47
     },
     {
-      "palavra": "AVARIA",
+      "nome": "AVARIA",
       "dica": "Produto estragado",
       "idDificuldade": 1,
       "id": 48
     },
     {
-      "palavra": "BUGADO",
+      "nome": "BUGADO",
       "dica": "problema que causa mal funcionamento",
       "idDificuldade": 1,
       "id": 49
     },
     {
-      "palavra": "OSMOSE",
+      "nome": "OSMOSE",
       "dica": "processo físico em que a água se movimenta entre dois meios com concentrações diferentes de soluto",
       "idDificuldade": 1,
       "id": 50
     },
     {
-      "palavra": "MAROLA",
+      "nome": "MAROLA",
       "dica": "mar calmo, sem ondas ou com ondas muito fracas",
       "idDificuldade": 1,
       "id": 51
     },
     {
-      "palavra": "ASPONE",
+      "nome": "ASPONE",
       "dica": "assessor de porra nenhuma",
       "idDificuldade": 1,
       "id": 52
     },
     {
-      "palavra": "COXINHA",
+      "nome": "COXINHA",
       "dica": "alimento frito",
       "idDificuldade": 1,
       "id": 53
     },
     {
-      "palavra": "SUCESSO",
+      "nome": "SUCESSO",
       "dica": "ter êxito em alguma coisa",
       "idDificuldade": 1,
       "id": 54
     },
     {
-      "palavra": "SOCIOPATA",
+      "nome": "SOCIOPATA",
       "dica": "Alguém incapaz de se enquadrar nas normas da sociedade",
       "idDificuldade": 1,
       "id": 55
     },
     {
-      "palavra": "SUBJETIVO",
+      "nome": "SUBJETIVO",
       "dica": "opinião pessoal de cada individuo à respeito de algo ou alguém",
       "idDificuldade": 1,
       "id": 56
     },
     {
-      "palavra": "PALIATIVO",
+      "nome": "PALIATIVO",
       "dica": "Tem eficácia momentâneo e incompleta",
       "idDificuldade": 1,
       "id": 57
     },
     {
-      "palavra": "OUTROSSIM",
+      "nome": "OUTROSSIM",
       "dica": "Igualmente",
       "idDificuldade": 1,
       "id": 58
     },
     {
-      "palavra": "MONOTONIA",
+      "nome": "MONOTONIA",
       "dica": "rotina",
       "idDificuldade": 1,
       "id": 59
     },
     {
-      "palavra": "INSOLENTE",
+      "nome": "INSOLENTE",
       "dica": "impertinência",
       "idDificuldade": 1,
       "id": 60
     },
     {
-      "palavra": "PORQUANTO",
+      "nome": "PORQUANTO",
       "dica": "Visto que, porque",
       "idDificuldade": 1,
       "id": 61
     },
     {
-      "palavra": "HUMILDADE",
+      "nome": "HUMILDADE",
       "dica": "Característica de pessoas francas",
       "idDificuldade": 1,
       "id": 62
     },
     {
-      "palavra": "PARADIGMA",
+      "nome": "PARADIGMA",
       "dica": "padrões psicológicos",
       "idDificuldade": 1,
       "id": 63
     },
     {
-      "palavra": "SALIENTAR",
+      "nome": "SALIENTAR",
       "dica": "Deixar claro",
       "idDificuldade": 1,
       "id": 64
     },
     {
-      "palavra": "SIGLA",
+      "nome": "SIGLA",
       "dica": "abreviação",
       "idDificuldade": 1,
       "id": 65
     },
     {
-      "palavra": "RACHA",
+      "nome": "RACHA",
       "dica": "Velozes e Furiosos",
       "idDificuldade": 1,
       "id": 66
     },
     {
-      "palavra": "CEVAS",
+      "nome": "CEVAS",
       "dica": "alimento com que se engordam animais",
       "idDificuldade": 1,
       "id": 67
     },
     {
-      "palavra": "SUPER XUXA CONTRA O BAIXO ASTRAL",
+      "nome": "SUPER XUXA CONTRA O BAIXO ASTRAL",
       "dica": "filme brasileiro",
       "idDificuldade": 2,
       "id": 68
     },
     {
-      "palavra": "FREDDY X JASON",
+      "nome": "FREDDY X JASON",
       "dica": "filme",
       "idDificuldade": 2,
       "id": 69
     },
     {
-      "palavra": "ALIEN X PREDADOR",
+      "nome": "ALIEN X PREDADOR",
       "dica": "filme",
       "idDificuldade": 2,
       "id": 70
     },
     {
-      "palavra": "UM LOBISOMEM MEXICANO NO TEXAS",
+      "nome": "UM LOBISOMEM MEXICANO NO TEXAS",
       "dica": "filme",
       "idDificuldade": 2,
       "id": 71
     },
     {
-      "palavra": "SHARKNADO",
+      "nome": "SHARKNADO",
       "dica": "filme",
       "idDificuldade": 1,
       "id": 72
     },
     {
-      "palavra": "ALLIGATOR",
+      "nome": "ALLIGATOR",
       "dica": "filme",
       "idDificuldade": 1,
       "id": 73
     },
     {
-      "palavra": "ESTRADA MALDITA",
+      "nome": "ESTRADA MALDITA",
       "dica": "filme",
       "idDificuldade": 2,
       "id": 74
     },
     {
-      "palavra": "A LAGOA AZUL",
+      "nome": "A LAGOA AZUL",
       "dica": "filme",
       "idDificuldade": 2,
       "id": 75
     },
     {
-      "palavra": "SURFISTAS NAZISTAS DEVEM MORRER",
+      "nome": "SURFISTAS NAZISTAS DEVEM MORRER",
       "dica": "filme",
       "idDificuldade": 2,
       "id": 76
     },
     {
-      "palavra": "FALLOUT",
+      "nome": "FALLOUT",
       "dica": "jogo",
       "idDificuldade": 1,
       "id": 77
     },
     {
-      "palavra": "RESIDENT EVIL",
+      "nome": "RESIDENT EVIL",
       "dica": "jogo",
       "idDificuldade": 2,
       "id": 78
     },
     {
-      "palavra": "METAL GEAR SOLID",
+      "nome": "METAL GEAR SOLID",
       "dica": "jogo",
       "idDificuldade": 2,
       "id": 79
     },
     {
-      "palavra": "MARIO KART",
+      "nome": "MARIO KART",
       "dica": "jogo",
       "idDificuldade": 1,
       "id": 80
     },
     {
-      "palavra": "SEGA SATURN",
+      "nome": "SEGA SATURN",
       "dica": "console, video-game",
       "idDificuldade": 1,
       "id": 81
     },
     {
-      "palavra": "COMMODORE",
+      "nome": "COMMODORE",
       "dica": "console, video-game",
       "idDificuldade": 1,
       "id": 82
     },
     {
-      "palavra": "SEGA NOMAD",
+      "nome": "SEGA NOMAD",
       "dica": "console, video-game",
       "idDificuldade": 1,
       "id": 83
     },
     {
-      "palavra": "APPLE BANDAI PIPPIN",
+      "nome": "APPLE BANDAI PIPPIN",
       "dica": "console, video-game",
       "idDificuldade": 2,
       "id": 84
     },
     {
-      "palavra": "DETRIMENTO",
+      "nome": "DETRIMENTO",
       "dica": "Prejuízo",
       "idDificuldade": 1,
       "id": 85
     },
     {
-      "palavra": "PATRICINHA",
+      "nome": "PATRICINHA",
       "dica": "Garota mimada, consumista, protegida pelos pais e modista",
       "idDificuldade": 1,
       "id": 86
     },
     {
-      "palavra": "COMPULSIVO",
+      "nome": "COMPULSIVO",
       "dica": "Sem controle",
       "idDificuldade": 1,
       "id": 87
     },
     {
-      "palavra": "DIVERGENTE",
+      "nome": "DIVERGENTE",
       "dica": "oposto",
       "idDificuldade": 1,
       "id": 88
     },
     {
-      "palavra": "EMPREITADA",
+      "nome": "EMPREITADA",
       "dica": "obra",
       "idDificuldade": 1,
       "id": 89
     },
     {
-      "palavra": "SINTETIZAR",
+      "nome": "SINTETIZAR",
       "dica": "resumir em poucas palavras",
       "idDificuldade": 1,
       "id": 90
     },
     {
-      "palavra": "DIRETRIZES",
+      "nome": "DIRETRIZES",
       "dica": "Linha segundo a qual se traça um plano de qualquer caminho",
       "idDificuldade": 1,
       "id": 91
     },
     {
-      "palavra": "PROVIMENTO",
+      "nome": "PROVIMENTO",
       "dica": "Ocupar, preencher",
       "idDificuldade": 1,
       "id": 92
     },
     {
-      "palavra": "EMANCIPADO",
+      "nome": "EMANCIPADO",
       "dica": "Libertado",
       "idDificuldade": 1,
       "id": 93
     },
     {
-      "palavra": "AUSPICIOSO",
+      "nome": "AUSPICIOSO",
       "dica": "Sorte, bom agouro e esperançoso",
       "idDificuldade": 1,
       "id": 94
     },
     {
-      "palavra": "IDONEIDADE",
+      "nome": "IDONEIDADE",
       "dica": "aptidão, capacidade, competência",
       "idDificuldade": 1,
       "id": 95
