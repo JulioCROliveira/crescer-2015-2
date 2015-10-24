@@ -1,26 +1,22 @@
-function getPalavra(dificultade) {
+function buscarPalavra(dificultade) {
 	dificultade = dificultade || 'normal';
-	var indicePalavrasPorDificultade = 2;
+	var idDaDificuldade = 2;
 	var indiceDaPalavra = 0;
 	var palavraDeRetorno = {};
-	if (localStorage.palavraRepetidas === undefined) { 
-		resetaPalavrasRepetidas();
-	}
+	var indice = criarListaDePalavrasParaUsuario();
 	if (dificultade === 'normal') {
-		indicePalavrasPorDificultade = Math.random() < 0.49 ? 1 : 2;
+		idDaDificuldade = Math.random() < 0.49 ? 1 : 2;
 	}
-	$.get.call(this,'http://localhost:3000/palavras?idDificuldade='+indicePalavrasPorDificultade).done(function(palavras) {
-		var palavrasRepetidas = JSON.parse(localStorage.palavraRepetidas);
+	$.get.call(this,'http://localhost:3000/palavras?idDificuldade='+idDaDificuldade).done(function(palavras) {
+		var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
 		do {
 			var indiceDaPalavra = Math.floor(Math.random() * palavras.length);
 			palavraDeRetorno = palavras[indiceDaPalavra];
-		} while (containsPalavra(palavrasRepetidas, palavraDeRetorno));
-		palavrasRepetidas.push(palavraDeRetorno);
-		localStorage.setItem('palavraRepetidas', JSON.stringify(palavrasRepetidas));
-		console.log(palavraDeRetorno); // não retorna pelo return
-	});	
-	
-	return palavraDeRetorno;
+		} while (containsPalavra(listaPalavras[indice].palavrasRepetidas, palavraDeRetorno));
+		localStorage.setItem('palavraAtual', palavraDeRetorno.palavra);
+		localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
+	});
+	return;
 };
 
 function containsPalavra(arr, palavras) {
@@ -30,14 +26,56 @@ function containsPalavra(arr, palavras) {
         }
     }
     return false;
-}
+};
+
+function containsUsuario(usuarios) {
+    for (var i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].nome === controller.jogador.nome) {
+            return i;
+        }
+    }
+    return -1;
+};
 
 function resetaPalavrasRepetidas() {
 	localStorage.setItem('palavraRepetidas', '[]');
-}
+};
+
+function criarListaDePalavrasParaUsuario() {
+	if (localStorage.palavraRepetidas === undefined) { 
+		resetaPalavrasRepetidas();
+	}
+	var usuarios = JSON.parse(localStorage.palavraRepetidas);	
+	var indice = containsUsuario(usuarios);
+	if (indice === -1) {
+		usuarios.push({'nome': controller.jogador.nome, 'palavrasRepetidas': []});
+		indice = usuarios.length - 1;
+	}
+	localStorage.setItem('palavraRepetidas', JSON.stringify(usuarios));
+	return indice;
+};
 
 function adicionarPalavra(palavra, dica) {
-	indicePalavrasPorDificultade = palavra.length < 12 ? 1 : 2;
-	$.post('http://localhost:3000/palavras?idDificuldade=', 
-	{"palavra": palavra.toUpperCase(), "dica": dica, 	"idDificuldade": indicePalavrasPorDificultade});	
+	$.get.call(this, 'http://localhost:3000/palavras').done(function (elem) {
+		var proximoID = elem.length + 1;
+		localStorage.setItem('proximoIDPalavra', proximoID);
+	});
+	var indicePalavrasPorDificultade = palavra.length < 12 ? 1 : 2;
+	$.post('http://localhost:3000/palavras?_sort=number(idpalavra)&_order=DESC&_limit=1', 
+	{"palavra": palavra.toUpperCase(), "dica": dica, 
+		"idDificuldade": indicePalavrasPorDificultade, "id": parseInt(localStorage.proximoIDPalavra)});	
+};
+
+function adicionarPalavraRepetida() {
+	var indice = criarListaDePalavrasParaUsuario();
+	var listaPalavras = JSON.parse(localStorage.palavraRepetidas);
+	listaPalavras[indice].palavrasRepetidas.push({'palavra': palavraDeRetorno.palavra});
+	localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
+};
+
+function listarPalavrasRepetidas() {
+	var indice = criarListaDePalavrasParaUsuario();
+	var listaPalavras = JSON.parse(localStorage.palavraRepetidas);	
+	localStorage.setItem('palavraRepetidas', JSON.stringify(listaPalavras));
+	return listaPalavras[indice].palavrasRepetidas;
 };

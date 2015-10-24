@@ -14,56 +14,571 @@
       "palavra": "ARROZ",
       "dica": "cereal",
       "idDificuldade": 1,
-      "id": "21ee61da-0379-4798-8fd8-767bea869d7a"
+      "id": 1
     },
     {
       "palavra": "GARRAFA",
       "dica": "objeto",
       "idDificuldade": 1,
-      "id": "23706dbf-76fa-4130-a759-f8b8c842ec57"
+      "id": 2
     },
     {
       "palavra": "NOTEBOOK",
       "dica": "objeto",
       "idDificuldade": 1,
-      "id": "9b164b82-3f9b-4a96-9729-64c18256599a"
+      "id": 3
     },
     {
       "palavra": "LETREIRO",
       "dica": "objeto",
       "idDificuldade": 1,
-      "id": "c8b272dd-d404-427d-8e9f-e84f376e33e8"
+      "id": 4
     },
     {
       "palavra": "REFRIGERANTE",
       "dica": "bebida",
       "idDificuldade": 2,
-      "id": "b47ee5cd-0076-4756-b9ad-27b531797e98"
+      "id": 5
     },
     {
       "palavra": "COMPANHEIRISMO",
       "dica": "começa com C",
       "idDificuldade": 2,
-      "id": "f4a6fa2b-71fe-406b-864a-596f7e80c84b"
+      "id": 6
     },
     {
       "palavra": "PERFECCIONISTA",
       "dica": "adjetivo",
       "idDificuldade": 2,
-      "id": "b8bd925e-f398-45a3-b0d6-0a2277644d89"
+      "id": 7
     },
     {
       "palavra": "CONTEXTUALIZAR",
       "dica": "verbo",
       "idDificuldade": 2,
-      "id": "ea9d7316-a69d-403d-aa62-cd70283ceb96"
-    }
-  ],
-  "palavrasRepetidas": [
+      "id": 8
+    },
     {
-      "listaDePalavras": "[{\"palavra\":\"CONTEXTUALIZAR\",\"dica\":\"verbo\",\"idDificuldade\":2,\"id\":\"ea9d7316-a69d-403d-aa62-cd70283ceb96\"},{\"palavra\":\"PERFECCIONISTA\",\"dica\":\"adjetivo\",\"idDificuldade\":2,\"id\":\"b8bd925e-f398-45a3-b0d6-0a2277644d89\"},{\"palavra\":\"COMPANHEIRISMO\",\"dica\":\"começa com C\",\"idDificuldade\":2,\"id\":\"f4a6fa2b-71fe-406b-864a-596f7e80c84b\"},{\"palavra\":\"REFRIGERANTE\",\"dica\":\"bebida\",\"idDificuldade\":2,\"id\":\"b47ee5cd-0076-4756-b9ad-27b531797e98\"}]",
-      "idUsuario": "idUsuario",
-      "id": 1
+      "palavra": "SUPERFICIALIDADE",
+      "dica": "você foi trollado",
+      "idDificuldade": 2,
+      "id": 9
+    },
+    {
+      "palavra": "RESPONSABILIDADE",
+      "dica": "caracteristica importante no Crescer",
+      "idDificuldade": 2,
+      "id": 10
+    },
+    {
+      "palavra": "PROFISSIONALISMO",
+      "dica": "caracteristica importante no Crescer",
+      "idDificuldade": 2,
+      "id": 11
+    },
+    {
+      "palavra": "CONFRATERNIZAÇAO",
+      "dica": "palavra com 16 letras",
+      "idDificuldade": 2,
+      "id": 14
+    },
+    {
+      "palavra": "SUSTENTABILIDADE",
+      "dica": "meio ambiente",
+      "idDificuldade": 2,
+      "id": 12
+    },
+    {
+      "palavra": "COMUNICABILIDADE",
+      "dica": "termina com ...idade",
+      "idDificuldade": 2,
+      "id": 13
+    },
+    {
+      "palavra": "ASSISTENCIALISMO",
+      "dica": "precisa de assistencia?",
+      "idDificuldade": 2,
+      "id": 15
+    },
+    {
+      "palavra": "REAPROVEITAMENTO",
+      "dica": "... de código",
+      "idDificuldade": 2,
+      "id": 16
+    },
+    {
+      "palavra": "COMPARTILHAMENTO",
+      "dica": "lembra redes sociais",
+      "idDificuldade": 2,
+      "id": 17
+    },
+    {
+      "palavra": "FUNCIONABILIDADE",
+      "dica": "capacidade de fazer algo",
+      "idDificuldade": 2,
+      "id": 18
+    },
+    {
+      "palavra": "CONSEQUENTEMENTE",
+      "dica": "ação e reação",
+      "idDificuldade": 2,
+      "id": 19
+    },
+    {
+      "palavra": "INSTANTANEAMENTE",
+      "dica": "rápido",
+      "idDificuldade": 2,
+      "id": 20
+    },
+    {
+      "palavra": "SUBESTIMAR",
+      "dica": "desqualificar sem motivos",
+      "idDificuldade": 1,
+      "id": 21
+    },
+    {
+      "palavra": "CONCERTEZA",
+      "dica": "Forma incorreta de se escrever \"com certeza\"",
+      "idDificuldade": 1,
+      "id": 22
+    },
+    {
+      "palavra": "RECORRENTE",
+      "dica": "ressurge após haver desaparecido",
+      "idDificuldade": 1,
+      "id": 23
+    },
+    {
+      "palavra": "PRIORIDADE",
+      "dica": "importancia",
+      "idDificuldade": 1,
+      "id": 24
+    },
+    {
+      "palavra": "COMUNIDADE",
+      "dica": "espaço onde vivemos",
+      "idDificuldade": 1,
+      "id": 25
+    },
+    {
+      "palavra": "PRAGMATISMO",
+      "dica": "A valorização da prática (pela prática continuada)",
+      "idDificuldade": 1,
+      "id": 26
+    },
+    {
+      "palavra": "CONTUNDENTE",
+      "dica": "Objetivo, marcante, determinante",
+      "idDificuldade": 1,
+      "id": 27
+    },
+    {
+      "palavra": "PROSOPOPEIA",
+      "dica": "É uma figura de linguagem* que atribui características humanas",
+      "idDificuldade": 1,
+      "id": 28
+    },
+    {
+      "palavra": "SUPRACITADO",
+      "dica": "Mencionado acima ou mencionado anteriormente",
+      "idDificuldade": 1,
+      "id": 29
+    },
+    {
+      "palavra": "IRREVERENTE",
+      "dica": " é alguém que vai contra as normas da sociedade e da boa educação",
+      "idDificuldade": 1,
+      "id": 30
+    },
+    {
+      "palavra": "ACURACIDADE",
+      "dica": "conferência de estoque",
+      "idDificuldade": 1,
+      "id": 31
+    },
+    {
+      "palavra": "DEFERIMENTO",
+      "dica": "é quando o juiz considera a alegação do processo como procedente",
+      "idDificuldade": 1,
+      "id": 32
+    },
+    {
+      "palavra": "ADVERSIDADE",
+      "dica": "desgraça",
+      "idDificuldade": 1,
+      "id": 33
+    },
+    {
+      "palavra": "REINCIDENTE",
+      "dica": "praticar repetidamente a mesma conduta",
+      "idDificuldade": 1,
+      "id": 34
+    },
+    {
+      "palavra": "GALANTEADOR",
+      "dica": "chavequeiro",
+      "idDificuldade": 1,
+      "id": 35
+    },
+    {
+      "palavra": "AMBIGUIDADE",
+      "dica": "É a possibilidade de uma mensagem ter dois sentidos",
+      "idDificuldade": 1,
+      "id": 36
+    },
+    {
+      "palavra": "FACULTATIVO",
+      "dica": "opcional",
+      "idDificuldade": 1,
+      "id": 37
+    },
+    {
+      "palavra": "PIRANGUEIRO",
+      "dica": "pão duro",
+      "idDificuldade": 1,
+      "id": 38
+    },
+    {
+      "palavra": "VIABILIDADE",
+      "dica": "quando há possibilidade de realização",
+      "idDificuldade": 1,
+      "id": 39
+    },
+    {
+      "palavra": "CARISMATICO",
+      "dica": "Aquele que tem poder ou graça de seduzir as pessoas com sentimento de bondade",
+      "idDificuldade": 1,
+      "id": 40
+    },
+    {
+      "palavra": "BALZAQUIANO",
+      "dica": "adjetivo que refere-se a alguém cuja ídade é próxima ou igual a trinta anos",
+      "idDificuldade": 1,
+      "id": 41
+    },
+    {
+      "palavra": "PROSPECTIVO",
+      "dica": "Que faz ver adiante ou ao longe",
+      "idDificuldade": 1,
+      "id": 42
+    },
+    {
+      "palavra": "GOOGLE",
+      "dica": "procura no 1º amigo",
+      "idDificuldade": 1,
+      "id": 43
+    },
+    {
+      "palavra": "PELEGO",
+      "dica": "traidor",
+      "idDificuldade": 1,
+      "id": 44
+    },
+    {
+      "palavra": "CURICA",
+      "dica": "Gíria para empregada doméstica",
+      "idDificuldade": 1,
+      "id": 45
+    },
+    {
+      "palavra": "INSANO",
+      "dica": "Sem senso",
+      "idDificuldade": 1,
+      "id": 46
+    },
+    {
+      "palavra": "PIEGAS",
+      "dica": "Que apela excessivamente para o sentimento",
+      "idDificuldade": 1,
+      "id": 47
+    },
+    {
+      "palavra": "AVARIA",
+      "dica": "Produto estragado",
+      "idDificuldade": 1,
+      "id": 48
+    },
+    {
+      "palavra": "BUGADO",
+      "dica": "problema que causa mal funcionamento",
+      "idDificuldade": 1,
+      "id": 49
+    },
+    {
+      "palavra": "OSMOSE",
+      "dica": "processo físico em que a água se movimenta entre dois meios com concentrações diferentes de soluto",
+      "idDificuldade": 1,
+      "id": 50
+    },
+    {
+      "palavra": "MAROLA",
+      "dica": "mar calmo, sem ondas ou com ondas muito fracas",
+      "idDificuldade": 1,
+      "id": 51
+    },
+    {
+      "palavra": "ASPONE",
+      "dica": "assessor de porra nenhuma",
+      "idDificuldade": 1,
+      "id": 52
+    },
+    {
+      "palavra": "COXINHA",
+      "dica": "alimento frito",
+      "idDificuldade": 1,
+      "id": 53
+    },
+    {
+      "palavra": "SUCESSO",
+      "dica": "ter êxito em alguma coisa",
+      "idDificuldade": 1,
+      "id": 54
+    },
+    {
+      "palavra": "SOCIOPATA",
+      "dica": "Alguém incapaz de se enquadrar nas normas da sociedade",
+      "idDificuldade": 1,
+      "id": 55
+    },
+    {
+      "palavra": "SUBJETIVO",
+      "dica": "opinião pessoal de cada individuo à respeito de algo ou alguém",
+      "idDificuldade": 1,
+      "id": 56
+    },
+    {
+      "palavra": "PALIATIVO",
+      "dica": "Tem eficácia momentâneo e incompleta",
+      "idDificuldade": 1,
+      "id": 57
+    },
+    {
+      "palavra": "OUTROSSIM",
+      "dica": "Igualmente",
+      "idDificuldade": 1,
+      "id": 58
+    },
+    {
+      "palavra": "MONOTONIA",
+      "dica": "rotina",
+      "idDificuldade": 1,
+      "id": 59
+    },
+    {
+      "palavra": "INSOLENTE",
+      "dica": "impertinência",
+      "idDificuldade": 1,
+      "id": 60
+    },
+    {
+      "palavra": "PORQUANTO",
+      "dica": "Visto que, porque",
+      "idDificuldade": 1,
+      "id": 61
+    },
+    {
+      "palavra": "HUMILDADE",
+      "dica": "Característica de pessoas francas",
+      "idDificuldade": 1,
+      "id": 62
+    },
+    {
+      "palavra": "PARADIGMA",
+      "dica": "padrões psicológicos",
+      "idDificuldade": 1,
+      "id": 63
+    },
+    {
+      "palavra": "SALIENTAR",
+      "dica": "Deixar claro",
+      "idDificuldade": 1,
+      "id": 64
+    },
+    {
+      "palavra": "SIGLA",
+      "dica": "abreviação",
+      "idDificuldade": 1,
+      "id": 65
+    },
+    {
+      "palavra": "RACHA",
+      "dica": "Velozes e Furiosos",
+      "idDificuldade": 1,
+      "id": 66
+    },
+    {
+      "palavra": "CEVAS",
+      "dica": "alimento com que se engordam animais",
+      "idDificuldade": 1,
+      "id": 67
+    },
+    {
+      "palavra": "SUPER XUXA CONTRA O BAIXO ASTRAL",
+      "dica": "filme brasileiro",
+      "idDificuldade": 2,
+      "id": 68
+    },
+    {
+      "palavra": "FREDDY X JASON",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 69
+    },
+    {
+      "palavra": "ALIEN X PREDADOR",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 70
+    },
+    {
+      "palavra": "UM LOBISOMEM MEXICANO NO TEXAS",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 71
+    },
+    {
+      "palavra": "SHARKNADO",
+      "dica": "filme",
+      "idDificuldade": 1,
+      "id": 72
+    },
+    {
+      "palavra": "ALLIGATOR",
+      "dica": "filme",
+      "idDificuldade": 1,
+      "id": 73
+    },
+    {
+      "palavra": "ESTRADA MALDITA",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 74
+    },
+    {
+      "palavra": "A LAGOA AZUL",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 75
+    },
+    {
+      "palavra": "SURFISTAS NAZISTAS DEVEM MORRER",
+      "dica": "filme",
+      "idDificuldade": 2,
+      "id": 76
+    },
+    {
+      "palavra": "FALLOUT",
+      "dica": "jogo",
+      "idDificuldade": 1,
+      "id": 77
+    },
+    {
+      "palavra": "RESIDENT EVIL",
+      "dica": "jogo",
+      "idDificuldade": 2,
+      "id": 78
+    },
+    {
+      "palavra": "METAL GEAR SOLID",
+      "dica": "jogo",
+      "idDificuldade": 2,
+      "id": 79
+    },
+    {
+      "palavra": "MARIO KART",
+      "dica": "jogo",
+      "idDificuldade": 1,
+      "id": 80
+    },
+    {
+      "palavra": "SEGA SATURN",
+      "dica": "console, video-game",
+      "idDificuldade": 1,
+      "id": 81
+    },
+    {
+      "palavra": "COMMODORE",
+      "dica": "console, video-game",
+      "idDificuldade": 1,
+      "id": 82
+    },
+    {
+      "palavra": "SEGA NOMAD",
+      "dica": "console, video-game",
+      "idDificuldade": 1,
+      "id": 83
+    },
+    {
+      "palavra": "APPLE BANDAI PIPPIN",
+      "dica": "console, video-game",
+      "idDificuldade": 2,
+      "id": 84
+    },
+    {
+      "palavra": "DETRIMENTO",
+      "dica": "Prejuízo",
+      "idDificuldade": 1,
+      "id": 85
+    },
+    {
+      "palavra": "PATRICINHA",
+      "dica": "Garota mimada, consumista, protegida pelos pais e modista",
+      "idDificuldade": 1,
+      "id": 86
+    },
+    {
+      "palavra": "COMPULSIVO",
+      "dica": "Sem controle",
+      "idDificuldade": 1,
+      "id": 87
+    },
+    {
+      "palavra": "DIVERGENTE",
+      "dica": "oposto",
+      "idDificuldade": 1,
+      "id": 88
+    },
+    {
+      "palavra": "EMPREITADA",
+      "dica": "obra",
+      "idDificuldade": 1,
+      "id": 89
+    },
+    {
+      "palavra": "SINTETIZAR",
+      "dica": "resumir em poucas palavras",
+      "idDificuldade": 1,
+      "id": 90
+    },
+    {
+      "palavra": "DIRETRIZES",
+      "dica": "Linha segundo a qual se traça um plano de qualquer caminho",
+      "idDificuldade": 1,
+      "id": 91
+    },
+    {
+      "palavra": "PROVIMENTO",
+      "dica": "Ocupar, preencher",
+      "idDificuldade": 1,
+      "id": 92
+    },
+    {
+      "palavra": "EMANCIPADO",
+      "dica": "Libertado",
+      "idDificuldade": 1,
+      "id": 93
+    },
+    {
+      "palavra": "AUSPICIOSO",
+      "dica": "Sorte, bom agouro e esperançoso",
+      "idDificuldade": 1,
+      "id": 94
+    },
+    {
+      "palavra": "IDONEIDADE",
+      "dica": "aptidão, capacidade, competência",
+      "idDificuldade": 1,
+      "id": 95
     }
   ]
 }
