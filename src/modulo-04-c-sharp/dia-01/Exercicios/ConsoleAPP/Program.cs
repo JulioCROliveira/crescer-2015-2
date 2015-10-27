@@ -12,6 +12,7 @@ namespace ConsoleAPP
 
         static void Main(string[] args)
         {
+            const int SAIR = 0, CADASTRAR_CONTATO = 1, VISUALIZAR_CONTATOS = 2;
             int opcao;
             do
             {
@@ -19,14 +20,14 @@ namespace ConsoleAPP
                 opcao = int.Parse(Console.ReadLine());
                 switch (opcao)
                 {
-                    case 1:
+                    case CADASTRAR_CONTATO:
                         CadastrarContatoNovo();
                         Console.WriteLine("Contato adicionado.");
                         break;
-                    case 2:
+                    case VISUALIZAR_CONTATOS:
                         Console.WriteLine(listarContatos());
                         break;
-                    case 0:
+                    case SAIR:
                         Console.WriteLine("Saindo...");
                         break;
                     default:
