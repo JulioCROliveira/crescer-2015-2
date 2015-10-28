@@ -10,7 +10,7 @@ namespace DBFuncionarios.Testes
     public class TesteFuncionarios
     {
         [TestMethod]
-        public void OrdenandoListaPorNome()
+        public void OrdenandoListaPorCargo()
         {
             Funcionarios lista = new Funcionarios();
             var teste = lista.OrdenadosPorCargo();
@@ -60,6 +60,7 @@ namespace DBFuncionarios.Testes
         //    Assert.AreEqual("Rafael Benetti", funcionarioLista[0].Nome);
         //    Assert.AreEqual("Desenvolvedor", funcionarioLista[0].Cargo);
         //}
+
 
 
     }

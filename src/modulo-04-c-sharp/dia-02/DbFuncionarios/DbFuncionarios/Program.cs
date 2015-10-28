@@ -101,7 +101,7 @@ namespace DbFuncionarios
             //}
 
             Funcionarios funcionarios = new Funcionarios();
-            dynamic lista = funcionarios.BuscaRapida("Rafael Benetti");            
+            var teste = BuscarPorTurno(turnos)          
 
             Console.ReadKey();
         }

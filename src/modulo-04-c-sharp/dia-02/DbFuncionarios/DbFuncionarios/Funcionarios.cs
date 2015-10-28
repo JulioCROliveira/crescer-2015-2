@@ -23,11 +23,11 @@ namespace DbFuncionarios
             }
             return listaFuncionarios.Where(funcionario => funcionario.Nome.Contains(nome)).OrderBy(funcionario => funcionario.Nome).ToList();
         }
-               
-        public dynamic BuscaRapida(string nome)
-        {
-            dynamic query = (from func in listaFuncionarios where func.Nome == nome select new {Nome = func.Nome, Cargo = func.Cargo.Titulo}).ToList();
-            return query;
-        }
+
+        //public IList<dynamic> BuscaRapida(string nome)
+        //{
+        //    IList<dynamic> query = (from func in listaFuncionarios where func.Nome == nome select new {Nome = func.Nome, Cargo = func.Cargo.Titulo}).ToList();
+        //    return query;
+        //}
     }
 }
