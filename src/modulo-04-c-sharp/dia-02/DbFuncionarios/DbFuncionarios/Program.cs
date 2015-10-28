@@ -19,85 +19,91 @@ namespace DbFuncionarios
             //    Console.WriteLine(item.TituloCargo);
             //    Console.WriteLine();
             //}
-            
-            Console.Read();
-        }
 
-        static void Criarasdasd(int? id)
-        {
-            if(id.HasValue)
-            {
-                Console.WriteLine("Tem valor");
-            }
-            else
-            {
-                Console.WriteLine(id.Value);
-            }
-        }
+            //    Console.Read();
+            //}
 
-        static dynamic[] BuscarNomeEIdETituloDoCargoDeFuncionarios()
-        {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            //static void Criarasdasd(int? id)
+            //{
+            //    if(id.HasValue)
+            //    {
+            //        Console.WriteLine("Tem valor");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine(id.Value);
+            //    }
+            //}
 
-            var query = from f in funcionarios
-                        select new
-                        {
-                            Id = f.Id,
-                            Nome = f.Nome,
-                            TituloCargo = f.Cargo.Titulo
-                        };
+            //static dynamic[] BuscarNomeEIdETituloDoCargoDeFuncionarios()
+            //{
+            //    var baseDeDados = new BaseDeDados();
+            //    List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return query.ToArray();
-        }
+            //    var query = from f in funcionarios
+            //                select new
+            //                {
+            //                    Id = f.Id,
+            //                    Nome = f.Nome,
+            //                    TituloCargo = f.Cargo.Titulo
+            //                };
 
-        static IList<Funcionario> BuscarOrdenadosPorNome()
-        {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            //    return query.ToArray();
+            //}
 
-            var resultado = funcionarios.OrderByDescending(funcionario => funcionario.Nome).ToList();
+            //static IList<Funcionario> BuscarOrdenadosPorNome()
+            //{
+            //    var baseDeDados = new BaseDeDados();
+            //    List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return resultado;
-        }
+            //    var resultado = funcionarios.OrderByDescending(funcionario => funcionario.Nome).ToList();
 
-        static Funcionario BuscarPorId(int id)
-        {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
-            //
-            //return funcionarios.FirstOrDefault(funcionario => funcionario.Id == id);
+            //    return resultado;
+            //}
 
-            IEnumerable<Funcionario> query = from funcionario in funcionarios
-                                             where funcionario.Id == id
-                                             select funcionario;
-            
+            //static Funcionario BuscarPorId(int id)
+            //{
+            //    var baseDeDados = new BaseDeDados();
+            //    List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            //    //
+            //    //return funcionarios.FirstOrDefault(funcionario => funcionario.Id == id);
+
+            //    IEnumerable<Funcionario> query = from funcionario in funcionarios
+            //                                     where funcionario.Id == id
+            //                                     select funcionario;
+
             //query = funcionarios.Where(f => f.Id == id).FirstOrDefault();
 
-            return query.FirstOrDefault();
-        }
+            //    return query.FirstOrDefault();
+            //}
 
-        static IList<Funcionario> BuscarPorCargo(string tituloCargo)
-        {
-            var baseDeDados = new BaseDeDados();
-            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            //static IList<Funcionario> BuscarPorCargo(string tituloCargo)
+            //{
+            //    var baseDeDados = new BaseDeDados();
+            //    List<Funcionario> funcionarios = baseDeDados.Funcionarios;
 
-            return funcionarios.Where(f => CompararIgnoreCase(f.Cargo.Titulo, tituloCargo)).ToList();
-        }
+            //    return funcionarios.Where(f => CompararIgnoreCase(f.Cargo.Titulo, tituloCargo)).ToList();
+            //}
 
-        static bool CompararIgnoreCase(string a, string b)
-        {
-            if (!String.IsNullOrEmpty(a) && !String.IsNullOrEmpty(b))
-            {
-                return a.ToUpper() == b.ToUpper();
-            }
+            //static bool CompararIgnoreCase(string a, string b)
+            //{
+            //    if (!String.IsNullOrEmpty(a) && !String.IsNullOrEmpty(b))
+            //    {
+            //        return a.ToUpper() == b.ToUpper();
+            //    }
 
-            return a == b;
-        }
+            //    return a == b;
+            //}
 
-        static void FazNada()
-        {
-            Console.WriteLine("Zorra Total");
+            //static void FazNada()
+            //{
+            //    Console.WriteLine("Zorra Total");
+            //}
+
+            Funcionarios funcionarios = new Funcionarios();
+            dynamic lista = funcionarios.BuscaRapida("Rafael Benetti");            
+
+            Console.ReadKey();
         }
 
     }

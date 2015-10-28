@@ -21,5 +21,9 @@ namespace DbFuncionarios
             this.DataNascimento = dataNascimento;
         }
 
+        public override string ToString()
+        {
+            return String.Format("ID: {0}, nome: {1}, data de nascimento {2}", this.Id, this.Nome, this.DataNascimento);
+        }
     }
 }
