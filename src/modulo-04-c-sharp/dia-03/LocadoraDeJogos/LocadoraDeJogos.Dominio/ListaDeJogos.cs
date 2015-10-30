@@ -23,7 +23,7 @@ namespace LocadoraDeJogos.Dominio
                     "\r\nPreço : " + jogo.Element("preco").Value +
                     "\r\nCategoria : " + jogo.Element("categoria").Value + "\r\n\r\n";
             }
-
+            
             return lista;
         }
 

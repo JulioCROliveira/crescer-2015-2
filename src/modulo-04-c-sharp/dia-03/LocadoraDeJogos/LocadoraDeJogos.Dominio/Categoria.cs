@@ -9,8 +9,8 @@ namespace LocadoraDeJogos.Dominio
 {
     public static class Categoria
     {
-        public static Dictionary<string, string> idParaNome = new Dictionary<string, string>();
-        public static Dictionary<string, string> NomeParaId = new Dictionary<string, string>();
+        public static Dictionary<int, string> idParaNome = new Dictionary<int, string>();
+        public static Dictionary<string, int> NomeParaId = new Dictionary<string, int>();
 
         public static void InicializarRecarregarCategoria()
         {
@@ -22,8 +22,23 @@ namespace LocadoraDeJogos.Dominio
 
             foreach (var categoria in categorias)
             {
-                idParaNome.Add(categoria.Attribute("id").Value, categoria.Element("nome").Value);
-                NomeParaId.Add(categoria.Element("nome").Value, categoria.Attribute("id").Value);
+                idParaNome.Add(int.Parse(categoria.Attribute("id").Value), categoria.Element("nome").Value);
+                NomeParaId.Add(categoria.Element("nome").Value, int.Parse(categoria.Attribute("id").Value));
+            }
+        }
+
+        public static int ConverterValor(string chave)
+        {
+            try
+            {
+                if (chave == null)
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch(ArgumentNullException erro)
+            {
+                
             }
         }
     }
