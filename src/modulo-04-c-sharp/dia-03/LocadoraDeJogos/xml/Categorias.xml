@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<categorias>
+  <categoria id="1">
+    <nome>RPG</nome>    
+  </categoria>
+  <categoria id="2">
+    <nome>Aventura</nome>    
+  </categoria>  
+  <categoria id="3">
+    <nome>Corrida</nome>    
+  </categoria>  
+  <categoria id="4">
+    <nome>Luta</nome>    
+  </categoria>  
+  <categoria id="5">
+    <nome>Esporte</nome>    
+  </categoria>  
+</categorias>
