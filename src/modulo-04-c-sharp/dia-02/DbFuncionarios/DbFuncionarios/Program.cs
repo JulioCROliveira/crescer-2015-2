@@ -101,7 +101,7 @@ namespace DbFuncionarios
             //}
 
             Funcionarios funcionarios = new Funcionarios();
-            var teste = BuscarPorTurno(turnos)          
+            var teste = funcionarios.BuscaRapida("Rafael Benetti");          
 
             Console.ReadKey();
         }
