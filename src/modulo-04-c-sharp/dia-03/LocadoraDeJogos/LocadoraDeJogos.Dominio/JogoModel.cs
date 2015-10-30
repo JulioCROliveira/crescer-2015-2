@@ -12,13 +12,19 @@ namespace LocadoraDeJogos.Dominio
         public int Id { get; private set; }
         public string Nome { get; set; }
         public double Preco { get; set; }
-        public Categoria categoria { get; set; }
+        public int Categoria { get; set; }
         
-        public JogoModel(int id, string nome, double preco, Categoria categoria)
+        public JogoModel(int id, string nome, double preco, int categoria)
         {
+            Id = id;
             Nome = nome;
             Preco = preco;
-            this.categoria = categoria;
+            Categoria = categoria;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2} {3}", Id, Nome, Preco, Categoria);
         }
     }
 }
