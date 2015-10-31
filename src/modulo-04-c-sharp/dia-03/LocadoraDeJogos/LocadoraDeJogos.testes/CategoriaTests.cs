@@ -48,6 +48,15 @@ namespace LocadoraDeJogos.testes
             Assert.AreEqual(esperado, categoria);
         }
 
+        [TestMethod]
+        public void ListarCategorias()
+        {
+            Categoria.InicializarRecarregarCategoria();
+            string esperado = "1 - rpg, 2 - aventura, 3 - corrida, 4 - luta, \r\n5 - esporte, 6 - mundo aberto, ";
+
+            Assert.AreEqual(esperado, Categoria.ListarCategorias());
+        }
+
         //[TestMethod]
         //public void ConverterDeIntParaString_falha()
         //{

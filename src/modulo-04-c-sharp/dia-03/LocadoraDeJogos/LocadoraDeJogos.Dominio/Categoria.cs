@@ -39,6 +39,14 @@ namespace LocadoraDeJogos.Dominio
                 }
                 return NomeParaId[chave.ToLower()];
             }
+            catch (KeyNotFoundException)
+            {
+                return -1;                
+            }
+            catch (ArgumentNullException)
+            {
+                return -1;
+            }
             catch (Exception erro)
             {
                 string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
@@ -56,6 +64,10 @@ namespace LocadoraDeJogos.Dominio
             {
                 return idParaNome[chave];
             }
+            catch (KeyNotFoundException)
+            {
+                return "-1";
+            }
             catch (Exception erro)
             {
                 string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
@@ -64,6 +76,26 @@ namespace LocadoraDeJogos.Dominio
                 File.AppendAllText(localDoArquivo, mensagemDeLog);
                 return "-1";
             }
+        }      
+  
+        public static string ListarCategorias()
+        {
+            string enderecoCategorias = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\xml\categorias.xml";
+            XElement XMLCategorias = XElement.Load(enderecoCategorias);
+            var categorias = XMLCategorias.Elements("categoria");
+            string categoriasLista = "";
+            int quebraLinha = 0;
+            
+            foreach (var categoria in categorias)
+            {
+                categoriasLista += string.Format("{0} - {1}, ", categoria.Attribute("id").Value, categoria.Element("nome").Value);
+                if ((++quebraLinha % 4) == 0)
+                {
+                    categoriasLista += "\r\n";
+                }
+            }
+
+            return categoriasLista;
         }
     }
 }

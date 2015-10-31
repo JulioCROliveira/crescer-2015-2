@@ -105,4 +105,9 @@
     <preco>199.99</preco>
     <categoria>6</categoria>
   </jogo>
+  <jogo id="22">
+    <nome>Fallout 4</nome>
+    <preco>169.89</preco>
+    <categoria>1</categoria>
+  </jogo>
 </jogos>
