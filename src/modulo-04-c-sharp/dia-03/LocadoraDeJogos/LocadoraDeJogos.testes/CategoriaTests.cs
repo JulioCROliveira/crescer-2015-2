@@ -17,17 +17,17 @@ namespace LocadoraDeJogos.testes
         {
             Categoria.InicializarRecarregarCategoria();
 
-            Assert.AreEqual("RPG", Categoria.idParaNome["1"]);
-            Assert.AreEqual("Aventura", Categoria.idParaNome["2"]);
-            Assert.AreEqual("Corrida", Categoria.idParaNome["3"]);
-            Assert.AreEqual("Luta", Categoria.idParaNome["4"]);
-            Assert.AreEqual("Esporte", Categoria.idParaNome["5"]);
+            Assert.AreEqual("rpg", Categoria.idParaNome[1]);
+            Assert.AreEqual("aventura", Categoria.idParaNome[2]);
+            Assert.AreEqual("corrida", Categoria.idParaNome[3]);
+            Assert.AreEqual("luta", Categoria.idParaNome[4]);
+            Assert.AreEqual("esporte", Categoria.idParaNome[5]);
 
-            Assert.AreEqual("1", Categoria.NomeParaId["RPG"]);
-            Assert.AreEqual("2", Categoria.NomeParaId["Aventura"]);
-            Assert.AreEqual("3", Categoria.NomeParaId["Corrida"]);
-            Assert.AreEqual("4", Categoria.NomeParaId["Luta"]);
-            Assert.AreEqual("5", Categoria.NomeParaId["Esporte"]);
+            Assert.AreEqual(1, Categoria.NomeParaId["rpg"]);
+            Assert.AreEqual(2, Categoria.NomeParaId["aventura"]);
+            Assert.AreEqual(3, Categoria.NomeParaId["corrida"]);
+            Assert.AreEqual(4, Categoria.NomeParaId["luta"]);
+            Assert.AreEqual(5, Categoria.NomeParaId["esporte"]);
         }
     }
 }

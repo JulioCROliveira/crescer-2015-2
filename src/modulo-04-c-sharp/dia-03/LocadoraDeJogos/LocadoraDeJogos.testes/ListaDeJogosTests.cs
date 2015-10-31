@@ -11,14 +11,14 @@ namespace LocadoraDeJogos.testes
         [TestMethod]
         public void ListarJogos()
         {
-            ListaDeJogos.ListarJogos();
+            ListaDeJogos.Listar();
         }
 
         [TestMethod]
         public void BuscarJogoTrigger()
         {
             Categoria.InicializarRecarregarCategoria();
-            List<JogoModel> busca = ListaDeJogos.BuscarJogo("Trigger");
+            List<JogoModel> busca = ListaDeJogos.BuscarPorNome("Trigger");
             List<JogoModel> esperado = new List<JogoModel>();
             esperado.Add(new JogoModel(1, "Chrono Trigger", 60.0, 1));
 
@@ -29,7 +29,7 @@ namespace LocadoraDeJogos.testes
         public void BuscarPortoERetorna3JogosIncluindoToMaiusculo()
         {
             Categoria.InicializarRecarregarCategoria();
-            List<JogoModel> busca = ListaDeJogos.BuscarJogo("Trigger");
+            List<JogoModel> busca = ListaDeJogos.BuscarPorNome("Trigger");
             List<JogoModel> esperado = new List<JogoModel>();
             esperado.Add(new JogoModel(2, "Top Gear", 20.0, 3));
             esperado.Add(new JogoModel(14, "Zelda: A link to the past", 110.0, 2));

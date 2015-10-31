@@ -10,7 +10,7 @@ namespace LocadoraDeJogos.Dominio
     {
         private const string enderecoJogo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\xml\game_store.xml";
 
-        public static string ListarJogos()
+        public static string Listar()
         {            
             string lista = "";
             XElement XMLJogos = XElement.Load(enderecoJogo);
@@ -27,11 +27,11 @@ namespace LocadoraDeJogos.Dominio
             return lista;
         }
 
-        public static List<JogoModel> BuscarJogo(string nomeJogo)
+        public static List<JogoModel> BuscarPorNome(string nome)
         {
             List<JogoModel> lista = new List<JogoModel>();
             XElement XMLJogos = XElement.Load(enderecoJogo);
-            var jogos = XMLJogos.Elements("jogo").Where(jogo => contemPalavra(jogo.Element("nome").Value, nomeJogo));
+            var jogos = XMLJogos.Elements("jogo").Where(jogo => contemPalavra(jogo.Element("nome").Value, nome));
 
             foreach (var jogo in jogos)
             {
@@ -39,6 +39,20 @@ namespace LocadoraDeJogos.Dominio
             }
 
             return lista;
+        }
+
+        public static JogoModel BuscarPorId(int id)
+        {
+            List<JogoModel> lista = new List<JogoModel>();
+            XElement XMLJogos = XElement.Load(enderecoJogo);
+            var jogos = XMLJogos.Elements("jogo").Where(jogo => int.Parse(jogo.Attribute("id").Value) == id);
+
+            foreach (var jogo in jogos)
+            {
+                lista.Add(new JogoModel(int.Parse(jogo.Attribute("id").Value), jogo.Element("nome").Value, double.Parse(jogo.Element("preco").Value.Replace('.', ',')), int.Parse(jogo.Element("categoria").Value)));
+            }
+
+            return lista[0];
         }
 
         public static string ToString(List<JogoModel> lista)
