@@ -31,7 +31,7 @@ namespace LocadoraDeJogos.Dominio
         {
             List<JogoModel> lista = new List<JogoModel>();
             XElement XMLJogos = XElement.Load(enderecoJogo);
-            var jogos = XMLJogos.Elements("jogo").Where(jogo => contemPalavra(jogo.Element("nome").Value, nome));
+            var jogos = XMLJogos.Elements("jogo").Where(jogo => jogo.Element("nome").Value.ContainsNoCaseSensitive(nome));
 
             foreach (var jogo in jogos)
             {
@@ -63,15 +63,6 @@ namespace LocadoraDeJogos.Dominio
                 listaDeJogos += jogo.ToString() + "\r\n";
             }
             return listaDeJogos;
-        }
-
-        public static bool contemPalavra(string palavra1, string palavra2)
-        {
-            if (palavra1 != null && palavra2 != null)
-            {
-                return palavra1.ToUpper().Contains(palavra2.ToUpper());
-            }
-            return palavra1 == palavra2;
-        }
+        }        
     }
 }
