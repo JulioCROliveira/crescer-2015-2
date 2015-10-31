@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <jogos>
   <jogo id="1">
     <nome>Chrono Trigger</nome>
@@ -99,5 +99,10 @@
     <nome>Mickey to Donald: Magical Adventure 3</nome>
     <preco>32.9</preco>
     <categoria>2</categoria>
+  </jogo>
+  <jogo id="21">
+    <nome>Metal Gear Solid V</nome>
+    <preco>199,99</preco>
+    <categoria>6</categoria>
   </jogo>
 </jogos>

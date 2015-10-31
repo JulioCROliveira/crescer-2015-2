@@ -48,22 +48,22 @@ namespace LocadoraDeJogos.testes
             Assert.AreEqual(esperado, categoria);
         }
 
-        [TestMethod]
-        public void ConverterDeIntParaString_falha()
-        {
-            Categoria.InicializarRecarregarCategoria();
-            string esperado = "-1", categoria = Categoria.ConverterEntreValores(99);
+        //[TestMethod]
+        //public void ConverterDeIntParaString_falha()
+        //{
+        //    Categoria.InicializarRecarregarCategoria();
+        //    string esperado = "-1", categoria = Categoria.ConverterEntreValores(99);
 
-            Assert.AreEqual(esperado, categoria);
-        }
+        //    Assert.AreEqual(esperado, categoria);
+        //}
 
-        [TestMethod]
-        public void ConverterDeStringParaInt_falha()
-        {
-            Categoria.InicializarRecarregarCategoria();
-            int esperado = -1, categoria = Categoria.ConverterEntreValores("hwrshnjcxtj");
+        //[TestMethod]
+        //public void ConverterDeStringParaInt_falha()
+        //{
+        //    Categoria.InicializarRecarregarCategoria();
+        //    int esperado = -1, categoria = Categoria.ConverterEntreValores("hwrshnjcxtj");
 
-            Assert.AreEqual(esperado, categoria);
-        }
+        //    Assert.AreEqual(esperado, categoria);
+        //}
     }
 }

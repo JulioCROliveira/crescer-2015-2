@@ -39,5 +39,18 @@ namespace LocadoraDeJogos.testes
             Assert.AreEqual(esperado[1].ToString(), busca[1].ToString());
             Assert.AreEqual(esperado[2].ToString(), busca[2].ToString());
         }
+
+        [TestMethod]
+        public void cadastrandoMetalGear()
+        {
+            Categoria.InicializarRecarregarCategoria();
+            int idEsperado = ListaDeJogos.getProximoId();
+            string nome = "Metal Gear Solid V";
+            double preco = 199.99;
+            int categoria = Categoria.ConverterEntreValores("Mundo Aberto");
+            int idDoJogoAdicionado = ListaDeJogos.Adicionar(nome, preco, categoria);
+
+            Assert.AreEqual(idEsperado, idDoJogoAdicionado);
+        }
     }
 }
