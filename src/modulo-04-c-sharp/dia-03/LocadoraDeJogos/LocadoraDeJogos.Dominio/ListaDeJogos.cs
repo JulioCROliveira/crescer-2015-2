@@ -72,7 +72,7 @@ namespace LocadoraDeJogos.Dominio
             try
             {                
                 int id = getProximoId();
-                string jogoAAdicionar = string.Format("{0}    <nome>{1}</nome>{0}    <preco>{2}</preco>{0}    <categoria>{3}</categoria>{0}  ", "\r\n", nome, preco, categoria);
+                string jogoAAdicionar = string.Format("{0}    <nome>{1}</nome>{0}    <preco>{2}</preco>{0}    <categoria>{3}</categoria>{0}  ", "\r\n", nome, preco.ToString().Replace(',', '.'), categoria);
                 XmlDocument XMLJogos = new XmlDocument();
                 XMLJogos.Load(enderecoJogo);
                 XmlNode jogo = XMLJogos.CreateElement("jogo");
@@ -94,11 +94,82 @@ namespace LocadoraDeJogos.Dominio
             }
         }
 
+        public static void Modificar(int id, string nome, double preco, int categoria)
+        {
+            try
+            {
+                XElement XMLJogos = XElement.Load(enderecoJogo);
+                foreach (XElement jogo in XMLJogos.Elements("jogo"))
+                {
+                    if (jogo.Attribute("id").Value == id.ToString())
+                    {
+                        if (nome != "") { jogo.Element("nome").Value = nome.ToString(); }
+                        if (preco >= 0) { jogo.Element("preco").Value = preco.ToString().Replace(',', '.'); }
+                        if (categoria >= 0) { jogo.Element("categoria").Value = categoria.ToString(); }
+                        break;
+                    }
+                }
+
+                XMLJogos.Save(enderecoJogo);                
+            }
+            catch (Exception erro)
+            {
+                string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
+                string mensagemDeLog = string.Format("{0}: {1}{2}   Classe: {3}, Metodo:{4}{2}",
+                    DateTime.Now, erro.Message, "\r\n", System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.Name, System.Reflection.MethodInfo.GetCurrentMethod());
+                File.AppendAllText(localDoArquivo, mensagemDeLog);                
+            }
+        }
+
         public static int getProximoId()
         {
             XElement XMLJogos = XElement.Load(enderecoJogo);
             var jogos = XMLJogos.Elements("jogo");
             return XMLJogos.Descendants("jogo").Max(x => (int)x.Attribute("id")) + 1;
+        }
+
+        public static void ExportarRelatorio()
+        {
+            string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\relatorio.txt";
+            XElement XMLJogos = XElement.Load(enderecoJogo);
+            var jogos = XMLJogos.Elements("jogo");
+            double maisCaro = 0, maisBarato = 9999, media = 0;
+            string nomeCaro = "", nomeBarato = "";
+            int quantidadeDeJogos=0;
+            
+            File.WriteAllText(localDoArquivo, "");
+            File.AppendAllText(localDoArquivo, string.Format("{0}LOCADORA NUNES GAMES{1}", "                             ", "\r\n"));
+            File.AppendAllText(localDoArquivo, string.Format("{0:dd/MM/yyy}                                                              {0:hh:mm:ss}{1}",DateTime.Now, "\r\n"));
+            File.AppendAllText(localDoArquivo, string.Format("{0}Relatório de jogos{1}", "                              ", "\r\n"));
+            File.AppendAllText(localDoArquivo, "================================================================================\r\n");
+            File.AppendAllText(localDoArquivo, "ID       Categoria        Nome                          Preço         Disponivel\r\n");
+            foreach (var jogo in jogos)
+            {
+                File.AppendAllText(localDoArquivo, string.Format("{0}{1}{2}{3}{4}{5}R$ {6}{7}SIM{8}", jogo.Attribute("id").Value, "          ".Substring(jogo.Attribute("id").Value.Length),
+                    Categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(), "                 ".Substring(Categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).Length), 
+                    jogo.Element("nome").Value.ToUpper(), "                              ".Substring(jogo.Element("nome").Value.Length),
+                    jogo.Element("preco").Value, "                  ".Substring(jogo.Element("preco").Value.Length), "\r\n"));
+                quantidadeDeJogos++;
+                media += double.Parse(jogo.Element("preco").Value.Replace('.', ','));
+                if (double.Parse(jogo.Element("preco").Value.Replace('.', ',')) > maisCaro)
+                {
+                    nomeCaro = jogo.Element("nome").Value.ToUpper();
+                    maisCaro = double.Parse(jogo.Element("preco").Value.Replace('.', ','));
+                }
+                if (double.Parse(jogo.Element("preco").Value.Replace('.', ',')) < maisBarato)
+                {
+                    nomeBarato = jogo.Element("nome").Value.ToUpper();
+                    maisBarato = double.Parse(jogo.Element("preco").Value.Replace('.', ','));
+                }
+            }
+            media /= quantidadeDeJogos;
+            File.AppendAllText(localDoArquivo, "--------------------------------------------------------------------------------\r\n");
+            File.AppendAllText(localDoArquivo, string.Format("Quantidade total de jogos: {0}{1}", quantidadeDeJogos, "\r\n"));
+            File.AppendAllText(localDoArquivo, string.Format("Quantidade de jogos disponíveis: {0}{1}", quantidadeDeJogos, "\r\n"));
+            File.AppendAllText(localDoArquivo, string.Format("Valor médio por jogo: R$ {0:.00}{1}", media, "\r\n"));
+            File.AppendAllText(localDoArquivo, string.Format("Jogo mais caro: {0}{1}", nomeCaro, "\r\n"));
+            File.AppendAllText(localDoArquivo, string.Format("Jogo mais barato: {0}{1}", nomeBarato, "\r\n"));
+            File.AppendAllText(localDoArquivo, "================================================================================\r\n");
         }
     }
 }

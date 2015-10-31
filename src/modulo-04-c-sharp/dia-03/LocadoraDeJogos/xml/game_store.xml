@@ -11,9 +11,9 @@
     <categoria>3</categoria>
   </jogo>
   <jogo id="3">
-    <nome>Megaman X</nome>
-    <preco>40</preco>
-    <categoria>2</categoria>
+    <nome>Megaman XI</nome>
+    <preco>60</preco>
+    <categoria>1</categoria>
   </jogo>
   <jogo id="4">
     <nome>Super Metroid</nome>
@@ -76,7 +76,7 @@
     <categoria>1</categoria>
   </jogo>
   <jogo id="16">
-    <nome>International Super Star Soccer Deluxe</nome>
+    <nome>Super Star Soccer Deluxe</nome>
     <preco>45</preco>
     <categoria>5</categoria>
   </jogo>
@@ -96,13 +96,13 @@
     <categoria>2</categoria>
   </jogo>
   <jogo id="20">
-    <nome>Mickey to Donald: Magical Adventure 3</nome>
+    <nome>Mickey to Donald: Magical 3</nome>
     <preco>32.9</preco>
     <categoria>2</categoria>
   </jogo>
   <jogo id="21">
     <nome>Metal Gear Solid V</nome>
-    <preco>199,99</preco>
+    <preco>199.99</preco>
     <categoria>6</categoria>
   </jogo>
 </jogos>
