@@ -29,5 +29,41 @@ namespace LocadoraDeJogos.testes
             Assert.AreEqual(4, Categoria.NomeParaId["luta"]);
             Assert.AreEqual(5, Categoria.NomeParaId["esporte"]);
         }
+
+        [TestMethod]
+        public void ConverterDe1Para_rpg()
+        {
+            Categoria.InicializarRecarregarCategoria();
+            string esperado = "rpg", categoria = Categoria.ConverterEntreValores(1);
+
+            Assert.AreEqual(esperado, categoria);
+        }
+
+        [TestMethod]
+        public void ConverterDe_aventuraPara2()
+        {
+            Categoria.InicializarRecarregarCategoria();
+            int esperado = 2, categoria = Categoria.ConverterEntreValores("aventura");
+
+            Assert.AreEqual(esperado, categoria);
+        }
+
+        [TestMethod]
+        public void ConverterDeIntParaString_falha()
+        {
+            Categoria.InicializarRecarregarCategoria();
+            string esperado = "-1", categoria = Categoria.ConverterEntreValores(99);
+
+            Assert.AreEqual(esperado, categoria);
+        }
+
+        [TestMethod]
+        public void ConverterDeStringParaInt_falha()
+        {
+            Categoria.InicializarRecarregarCategoria();
+            int esperado = -1, categoria = Categoria.ConverterEntreValores("hwrshnjcxtj");
+
+            Assert.AreEqual(esperado, categoria);
+        }
     }
 }

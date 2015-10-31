@@ -19,7 +19,7 @@ namespace LocadoraDeJogos.IO
             esperado.Add(new JogoModel(20, "Mickey to Donald: Magical Adventure 3", 32.9, 2));
             var lista = ListaDeJogos.BuscarPorNome("to");
 
-            int teste = Categoria.ConverterEntreValores([1,2]);
+            int teste = Categoria.ConverterEntreValores("rpg");
 
 
             Console.WriteLine(ListaDeJogos.Listar());
