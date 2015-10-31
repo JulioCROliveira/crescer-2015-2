@@ -1,0 +1,24 @@
+﻿31/10/2015 20:20:04: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:24:01: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:25:29: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:25:58: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:26:51: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:31:13: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:31:27: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])
+31/10/2015 20:31:43: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
+Nome do parâmetro: length
+   Classe: Program, Metodo:Void Main(System.String[])

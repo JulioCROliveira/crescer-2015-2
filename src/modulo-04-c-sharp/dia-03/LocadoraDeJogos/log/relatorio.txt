@@ -1,0 +1,34 @@
+                             LOCADORA NUNES GAMES
+31/10/2015                                                              08:22:50
+                              Relatório de jogos
+================================================================================
+ID       Categoria        Nome                          Preço         Disponivel
+1         RPG              CHRONO TRIGGER                R$ 60                SIM
+2         CORRIDA          TOP GEAR                      R$ 20                SIM
+3         RPG              MEGAMAN XI                    R$ 60                SIM
+4         AVENTURA         SUPER METROID                 R$ 35                SIM
+5         AVENTURA         DONKEY KONG COUNTRY           R$ 25                SIM
+6         CORRIDA          SUPER MARIO KART              R$ 40                SIM
+7         LUTA             SUPER STREET FIGHTER          R$ 25                SIM
+8         LUTA             MORTAL KOMBAT 2               R$ 37                SIM
+9         LUTA             KILLER INSTINCT               R$ 18                SIM
+10        AVENTURA         FINAL FIGHT                   R$ 12                SIM
+11        RPG              SUPER MARIO RPG               R$ 70                SIM
+12        AVENTURA         ALADDIN                       R$ 16                SIM
+13        CORRIDA          ROCK 'N ROLL RACING           R$ 22                SIM
+14        AVENTURA         ZELDA: A LINK TO THE PAST     R$ 110               SIM
+15        RPG              FINAL FANTASY VI              R$ 30.5              SIM
+16        ESPORTE          SUPER STAR SOCCER DELUXE      R$ 45                SIM
+17        AVENTURA         CONTRA III                    R$ 28                SIM
+18        AVENTURA         SUNSET RIDERS                 R$ 37.9              SIM
+19        AVENTURA         GOOF TROOP                    R$ 41.9              SIM
+20        AVENTURA         MICKEY TO DONALD: MAGICAL 3   R$ 32.9              SIM
+21        MUNDO ABERTO     METAL GEAR SOLID V            R$ 199.99            SIM
+22        RPG              FALLOUT 4                     R$ 179.76            SIM
+--------------------------------------------------------------------------------
+Quantidade total de jogos: 22
+Quantidade de jogos disponíveis: 22
+Valor médio por jogo: R$ 52,09
+Jogo mais caro: METAL GEAR SOLID V
+Jogo mais barato: FINAL FIGHT
+================================================================================
