@@ -24,7 +24,8 @@ namespace LocadoraDeJogos.Dominio
 
         public override string ToString()
         {
-            return String.Format("Id:{0} Nome:{1} Preço:{2:c} Categoria:{3}", Id, Nome, Preco, Categoria.ConverterEntreValores(CategoriaDoJogo));
+            Categoria categoria = new Categoria();
+            return String.Format("Id:{0}{4}Nome:{1}{4}Preço:{2:c}{4}Categoria:{3}{4}", Id, Nome, Preco, categoria.ConverterEntreValores(CategoriaDoJogo), "\r\n");
         }
     }
 }

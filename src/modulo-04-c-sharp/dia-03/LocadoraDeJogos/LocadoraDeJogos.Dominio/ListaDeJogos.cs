@@ -8,56 +8,82 @@ using System.IO;
 
 namespace LocadoraDeJogos.Dominio
 {
-    public static class ListaDeJogos
+    public class ListaDeJogos
     {
         private const string enderecoJogo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\xml\game_store.xml";
+        Categoria categoria = new Categoria();
 
-        public static string Listar()
+        public string Listar()
         {            
             string lista = "";
-            XElement XMLJogos = XElement.Load(enderecoJogo);
+            XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo");
 
             foreach (var jogo in jogos)
-            {                
-                lista += "ID : " + jogo.Attribute("id").Value +
-                    "\r\nNome : " + jogo.Element("nome").Value +
-                    "\r\nPreço : " + jogo.Element("preco").Value +
-                    "\r\nCategoria : " + Categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)) + "\r\n\r\n";
+            {
+                lista += ParseFromXElement(jogo).ToString();
             }
             
             return lista;
         }
 
-        public static List<JogoModel> BuscarPorNome(string nome)
+        public List<JogoModel> BuscarPorNome(string nome)
         {
             List<JogoModel> lista = new List<JogoModel>();
-            XElement XMLJogos = XElement.Load(enderecoJogo);
+            XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo").Where(jogo => jogo.Element("nome").Value.ContainsNoCaseSensitive(nome));
 
             foreach (var jogo in jogos)
             {
-                lista.Add(new JogoModel(int.Parse(jogo.Attribute("id").Value), jogo.Element("nome").Value, double.Parse(jogo.Element("preco").Value.Replace('.',',')), int.Parse(jogo.Element("categoria").Value)));
+                lista.Add(ParseFromXElement(jogo));
             }
 
             return lista;
         }
 
-        public static JogoModel BuscarPorId(int id)
+        public JogoModel BuscarPorId(int id)
         {
             List<JogoModel> lista = new List<JogoModel>();
-            XElement XMLJogos = XElement.Load(enderecoJogo);
-            var jogos = XMLJogos.Elements("jogo").Where(jogo => int.Parse(jogo.Attribute("id").Value) == id);
+            XElement XMLJogos = CarregarXML();
+            IEnumerable<XElement> jogos = XMLJogos.Elements("jogo").Where(jogo => int.Parse(jogo.Attribute("id").Value) == id);
 
             foreach (var jogo in jogos)
             {
-                lista.Add(new JogoModel(int.Parse(jogo.Attribute("id").Value), jogo.Element("nome").Value, double.Parse(jogo.Element("preco").Value.Replace('.', ',')), int.Parse(jogo.Element("categoria").Value)));
+                lista.Add(ParseFromXElement(jogo));
             }
 
             return lista[0];
         }
 
-        public static string ToString(List<JogoModel> lista)
+        private XElement CarregarXML()
+        {            
+            XElement XMLJogos = XElement.Load(enderecoJogo);
+            return XMLJogos;
+        }
+
+        public JogoModel ParseFromXElement(XElement jogo)
+        {
+            return new JogoModel(int.Parse(jogo.Attribute("id").Value), jogo.Element("nome").Value, 
+                double.Parse(jogo.Element("preco").Value.Replace('.', ',')), int.Parse(jogo.Element("categoria").Value));
+        }
+
+        public XmlDocument ConverteEInsereNoXML(JogoModel jogoModelo)
+        {
+            XmlDocument XMLJogos = new XmlDocument();
+            XMLJogos.Load(enderecoJogo);
+            string jogoAAdicionar = string.Format("{0}    <nome>{1}</nome>{0}    <preco>{2}</preco>{0}    <categoria>{3}</categoria>{0}  ", "\r\n", 
+                jogoModelo.Nome, jogoModelo.Preco.ToString().Replace(',', '.'), jogoModelo.CategoriaDoJogo);
+            XmlNode jogo = XMLJogos.CreateElement("jogo");
+            XmlAttribute atrId = XMLJogos.CreateAttribute("id");
+            atrId.Value = jogoModelo.Id.ToString();
+            jogo.Attributes.Append(atrId);
+            jogo.InnerXml = jogoAAdicionar;
+            XMLJogos.ChildNodes[1].AppendChild(jogo);
+
+            return XMLJogos;
+        }
+
+        public string ToString(List<JogoModel> lista)
         {
             string listaDeJogos = "";
             foreach (var jogo in lista)
@@ -67,38 +93,28 @@ namespace LocadoraDeJogos.Dominio
             return listaDeJogos;
         }
 
-        public static int Adicionar(string nome, double preco, int categoria)
+        public int Adicionar(string nome, double preco, int categoria)
         {
             try
-            {                
+            {
                 int id = getProximoId();
-                string jogoAAdicionar = string.Format("{0}    <nome>{1}</nome>{0}    <preco>{2}</preco>{0}    <categoria>{3}</categoria>{0}  ", "\r\n", nome, preco.ToString().Replace(',', '.'), categoria);
-                XmlDocument XMLJogos = new XmlDocument();
-                XMLJogos.Load(enderecoJogo);
-                XmlNode jogo = XMLJogos.CreateElement("jogo");
-                XmlAttribute atrId = XMLJogos.CreateAttribute("id");
-                atrId.Value = id.ToString();
-                jogo.Attributes.Append(atrId);
-                jogo.InnerXml = jogoAAdicionar;
-                XMLJogos.ChildNodes[1].AppendChild(jogo);
+                JogoModel jogoModelo = new JogoModel(id, nome, preco, categoria);
+                XmlDocument XMLJogos = ConverteEInsereNoXML(jogoModelo);                
                 XMLJogos.Save(enderecoJogo);
                 return id;
             }            
             catch (Exception erro)
             {
-                string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
-                string mensagemDeLog = string.Format("{0}: {1}{2}   Classe: {3}, Metodo:{4}{2}",
-                    DateTime.Now, erro.Message, "\r\n", System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.Name, System.Reflection.MethodInfo.GetCurrentMethod());
-                File.AppendAllText(localDoArquivo, mensagemDeLog);
-                return -1;
+                CustomExceptionLogger.GerarLog(erro);
+                return 0;
             }
         }
 
-        public static void Modificar(int id, string nome, double preco, int categoria)
+        public void Modificar(int id, string nome, double preco, int categoria)
         {
             try
             {
-                XElement XMLJogos = XElement.Load(enderecoJogo);
+                XElement XMLJogos = CarregarXML();
                 foreach (XElement jogo in XMLJogos.Elements("jogo"))
                 {
                     if (jogo.Attribute("id").Value == id.ToString())
@@ -114,24 +130,21 @@ namespace LocadoraDeJogos.Dominio
             }
             catch (Exception erro)
             {
-                string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
-                string mensagemDeLog = string.Format("{0}: {1}{2}   Classe: {3}, Metodo:{4}{2}",
-                    DateTime.Now, erro.Message, "\r\n", System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.Name, System.Reflection.MethodInfo.GetCurrentMethod());
-                File.AppendAllText(localDoArquivo, mensagemDeLog);                
+                CustomExceptionLogger.GerarLog(erro);         
             }
         }
 
-        public static int getProximoId()
+        public int getProximoId()
         {
-            XElement XMLJogos = XElement.Load(enderecoJogo);
+            XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo");
             return XMLJogos.Descendants("jogo").Max(x => (int)x.Attribute("id")) + 1;
         }
 
-        public static void ExportarRelatorio()
+        public void ExportarRelatorio()
         {
             string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\relatorio.txt";
-            XElement XMLJogos = XElement.Load(enderecoJogo);
+            XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo");
             double maisCaro = 0, maisBarato = 9999, media = 0;
             string nomeCaro = "", nomeBarato = "";
@@ -146,7 +159,7 @@ namespace LocadoraDeJogos.Dominio
             foreach (var jogo in jogos)
             {
                 File.AppendAllText(localDoArquivo, string.Format("{0}{1}{2}{3}{4}{5}R$ {6}{7}SIM{8}", jogo.Attribute("id").Value, "          ".Substring(jogo.Attribute("id").Value.Length),
-                    Categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(), "                 ".Substring(Categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).Length), 
+                    categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(), "                 ".Substring(categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).Length), 
                     jogo.Element("nome").Value.ToUpper(), "                              ".Substring(jogo.Element("nome").Value.Length),
                     jogo.Element("preco").Value, "                  ".Substring(jogo.Element("preco").Value.Length), "\r\n"));
                 quantidadeDeJogos++;

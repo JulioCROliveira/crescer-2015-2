@@ -15,64 +15,64 @@ namespace LocadoraDeJogos.testes
         [TestMethod]
         public void InicializandoCategoria()
         {
-            Categoria.InicializarRecarregarCategoria();
+            Categoria categoria = new Categoria();
 
-            Assert.AreEqual("rpg", Categoria.idParaNome[1]);
-            Assert.AreEqual("aventura", Categoria.idParaNome[2]);
-            Assert.AreEqual("corrida", Categoria.idParaNome[3]);
-            Assert.AreEqual("luta", Categoria.idParaNome[4]);
-            Assert.AreEqual("esporte", Categoria.idParaNome[5]);
+            Assert.AreEqual("rpg", categoria.idParaNome[1]);
+            Assert.AreEqual("aventura", categoria.idParaNome[2]);
+            Assert.AreEqual("corrida", categoria.idParaNome[3]);
+            Assert.AreEqual("luta", categoria.idParaNome[4]);
+            Assert.AreEqual("esporte", categoria.idParaNome[5]);
 
-            Assert.AreEqual(1, Categoria.NomeParaId["rpg"]);
-            Assert.AreEqual(2, Categoria.NomeParaId["aventura"]);
-            Assert.AreEqual(3, Categoria.NomeParaId["corrida"]);
-            Assert.AreEqual(4, Categoria.NomeParaId["luta"]);
-            Assert.AreEqual(5, Categoria.NomeParaId["esporte"]);
+            Assert.AreEqual(1, categoria.NomeParaId["rpg"]);
+            Assert.AreEqual(2, categoria.NomeParaId["aventura"]);
+            Assert.AreEqual(3, categoria.NomeParaId["corrida"]);
+            Assert.AreEqual(4, categoria.NomeParaId["luta"]);
+            Assert.AreEqual(5, categoria.NomeParaId["esporte"]);
         }
 
         [TestMethod]
         public void ConverterDe1Para_rpg()
         {
-            Categoria.InicializarRecarregarCategoria();
-            string esperado = "rpg", categoria = Categoria.ConverterEntreValores(1);
+            Categoria categoria = new Categoria();
+            string esperado = "rpg", categoriaTeste = categoria.ConverterEntreValores(1);
 
-            Assert.AreEqual(esperado, categoria);
+            Assert.AreEqual(esperado, categoriaTeste);
         }
 
         [TestMethod]
         public void ConverterDe_aventuraPara2()
         {
-            Categoria.InicializarRecarregarCategoria();
-            int esperado = 2, categoria = Categoria.ConverterEntreValores("aventura");
+            Categoria categoria = new Categoria();
+            int esperado = 2, categoriaTeste = categoria.ConverterEntreValores("aventura");
 
-            Assert.AreEqual(esperado, categoria);
+            Assert.AreEqual(esperado, categoriaTeste);
         }
 
         [TestMethod]
         public void ListarCategorias()
         {
-            Categoria.InicializarRecarregarCategoria();
+            Categoria categoria = new Categoria();
             string esperado = "1 - rpg, 2 - aventura, 3 - corrida, 4 - luta, \r\n5 - esporte, 6 - mundo aberto, ";
 
-            Assert.AreEqual(esperado, Categoria.ListarCategorias());
+            Assert.AreEqual(esperado, categoria.ListarCategorias());
         }
 
         //[TestMethod]
         //public void ConverterDeIntParaString_falha()
         //{
-        //    Categoria.InicializarRecarregarCategoria();
-        //    string esperado = "-1", categoria = Categoria.ConverterEntreValores(99);
+        //    Categoria categoria = new Categoria();
+        //    string esperado = "-1", categoriaTeste = categoria.ConverterEntreValores(99);
 
-        //    Assert.AreEqual(esperado, categoria);
+        //    Assert.AreEqual(esperado, categoriaTeste);
         //}
 
         //[TestMethod]
         //public void ConverterDeStringParaInt_falha()
         //{
-        //    Categoria.InicializarRecarregarCategoria();
-        //    int esperado = -1, categoria = Categoria.ConverterEntreValores("hwrshnjcxtj");
+        //    Categoria categoria = new Categoria();
+        //    int esperado = -1, categoriaTeste = categoria.ConverterEntreValores("hwrshnjcxtj");
 
-        //    Assert.AreEqual(esperado, categoria);
+        //    Assert.AreEqual(esperado, categoriaTeste);
         //}
     }
 }

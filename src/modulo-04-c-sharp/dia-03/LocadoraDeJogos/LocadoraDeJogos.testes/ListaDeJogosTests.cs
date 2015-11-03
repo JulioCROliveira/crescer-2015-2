@@ -8,17 +8,19 @@ namespace LocadoraDeJogos.testes
     [TestClass]
     public class ListaDeJogosTests
     {
+        ListaDeJogos jogos = new ListaDeJogos();
+        Categoria categoria = new Categoria();
+
         [TestMethod]
         public void ListarJogos()
         {
-            ListaDeJogos.Listar();
+            jogos.Listar();
         }
 
         [TestMethod]
         public void BuscarJogoTrigger()
-        {
-            Categoria.InicializarRecarregarCategoria();
-            List<JogoModel> busca = ListaDeJogos.BuscarPorNome("Trigger");
+        {           
+            List<JogoModel> busca = jogos.BuscarPorNome("Trigger");
             List<JogoModel> esperado = new List<JogoModel>();
             esperado.Add(new JogoModel(1, "Chrono Trigger", 60.0, 1));
 
@@ -27,9 +29,8 @@ namespace LocadoraDeJogos.testes
 
         [TestMethod]
         public void BuscarPortoERetorna3JogosIncluindoToMaiusculo()
-        {
-            Categoria.InicializarRecarregarCategoria();
-            List<JogoModel> busca = ListaDeJogos.BuscarPorNome("to");
+        {            
+            List<JogoModel> busca = jogos.BuscarPorNome("to");
             List<JogoModel> esperado = new List<JogoModel>();
             esperado.Add(new JogoModel(2, "Top Gear", 20.0, 3));
             esperado.Add(new JogoModel(14, "Zelda: A link to the past", 110.0, 2));
@@ -43,13 +44,12 @@ namespace LocadoraDeJogos.testes
         /*
         [TestMethod]
         public void cadastrandoMetalGear()
-        {
-            Categoria.InicializarRecarregarCategoria();
+        {            
             int idEsperado = ListaDeJogos.getProximoId();
             string nome = "Metal Gear Solid V";
            double preco = 199.99;
-            int categoria = Categoria.ConverterEntreValores("Mundo Aberto");
-            int idDoJogoAdicionado = ListaDeJogos.Adicionar(nome, preco, categoria);
+            int categoria = categoria.ConverterEntreValores("Mundo Aberto");
+            int idDoJogoAdicionado = jogos.Adicionar(nome, preco, categoria);
 
             Assert.AreEqual(idEsperado, idDoJogoAdicionado);
         }
@@ -57,13 +57,12 @@ namespace LocadoraDeJogos.testes
 
         [TestMethod]
         public void ModificarJogo()
-        {
-            Categoria.InicializarRecarregarCategoria();
+        {            
             int id = 3;
             string nome = "Megaman XI";
             double preco = 60;
-            int categoria = Categoria.ConverterEntreValores("rpg");
-            ListaDeJogos.Modificar(id, nome, preco, categoria);
+            int categoriaJogo = categoria.ConverterEntreValores("rpg");
+            jogos.Modificar(id, nome, preco, categoriaJogo);
         }
     }
 }

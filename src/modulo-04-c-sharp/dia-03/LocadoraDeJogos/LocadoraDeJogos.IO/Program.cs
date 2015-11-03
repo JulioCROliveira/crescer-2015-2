@@ -12,22 +12,20 @@ namespace LocadoraDeJogos.IO
 {
     class Program
     {
+        static Categoria categoriaRepositorio = new Categoria();
+        static ListaDeJogos jogos = new ListaDeJogos();
         public const string LISTAR_TODOS_JOGOS = "1", BUSCAR_JOGO_POR_NOME = "2", ADICIONAR_JOGO  = "3", ALTERAR_JOGO = "4", EXPORTAR_RELATORIO = "5", SAIR = "0";
         public const string Buscar = "-1";
 
         static void Main(string[] args)
         {
             try
-            {
-                Categoria.InicializarRecarregarCategoria();
+            {                
                 MostrarMenuPrincipal();
             }           
             catch (Exception erro)
             {
-                string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
-                string mensagemDeLog = string.Format("{0}: {1}{2}   Classe: {3}, Metodo:{4}{2}",
-                    DateTime.Now, erro.Message, "\r\n", System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.Name, System.Reflection.MethodInfo.GetCurrentMethod());
-                File.AppendAllText(localDoArquivo, mensagemDeLog);
+                CustomExceptionLogger.GerarLog(erro);
             }
         }
 
@@ -76,26 +74,26 @@ namespace LocadoraDeJogos.IO
 
         public static void ListarTodosOsJogos()
         {
-            Console.WriteLine(ListaDeJogos.Listar());
+            Console.WriteLine(jogos.Listar());
             Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
             Console.ReadKey();
         }
 
         public static void BuscarJogo()
         {
-            List<JogoModel> jogos = new List<JogoModel>();
+            List<JogoModel> jogosPesquisa = new List<JogoModel>();
             string nomeDoJogo;
             Console.Clear();            
             Console.WriteLine("Escreva o nome do que procura:");
             nomeDoJogo = Console.ReadLine();
-            jogos = ListaDeJogos.BuscarPorNome(nomeDoJogo);
-            if (jogos.Count < 1)
+            jogosPesquisa = jogos.BuscarPorNome(nomeDoJogo);
+            if (jogosPesquisa.Count < 1)
             {
                 Console.WriteLine("Nenhum jogo encontrado");
             }
             else
             {
-                foreach (JogoModel jogo in jogos)
+                foreach (JogoModel jogo in jogosPesquisa)
                 {
                     Console.WriteLine(jogo.ToString());
                 }
@@ -123,16 +121,16 @@ namespace LocadoraDeJogos.IO
             while (categoria == -1)
             {                
                 Console.WriteLine("Selecione uma das categorias:");
-                Console.WriteLine(Categoria.ListarCategorias());
+                Console.WriteLine(categoriaRepositorio.ListarCategorias());
                 escrita = Console.ReadLine();
                 if (int.TryParse(escrita, out categoria))
                 {
-                    escrita = Categoria.ConverterEntreValores(int.Parse(escrita));
-                    categoria = Categoria.ConverterEntreValores(escrita);
+                    escrita = categoriaRepositorio.ConverterEntreValores(int.Parse(escrita));
+                    categoria = categoriaRepositorio.ConverterEntreValores(escrita);
                 }
                 else
                 {
-                    categoria = Categoria.ConverterEntreValores(escrita);
+                    categoria = categoriaRepositorio.ConverterEntreValores(escrita);
                 }
                 if (categoria == -1) { 
                     Console.Clear();
@@ -150,13 +148,13 @@ namespace LocadoraDeJogos.IO
                 if (preco <= 0)
                 {                    
                     Console.Clear();
-                    Console.WriteLine("nome: " + nome + "\r\nCategoria: " + Categoria.ConverterEntreValores(categoria)+
+                    Console.WriteLine("nome: " + nome + "\r\nCategoria: " + categoriaRepositorio.ConverterEntreValores(categoria)+
                         "\r\nValor deve ser um número maior que zero, digite novamente");
                 }       
             }
             try
             {
-                ListaDeJogos.Adicionar(nome, preco, categoria);
+                jogos.Adicionar(nome, preco, categoria);
                 Console.WriteLine("Jogo inserido com sucesso");
             }
             catch (Exception)
@@ -196,16 +194,16 @@ namespace LocadoraDeJogos.IO
             while (categoria == -1)
             {
                 Console.WriteLine("Selecione uma das categorias:");
-                Console.WriteLine(Categoria.ListarCategorias());
+                Console.WriteLine(categoriaRepositorio.ListarCategorias());
                 escrita = Console.ReadLine();
                 if (int.TryParse(escrita, out categoria))
                 {
-                    escrita = Categoria.ConverterEntreValores(int.Parse(escrita));
-                    categoria = Categoria.ConverterEntreValores(escrita);
+                    escrita = categoriaRepositorio.ConverterEntreValores(int.Parse(escrita));
+                    categoria = categoriaRepositorio.ConverterEntreValores(escrita);
                 }
                 else
                 {
-                    categoria = Categoria.ConverterEntreValores(escrita);
+                    categoria = categoriaRepositorio.ConverterEntreValores(escrita);
                 }
                 if (categoria == -1)
                 {
@@ -251,9 +249,9 @@ namespace LocadoraDeJogos.IO
                 }
                 if (jogo.CategoriaDoJogo != categoria)
                 {
-                    escrita += "\r\n Categoria alterado de " + Categoria.ConverterEntreValores(jogo.CategoriaDoJogo) + " para " + Categoria.ConverterEntreValores(categoria);
+                    escrita += "\r\n Categoria alterado de " + categoriaRepositorio.ConverterEntreValores(jogo.CategoriaDoJogo) + " para " + categoriaRepositorio.ConverterEntreValores(categoria);
                 }
-                ListaDeJogos.Modificar(id, nome, preco, categoria);
+                jogos.Modificar(id, nome, preco, categoria);
                 Console.WriteLine("Jogo alterado com as seguintes modificações:" + escrita);
 
             }
@@ -265,14 +263,14 @@ namespace LocadoraDeJogos.IO
         public static JogoModel ListarInformacoesPorId(int id)
         {
             Console.Clear();
-            JogoModel jogo = ListaDeJogos.BuscarPorId(id);
-            Console.WriteLine("Id: {1}{0}Nome: {2}{0}Categoria: {3}{0}Preco: {4:c}{0}", "\r\n", jogo.Id, jogo.Nome, Categoria.ConverterEntreValores(jogo.CategoriaDoJogo), jogo.Preco);
+            JogoModel jogo = jogos.BuscarPorId(id);
+            Console.WriteLine("Id: {1}{0}Nome: {2}{0}Categoria: {3}{0}Preco: {4:c}{0}", "\r\n", jogo.Id, jogo.Nome, categoriaRepositorio.ConverterEntreValores(jogo.CategoriaDoJogo), jogo.Preco);
             return jogo;
         }
 
         public static void ExportarRelatorio()
         {
-            ListaDeJogos.ExportarRelatorio();
+            jogos.ExportarRelatorio();
             Console.WriteLine("Relatório exportado para a pasta de log");
             Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
             Console.ReadKey();

@@ -9,16 +9,14 @@ using System.Reflection;
 
 namespace LocadoraDeJogos.Dominio
 {
-    public static class Categoria
+    public class Categoria
     {
-        public static Dictionary<int, string> idParaNome = new Dictionary<int, string>();
-        public static Dictionary<string, int> NomeParaId = new Dictionary<string, int>();
+        public Dictionary<int, string> idParaNome = new Dictionary<int, string>();
+        public Dictionary<string, int> NomeParaId = new Dictionary<string, int>();
 
-        public static void InicializarRecarregarCategoria()
+        public Categoria()
         {
-            string enderecoCategorias = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\xml\categorias.xml";
-            XElement XMLCategorias = XElement.Load(enderecoCategorias);
-            var categorias = XMLCategorias.Elements("categoria");
+            IEnumerable<XElement> categorias = CarregarXML();
             idParaNome.Clear();
             NomeParaId.Clear();
 
@@ -29,7 +27,7 @@ namespace LocadoraDeJogos.Dominio
             }
         }
 
-        public static int ConverterEntreValores(string chave)
+        public int ConverterEntreValores(string chave)
         {
             try
             {
@@ -39,6 +37,7 @@ namespace LocadoraDeJogos.Dominio
                 }
                 return NomeParaId[chave.ToLower()];
             }
+
             catch (KeyNotFoundException)
             {
                 return -1;                
@@ -49,16 +48,13 @@ namespace LocadoraDeJogos.Dominio
             }
             catch (Exception erro)
             {
-                string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
-                string mensagemDeLog = string.Format("{0}: {1}{2}   Classe: {3}, Metodo:{4}{2}",
-                    DateTime.Now, erro.Message, "\r\n", System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.Name, System.Reflection.MethodInfo.GetCurrentMethod());
-                File.AppendAllText(localDoArquivo, mensagemDeLog);
+                CustomExceptionLogger.GerarLog(erro);
                 return -1;
             }
 
         }
 
-        public static string ConverterEntreValores(int chave)
+        public string ConverterEntreValores(int chave)
         {
             try
             {
@@ -70,19 +66,14 @@ namespace LocadoraDeJogos.Dominio
             }
             catch (Exception erro)
             {
-                string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\log.txt";
-                string mensagemDeLog = string.Format("{0}: {1}{2}   Classe: {3}, Metodo:{4}{2}",
-                    DateTime.Now, erro.Message, "\r\n", System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.Name, System.Reflection.MethodInfo.GetCurrentMethod());
-                File.AppendAllText(localDoArquivo, mensagemDeLog);
+                CustomExceptionLogger.GerarLog(erro);
                 return "-1";
             }
         }      
   
-        public static string ListarCategorias()
+        public string ListarCategorias()
         {
-            string enderecoCategorias = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\xml\categorias.xml";
-            XElement XMLCategorias = XElement.Load(enderecoCategorias);
-            var categorias = XMLCategorias.Elements("categoria");
+            IEnumerable<XElement> categorias = CarregarXML();
             string categoriasLista = "";
             int quebraLinha = 0;
             
@@ -96,6 +87,15 @@ namespace LocadoraDeJogos.Dominio
             }
 
             return categoriasLista;
+        }
+
+        private IEnumerable<XElement> CarregarXML()
+        {
+            string enderecoCategorias = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\xml\categorias.xml";
+            XElement XMLCategorias = XElement.Load(enderecoCategorias);
+            IEnumerable<XElement> categorias = XMLCategorias.Elements("categoria");
+
+            return categorias;
         }
     }
 }
