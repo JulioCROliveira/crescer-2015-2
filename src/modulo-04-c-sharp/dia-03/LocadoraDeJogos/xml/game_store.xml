@@ -110,4 +110,9 @@
     <preco>179.76</preco>
     <categoria>1</categoria>
   </jogo>
+  <jogo id="23">
+    <nome>Rainbow Six Siege: Gold Edition</nome>
+    <preco>270</preco>
+    <categoria>7</categoria>
+  </jogo>
 </jogos>

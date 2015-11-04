@@ -14,8 +14,8 @@ namespace LocadoraDeJogos.Dominio
         Categoria categoria = new Categoria();
 
         public string Listar()
-        {            
-            string lista = "";
+        {
+            string lista = String.Empty;
             XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo");
 
@@ -99,7 +99,7 @@ namespace LocadoraDeJogos.Dominio
 
         public string ToString(List<JogoModel> lista)
         {
-            string listaDeJogos = "";
+            string listaDeJogos = String.Empty;
             foreach (var jogo in lista)
             {
                 listaDeJogos += jogo.ToString() + "\r\n";
@@ -133,7 +133,7 @@ namespace LocadoraDeJogos.Dominio
                 {
                     if (jogo.Attribute("id").Value == id.ToString())
                     {
-                        if (nome != "") { jogo.Element("nome").Value = nome.ToString(); }
+                        if (nome != String.Empty) { jogo.Element("nome").Value = nome.ToString(); }
                         if (preco >= 0) { jogo.Element("preco").Value = preco.ToString().Replace(',', '.'); }
                         if (categoria >= 0) { jogo.Element("categoria").Value = categoria.ToString(); }
                         break;
@@ -158,8 +158,8 @@ namespace LocadoraDeJogos.Dominio
         public void ExportarRelatorio()
         {
             string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\relatorio.txt";
-                        
-            File.WriteAllText(localDoArquivo, "");
+
+            File.WriteAllText(localDoArquivo, String.Empty);
             File.AppendAllText(localDoArquivo, EscreverRelatorio());            
         }
 
@@ -168,10 +168,10 @@ namespace LocadoraDeJogos.Dominio
             XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo");
             double maisCaro = 0, maisBarato = 9999, media = 0;
-            string nomeCaro = "", nomeBarato = "";
+            string nomeCaro = String.Empty, nomeBarato = String.Empty;
             int quantidadeDeJogos = 0;
 
-            string relatorio = "";
+            string relatorio = String.Empty;
             
             relatorio += string.Format("{0}LOCADORA TOP GAMES{1}", "                             ", "\r\n");
             relatorio += string.Format("{0:dd/MM/yyy}                                                              {0:hh:mm:ss}{1}", DateTime.Now, "\r\n");

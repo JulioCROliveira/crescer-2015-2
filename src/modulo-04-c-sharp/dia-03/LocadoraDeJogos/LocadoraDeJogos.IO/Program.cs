@@ -76,8 +76,7 @@ namespace LocadoraDeJogos.IO
         public static void ListarTodosOsJogos()
         {
             Console.WriteLine(jogos.Listar());
-            Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
-            Console.ReadKey();
+            FimDaOperacao();
         }
 
         public static void BuscarJogo()
@@ -99,9 +98,14 @@ namespace LocadoraDeJogos.IO
                     Console.WriteLine(jogo.ToString());
                 }
             }
+            FimDaOperacao();
+        }
+
+        public static void FimDaOperacao()
+        {
             Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
             Console.ReadKey();
-        }
+        } 
 
         public static void AdicionarJogo()
         {
@@ -119,33 +123,12 @@ namespace LocadoraDeJogos.IO
                     nome = INVALIDO;
                 }
             }
-            while (categoria == INVALIDA)
-            {                
-                Console.WriteLine("Selecione uma das categorias:");
-                Console.WriteLine(categoriaRepositorio.ListarCategorias());
-                escrita = Console.ReadLine();
-                if (int.TryParse(escrita, out categoria))
-                {
-                    escrita = categoriaRepositorio.ConverterEntreValores(int.Parse(escrita));
-                    categoria = categoriaRepositorio.ConverterEntreValores(escrita);
-                }
-                else
-                {
-                    categoria = categoriaRepositorio.ConverterEntreValores(escrita);
-                }
-                if (categoria == INVALIDA) { 
-                    Console.Clear();
-                    Console.WriteLine("nome: " + nome +"\r\nCategoria inserida não existe, digite novamente");
-                }                 
-            }
+            categoria = EscolherCategoria(nome);
             while (preco <= 0)
             {
                 Console.WriteLine("Insira o valor do jogo:");
                 escrita = Console.ReadLine().Replace(".",",");
-                if (double.TryParse(escrita, out preco))
-                {
-                    preco = double.Parse(escrita);
-                }
+                double.TryParse(escrita, out preco);
                 if (preco <= 0)
                 {                    
                     Console.Clear();
@@ -163,8 +146,7 @@ namespace LocadoraDeJogos.IO
                 Console.WriteLine("Falha ao inserir jogo");
             }
 
-            Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
-            Console.ReadKey();
+            FimDaOperacao();
         }
 
         public static void AlterarJogo()
@@ -188,12 +170,80 @@ namespace LocadoraDeJogos.IO
             jogo = ListarInformacoesPorId(id);
             Console.WriteLine("Insira o nome do jogo para alterar ou pressione enter para manter:");
             nome = Console.ReadLine();
-            if (nome.Replace(" ", "") == "")
+            bool naoAlterarNome = nome.Replace(" ", "") == "";
+            if (naoAlterarNome)
             {                
                nome = jogo.Nome;               
             }
-            while (categoria == INVALIDA)
+            categoria = EscolherCategoria(nome);
+            Console.WriteLine("Insira o novo preço do jogo ou pressione enter para manter:");
+            escrita = Console.ReadLine().Replace(".", ",");
+            bool naoAlterarValor = escrita.Replace(" ", "") == "";
+            if (naoAlterarValor)
             {
+                preco = jogo.Preco;
+            }
+            else
+            {
+                while (preco <= 0)
+                {
+                    double.TryParse(escrita, out preco);
+                    if (preco <= 0)
+                    {                        
+                        Console.WriteLine("Valor deve ser um número maior que zero, digite novamente");
+                        escrita = Console.ReadLine().Replace(".", ",");
+                    }                    
+                }
+            }
+            bool nenhumaAlteracao = jogo.Nome == nome && jogo.Preco == preco && categoria == jogo.CategoriaDoJogo;
+            if (nenhumaAlteracao)
+            {
+                Console.WriteLine("Nenhuma alteração a realizar");
+            }
+            else
+            {
+                escrita = String.Empty;
+                if (jogo.Nome != nome)
+                {
+                    escrita += "\r\n Nome alterado de " + jogo.Nome + " para " + nome;
+                }
+                if (jogo.Preco != preco)
+                {
+                    escrita += "\r\n Preço alterado de " + jogo.Preco + " para " + preco;
+                }
+                if (jogo.CategoriaDoJogo != categoria)
+                {
+                    escrita += "\r\n Categoria alterado de " + categoriaRepositorio.ConverterEntreValores(jogo.CategoriaDoJogo) + " para " + categoriaRepositorio.ConverterEntreValores(categoria);
+                }
+                jogos.Modificar(id, nome, preco, categoria);
+                Console.WriteLine("Jogo alterado com as seguintes modificações:" + escrita);
+
+            }
+
+            FimDaOperacao();
+        }
+
+        public static JogoModel ListarInformacoesPorId(int id)
+        {
+            Console.Clear();
+            JogoModel jogo = jogos.BuscarPorId(id);
+            Console.WriteLine(jogo.ToString());
+            return jogo;
+        }
+
+        public static void ExportarRelatorio()
+        {
+            jogos.ExportarRelatorio();
+            Console.WriteLine("Relatório exportado para a pasta de log");
+            FimDaOperacao();
+        }
+
+        public static int EscolherCategoria(string nome)
+        {
+            string escrita;
+            int categoria = -1;
+            while (categoria == INVALIDA)
+            {                
                 Console.WriteLine("Selecione uma das categorias:");
                 Console.WriteLine(categoriaRepositorio.ListarCategorias());
                 escrita = Console.ReadLine();
@@ -212,70 +262,8 @@ namespace LocadoraDeJogos.IO
                     Console.WriteLine("nome: " + nome + "\r\nCategoria inserida não existe, digite novamente");
                 }
             }
-            Console.WriteLine("Insira o novo preço do jogo ou pressione enter para manter:");
-            escrita = Console.ReadLine().Replace(".", ",");
-            if (escrita.Replace(" ", "") == "")
-            {
-                preco = jogo.Preco;
-            }
-            else
-            {
-                while (preco <= 0)
-                {                    
-                    if (double.TryParse(escrita, out preco))
-                    {
-                        preco = double.Parse(escrita);
-                    }
-                    if (preco <= 0)
-                    {                        
-                        Console.WriteLine("Valor deve ser um número maior que zero, digite novamente");
-                        escrita = Console.ReadLine().Replace(".", ",");
-                    }                    
-                }
-            }
-            bool nenhumaAlteracao = jogo.Nome == nome && jogo.Preco == preco && categoria == jogo.CategoriaDoJogo;
-            if (nenhumaAlteracao)
-            {
-                Console.WriteLine("Nenhuma alteração a realizar");
-            }
-            else
-            {                
-                escrita = "";
-                if (jogo.Nome != nome)
-                {
-                    escrita += "\r\n Nome alterado de " + jogo.Nome + " para " + nome;
-                }
-                if (jogo.Preco != preco)
-                {
-                    escrita += "\r\n Preço alterado de " + jogo.Preco + " para " + preco;
-                }
-                if (jogo.CategoriaDoJogo != categoria)
-                {
-                    escrita += "\r\n Categoria alterado de " + categoriaRepositorio.ConverterEntreValores(jogo.CategoriaDoJogo) + " para " + categoriaRepositorio.ConverterEntreValores(categoria);
-                }
-                jogos.Modificar(id, nome, preco, categoria);
-                Console.WriteLine("Jogo alterado com as seguintes modificações:" + escrita);
 
-            }
-            
-            Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
-            Console.ReadKey();
-        }
-
-        public static JogoModel ListarInformacoesPorId(int id)
-        {
-            Console.Clear();
-            JogoModel jogo = jogos.BuscarPorId(id);
-            Console.WriteLine(jogo.ToString());
-            return jogo;
-        }
-
-        public static void ExportarRelatorio()
-        {
-            jogos.ExportarRelatorio();
-            Console.WriteLine("Relatório exportado para a pasta de log");
-            Console.WriteLine("\r\nPressione qualquer tecla para prosseguir");
-            Console.ReadKey();
+            return categoria;
         }
     }
 }
