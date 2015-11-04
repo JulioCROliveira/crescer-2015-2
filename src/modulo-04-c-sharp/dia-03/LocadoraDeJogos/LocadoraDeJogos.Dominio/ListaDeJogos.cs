@@ -27,6 +27,20 @@ namespace LocadoraDeJogos.Dominio
             return lista;
         }
 
+        public List<JogoModel> getListaDeJogos()
+        {
+            List<JogoModel> lista = new List<JogoModel>();
+            XElement XMLJogos = CarregarXML();
+            var jogos = XMLJogos.Elements("jogo");
+
+            foreach (var jogo in jogos)
+            {
+                lista.Add(ParseFromXElement(jogo));
+            }
+
+            return lista;
+        }
+
         public List<JogoModel> BuscarPorNome(string nome)
         {
             List<JogoModel> lista = new List<JogoModel>();
@@ -144,24 +158,32 @@ namespace LocadoraDeJogos.Dominio
         public void ExportarRelatorio()
         {
             string localDoArquivo = @"C:\Users\juliocesar\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\LocadoraDeJogos\log\relatorio.txt";
+                        
+            File.WriteAllText(localDoArquivo, "");
+            File.AppendAllText(localDoArquivo, EscreverRelatorio());            
+        }
+
+        public string EscreverRelatorio()
+        {            
             XElement XMLJogos = CarregarXML();
             var jogos = XMLJogos.Elements("jogo");
             double maisCaro = 0, maisBarato = 9999, media = 0;
             string nomeCaro = "", nomeBarato = "";
-            int quantidadeDeJogos=0;
+            int quantidadeDeJogos = 0;
+
+            string relatorio = "";
             
-            File.WriteAllText(localDoArquivo, "");
-            File.AppendAllText(localDoArquivo, string.Format("{0}LOCADORA NUNES GAMES{1}", "                             ", "\r\n"));
-            File.AppendAllText(localDoArquivo, string.Format("{0:dd/MM/yyy}                                                              {0:hh:mm:ss}{1}",DateTime.Now, "\r\n"));
-            File.AppendAllText(localDoArquivo, string.Format("{0}Relatório de jogos{1}", "                              ", "\r\n"));
-            File.AppendAllText(localDoArquivo, "================================================================================\r\n");
-            File.AppendAllText(localDoArquivo, "ID       Categoria        Nome                          Preço         Disponivel\r\n");
+            relatorio += string.Format("{0}LOCADORA TOP GAMES{1}", "                             ", "\r\n");
+            relatorio += string.Format("{0:dd/MM/yyy}                                                              {0:hh:mm:ss}{1}", DateTime.Now, "\r\n");
+            relatorio += string.Format("{0}Relatório de jogos{1}", "                              ", "\r\n");
+            relatorio += string.Format("================================================================================\r\n");
+            relatorio += string.Format("ID       Categoria        Nome                          Preço         Disponivel\r\n");
             foreach (var jogo in jogos)
             {
-                File.AppendAllText(localDoArquivo, string.Format("{0}{1}{2}{3}{4}{5}R$ {6}{7}SIM{8}", jogo.Attribute("id").Value, "          ".Substring(jogo.Attribute("id").Value.Length),
-                    categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(), "                 ".Substring(categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).Length), 
+                relatorio += string.Format("{0}{1}{2}{3}{4}{5}R$ {6}{7}SIM{8}", jogo.Attribute("id").Value, "          ".Substring(jogo.Attribute("id").Value.Length),
+                    categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(), "                 ".Substring(categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).Length),
                     jogo.Element("nome").Value.ToUpper(), "                              ".Substring(jogo.Element("nome").Value.Length),
-                    jogo.Element("preco").Value, "                  ".Substring(jogo.Element("preco").Value.Length), "\r\n"));
+                    jogo.Element("preco").Value, "                  ".Substring(jogo.Element("preco").Value.Length), "\r\n");
                 quantidadeDeJogos++;
                 media += double.Parse(jogo.Element("preco").Value.Replace('.', ','));
                 if (double.Parse(jogo.Element("preco").Value.Replace('.', ',')) > maisCaro)
@@ -176,13 +198,15 @@ namespace LocadoraDeJogos.Dominio
                 }
             }
             media /= quantidadeDeJogos;
-            File.AppendAllText(localDoArquivo, "--------------------------------------------------------------------------------\r\n");
-            File.AppendAllText(localDoArquivo, string.Format("Quantidade total de jogos: {0}{1}", quantidadeDeJogos, "\r\n"));
-            File.AppendAllText(localDoArquivo, string.Format("Quantidade de jogos disponíveis: {0}{1}", quantidadeDeJogos, "\r\n"));
-            File.AppendAllText(localDoArquivo, string.Format("Valor médio por jogo: R$ {0:.00}{1}", media, "\r\n"));
-            File.AppendAllText(localDoArquivo, string.Format("Jogo mais caro: {0}{1}", nomeCaro, "\r\n"));
-            File.AppendAllText(localDoArquivo, string.Format("Jogo mais barato: {0}{1}", nomeBarato, "\r\n"));
-            File.AppendAllText(localDoArquivo, "================================================================================\r\n");
+            relatorio += "--------------------------------------------------------------------------------\r\n";
+            relatorio += string.Format("Quantidade total de jogos: {0}{1}", quantidadeDeJogos, "\r\n");
+            relatorio += string.Format("Quantidade de jogos disponíveis: {0}{1}", quantidadeDeJogos, "\r\n");
+            relatorio += string.Format("Valor médio por jogo: R$ {0:.00}{1}", media, "\r\n");
+            relatorio += string.Format("Jogo mais caro: {0}{1}", nomeCaro, "\r\n");
+            relatorio += string.Format("Jogo mais barato: {0}{1}", nomeBarato, "\r\n");
+            relatorio += "================================================================================\r\n";
+
+            return relatorio;
         }
     }
 }

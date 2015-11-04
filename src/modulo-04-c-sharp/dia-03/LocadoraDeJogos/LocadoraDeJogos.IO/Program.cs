@@ -15,7 +15,8 @@ namespace LocadoraDeJogos.IO
         static Categoria categoriaRepositorio = new Categoria();
         static ListaDeJogos jogos = new ListaDeJogos();
         public const string LISTAR_TODOS_JOGOS = "1", BUSCAR_JOGO_POR_NOME = "2", ADICIONAR_JOGO  = "3", ALTERAR_JOGO = "4", EXPORTAR_RELATORIO = "5", SAIR = "0";
-        public const string Buscar = "-1";
+        public const string INVALIDO = "-1";
+        public const int INVALIDA = -1, BUSCANDO = -1;
 
         static void Main(string[] args)
         {
@@ -109,16 +110,16 @@ namespace LocadoraDeJogos.IO
             int categoria = -1;
             double preco = -1;
             Console.WriteLine("Insira o nome do jogo:");
-            while (nome == "-1")
+            while (nome == INVALIDO)
             {
                 nome = Console.ReadLine();
                 if (nome.Replace(" ", "") == "")
                 {
                     Console.WriteLine("Insira um nome valido");
-                    nome = "-1";
+                    nome = INVALIDO;
                 }
             }
-            while (categoria == -1)
+            while (categoria == INVALIDA)
             {                
                 Console.WriteLine("Selecione uma das categorias:");
                 Console.WriteLine(categoriaRepositorio.ListarCategorias());
@@ -132,7 +133,7 @@ namespace LocadoraDeJogos.IO
                 {
                     categoria = categoriaRepositorio.ConverterEntreValores(escrita);
                 }
-                if (categoria == -1) { 
+                if (categoria == INVALIDA) { 
                     Console.Clear();
                     Console.WriteLine("nome: " + nome +"\r\nCategoria inserida não existe, digite novamente");
                 }                 
@@ -175,7 +176,7 @@ namespace LocadoraDeJogos.IO
             JogoModel jogo;
             while (id <= 0)
             {
-                if (id == -1) { BuscarJogo(); }
+                if (id == BUSCANDO) { BuscarJogo(); }
                 Console.WriteLine("Insira o id do jogo ou digite -1 para buscar por nome");
                 escrita = Console.ReadLine();
                 while (!int.TryParse(escrita, out id))
@@ -191,7 +192,7 @@ namespace LocadoraDeJogos.IO
             {                
                nome = jogo.Nome;               
             }
-            while (categoria == -1)
+            while (categoria == INVALIDA)
             {
                 Console.WriteLine("Selecione uma das categorias:");
                 Console.WriteLine(categoriaRepositorio.ListarCategorias());
@@ -205,7 +206,7 @@ namespace LocadoraDeJogos.IO
                 {
                     categoria = categoriaRepositorio.ConverterEntreValores(escrita);
                 }
-                if (categoria == -1)
+                if (categoria == INVALIDA)
                 {
                     Console.Clear();
                     Console.WriteLine("nome: " + nome + "\r\nCategoria inserida não existe, digite novamente");
@@ -232,7 +233,8 @@ namespace LocadoraDeJogos.IO
                     }                    
                 }
             }
-            if (jogo.Nome == nome && jogo.Preco == preco && categoria == jogo.CategoriaDoJogo)
+            bool nenhumaAlteracao = jogo.Nome == nome && jogo.Preco == preco && categoria == jogo.CategoriaDoJogo;
+            if (nenhumaAlteracao)
             {
                 Console.WriteLine("Nenhuma alteração a realizar");
             }
@@ -264,7 +266,7 @@ namespace LocadoraDeJogos.IO
         {
             Console.Clear();
             JogoModel jogo = jogos.BuscarPorId(id);
-            Console.WriteLine("Id: {1}{0}Nome: {2}{0}Categoria: {3}{0}Preco: {4:c}{0}", "\r\n", jogo.Id, jogo.Nome, categoriaRepositorio.ConverterEntreValores(jogo.CategoriaDoJogo), jogo.Preco);
+            Console.WriteLine(jogo.ToString());
             return jogo;
         }
 
