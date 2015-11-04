@@ -22,3 +22,5 @@ Nome do parâmetro: length
 31/10/2015 20:31:43: O índice e o comprimento devem se referir a um local dentro da cadeia de caracteres.
 Nome do parâmetro: length
    Classe: Program, Metodo:Void Main(System.String[])
+04/11/2015 00:36:44: A cadeia de caracteres de entrada não estava em um formato incorreto.
+   Classe: CustomExceptionLogger, Metodo:Void GerarLog(System.Exception)

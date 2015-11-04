@@ -19,7 +19,7 @@ namespace ProjetoMVC.Controllers
         {
             RelatorioModel modelo = new RelatorioModel();
             List<string> list = new List<string>();
-            list.Add(modelo.Relatorio.Replace("\r\n", "<br />"));
+            list.Add(modelo.Relatorio.Replace(" ", "&nbsp;").Replace("\r\n", "<br />"));
             return View(list);
         }
     }

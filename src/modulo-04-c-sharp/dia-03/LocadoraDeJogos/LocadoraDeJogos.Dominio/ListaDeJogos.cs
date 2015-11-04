@@ -180,10 +180,9 @@ namespace LocadoraDeJogos.Dominio
             relatorio += string.Format("ID       Categoria        Nome                          Preço         Disponivel\r\n");
             foreach (var jogo in jogos)
             {
-                relatorio += string.Format("{0}{1}{2}{3}{4}{5}R$ {6}{7}SIM{8}", jogo.Attribute("id").Value, "          ".Substring(jogo.Attribute("id").Value.Length),
-                    categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(), "                 ".Substring(categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).Length),
-                    jogo.Element("nome").Value.ToUpper(), "                              ".Substring(jogo.Element("nome").Value.Length),
-                    jogo.Element("preco").Value, "                  ".Substring(jogo.Element("preco").Value.Length), "\r\n");
+                relatorio += string.Format("{0,-9}{1,-17}{2,-30}R$ {3,6:0.00}{4,14}{5}", jogo.Attribute("id").Value,
+                    categoria.ConverterEntreValores(int.Parse(jogo.Element("categoria").Value)).ToUpper(),
+                    jogo.Element("nome").Value.ToUpper(), double.Parse(jogo.Element("preco").Value.Replace('.', ',')), "SIM", "\r\n");
                 quantidadeDeJogos++;
                 media += double.Parse(jogo.Element("preco").Value.Replace('.', ','));
                 if (double.Parse(jogo.Element("preco").Value.Replace('.', ',')) > maisCaro)

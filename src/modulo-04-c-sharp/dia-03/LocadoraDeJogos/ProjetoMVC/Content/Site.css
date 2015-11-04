@@ -9,6 +9,10 @@
     padding-right: 15px;
 }
 
+.Lucida {
+    font-family: "Lucida Console"
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
