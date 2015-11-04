@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeJogos.Dominio", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeJogos.testes", "LocadoraDeJogos.testes\LocadoraDeJogos.testes.csproj", "{EF401DEE-6A98-4978-9CBB-245D28E9C859}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoMVC", "ProjetoMVC\ProjetoMVC.csproj", "{D4BB1031-F754-4F0A-BE84-495BB4032A02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeJogos.MVC", "ProjetoMVC\LocadoraDeJogos.MVC.csproj", "{D4BB1031-F754-4F0A-BE84-495BB4032A02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

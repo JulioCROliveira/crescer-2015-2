@@ -8,15 +8,15 @@ namespace ProjetoMVC.Models
 {
     public class ListaDeJogosModel
     {
-        public List<string> jogos = new List<string>();
+        public List<string> Jogos {get; private set;}
 
         public ListaDeJogosModel()
         {
             ListaDeJogos lista = new ListaDeJogos();
-            List<LocadoraDeJogos.Dominio.JogoModel> jogosOriginais = lista.getListaDeJogos();
+            List<LocadoraDeJogos.Dominio.JogoModel> jogosOriginais = lista.GetListaDeJogos();
             foreach (var jogo in jogosOriginais)
 	        {
-                jogos.Add(ConverterJogo(jogo));
+                Jogos.Add(ConverterJogo(jogo));
 	        }
             
         }

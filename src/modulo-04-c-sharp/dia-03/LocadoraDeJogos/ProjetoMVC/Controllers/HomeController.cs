@@ -19,7 +19,7 @@ namespace ProjetoMVC.Controllers
         public ActionResult CarregarLista()
         {
             var lista = new ListaDeJogosModel();
-            List<string> jogos = lista.jogos;
+            List<string> jogos = lista.Jogos;
             return View(jogos);
         }
     }

@@ -27,7 +27,7 @@ namespace LocadoraDeJogos.Dominio
             return lista;
         }
 
-        public List<JogoModel> getListaDeJogos()
+        public List<JogoModel> GetListaDeJogos()
         {
             List<JogoModel> lista = new List<JogoModel>();
             XElement XMLJogos = CarregarXML();
