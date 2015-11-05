@@ -1,0 +1,18 @@
+﻿@model DescricaoJogoModel
+@{
+    ViewBag.Title = "Descricao Jogo";
+}
+
+<h2>Descrição do jogo: @Model.Nome</h2>
+
+<form width="700px" height="300px">
+    <img<src="@Model.Imagem" />
+    <p>Descrição : @Model.Descricao</p>
+    <p>Categoria : @Model.Categoria</p>
+    <p>Preço : @Model.Preco.ToString("c")</p>
+    <p>Selo : @Model.Selo</p>
+</form>
+@if (Model.Video != null)
+{
+    @Html.Raw(Model.Video);
+}
