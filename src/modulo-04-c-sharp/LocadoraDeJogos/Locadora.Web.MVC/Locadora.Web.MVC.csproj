@@ -100,7 +100,9 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Views\Home\img\Locadora.JPG" />
+    <Content Include="Content\img\Locadora.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Views\Relatorio\JogosDisponiveis.cshtml" />
   </ItemGroup>
