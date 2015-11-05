@@ -2,10 +2,7 @@
     ViewBag.Title = "Página Inicial";
 }
 
-<h2>Bem vindo a TOP Games!!!</h2>
-<h3>Os melhores jogos com os menores preços. Somentes super lançamentos, não há outra locadora igual esta.</h3>
-<img src="@Url.Content('~/Views/Home/img/Locadora.JPG')" />
-@using (Html.BeginForm("CarregarLista", "Relatorio"))
-{
-    <button title="Listar jogos" type="submit">Listar jogos</button>
-}
+<h2 class="text-center">Bem vindo a TOP Games!!!</h2>
+<h3 class="text-center">Os melhores jogos com os menores preços. Somentes super lançamentos, não há outra locadora igual esta.</h3>
+<!--<img src="Url.Content("~/Views/Home/img/Locadora.JPG")" alt="Foto da Locadora TOP Games" /> -->
+<img src="@Url.Content("~/Content/Locadora.JPG")" alt="Foto da Locadora TOP Games"/>

@@ -12,20 +12,18 @@ namespace Locadora.Web.MVC.Controllers
     {
         public ActionResult JogosDisponiveis()
         {
-            JogoRepositorio jogoRepositorio = new JogoRepositorio();
+            Locadora.Dominio.Repositorio.IJogoRepositorio jogoRepositorio = new JogoRepositorio();
             var jogos = jogoRepositorio.BuscarTodos();
-            var model = new RelatorioModel();
+            RelatorioModel model = new RelatorioModel();
+            model.ListaDeJogos = new List<JogoModel>();
             foreach (var jogo in jogos)
             {
-                model.ListaDeJogos.Add(new JogoModel()
-                {
-                    Nome = jogo.Nome,
-                    Preco = jogo.Preco,
-                    Categoria = jogo.Categoria.ToString()
-                });
+                model.ListaDeJogos.Add(new JogoModel(jogo.Nome, jogo.Preco, jogo.Categoria.ToString()));
             }
             model.QuantidadeDeJogos = model.ListaDeJogos.Count;
-            //model.JogoMaisCaro = model.ListaDeJogos.Where(jogo => jogo.Preco = model))
+            model.JogoMaisCaro = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco > jogo2.Preco ? jogo1 : jogo2).Nome;
+            model.JogoMaisBarato = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco < jogo2.Preco ? jogo1 : jogo2).Nome;
+            model.MediaDeValor = model.ListaDeJogos.Average(jogo => jogo.Preco);
 
             return View(model);
         }
