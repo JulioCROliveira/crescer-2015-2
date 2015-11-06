@@ -10,19 +10,27 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class RelatorioController : Controller
     {
-        public ActionResult JogosDisponiveis(int id = 0)
+        public ActionResult JogosDisponiveis(int id = 0, string nome = null)
         {
-            if (id != 0)
+            if (id > 0)
             {
-                return RedirectToAction("DescricaoJogo", new { Id = id });
+                return RedirectToAction("DescricaoJogo", id);
             }
-            Dominio.Repositorio.IJogoRepositorio jogoRepositorio = new JogoRepositorio();            
-            var jogos = jogoRepositorio.BuscarTodos();
+            Dominio.Repositorio.IJogoRepositorio jogoRepositorio = new JogoRepositorio();
+            IList<Locadora.Dominio.Jogo> jogos;
+            if (nome == null)
+            {
+                jogos = jogoRepositorio.BuscarTodos();
+            }
+            else
+            {
+               jogos = jogoRepositorio.BuscarPorNome(nome);
+            }            
             RelatorioModel model = new RelatorioModel();
             model.ListaDeJogos = new List<JogoModel>();
             foreach (var jogo in jogos)
             {
-                model.ListaDeJogos.Add(new JogoModel(jogo.Nome, jogo.Preco, jogo.Categoria.ToString()));
+                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString()));
             }
             model.QuantidadeDeJogos = model.ListaDeJogos.Count;
             model.JogoMaisCaro = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco > jogo2.Preco ? jogo1 : jogo2).Nome;

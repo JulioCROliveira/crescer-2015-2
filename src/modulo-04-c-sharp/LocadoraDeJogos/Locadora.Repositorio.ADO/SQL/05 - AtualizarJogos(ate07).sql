@@ -12,7 +12,8 @@ where Id = 2;
 update Jogo set 
 	Descricao = 'A série Mega Man X (Rockman X no Japão) foi a segunda franquia da série Mega Man. Lançada em 17 de dezembro de 1993 no Japão (e fevereiro de 1994 na América do Norte) no Super Nintendo, continuando suas diversas sequências em múltiplas plataformas.',
 	IdSelo = 2,
-	Imagem = 'http://img11.deviantart.net/198f/i/2011/052/1/6/megaman_x_by_trunks24-d3a48pu.jpg'
+	Imagem = 'http://img11.deviantart.net/198f/i/2011/052/1/6/megaman_x_by_trunks24-d3a48pu.jpg',
+	Video = '<iframe width="420" height="315" src="https://www.youtube.com/embed/WIP8S0iPCmU" frameborder="0" allowfullscreen></iframe>'
 where Id = 3;
 
 update Jogo set 

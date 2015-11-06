@@ -15,8 +15,8 @@
     </thead>
     @foreach (var jogo in @Model.ListaDeJogos)
     {
-        <tr>
-            <td>@jogo.Nome</td>            
+        <tr onclick="window.location='@Url.Action("DescricaoJogo", "Relatorio", new { id = jogo.Id })'">
+            <td>@jogo.Nome</td>
             <td>@jogo.Categoria</td>
             <td>@jogo.Preco.ToString("c")</td>
         </tr>
