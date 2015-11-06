@@ -33,9 +33,12 @@ namespace Locadora.Web.MVC.Controllers
                 model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString()));
             }
             model.QuantidadeDeJogos = model.ListaDeJogos.Count;
-            model.JogoMaisCaro = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco > jogo2.Preco ? jogo1 : jogo2).Nome;
-            model.JogoMaisBarato = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco < jogo2.Preco ? jogo1 : jogo2).Nome;
-            model.MediaDeValor = model.ListaDeJogos.Average(jogo => jogo.Preco);
+            if (model.QuantidadeDeJogos > 0)
+            {
+                model.JogoMaisCaro = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco > jogo2.Preco ? jogo1 : jogo2).Nome;
+                model.JogoMaisBarato = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco < jogo2.Preco ? jogo1 : jogo2).Nome;
+                model.MediaDeValor = model.ListaDeJogos.Average(jogo => jogo.Preco);
+            }           
 
             return View(model);
         }
