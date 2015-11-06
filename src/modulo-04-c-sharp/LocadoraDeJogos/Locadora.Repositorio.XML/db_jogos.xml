@@ -5,29 +5,49 @@
     <preco>60</preco>
     <categoria>RPG</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+	<descricao>O jogo foi revolucionário para a época e exige bastante do console, é considerado por muitos um dos melhores jogos já feitos na histórias dos games.</descricao>
+	<selo>OURO</selo>
+	<imagem>https://pt.wikipedia.org/wiki/Chrono_Trigger#/media/File:Chronotrigger.jpg</imagem>
+	<video></video>
   </jogo>
   <jogo id="2">
     <nome>Top Gear</nome>
     <preco>20</preco>
     <categoria>CORRIDA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+	<descricao>Sem descrição</descricao>
+	<selo>OURO</selo>
+	<imagem></imagem>
+	<video></video>
   </jogo>
   <jogo id="3">
     <nome>Megaman X</nome>
     <preco>40</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+	<descricao>A série Mega Man X (Rockman X no Japão) foi a segunda franquia da série Mega Man. Lançada em 17 de dezembro de 1993 no Japão (e fevereiro de 1994 na América do Norte) no Super Nintendo, continuando suas diversas sequências em múltiplas plataformas.</descricao>
+	<selo>PRATA</selo>
+	<imagem>http://img11.deviantart.net/198f/i/2011/052/1/6/megaman_x_by_trunks24-d3a48pu.jpg</imagem>
+	<video><iframe width="420" height="315" src="https://www.youtube.com/embed/WIP8S0iPCmU" frameborder="0" allowfullscreen></iframe></video>
   </jogo>
   <jogo id="4">
     <nome>Super Metroid</nome>
     <preco>35</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+	<descricao>Sem descrição</descricao>
+	<selo>OURO</selo>
+	<imagem></imagem>
+	<video></video>
   </jogo>
   <jogo id="5">
     <nome>Donkey Kong Country</nome>
     <preco>25</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
+	<descricao>Sem descrição</descricao>
+	<selo>OURO</selo>
+	<imagem></imagem>
+	<video></video>
   </jogo>
 </jogos>
