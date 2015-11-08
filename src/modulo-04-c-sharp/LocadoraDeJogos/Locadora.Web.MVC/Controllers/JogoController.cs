@@ -55,7 +55,6 @@ namespace Locadora.Web.MVC.Controllers
             IJogoRepositorio jogos = new JogoRepositorio();
             if (ModelState.IsValid)
             {
-                var teste = convertModelEmJogo(model);
                 if (model.Id > 0)
                 {
                     try
