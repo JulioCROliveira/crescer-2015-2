@@ -1,4 +1,4 @@
-﻿@model RelatorioModel
+﻿@model RelatorioJogosModel
 @{
     ViewBag.Title = "Jogos Disponíveis";
 }
@@ -29,6 +29,8 @@
     <p>Jogo mais caro: @Model.JogoMaisCaro</p>
     <p>Jogo mais barato: @Model.JogoMaisBarato</p>
     <p>Media dos valores: @Model.MediaDeValor.ToString("c")</p>
-} else {
+    <br /><br />
+    <a href="~/Jogo/Index">Gerenciar jogos</a>
+       } else {
     <h3>Nenhum jogo encontrado.</h3>
 }

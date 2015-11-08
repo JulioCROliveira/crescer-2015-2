@@ -23,10 +23,10 @@ namespace Locadora.Repositorio.ADO
                 sql.Append(" Nome = @paramNome, ");
                 sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
-                sql.Append(" IdClienteLocacao = @paramIdClienteLocacao ");
-                sql.Append(" Descricao = @paramDescricao ");
-                sql.Append(" IdSelo = @paramIdSelo ");
-                sql.Append(" Imagem = @paramImagem ");
+                sql.Append(" IdClienteLocacao = @paramIdClienteLocacao, ");
+                sql.Append(" Descricao = @paramDescricao, ");
+                sql.Append(" IdSelo = @paramIdSelo, ");
+                sql.Append(" Imagem = @paramImagem, ");
                 sql.Append(" Video = @paramVideo ");
                 sql.Append(" WHERE Id = @paramId ");
 

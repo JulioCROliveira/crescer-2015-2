@@ -10,6 +10,7 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class RelatorioController : Controller
     {
+        [HttpGet]
         public ActionResult JogosDisponiveis(int id = 0, string nome = null)
         {
             if (id > 0)
@@ -26,7 +27,7 @@ namespace Locadora.Web.MVC.Controllers
             {
                jogos = jogoRepositorio.BuscarPorNome(nome);
             }            
-            RelatorioModel model = new RelatorioModel();
+            RelatorioJogosModel model = new RelatorioJogosModel();
             model.ListaDeJogos = new List<JogoModel>();
             foreach (var jogo in jogos)
             {
@@ -43,6 +44,7 @@ namespace Locadora.Web.MVC.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult DescricaoJogo(int id)
         {
             Dominio.Repositorio.IJogoRepositorio jogoRepositorio = new JogoRepositorio();

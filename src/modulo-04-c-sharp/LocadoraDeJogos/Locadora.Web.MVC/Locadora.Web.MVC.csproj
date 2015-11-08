@@ -125,13 +125,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BundleConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DescricaoJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
-    <Compile Include="Models\RelatorioModel.cs" />
+    <Compile Include="Models\ManterJogoModel.cs" />
+    <Compile Include="Models\RelatorioJogosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +147,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Relatorio\DescricaoJogo.cshtml" />
+    <Content Include="Views\Jogo\ManterJogo.cshtml" />
+    <Content Include="Views\Jogo\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
