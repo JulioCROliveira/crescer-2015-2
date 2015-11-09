@@ -1,5 +1,4 @@
-﻿using Locadora.Repositorio.ADO;
-using Locadora.Web.MVC.Models;
+﻿using Locadora.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +16,7 @@ namespace Locadora.Web.MVC.Controllers
             {
                 return RedirectToAction("DescricaoJogo", id);
             }
-            Dominio.Repositorio.IJogoRepositorio jogoRepositorio = new JogoRepositorio();
+            Dominio.Repositorio.IJogoRepositorio jogoRepositorio = null;
             IList<Locadora.Dominio.Jogo> jogos;
             if (nome == null)
             {
@@ -47,7 +46,7 @@ namespace Locadora.Web.MVC.Controllers
         [HttpGet]
         public ActionResult DescricaoJogo(int id)
         {
-            Dominio.Repositorio.IJogoRepositorio jogoRepositorio = new JogoRepositorio();
+           Dominio.Repositorio.IJogoRepositorio jogoRepositorio = null;
             var jogo = jogoRepositorio.BuscarPorId(id);
             DescricaoJogoModel model = new DescricaoJogoModel(jogo.Nome, jogo.Preco, jogo.Categoria.ToString())
             {

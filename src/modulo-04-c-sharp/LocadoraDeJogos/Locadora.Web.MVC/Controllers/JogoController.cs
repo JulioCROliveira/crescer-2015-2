@@ -1,11 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
-using Locadora.Repositorio.ADO;
 using Locadora.Web.MVC.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
@@ -21,7 +17,7 @@ namespace Locadora.Web.MVC.Controllers
         [HttpGet]
         public ActionResult ManterJogo(int? id)
         {
-            IJogoRepositorio jogos = new JogoRepositorio();
+            IJogoRepositorio jogos = null;
             ViewBag.ListaJogos = new SelectList(jogos.BuscarTodos(), "Id", "Nome");
 
             if (id.HasValue && id > 0)
@@ -30,7 +26,7 @@ namespace Locadora.Web.MVC.Controllers
                 ManterJogoModel model = new ManterJogoModel()
                 {                    
                     Id = jogoDoBanco.Id,
-                    IdCliente = jogoDoBanco.IdClienteLocacao,
+                    Cliente = jogoDoBanco.Cliente,
                     Nome = jogoDoBanco.Nome,
                     Preco = jogoDoBanco.Preco,
                     Categoria = jogoDoBanco.Categoria,
@@ -52,7 +48,7 @@ namespace Locadora.Web.MVC.Controllers
         [HttpPost]
         public ActionResult Salvar(ManterJogoModel model)
         {
-            IJogoRepositorio jogos = new JogoRepositorio();
+            IJogoRepositorio jogos = null;
             if (ModelState.IsValid)
             {
                 if (model.Id > 0)
@@ -93,7 +89,7 @@ namespace Locadora.Web.MVC.Controllers
         public Jogo convertModelEmJogo(ManterJogoModel model)
         {
             int id = model.Id != null ? (int)model.Id : 0;
-            return new Jogo(id, model.IdCliente)
+            return new Jogo(id, model.Cliente)
                 {
                     Nome = model.Nome,
                     Preco = model.Preco,
