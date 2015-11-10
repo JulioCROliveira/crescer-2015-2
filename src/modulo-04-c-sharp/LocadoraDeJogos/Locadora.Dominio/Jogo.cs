@@ -12,7 +12,7 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
-        public Cliente Cliente { get; private set; }
+        public Cliente Cliente { get; set; }
 
         public string Descricao { get; set; }
 
