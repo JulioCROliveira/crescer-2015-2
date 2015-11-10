@@ -47,8 +47,7 @@
     <Compile Include="Jogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorio.cs" />
-    <Compile Include="Repositorio\IClienteRepositorio.cs" />
-    <Compile Include="Repositorio\IJogoRepositorio.cs" />
+    <Compile Include="Repositorio\IRepositorio.cs" />
     <Compile Include="Selo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

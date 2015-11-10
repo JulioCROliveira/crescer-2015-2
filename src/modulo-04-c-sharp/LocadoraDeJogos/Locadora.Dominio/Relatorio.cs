@@ -7,7 +7,7 @@ namespace Locadora.Dominio
 {
     public class Relatorio
     {
-        public void Gerar(string caminhoPastaRelatorio, IJogoRepositorio jogoRepositorio)
+        public void Gerar(string caminhoPastaRelatorio, IRepositorio<Jogo> jogoRepositorio)
         {
             IList<Jogo> todosOsJogos = jogoRepositorio.BuscarTodos();
 

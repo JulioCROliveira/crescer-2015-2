@@ -57,9 +57,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
-    <Compile Include="Locadora.Repositorio.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Migrations\201511091915292_Initial.cs" />
     <Compile Include="Migrations\201511091915292_Initial.Designer.cs">
       <DependentUpon>201511091915292_Initial.cs</DependentUpon>
