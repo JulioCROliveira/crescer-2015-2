@@ -1,13 +1,18 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Repositorio.EF;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Security;
 using System;
 using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class JogoController : Controller
     {
+        IRepositorio<Jogo> bdJogos = new JogoRepositorio();
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -17,12 +22,11 @@ namespace Locadora.Web.MVC.Controllers
         [HttpGet]
         public ActionResult ManterJogo(int? id)
         {
-            IJogoRepositorio jogos = null;
-            ViewBag.ListaJogos = new SelectList(jogos.BuscarTodos(), "Id", "Nome");
+            ViewBag.ListaJogos = new SelectList(bdJogos.BuscarTodos(), "Id", "Nome");
 
             if (id.HasValue && id > 0)
             {
-                Jogo jogoDoBanco = jogos.BuscarPorId((int)id);
+                Jogo jogoDoBanco = bdJogos.BuscarPorId((int)id);
                 ManterJogoModel model = new ManterJogoModel()
                 {                    
                     Id = jogoDoBanco.Id,
@@ -48,7 +52,6 @@ namespace Locadora.Web.MVC.Controllers
         [HttpPost]
         public ActionResult Salvar(ManterJogoModel model)
         {
-            IJogoRepositorio jogos = null;
             if (ModelState.IsValid)
             {
                 if (model.Id > 0)
@@ -56,7 +59,7 @@ namespace Locadora.Web.MVC.Controllers
                     try
                     {
                         TempData["Mensagem"] = "Jogo alterado com sucesso!";
-                        jogos.Atualizar(convertModelEmJogo(model));
+                        bdJogos.Atualizar(convertModelEmJogo(model));
                     }
                     catch (Exception erro)
                     {
@@ -68,7 +71,7 @@ namespace Locadora.Web.MVC.Controllers
                     try
                     {
                         TempData["Mensagem"] = "Jogo cadastrado com sucesso!";
-                        jogos.Criar(convertModelEmJogo(model));
+                        bdJogos.Criar(convertModelEmJogo(model));
                     }
                     catch (Exception erro)
                     {
@@ -80,7 +83,7 @@ namespace Locadora.Web.MVC.Controllers
             }
             else
             {                
-                ViewBag.ListaJogos = new SelectList(jogos.BuscarTodos(), "Id", "Nome");
+                ViewBag.ListaJogos = new SelectList(bdJogos.BuscarTodos(), "Id", "Nome");
 
                 return View("ManterJogo", model);
             }

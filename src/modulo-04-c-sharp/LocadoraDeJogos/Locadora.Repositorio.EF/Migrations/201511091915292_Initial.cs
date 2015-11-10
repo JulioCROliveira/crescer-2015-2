@@ -20,33 +20,29 @@ namespace Locadora.Repositorio.EF.Migrations
                 "dbo.Categoria",
                 c => new
                 {
-                    IdCategoria = c.Int(nullable: false, identity: true),
+                    IdCategoria = c.Int(nullable: false, identity: false),
                     Nome = c.String(nullable: false, maxLength: 64),
                 })
                 .PrimaryKey(t => t.IdCategoria);
 
-            Sql("SET IDENTITY_INSERT Categoria ON");
             Sql("insert into Categoria(IdCategoria, Nome) values (1,'RPG');");
             Sql("insert into Categoria(IdCategoria, Nome) values (2,'CORRIDA');");
             Sql("insert into Categoria(IdCategoria, Nome) values (3,'AVENTURA');");
             Sql("insert into Categoria(IdCategoria, Nome) values (4,'LUTA');");
             Sql("insert into Categoria(IdCategoria, Nome) values (5,'ESPORTE');");
-            Sql("SET IDENTITY_INSERT Categoria OFF");
 
             CreateTable(
                 "dbo.Selo",
                 c => new
                 {
-                    IdSelo = c.Int(nullable: false, identity: true),
+                    IdSelo = c.Int(nullable: false, identity: false),
                     Nome = c.String(nullable: false, maxLength: 16),
                 })
                 .PrimaryKey(t => t.IdSelo);
 
-            Sql("SET IDENTITY_INSERT Selo ON");
             Sql("insert into Selo(IdSelo, Nome) values (1,'OURO');");
             Sql("insert into Selo(IdSelo, Nome) values (2,'PRATA');");
             Sql("insert into Selo(IdSelo, Nome) values (3,'BRONZE');");
-            Sql("SET IDENTITY_INSERT Selo OFF");
             
             CreateTable(
                 "dbo.Jogo",

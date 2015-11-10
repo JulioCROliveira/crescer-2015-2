@@ -80,24 +80,5 @@ namespace Locadora.Repositorio.EF
                 return 1;
             }
         }
-
-        //public static int AlugarParaCliente(this Jogo jogo, Cliente cliente)
-        //{
-        //    using (BancoDeDados db = new BancoDeDados())
-        //    {
-        //        Jogo jogoAAlugar = db.Jogo.Include("Cliente").FirstOrDefault(j => j.Id == jogo.Id);
-        //        Cliente clienteExistente = db.Cliente.Find(cliente.Id);
-        //        if (jogoAAlugar == null) { return 0; }
-        //        jogoAAlugar.Cliente = cliente;
-        //        db.Entry(jogoAAlugar).Property(p => p.Categoria).IsModified = true;
-        //        if (clienteExistente != null)
-        //        {
-        //            db.Entry(cliente).State = System.Data.Entity.EntityState.Unchanged;
-        //        }
-
-        //        db.SaveChanges();
-        //        return 1;
-        //    }
-        //}
     }
 }

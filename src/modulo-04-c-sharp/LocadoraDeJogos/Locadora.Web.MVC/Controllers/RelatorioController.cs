@@ -1,4 +1,8 @@
-﻿using Locadora.Web.MVC.Models;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
+using Locadora.Repositorio.EF;
+using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +11,11 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RelatorioController : Controller
     {
+        IRepositorio<Jogo> bdJogos = new JogoRepositorio();
+
         [HttpGet]
         public ActionResult JogosDisponiveis(int id = 0, string nome = null)
         {
@@ -16,19 +23,18 @@ namespace Locadora.Web.MVC.Controllers
             {
                 return RedirectToAction("DescricaoJogo", id);
             }
-            Dominio.Repositorio.IJogoRepositorio jogoRepositorio = null;
-            IList<Locadora.Dominio.Jogo> jogos;
+            IList<Locadora.Dominio.Jogo> listaJogos;
             if (nome == null)
             {
-                jogos = jogoRepositorio.BuscarTodos();
+                listaJogos = bdJogos.BuscarTodos();
             }
             else
             {
-               jogos = jogoRepositorio.BuscarPorNome(nome);
+               listaJogos = bdJogos.BuscarPorNome(nome);
             }            
             RelatorioJogosModel model = new RelatorioJogosModel();
             model.ListaDeJogos = new List<JogoModel>();
-            foreach (var jogo in jogos)
+            foreach (var jogo in listaJogos)
             {
                 model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString()));
             }
@@ -44,10 +50,10 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
+        [Autorizador(Roles = "DESCRICAO")]
         public ActionResult DescricaoJogo(int id)
         {
-           Dominio.Repositorio.IJogoRepositorio jogoRepositorio = null;
-            var jogo = jogoRepositorio.BuscarPorId(id);
+            var jogo = bdJogos.BuscarPorId(id);
             DescricaoJogoModel model = new DescricaoJogoModel(jogo.Nome, jogo.Preco, jogo.Categoria.ToString())
             {
                 Descricao = jogo.Descricao,
