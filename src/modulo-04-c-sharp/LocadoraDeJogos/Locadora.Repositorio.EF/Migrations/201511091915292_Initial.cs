@@ -15,6 +15,38 @@ namespace Locadora.Repositorio.EF.Migrations
                         Nome = c.String(nullable: false, maxLength: 250),
                     })
                 .PrimaryKey(t => t.Id);
+
+            CreateTable(
+                "dbo.Categoria",
+                c => new
+                {
+                    IdCategoria = c.Int(nullable: false, identity: true),
+                    Nome = c.String(nullable: false, maxLength: 64),
+                })
+                .PrimaryKey(t => t.IdCategoria);
+
+            Sql("SET IDENTITY_INSERT Categoria ON");
+            Sql("insert into Categoria(IdCategoria, Nome) values (1,'RPG');");
+            Sql("insert into Categoria(IdCategoria, Nome) values (2,'CORRIDA');");
+            Sql("insert into Categoria(IdCategoria, Nome) values (3,'AVENTURA');");
+            Sql("insert into Categoria(IdCategoria, Nome) values (4,'LUTA');");
+            Sql("insert into Categoria(IdCategoria, Nome) values (5,'ESPORTE');");
+            Sql("SET IDENTITY_INSERT Categoria OFF");
+
+            CreateTable(
+                "dbo.Selo",
+                c => new
+                {
+                    IdSelo = c.Int(nullable: false, identity: true),
+                    Nome = c.String(nullable: false, maxLength: 16),
+                })
+                .PrimaryKey(t => t.IdSelo);
+
+            Sql("SET IDENTITY_INSERT Selo ON");
+            Sql("insert into Selo(IdSelo, Nome) values (1,'OURO');");
+            Sql("insert into Selo(IdSelo, Nome) values (2,'PRATA');");
+            Sql("insert into Selo(IdSelo, Nome) values (3,'BRONZE');");
+            Sql("SET IDENTITY_INSERT Selo OFF");
             
             CreateTable(
                 "dbo.Jogo",
@@ -32,16 +64,26 @@ namespace Locadora.Repositorio.EF.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdClienteLocacao)
-                .Index(t => t.IdClienteLocacao);
+                .ForeignKey("dbo.Categoria", t => t.IdCategoria)
+                .ForeignKey("dbo.Selo", t => t.IdSelo)
+                .Index(t => t.IdClienteLocacao)
+                .Index(t => t.IdCategoria)
+                .Index(t => t.IdSelo);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Jogo", "IdClienteLocacao", "dbo.Cliente");
+            DropForeignKey("dbo.Jogo", "IdCategoria", "dbo.Categoria");
+            DropForeignKey("dbo.Jogo", "IdSelo", "dbo.Selo");
             DropIndex("dbo.Jogo", new[] { "IdClienteLocacao" });
+            DropIndex("dbo.Jogo", new[] { "IdCategoria" });
+            DropIndex("dbo.Jogo", new[] { "IdSelo" });
             DropTable("dbo.Jogo");
             DropTable("dbo.Cliente");
+            DropTable("dbo.Categoria");
+            DropTable("dbo.Selo");
         }
     }
 }
