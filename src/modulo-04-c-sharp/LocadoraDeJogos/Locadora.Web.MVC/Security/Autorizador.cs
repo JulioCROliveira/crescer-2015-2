@@ -15,15 +15,21 @@ namespace Locadora.Web.MVC.Security
         {
             UsuarioModel usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioModel;
 
-            var identidade = new GenericIdentity(usuarioLogado.Email);
-            string[] roles = usuarioLogado.Permissoes;
+            if (usuarioLogado != null)
+            {
+                var identidade = new GenericIdentity(usuarioLogado.Email);
+                string[] roles = usuarioLogado.Permissoes;
 
-            var principal = new GenericPrincipal(identidade, roles);
+                var principal = new GenericPrincipal(identidade, roles);
 
-            Thread.CurrentPrincipal = principal;
-            HttpContext.Current.User = principal;
+                Thread.CurrentPrincipal = principal;
+                HttpContext.Current.User = principal;
 
-            base.OnAuthorization(filterContext);
+                base.OnAuthorization(filterContext);
+            } else
+            {
+                HandleUnauthorizedRequest(filterContext);
+            }            
         }
     }
 }
