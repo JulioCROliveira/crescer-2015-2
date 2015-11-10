@@ -80,5 +80,21 @@ namespace Locadora.Repositorio.EF
                 return 1;
             }
         }
+
+        public int alugarParaCliente(this Jogo jogo, Cliente cliente)
+        {
+            Jogo jogoAAlugar = db.Jogo.Include("Cliente").FirstOrDefault(j => j.Id == jogo.Id);
+            Cliente clienteExistente = db.Cliente.Find(cliente.Id);
+            if (jogoAAlugar == null) { return 0; }
+            jogoAAlugar.Cliente = cliente;
+            db.Entry(jogoAAlugar).Property(p => p.Categoria).IsModified = true;
+            if (clienteExistente != null)
+            {               
+                db.Entry(cliente).State = System.Data.Entity.EntityState.Unchanged;
+            }
+
+            db.SaveChanges();
+            return 1;
+        }
     }
 }
