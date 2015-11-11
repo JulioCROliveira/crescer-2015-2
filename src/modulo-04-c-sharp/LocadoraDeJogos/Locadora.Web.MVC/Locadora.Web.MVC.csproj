@@ -166,7 +166,6 @@
     <Content Include="Views\Jogo\ManterJogo.cshtml" />
     <Content Include="Views\Jogo\Index.cshtml" />
     <Content Include="Views\Conta\Index.cshtml" />
-    <Content Include="Views\Conta\Cadastrar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -32,7 +32,6 @@ namespace Locadora.Web.MVC.Controllers
                     Id = jogoDoBanco.Id,
                     Cliente = jogoDoBanco.Cliente,
                     Nome = jogoDoBanco.Nome,
-                    Preco = jogoDoBanco.Preco,
                     Categoria = jogoDoBanco.Categoria,
                     Descricao = jogoDoBanco.Descricao,
                     Selo = jogoDoBanco.Selo,
@@ -50,6 +49,7 @@ namespace Locadora.Web.MVC.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Autorizador(Roles = Permissao.ADMIN)]
         public ActionResult Salvar(ManterJogoModel model)
         {
             if (ModelState.IsValid)
@@ -95,7 +95,6 @@ namespace Locadora.Web.MVC.Controllers
             return new Jogo(id, model.Cliente)
                 {
                     Nome = model.Nome,
-                    Preco = model.Preco,
                     Categoria = model.Categoria,
                     Descricao = model.Descricao,
                     Selo = model.Selo,

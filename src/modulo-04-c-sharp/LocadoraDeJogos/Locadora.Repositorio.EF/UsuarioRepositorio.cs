@@ -16,7 +16,8 @@ namespace Locadora.Repositorio.EF
         {
             using (db)
             {
-                return db.Usuario.Include("Permissao").Where(u => u.Email == email).FirstOrDefault();
+                if (email == null) { return null; }
+                return db.Usuario.Include("Permissoes").FirstOrDefault(u => u.Email == email);
             } 
         }
 
@@ -24,7 +25,7 @@ namespace Locadora.Repositorio.EF
         {
             using (db)
             {
-                if (db.Usuario.Where(u => u.Email == usuario.Email).FirstOrDefault() != null) { return false; }
+                if (db.Usuario.FirstOrDefault(u => u.Email == usuario.Email) != null) { return false; }
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
 
                 db.SaveChanges();
@@ -36,8 +37,8 @@ namespace Locadora.Repositorio.EF
         {
             using (db)
             {
-                if (db.Usuario.Where(u => u.Email == usuario.Email).FirstOrDefault() == null
-                    || db.Permissao.Where(p => p.Nome == permissao.Nome).FirstOrDefault() == null) { return false; }
+                if (db.Usuario.FirstOrDefault(u => u.Email == usuario.Email) == null
+                    || db.Permissao.FirstOrDefault(p => p.Nome == permissao.Nome) == null) { return false; }
                 usuario.Permissoes.Add(permissao);
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 db.Entry(permissao).State = System.Data.Entity.EntityState.Unchanged;
@@ -51,8 +52,8 @@ namespace Locadora.Repositorio.EF
         {
             using (db)
             {
-                if (db.Usuario.Where(u => u.Email == usuario.Email).FirstOrDefault() == null
-                    || db.Permissao.Where(p => p.Nome == permissao.Nome).FirstOrDefault() == null) { return false; }
+                if (db.Usuario.FirstOrDefault(u => u.Email == usuario.Email) == null
+                    || db.Permissao.FirstOrDefault(p => p.Nome == permissao.Nome) == null) { return false; }
                 usuario.Permissoes.Remove(permissao);
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 db.Entry(permissao).State = System.Data.Entity.EntityState.Unchanged;

@@ -13,7 +13,7 @@ namespace Locadora.Web.MVC.Security
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            UsuarioModel usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioModel;
+            UsuarioLogado usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
 
             if (usuarioLogado != null && AuthorizeCore(filterContext.HttpContext))
             {

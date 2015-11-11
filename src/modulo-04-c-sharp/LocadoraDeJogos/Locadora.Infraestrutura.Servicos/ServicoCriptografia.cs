@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace Locadora.Infraestrutura.Servicos
+namespace Locadora.Servicos
 {
     public class ServicoCriptografia : IServicoCriptografia
     {

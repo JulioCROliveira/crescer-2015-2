@@ -1,8 +1,8 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Dominio.Serviços;
-using Locadora.Infraestrutura.Servicos;
 using Locadora.Repositorio.EF;
+using Locadora.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

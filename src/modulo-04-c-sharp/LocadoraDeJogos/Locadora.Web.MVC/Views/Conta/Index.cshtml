@@ -1,22 +1,27 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model Locadora.Web.MVC.Models.UsuarioModel
 
-<h2>Index</h2>
+<h2>Login</h2>
+
 
 @using (Html.BeginForm("Login", "Conta", FormMethod.Post, new { @class = "form" }))
 {
-    <div class="form-group">
-        <label for="email">E-mail:</label>
-        <input type="text" class="form-control" name="email" value="" />
-    </div>
-    <div class="form-group">
-        <label for="senha">Senha:</label>
-        <input type="password" class="form-control" name="senha" value="" />
-    </div>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true);
 
-    <input type="submit" name="enviar" value="Login" />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Senha)
+        @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Senha)
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login" />
+
+    <p>
+        <br />
+        @Html.ValidationMessage("INVALID_LOGIN")
+    </p>
 }
-
-<br /><p>Não cadastrado ainda? <a href="~/Conta/Cadastrar">Clique aqui para cadastrar-se</a></p>

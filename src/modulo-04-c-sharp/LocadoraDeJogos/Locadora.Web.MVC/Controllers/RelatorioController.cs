@@ -36,25 +36,18 @@ namespace Locadora.Web.MVC.Controllers
             model.ListaDeJogos = new List<JogoModel>();
             foreach (var jogo in listaJogos)
             {
-                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria.ToString()));
+                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Categoria.ToString()));
             }
-            model.QuantidadeDeJogos = model.ListaDeJogos.Count;
-            if (model.QuantidadeDeJogos > 0)
-            {
-                model.JogoMaisCaro = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco > jogo2.Preco ? jogo1 : jogo2).Nome;
-                model.JogoMaisBarato = model.ListaDeJogos.Aggregate((jogo1, jogo2) => jogo1.Preco < jogo2.Preco ? jogo1 : jogo2).Nome;
-                model.MediaDeValor = model.ListaDeJogos.Average(jogo => jogo.Preco);
-            }           
+            model.QuantidadeDeJogos = model.ListaDeJogos.Count;        
 
             return View(model);
         }
 
         [HttpGet]
-        [Autorizador(Roles = "DescricaoJogo")]
         public ActionResult DescricaoJogo(int id)
         {
             var jogo = bdJogos.BuscarPorId(id);
-            DescricaoJogoModel model = new DescricaoJogoModel(jogo.Nome, jogo.Preco, jogo.Categoria.ToString())
+            DescricaoJogoModel model = new DescricaoJogoModel(jogo.Nome, jogo.Categoria.ToString())
             {
                 Descricao = jogo.Descricao,
                 Imagem = jogo.Imagem,

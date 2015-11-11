@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Locadora.Web.MVC.Security.Models
+namespace Locadora.Web.MVC.Models
 {
     public class UsuarioModel
     {
         public string Email { get; private set; }
 
-        public string[] Permissoes { get; private set; }
+        public string Senha { get; private set; }
 
-        public UsuarioModel(string email, string[] permissoes)
+        public UsuarioModel(string email, string senha)
         {
             Email = email;
-            Permissoes = permissoes;
+            Senha = senha;        
+        }
+
+        public UsuarioModel()
+        {
+
         }
     }
 }

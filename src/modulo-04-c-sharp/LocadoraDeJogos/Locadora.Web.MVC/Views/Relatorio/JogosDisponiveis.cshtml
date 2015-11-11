@@ -20,15 +20,12 @@
             <tr onclick="window.location='@Url.Action("DescricaoJogo", "Relatorio", new { id = jogo.Id })'">
                 <td>@jogo.Nome</td>
                 <td>@jogo.Categoria</td>
-                <td>@jogo.Preco.ToString("c")</td>
+                <td>"5".ToString("c")</td>
             </tr>
         }    
 
     </table>
     <p>Totais de jogos: @Model.QuantidadeDeJogos</p>
-    <p>Jogo mais caro: @Model.JogoMaisCaro</p>
-    <p>Jogo mais barato: @Model.JogoMaisBarato</p>
-    <p>Media dos valores: @Model.MediaDeValor.ToString("c")</p>
     <br /><br />
     <a href="~/Jogo/Index">Gerenciar jogos</a>
        } else {

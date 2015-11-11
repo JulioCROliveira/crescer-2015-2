@@ -8,6 +8,7 @@ namespace Locadora.Dominio
 {
     public class Permissao : EntidadeBase
     {
+        public const string ADMIN = "ADMIN";
         public string Nome { get; private set; }
 
         public ICollection<Usuario> Usuarios { get; set; }
