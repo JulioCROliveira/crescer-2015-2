@@ -16,7 +16,7 @@ namespace Locadora.Repositorio.EF
         {
             using (db)
             {
-                return db.Permissao.Where(p => p.nome == nome).FirstOrDefault();
+                return db.Permissao.Where(p => p.Nome == nome).FirstOrDefault();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace Locadora.Dominio
 {
     public class Permissao : EntidadeBase
     {
-        public string nome { get; private set; }
+        public string Nome { get; private set; }
 
         public ICollection<Usuario> Usuarios { get; set; }
     }

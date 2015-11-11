@@ -50,7 +50,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        [Autorizador(Roles = "DESCRICAO")]
+        [Autorizador(Roles = "DescricaoJogo")]
         public ActionResult DescricaoJogo(int id)
         {
             var jogo = bdJogos.BuscarPorId(id);

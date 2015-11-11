@@ -1,6 +1,8 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
+using Locadora.Dominio.Serviços;
 using Locadora.Repositorio.EF;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Security;
 using Locadora.Web.MVC.Security.Models;
 using System;
@@ -17,14 +19,12 @@ namespace Locadora.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            Codificador codificador = new Codificador();
-            codificador.ComputeHash("minhaSenha", null);
             return View();
         }
 
         public ActionResult Login(string email, string senha)
         {
-            Codificador codificador = new Codificador();
+            IServicoCriptografia codificador = Construtor.CriarServicoCriptografia();
             IRepositorioUsuario usuarios = new UsuarioRepositorio();
             Usuario usuarioDoBanco = usuarios.BuscarPorEmail(email);
             if (false)
@@ -33,12 +33,14 @@ namespace Locadora.Web.MVC.Controllers
 
                 FormsAuthentication.SetAuthCookie(email, true);
                 Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Index", "Home");
+
+            return View("Index");
         }
 
-        public ActionResult Cadastrar(UsuarioCadastroModel model)
+        public ActionResult Cadastrar()
         {
             return View();
         }
@@ -69,8 +71,8 @@ namespace Locadora.Web.MVC.Controllers
 
         public Usuario convertModelEmUsuario(UsuarioCadastroModel model)
         {
-            Codificador codificador = new Codificador();
-            return new Usuario(model.Email, model.NomeCompleto, codificador.ComputeHash(model.Senha, null));
+            IServicoCriptografia codificador = Construtor.CriarServicoCriptografia();
+            return new Usuario(model.Email, model.NomeCompleto, codificador.CriptografarSenha(model.Senha));
         }
     }
 }

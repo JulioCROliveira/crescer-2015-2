@@ -16,7 +16,7 @@ namespace Locadora.Repositorio.EF
         {
             using (db)
             {
-                return db.Usuario.Where(u => u.Email == email).FirstOrDefault();
+                return db.Usuario.Include("Permissao").Where(u => u.Email == email).FirstOrDefault();
             } 
         }
 
@@ -37,7 +37,7 @@ namespace Locadora.Repositorio.EF
             using (db)
             {
                 if (db.Usuario.Where(u => u.Email == usuario.Email).FirstOrDefault() == null
-                    || db.Permissao.Where(p => p.nome == permissao.nome).FirstOrDefault() == null) { return false; }
+                    || db.Permissao.Where(p => p.Nome == permissao.Nome).FirstOrDefault() == null) { return false; }
                 usuario.Permissoes.Add(permissao);
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 db.Entry(permissao).State = System.Data.Entity.EntityState.Unchanged;
@@ -52,7 +52,7 @@ namespace Locadora.Repositorio.EF
             using (db)
             {
                 if (db.Usuario.Where(u => u.Email == usuario.Email).FirstOrDefault() == null
-                    || db.Permissao.Where(p => p.nome == permissao.nome).FirstOrDefault() == null) { return false; }
+                    || db.Permissao.Where(p => p.Nome == permissao.Nome).FirstOrDefault() == null) { return false; }
                 usuario.Permissoes.Remove(permissao);
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 db.Entry(permissao).State = System.Data.Entity.EntityState.Unchanged;

@@ -90,7 +90,7 @@ namespace Locadora.Repositorio.EF
 
             HasKey(c => c.Id);
 
-            Property(p => p.nome).IsRequired().HasMaxLength(256);
+            Property(p => p.Nome).IsRequired().HasMaxLength(256);
         }
     }
 }

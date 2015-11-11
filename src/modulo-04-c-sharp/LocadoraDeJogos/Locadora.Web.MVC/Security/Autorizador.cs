@@ -15,7 +15,7 @@ namespace Locadora.Web.MVC.Security
         {
             UsuarioModel usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioModel;
 
-            if (usuarioLogado != null)
+            if (usuarioLogado != null && AuthorizeCore(filterContext.HttpContext))
             {
                 var identidade = new GenericIdentity(usuarioLogado.Email);
                 string[] roles = usuarioLogado.Permissoes;
@@ -26,7 +26,8 @@ namespace Locadora.Web.MVC.Security
                 HttpContext.Current.User = principal;
 
                 base.OnAuthorization(filterContext);
-            } else
+            }
+            else
             {
                 HandleUnauthorizedRequest(filterContext);
             }            
