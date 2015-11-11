@@ -9,5 +9,8 @@ namespace Locadora.Dominio.Repositorio
     public interface IRepositorioUsuario
     {
         Usuario BuscarPorEmail(string email);
+        bool Cadastrar(Usuario usuario);
+        bool AdicionarPermissao(Usuario usuario, Permissao permissao);
+        bool RemoverPermissao(Usuario usuario, Permissao permissao);
     }
 }

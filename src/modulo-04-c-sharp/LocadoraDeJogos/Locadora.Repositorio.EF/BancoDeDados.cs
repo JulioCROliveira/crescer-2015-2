@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Locadora.Dominio;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Locadora.Repositorio
+namespace Locadora.Repositorio.EF
 {
-    class BancoDeDados : DbContext
+    public class BancoDeDados : DbContext
     {
         public BancoDeDados() : base("LOCADORA_NOVA")
         {

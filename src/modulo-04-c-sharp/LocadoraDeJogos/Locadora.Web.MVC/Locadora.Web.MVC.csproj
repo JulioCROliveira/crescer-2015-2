@@ -145,10 +145,14 @@
     <Compile Include="Models\RelatorioJogosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Autorizador.cs" />
+    <Compile Include="Security\Codificador.cs" />
+    <Compile Include="Security\Models\UsuarioCadastroModel.cs" />
     <Compile Include="Security\Models\UsuarioModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -161,6 +165,7 @@
     <Content Include="Views\Jogo\ManterJogo.cshtml" />
     <Content Include="Views\Jogo\Index.cshtml" />
     <Content Include="Views\Conta\Index.cshtml" />
+    <Content Include="Views\Conta\Cadastrar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
