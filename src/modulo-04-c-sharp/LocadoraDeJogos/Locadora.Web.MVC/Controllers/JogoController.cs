@@ -13,6 +13,7 @@ namespace Locadora.Web.MVC.Controllers
     public class JogoController : Controller
     {
         IRepositorio<Jogo> bdJogos = Construtor.CriarJogoRepositorio();
+        IRepositorio<Selo> bdSelos = Construtor.CriarSeloRepositorio();
 
         [HttpGet]
         public ActionResult Index()
@@ -22,9 +23,9 @@ namespace Locadora.Web.MVC.Controllers
 
         [HttpGet]
         public ActionResult ManterJogo(int? id)
-        {
-            IRepositorio<Jogo> bdJogos = Construtor.CriarJogoRepositorio();
+        {            
             ViewBag.ListaJogos = new SelectList(bdJogos.BuscarTodos(), "Id", "Nome");
+            ViewBag.ListaSelos = new SelectList(bdSelos.BuscarTodos(), "Id", "Nome");
 
             if (id.HasValue && id > 0)
             {
@@ -32,11 +33,11 @@ namespace Locadora.Web.MVC.Controllers
                 ManterJogoModel model = new ManterJogoModel()
                 {                    
                     Id = jogoDoBanco.Id,
-                    Cliente = jogoDoBanco.Cliente,
+                    IdCliente = jogoDoBanco.IdCliente,
                     Nome = jogoDoBanco.Nome,
                     Categoria = jogoDoBanco.Categoria,
                     Descricao = jogoDoBanco.Descricao,
-                    Selo = jogoDoBanco.Selo,
+                    IdSelo = jogoDoBanco.Selo.Id,
                     Imagem = jogoDoBanco.Imagem,
                     Video = jogoDoBanco.Video
                 };
@@ -85,6 +86,7 @@ namespace Locadora.Web.MVC.Controllers
             else
             {                
                 ViewBag.ListaJogos = new SelectList(bdJogos.BuscarTodos(), "Id", "Nome");
+                ViewBag.ListaSelos = new SelectList(bdSelos.BuscarTodos(), "Id", "Nome");
 
                 return View("ManterJogo", model);
             }
@@ -93,12 +95,13 @@ namespace Locadora.Web.MVC.Controllers
         public Jogo convertModelEmJogo(ManterJogoModel model)
         {
             int id = model.Id != null ? (int)model.Id : 0;
-            return new Jogo(id, model.Cliente)
+            return new Jogo(id, model.IdCliente)
                 {
                     Nome = model.Nome,
                     Categoria = model.Categoria,
                     Descricao = model.Descricao,
-                    Selo = model.Selo,
+                    IdSelo = model.IdSelo,
+                    //Selo = bdSelos.BuscarPorId(model.IdSelo),
                     Imagem = model.Imagem,
                     Video = model.Video
                 };

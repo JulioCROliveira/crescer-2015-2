@@ -12,7 +12,11 @@ namespace Locadora.Dominio
 
         public Cliente Cliente { get; set; }
 
+        public int IdCliente { get; set; }
+
         public string Descricao { get; set; }
+
+        public int IdSelo { get; set; }
 
         public Selo Selo { get; set; }
 
@@ -25,15 +29,15 @@ namespace Locadora.Dominio
 
         }
 
-        public Jogo(int id, Cliente cliente = null)
+        public Jogo(int id, int idCliente = 0)
         {
-            this.Id = id;
-            this.Cliente = cliente;
+            Id = id;
+            IdCliente = idCliente;
         }
 
         public void LocarPara(Cliente cliente)
         {
-            this.Cliente = cliente;
+            IdCliente = cliente.Id;
         }
 
         public override string ToString()

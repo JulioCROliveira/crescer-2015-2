@@ -9,8 +9,8 @@ namespace Locadora.Dominio.Test
         [TestMethod]
         public void JogoADeveSerIgualJogoB()
         {
-            Jogo jogoA = new Jogo(id: 1, cliente: null);
-            Jogo jogoB = new Jogo(id: 1, cliente: null);
+            Jogo jogoA = new Jogo(id: 1, idCliente: 0);
+            Jogo jogoB = new Jogo(id: 1, idCliente: 0);
 
             Assert.AreEqual(jogoA, jogoB);
         }

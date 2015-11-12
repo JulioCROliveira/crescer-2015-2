@@ -10,7 +10,7 @@ namespace Locadora.Web.MVC.Models
     public class ManterJogoModel
     {
         public int? Id { get; set; }
-        public Cliente Cliente { get; set; }
+        public int IdCliente { get; set; }
 
         [Required]
         [StringLength(250, MinimumLength = 5, ErrorMessage = "O nome deve ter entre 5 e 250 caracteres")]
@@ -24,7 +24,7 @@ namespace Locadora.Web.MVC.Models
         public string Descricao { get; set; }
 
         [Required]
-        public Selo Selo { get; set; }
+        public int IdSelo { get; set; }
         public string Imagem { get; set; }
         public string Video { get; set; }
     }

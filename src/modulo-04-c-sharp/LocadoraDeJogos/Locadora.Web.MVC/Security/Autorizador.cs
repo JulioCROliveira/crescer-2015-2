@@ -1,4 +1,5 @@
 ﻿using Locadora.Web.MVC.Security.Models;
+using Locadora.Web.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,29 +7,63 @@ using System.Security.Principal;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.Routing;
 
 namespace Locadora.Web.MVC.Security
 {
     public class Autorizador : AuthorizeAttribute
     {
-        public override void OnAuthorization(AuthorizationContext filterContext)
+        // este método é responsável por dizer se o usuário está autenticado e autorizado
+        // a acessar a action.
+        // Se ele estiver apto, deve retonar true, caso contrário, false.
+        protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            UsuarioLogado usuarioLogado = filterContext.HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
+            UsuarioLogado usuario = ControleDeSessao.UsuarioLogado;
+            return usuario != null
+                    && TemOCookieDeAutenticacao(httpContext)
+                    && TemAsPermissoesRequeridas(usuario);
+        }
 
-            if (usuarioLogado != null)
+        // Este método é executado quando o usuário não tem autenticação ou autorização
+        // para acessar a action que ele quer.
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            // aqui estamos dizendo que ele deve ser redirecionado para a controller
+            // Home e action Index.
+            filterContext.Result = new RedirectToRouteResult(
+                                                new RouteValueDictionary
+                                                {
+                                                    { "action", "Index" },
+                                                    { "controller", "Conta" }
+                                                });
+        }
+
+        // neste método nós verificamos as permissões do usuário logado.
+        // vemos aqui se ele tem as mesmas que a declarada no atributo.
+        private bool TemAsPermissoesRequeridas(UsuarioLogado usuarioLogado)
+        {
+            // caso esta action precise de roles específicas, vamos pegar elas.
+            string[] permissoesRequeridas = String.IsNullOrWhiteSpace(this.Roles) ?
+                                                new string[0] : this.Roles.Split(';');
+
+            foreach (string permissao in permissoesRequeridas)
             {
-                GenericIdentity myIdentity = new GenericIdentity(usuarioLogado.Email);
-                GenericPrincipal principal = new GenericPrincipal(myIdentity, usuarioLogado.Permissoes);
-
-                Thread.CurrentPrincipal =
-                    HttpContext.Current.User = principal;
-
-                base.OnAuthorization(filterContext);
+                if (!usuarioLogado.Permissoes.Contains(permissao))
+                {
+                    return false;
+                }
             }
-            else
-            {
-                HandleUnauthorizedRequest(filterContext);
-            }            
+
+            return true;
+        }
+
+        // este método verifica se existe o cookie de autenticação.
+        private bool TemOCookieDeAutenticacao(HttpContextBase httpContext)
+        {
+            return FormsAuthentication.CookiesSupported
+                && httpContext.Request.Cookies != null
+                && httpContext.Request.Cookies[FormsAuthentication.FormsCookieName] != null;
         }
     }
 }

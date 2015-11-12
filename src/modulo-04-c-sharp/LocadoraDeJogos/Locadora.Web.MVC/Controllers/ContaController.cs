@@ -29,10 +29,7 @@ namespace Locadora.Web.MVC.Controllers
             Usuario usuarioDoBanco = usuarios.BuscarPorEmail(email);
             if (usuarioDoBanco != null && codificador.CriptografarSenha(senha) == usuarioDoBanco.Senha)
             {
-                var usuarioLogadoModel = new UsuarioLogado(usuarioDoBanco);
-
-                FormsAuthentication.SetAuthCookie(usuarioLogadoModel.Email, true);
-                Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                ControleDeSessao.CriarSessaoDeUsuario(usuarioDoBanco);
                 return RedirectToAction("Index", "Home");
             }
             var model = new UsuarioModel(email, null);

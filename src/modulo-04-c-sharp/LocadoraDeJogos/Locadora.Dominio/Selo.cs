@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
-    public enum Selo
+    public class Selo
     {
-        OURO = 1,
-        PRATA = 2,
-        BRONZE = 3
+        public int Id { get; private set; }
+        public string Nome { get; set; }
+        public decimal Preco { get; set; }
+
+        public ICollection<Jogo> Jogos { get; set; }
+
+        public Selo()
+        {
+
+        }
     }
 }
