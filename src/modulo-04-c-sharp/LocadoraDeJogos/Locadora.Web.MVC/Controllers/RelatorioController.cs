@@ -36,7 +36,7 @@ namespace Locadora.Web.MVC.Controllers
             model.ListaDeJogos = new List<JogoModel>();
             foreach (var jogo in listaJogos)
             {
-                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Categoria.ToString()));
+                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Categoria.ToString(), jogo.Selo));
             }
             model.QuantidadeDeJogos = model.ListaDeJogos.Count;        
 
@@ -52,7 +52,7 @@ namespace Locadora.Web.MVC.Controllers
                 Descricao = jogo.Descricao,
                 Imagem = jogo.Imagem,
                 Video = jogo.Video,
-                Selo = jogo.Selo.ToString()
+                Selo = jogo.Selo.Nome
             };
             return View(model);
         }

@@ -20,7 +20,7 @@
             <tr onclick="window.location='@Url.Action("DescricaoJogo", "Relatorio", new { id = jogo.Id })'">
                 <td>@jogo.Nome</td>
                 <td>@jogo.Categoria</td>
-                <td>"5".ToString("c")</td>
+                <td>@jogo.Selo.Preco.ToString("c")</td>
             </tr>
         }    
 

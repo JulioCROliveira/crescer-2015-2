@@ -453,6 +453,10 @@ cite {
   text-align: left;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .text-right {
   text-align: right;
 }

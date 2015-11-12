@@ -24,12 +24,11 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult Login(string email, string senha)
         {
-            IServicoCriptografia codificador = Construtor.CriarServicoCriptografia();
-            IRepositorioUsuario usuarios = new UsuarioRepositorio();
-            Usuario usuarioDoBanco = usuarios.BuscarPorEmail(email);
-            if (usuarioDoBanco != null && codificador.CriptografarSenha(senha) == usuarioDoBanco.Senha)
+            ServicoAutenticacao autenticacao = new ServicoAutenticacao(Construtor.CriarUsuarioRepositorio(), Construtor.CriarServicoCriptografia());
+            Usuario usuarioValido = autenticacao.BuscarPorAutenticacao(email, senha);
+            if (usuarioValido != null)
             {
-                ControleDeSessao.CriarSessaoDeUsuario(usuarioDoBanco);
+                ControleDeSessao.CriarSessaoDeUsuario(usuarioValido);
                 return RedirectToAction("Index", "Home");
             }
             var model = new UsuarioModel(email, null);

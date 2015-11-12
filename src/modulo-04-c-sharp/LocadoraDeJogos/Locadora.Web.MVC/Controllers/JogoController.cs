@@ -37,7 +37,7 @@ namespace Locadora.Web.MVC.Controllers
                     Nome = jogoDoBanco.Nome,
                     Categoria = jogoDoBanco.Categoria,
                     Descricao = jogoDoBanco.Descricao,
-                    IdSelo = jogoDoBanco.Selo.Id,
+                    IdSelo = jogoDoBanco.IdSelo,
                     Imagem = jogoDoBanco.Imagem,
                     Video = jogoDoBanco.Video
                 };

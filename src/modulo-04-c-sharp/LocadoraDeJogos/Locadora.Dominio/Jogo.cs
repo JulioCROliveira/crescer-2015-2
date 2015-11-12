@@ -12,7 +12,7 @@ namespace Locadora.Dominio
 
         public Cliente Cliente { get; set; }
 
-        public int IdCliente { get; set; }
+        public int? IdCliente { get; set; }
 
         public string Descricao { get; set; }
 
@@ -29,7 +29,7 @@ namespace Locadora.Dominio
 
         }
 
-        public Jogo(int id, int idCliente = 0)
+        public Jogo(int id, int? idCliente = 0)
         {
             Id = id;
             IdCliente = idCliente;
