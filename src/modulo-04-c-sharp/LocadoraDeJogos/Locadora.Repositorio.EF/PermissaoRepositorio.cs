@@ -10,11 +10,9 @@ namespace Locadora.Repositorio.EF
 {
     public class PermissaoRepositorio : IRepositorioPermissao
     {
-        BancoDeDados db = new BancoDeDados();
-
         public Permissao BuscarPorNome(string nome)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Permissao.Where(p => p.Nome == nome).FirstOrDefault();
             }

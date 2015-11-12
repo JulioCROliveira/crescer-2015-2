@@ -10,11 +10,9 @@ namespace Locadora.Repositorio.EF
 {
     public class ClienteRepositorio : IRepositorio<Cliente>
     {
-        BancoDeDados db = new BancoDeDados();
-
         public int Atualizar(Cliente entidade)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 Cliente clienteAAtualizar = db.Cliente.Find(entidade.Id);
                 if (clienteAAtualizar == null) { return 0; }
@@ -28,7 +26,7 @@ namespace Locadora.Repositorio.EF
 
         public Cliente BuscarPorId(int id)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Cliente.Find(id);
             }
@@ -36,7 +34,7 @@ namespace Locadora.Repositorio.EF
 
         public IList<Cliente> BuscarPorNome(string nome)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Cliente.Where(j => j.Nome.IndexOf(nome, StringComparison.OrdinalIgnoreCase) > 0).ToList();
             }
@@ -44,7 +42,7 @@ namespace Locadora.Repositorio.EF
 
         public IList<Cliente> BuscarTodos()
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Cliente.ToList();
             }
@@ -52,7 +50,7 @@ namespace Locadora.Repositorio.EF
 
         public int Criar(Cliente entidade)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
                 db.SaveChanges();
@@ -62,7 +60,7 @@ namespace Locadora.Repositorio.EF
 
         public int Excluir(int id)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 Cliente clienteAExcluir = db.Cliente.Find(id);
                 db.Entry(clienteAExcluir).State = System.Data.Entity.EntityState.Deleted;

@@ -10,11 +10,9 @@ namespace Locadora.Repositorio.EF
 {
     public class UsuarioRepositorio : IRepositorioUsuario
     {
-        BancoDeDados db = new BancoDeDados();
-
         public Usuario BuscarPorEmail(string email)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 if (email == null) { return null; }
                 return db.Usuario.Include("Permissoes").FirstOrDefault(u => u.Email == email);
@@ -23,7 +21,7 @@ namespace Locadora.Repositorio.EF
 
         public bool Cadastrar(Usuario usuario)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 if (db.Usuario.FirstOrDefault(u => u.Email == usuario.Email) != null) { return false; }
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
@@ -35,7 +33,7 @@ namespace Locadora.Repositorio.EF
 
         public bool AdicionarPermissao(Usuario usuario, Permissao permissao)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 if (db.Usuario.FirstOrDefault(u => u.Email == usuario.Email) == null
                     || db.Permissao.FirstOrDefault(p => p.Nome == permissao.Nome) == null) { return false; }
@@ -50,7 +48,7 @@ namespace Locadora.Repositorio.EF
 
         public bool RemoverPermissao(Usuario usuario, Permissao permissao)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 if (db.Usuario.FirstOrDefault(u => u.Email == usuario.Email) == null
                     || db.Permissao.FirstOrDefault(p => p.Nome == permissao.Nome) == null) { return false; }

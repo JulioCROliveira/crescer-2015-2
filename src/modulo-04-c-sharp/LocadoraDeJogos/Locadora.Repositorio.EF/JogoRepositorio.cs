@@ -12,11 +12,9 @@ namespace Locadora.Repositorio.EF
 {
     public class JogoRepositorio : IRepositorio<Jogo>
     {
-        BancoDeDados db = new BancoDeDados();
-
         public int Atualizar(Jogo entidade)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 Jogo jogoAAtualizar = db.Jogo.Include("Cliente").FirstOrDefault(j => j.Id == entidade.Id);
                 if (jogoAAtualizar == null) { return 0; }
@@ -38,7 +36,7 @@ namespace Locadora.Repositorio.EF
 
         public Jogo BuscarPorId(int id)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Jogo.Include("Cliente").FirstOrDefault(j => j.Id == id);
             }
@@ -46,7 +44,7 @@ namespace Locadora.Repositorio.EF
 
         public IList<Jogo> BuscarPorNome(string nome)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Jogo.Include("Cliente").Where(j => j.Nome.IndexOf(nome, StringComparison.OrdinalIgnoreCase) > 0).ToList();
             }
@@ -54,7 +52,7 @@ namespace Locadora.Repositorio.EF
 
         public IList<Jogo> BuscarTodos()
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Jogo.Include("Cliente").ToList();
             }
@@ -62,7 +60,7 @@ namespace Locadora.Repositorio.EF
 
         public int Criar(Jogo entidade)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
                 db.SaveChanges();
@@ -72,7 +70,7 @@ namespace Locadora.Repositorio.EF
 
         public int Excluir(int id)
         {
-            using (db)
+            using (BancoDeDados db = new BancoDeDados())
             {
                 Jogo jogoAExcluir = db.Jogo.Find(id);
                 db.Entry(jogoAExcluir).State = System.Data.Entity.EntityState.Deleted;
