@@ -27,7 +27,9 @@
     </table>
     <p>Totais de jogos: @Model.QuantidadeDeJogos</p>
     <br /><br />
-    <a href="~/Jogo/Index">Gerenciar jogos</a>
-       } else {
+    if(((Locadora.Web.MVC.Security.UsuarioLogado)Session["USUARIO_LOGADO"]).TemPermissao(Locadora.Dominio.Permissao.ADMIN)) {<a href="~/Jogo/Index">Gerenciar jogos</a>}
+} 
+else 
+{
     <h3>Nenhum jogo encontrado.</h3>
 }

@@ -19,5 +19,10 @@ namespace Locadora.Dominio
             NomeCompleto = nome;
             Senha = senha;
         }
+
+        private Usuario()
+        {
+
+        }
     }
 }

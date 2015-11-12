@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201511112308254_Update-fix1.Designer.cs">
       <DependentUpon>201511112308254_Update-fix1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511112355188_Jogo.Descricao-2048.cs" />
+    <Compile Include="Migrations\201511112355188_Jogo.Descricao-2048.Designer.cs">
+      <DependentUpon>201511112355188_Jogo.Descricao-2048.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PermissaoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511112308254_Update-fix1.resx">
       <DependentUpon>201511112308254_Update-fix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511112355188_Jogo.Descricao-2048.resx">
+      <DependentUpon>201511112355188_Jogo.Descricao-2048.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

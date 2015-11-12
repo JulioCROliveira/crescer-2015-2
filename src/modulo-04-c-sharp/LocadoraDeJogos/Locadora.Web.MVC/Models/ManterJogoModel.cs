@@ -20,7 +20,7 @@ namespace Locadora.Web.MVC.Models
         public Categoria Categoria { get; set; }
 
         [Required]
-        [StringLength(300, MinimumLength = 12, ErrorMessage = "A descrição deve ter entre 12 e 300 caracteres")]
+        [StringLength(2048, MinimumLength = 12, ErrorMessage = "A descrição deve ter entre 12 e 2048 caracteres")]
         public string Descricao { get; set; }
 
         [Required]

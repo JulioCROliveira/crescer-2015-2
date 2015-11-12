@@ -42,7 +42,7 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Categoria).IsRequired().HasColumnName("IdCategoria");
             //HasRequired(p => p.Cliente).WithOptional().Map(m => m.MapKey("IdClienteLocacao"));
             HasOptional(p => p.Cliente).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
-            Property(p => p.Descricao).IsRequired().HasMaxLength(300);
+            Property(p => p.Descricao).IsRequired().HasMaxLength(2048);
             Property(p => p.Selo).IsRequired().HasColumnName("IdSelo");
             Property(p => p.Imagem).IsOptional().HasMaxLength(128);
             Property(p => p.Video).IsOptional().HasMaxLength(128);

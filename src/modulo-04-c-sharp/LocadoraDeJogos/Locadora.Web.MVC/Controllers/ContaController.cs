@@ -27,7 +27,7 @@ namespace Locadora.Web.MVC.Controllers
             IServicoCriptografia codificador = Construtor.CriarServicoCriptografia();
             IRepositorioUsuario usuarios = new UsuarioRepositorio();
             Usuario usuarioDoBanco = usuarios.BuscarPorEmail(email);
-            if (codificador.CriptografarSenha(senha) == usuarioDoBanco.Senha)
+            if (usuarioDoBanco != null && codificador.CriptografarSenha(senha) == usuarioDoBanco.Senha)
             {
                 var usuarioLogadoModel = new UsuarioLogado(usuarioDoBanco);
 
@@ -39,6 +39,14 @@ namespace Locadora.Web.MVC.Controllers
 
             ModelState.AddModelError("INVALID_LOGIN", "Usuário ou senha inválidos.");
             return View("Index", model);
+        }
+
+        public ActionResult Sair()
+        {
+            Session.Clear();
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Login", "Conta");
         }
     }
 }

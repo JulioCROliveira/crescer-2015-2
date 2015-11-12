@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Repositorio.EF;
+using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
 using Locadora.Web.MVC.Security;
 using System;
@@ -8,10 +9,10 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
-    [Autorizador]
+    [Autorizador(Roles = Permissao.ADMIN)]
     public class JogoController : Controller
     {
-        IRepositorio<Jogo> bdJogos = new JogoRepositorio();
+        IRepositorio<Jogo> bdJogos = Construtor.CriarJogoRepositorio();
 
         [HttpGet]
         public ActionResult Index()
@@ -22,6 +23,7 @@ namespace Locadora.Web.MVC.Controllers
         [HttpGet]
         public ActionResult ManterJogo(int? id)
         {
+            IRepositorio<Jogo> bdJogos = Construtor.CriarJogoRepositorio();
             ViewBag.ListaJogos = new SelectList(bdJogos.BuscarTodos(), "Id", "Nome");
 
             if (id.HasValue && id > 0)
@@ -49,7 +51,6 @@ namespace Locadora.Web.MVC.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        [Autorizador(Roles = Permissao.ADMIN)]
         public ActionResult Salvar(ManterJogoModel model)
         {
             if (ModelState.IsValid)
