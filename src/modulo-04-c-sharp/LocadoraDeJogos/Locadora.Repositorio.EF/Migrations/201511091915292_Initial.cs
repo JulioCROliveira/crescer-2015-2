@@ -56,13 +56,10 @@ namespace Locadora.Repositorio.EF.Migrations
                         IdSelo = c.Int(nullable: false),
                         Imagem = c.String(maxLength: 128),
                         Video = c.String(maxLength: 128),
-                        IdClienteLocacao = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cliente", t => t.IdClienteLocacao)
                 .ForeignKey("dbo.Categoria", t => t.IdCategoria)
                 .ForeignKey("dbo.Selo", t => t.IdSelo)
-                .Index(t => t.IdClienteLocacao)
                 .Index(t => t.IdCategoria)
                 .Index(t => t.IdSelo);
             
@@ -70,10 +67,8 @@ namespace Locadora.Repositorio.EF.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Jogo", "IdClienteLocacao", "dbo.Cliente");
             DropForeignKey("dbo.Jogo", "IdCategoria", "dbo.Categoria");
             DropForeignKey("dbo.Jogo", "IdSelo", "dbo.Selo");
-            DropIndex("dbo.Jogo", new[] { "IdClienteLocacao" });
             DropIndex("dbo.Jogo", new[] { "IdCategoria" });
             DropIndex("dbo.Jogo", new[] { "IdSelo" });
             DropTable("dbo.Jogo");

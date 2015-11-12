@@ -21,6 +21,7 @@ namespace Locadora.Repositorio.EF
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
         public DbSet<Selo> Selo { get; set; }
+        public DbSet<Locacao> Locacao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,6 +30,7 @@ namespace Locadora.Repositorio.EF
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new PermissaoMap());
             modelBuilder.Configurations.Add(new SeloMap());
+            modelBuilder.Configurations.Add(new LocacaoMap());
             base.OnModelCreating(modelBuilder);
         }
     }
@@ -43,8 +45,8 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Nome).IsRequired().HasMaxLength(200);
             Property(p => p.Categoria).IsRequired().HasColumnName("IdCategoria");
             //HasRequired(p => p.Cliente).WithOptional().Map(m => m.MapKey("IdClienteLocacao"));
-            Property(p =>p.IdCliente).IsOptional();
-            HasOptional(p => p.Cliente).WithMany().HasForeignKey(p => p.IdCliente);
+            Property(p =>p.IdLocacao).IsOptional();
+            HasOptional(p => p.Locacao).WithMany().HasForeignKey(p => p.IdLocacao);
             Property(p => p.Descricao).IsRequired().HasMaxLength(2048);
             HasRequired(p => p.Selo).WithMany(s => s.Jogos).HasForeignKey(p => p.IdSelo);
             Property(p => p.Imagem).IsOptional().HasMaxLength(128);
@@ -72,6 +74,20 @@ namespace Locadora.Repositorio.EF
             HasKey(c => c.Id);
 
             Property(p => p.Nome).IsRequired().HasMaxLength(250);
+        }
+    }
+
+    class LocacaoMap : EntityTypeConfiguration<Locacao>
+    {
+        public LocacaoMap()
+        {
+            ToTable("Locacao");
+            HasKey(c => c.Id);
+
+            HasRequired(p => p.Jogo).WithMany().HasForeignKey(p => p.IdJogo);
+            HasRequired(p => p.Cliente).WithMany().HasForeignKey(p => p.IdCliente);
+            Property(p => p.Situacao).IsRequired().HasColumnName("IdSituacao");
+            Property(p => p.DataEntrega).IsRequired();
         }
     }
 

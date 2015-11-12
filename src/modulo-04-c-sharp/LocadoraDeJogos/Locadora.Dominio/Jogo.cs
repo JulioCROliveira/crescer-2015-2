@@ -10,9 +10,9 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public Locacao Locacao { get; set; }
 
-        public int? IdCliente { get; set; }
+        public int? IdLocacao { get; set; }
 
         public string Descricao { get; set; }
 
@@ -29,15 +29,9 @@ namespace Locadora.Dominio
 
         }
 
-        public Jogo(int id, int? idCliente = 0)
+        public Jogo(int id)
         {
             Id = id;
-            IdCliente = idCliente;
-        }
-
-        public void LocarPara(Cliente cliente)
-        {
-            IdCliente = cliente.Id;
         }
 
         public override string ToString()
@@ -65,7 +59,7 @@ namespace Locadora.Dominio
                 return this.Id == jogoComp.Id
                     && this.Nome == jogoComp.Nome
                     && this.Categoria == jogoComp.Categoria
-                    && this.Cliente == jogoComp.Cliente
+                    && this.Locacao == jogoComp.Locacao
                     && this.Descricao == jogoComp.Descricao;
             }
 

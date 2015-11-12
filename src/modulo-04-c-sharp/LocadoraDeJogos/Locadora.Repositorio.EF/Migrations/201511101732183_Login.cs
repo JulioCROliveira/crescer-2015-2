@@ -41,8 +41,6 @@ namespace Locadora.Repositorio.EF.Migrations
                 .Index(t => t.IdUsuario)
                 .Index(t => t.IdPermissao);
             
-            AlterColumn("dbo.Jogo", "IdClienteLocacao", c => c.Int());
-            CreateIndex("dbo.Jogo", "IdClienteLocacao");
         }
         
         public override void Down()
@@ -51,12 +49,9 @@ namespace Locadora.Repositorio.EF.Migrations
             DropForeignKey("dbo.Usuario_Permissao", "IdUsuario", "dbo.Usuario");
             DropIndex("dbo.Usuario_Permissao", new[] { "IdPermissao" });
             DropIndex("dbo.Usuario_Permissao", new[] { "IdUsuario" });
-            DropIndex("dbo.Jogo", new[] { "IdClienteLocacao" });
-            AlterColumn("dbo.Jogo", "IdClienteLocacao", c => c.Int(nullable: false));
             DropTable("dbo.Usuario_Permissao");
             DropTable("dbo.Usuario");
             DropTable("dbo.Permissao");
-            CreateIndex("dbo.Jogo", "IdClienteLocacao");
         }
     }
 }

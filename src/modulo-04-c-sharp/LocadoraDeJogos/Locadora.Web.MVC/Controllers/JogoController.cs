@@ -33,7 +33,7 @@ namespace Locadora.Web.MVC.Controllers
                 ManterJogoModel model = new ManterJogoModel()
                 {                    
                     Id = jogoDoBanco.Id,
-                    IdCliente = jogoDoBanco.IdCliente,
+                    IdLocacao = jogoDoBanco.IdLocacao,
                     Nome = jogoDoBanco.Nome,
                     Categoria = jogoDoBanco.Categoria,
                     Descricao = jogoDoBanco.Descricao,
@@ -95,7 +95,7 @@ namespace Locadora.Web.MVC.Controllers
         public Jogo convertModelEmJogo(ManterJogoModel model)
         {
             int id = model.Id != null ? (int)model.Id : 0;
-            return new Jogo(id, model.IdCliente)
+            return new Jogo(id)
                 {
                     Nome = model.Nome,
                     Categoria = model.Categoria,
