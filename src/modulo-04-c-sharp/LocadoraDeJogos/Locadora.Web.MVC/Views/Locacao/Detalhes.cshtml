@@ -13,8 +13,9 @@ else
 {
     var jogo = @Model.Jogos.FirstOrDefault(j => j.Id == Model.Id);
     <div style="height: 300px" class="clearfix">
-        <div class="pull-left" style="max-width: 400px">
+        <div class="pull-left" style="max-width: 400px; position:relative">            
             <img src="@jogo.Imagem" style="max-width: 400px; height: 295px; display: block;" />
+            @Html.Partial("CarregarSelo", jogo.Selo.Nome)
         </div>
         <div class="pull-right" style="border: 2px solid black; width: 730px; height: 300px">
             <h1 class="text-center">@jogo.Nome</h1>

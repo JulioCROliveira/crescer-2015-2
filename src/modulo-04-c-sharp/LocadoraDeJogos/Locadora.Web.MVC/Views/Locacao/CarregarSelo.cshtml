@@ -1,1 +1,13 @@
-﻿
+﻿@model string
+@if (Model == "OURO")
+{
+    <img style="position: absolute; top: 20px; left: 20px" src="~/Content/img/OURO.jpg" alt="Selo de ouro" />
+}
+else if (Model == "PRATA")
+{
+    <img style="position: absolute; top: 20px; left: 20px" src="~/Content/img/PRATA.jpg" alt="Selo de ouro" />
+}
+else
+{
+    <img style="position: absolute; top: 20px; left: 20px" src="~/Content/img/BRONZE.jpg" alt="Selo de ouro" />
+}
