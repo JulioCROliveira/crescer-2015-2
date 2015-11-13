@@ -26,7 +26,7 @@ namespace Locadora.Repositorio.EF
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Jogo.Include("Cliente").Include("Selo").FirstOrDefault(j => j.Id == id);
+                return db.Jogo.Include("Locacao").Include("Selo").FirstOrDefault(j => j.Id == id);
             }
         }
 
@@ -34,7 +34,7 @@ namespace Locadora.Repositorio.EF
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Jogo.Include("Cliente").Include("Selo").Where(j => j.Nome.IndexOf(nome, StringComparison.OrdinalIgnoreCase) > 0).ToList();
+                return db.Jogo.Include("Locacao").Include("Selo").Where(j => j.Nome.IndexOf(nome, StringComparison.OrdinalIgnoreCase) > 0).ToList();
             }
         }
 
@@ -42,7 +42,7 @@ namespace Locadora.Repositorio.EF
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Jogo.Include("Cliente").Include("Selo").ToList();
+                return db.Jogo.Include("Locacao").Include("Selo").ToList();
             }
         }
 
