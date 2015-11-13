@@ -63,6 +63,7 @@ namespace Locadora.Repositorio.EF
 
             Property(p => p.Nome).IsRequired().HasMaxLength(16).HasColumnName("Nome");
             Property(p => p.Preco).IsRequired().HasPrecision(18,2);
+            Property(p => p.DiasLocacao).IsRequired();
         }
     }
 

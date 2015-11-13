@@ -11,6 +11,7 @@ namespace Locadora.Dominio
         public int Id { get; private set; }
         public string Nome { get; set; }
         public decimal Preco { get; set; }
+        public int DiasLocacao { get; set; }
 
         public ICollection<Jogo> Jogos { get; set; }
 

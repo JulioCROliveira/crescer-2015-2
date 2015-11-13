@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201511122331096_Locacao.Designer.cs">
       <DependentUpon>201511122331096_Locacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511130032335_SeloDuracaoLocacao.cs" />
+    <Compile Include="Migrations\201511130032335_SeloDuracaoLocacao.Designer.cs">
+      <DependentUpon>201511130032335_SeloDuracaoLocacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
     <Compile Include="Repositorios\JogoRepositorio.cs" />
     <Compile Include="Migrations\201511091915292_Initial.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511122331096_Locacao.resx">
       <DependentUpon>201511122331096_Locacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511130032335_SeloDuracaoLocacao.resx">
+      <DependentUpon>201511130032335_SeloDuracaoLocacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
