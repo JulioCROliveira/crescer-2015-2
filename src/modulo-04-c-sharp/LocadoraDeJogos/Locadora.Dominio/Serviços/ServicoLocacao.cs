@@ -14,11 +14,39 @@ namespace Locadora.Dominio.Serviços
 
         private IRepositorio<Jogo> jogoRepositorio;
         private IRepositorio<Cliente> clienteRepositorio;
+        private IRepositorioLocacao locacaoRepositorio;
 
-        public ServicoLocacao(IRepositorio<Jogo> jogoRepositorio, IRepositorio<Cliente> clienteRepositorio)
+        public ServicoLocacao(IRepositorio<Jogo> jogoRepositorio, IRepositorio<Cliente> clienteRepositorio, IRepositorioLocacao locacaoRepositorio)
         {
             this.jogoRepositorio = jogoRepositorio;
             this.clienteRepositorio = clienteRepositorio;
+            this.locacaoRepositorio = locacaoRepositorio;
+        }
+
+        public void LocarJogo(Jogo jogo, Cliente cliente)
+        {
+            Locacao locacao = new Locacao(jogo, cliente, CalcularDataEntrega(jogo));
+            int idLocacao = locacaoRepositorio.LocarJogo(locacao);
+            jogo.IdLocacao = idLocacao;
+            jogoRepositorio.Atualizar(jogo);
+        }
+
+        public void DevolverJogo(Locacao locacao)
+        {
+            jogoRepositorio.BuscarPorId(locacao.IdJogo).IdLocacao = null;
+            locacaoRepositorio.DevolverJogo(locacao);
+        }
+
+        public decimal CalcularValor(Locacao locacao)
+        {
+            int atraso = (new DateTime().Subtract(locacao.DataEntrega)).Days;
+            decimal multa = atraso > 0 ? atraso * MULTA_DIARIA : 0;
+            return locacao.Jogo.Selo.Preco + multa;
+        }
+
+        private DateTime CalcularDataEntrega(Jogo jogo)
+        {
+            return new DateTime().AddDays((double)jogo.Selo.DiasLocacao);
         }
     }
 }

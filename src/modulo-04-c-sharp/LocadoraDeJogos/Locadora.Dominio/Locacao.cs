@@ -21,11 +21,14 @@ namespace Locadora.Dominio
 
         }
 
-        public Locacao(int idJogo, int idCliente, DateTime dataEntrega)
+        public Locacao(Jogo jogo, Cliente cliente, DateTime dataEntrega)
         {
-            IdJogo = idJogo;
-            IdCliente = idCliente;
+            IdJogo = jogo.Id;
+            Jogo = jogo;
+            IdCliente = cliente.Id;
+            Cliente = cliente;
             DataEntrega = dataEntrega;
+            Situacao = Situacao.ATIVO;
         }
     }
 }
