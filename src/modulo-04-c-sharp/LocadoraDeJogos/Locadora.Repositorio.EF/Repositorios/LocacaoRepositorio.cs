@@ -14,7 +14,7 @@ namespace Locadora.Repositorio.EF.Repositorios
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Locacao.Include("Jogo").Include("Cliente").Where(l => l.IdJogo == jogo.Id).ToList();
+                return db.Locacao.Include("Jogo").Include("Jogo.Selo").Include("Cliente").Where(l => l.IdJogo == jogo.Id).ToList();
             } 
         }
 
@@ -22,7 +22,7 @@ namespace Locadora.Repositorio.EF.Repositorios
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Locacao.Include("Jogo").Include("Cliente").ToList();
+                return db.Locacao.Include("Jogo").Include("Jogo.Selo").Include("Cliente").ToList();
             } 
         }
 
@@ -31,6 +31,9 @@ namespace Locadora.Repositorio.EF.Repositorios
             using (BancoDeDados db = new BancoDeDados())
             {
                 db.Entry(locacao).State = System.Data.Entity.EntityState.Added;
+                db.Entry(locacao.Jogo).State = System.Data.Entity.EntityState.Unchanged;
+                db.Entry(locacao.Jogo.Selo).State = System.Data.Entity.EntityState.Unchanged;
+                db.Entry(locacao.Cliente).State = System.Data.Entity.EntityState.Unchanged;
                 db.SaveChanges();
 
                 return RetornarIdLocacao(locacao.Jogo);
@@ -42,7 +45,7 @@ namespace Locadora.Repositorio.EF.Repositorios
             using (BancoDeDados db = new BancoDeDados())
             {
                 locacao.Situacao = Situacao.ENTREGUE;
-                db.Entry(locacao).Property(p => p.Situacao).IsModified = true;
+                db.Entry(locacao).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges();
             } 
         }
@@ -51,7 +54,7 @@ namespace Locadora.Repositorio.EF.Repositorios
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Locacao.Include("Jogo").Include("Cliente").FirstOrDefault(p => p.Id == id);
+                return db.Locacao.Include("Jogo").Include("Jogo.Selo").Include("Cliente").FirstOrDefault(p => p.Id == id);
             } 
         }
 
@@ -59,7 +62,7 @@ namespace Locadora.Repositorio.EF.Repositorios
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                return db.Locacao.Include("Jogo").Include("Cliente").Where(p => p.Situacao == Situacao.ATIVO).ToList();
+                return db.Locacao.Include("Jogo").Include("Jogo.Selo").Include("Cliente").Where(p => p.Situacao == Situacao.ATIVO).ToList();
             } 
         }
 

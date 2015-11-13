@@ -14,13 +14,8 @@ namespace Locadora.Repositorio.EF
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                Cliente clienteAAtualizar = db.Cliente.Find(entidade.Id);
-                if (clienteAAtualizar == null) { return 0; }
-                clienteAAtualizar = entidade;
-                db.Entry(clienteAAtualizar).State = System.Data.Entity.EntityState.Modified;
-
-                db.SaveChanges();
-                return 1;
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Modified;                
+                return db.SaveChanges();
             }
         }
 
@@ -60,9 +55,8 @@ namespace Locadora.Repositorio.EF
         {
             using (BancoDeDados db = new BancoDeDados())
             {
-                db.Entry(entidade).State = System.Data.Entity.EntityState.Added;
-                db.SaveChanges();
-                return 1;
+                db.Entry(entidade).State = System.Data.Entity.EntityState.Added;                
+                return db.SaveChanges();
             }
         }
 
@@ -71,9 +65,8 @@ namespace Locadora.Repositorio.EF
             using (BancoDeDados db = new BancoDeDados())
             {
                 Cliente clienteAExcluir = db.Cliente.Find(id);
-                db.Entry(clienteAExcluir).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
-                return 1;
+                db.Entry(clienteAExcluir).State = System.Data.Entity.EntityState.Deleted;                
+                return db.SaveChanges();
             }
         }
     }

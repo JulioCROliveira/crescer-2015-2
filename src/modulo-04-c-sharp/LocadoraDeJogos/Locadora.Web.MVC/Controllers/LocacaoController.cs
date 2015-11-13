@@ -3,6 +3,7 @@ using Locadora.Dominio.Repositorio;
 using Locadora.Dominio.Serviços;
 using Locadora.Web.MVC.Helpers;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class LocacaoController : Controller
     {
         IRepositorio<Jogo> dbJogo = Construtor.CriarJogoRepositorio();
@@ -86,9 +88,9 @@ namespace Locadora.Web.MVC.Controllers
         [HttpPost]
         public ActionResult EfetuarDevolucao(DevolverModel model)
         {
-            servicoLocacao.DevolverJogo(model.Locacao);
+            servicoLocacao.DevolverJogo(dbLocacao.BuscarPorId((int)model.IdLocacao));
             string mensagem = "Devolução concluída";
-            return View("Devolver", mensagem);
+            return RedirectToAction("Devolver", new { mensagem });
         }
     }
 }

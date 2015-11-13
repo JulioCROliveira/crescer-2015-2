@@ -37,6 +37,7 @@ namespace Locadora.Dominio.Serviços
         {
             var jogo = jogoRepositorio.BuscarPorId(locacao.IdJogo);
             jogo.IdLocacao = null;
+            jogo.Locacao = null;
             jogoRepositorio.Atualizar(jogo);
             var cliente = clienteRepositorio.BuscarPorId(locacao.IdCliente);
             cliente.JogosLocados--;
@@ -46,7 +47,7 @@ namespace Locadora.Dominio.Serviços
 
         public decimal CalcularValor(Locacao locacao)
         {
-            int atraso = (new DateTime().Subtract(locacao.DataEntrega)).Days;
+            int atraso = (DateTime.Now.Subtract(locacao.DataEntrega)).Days;
             decimal multa = atraso > 0 ? atraso * MULTA_DIARIA : 0;
             return locacao.Jogo.Selo.Preco + multa;
         }

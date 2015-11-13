@@ -112,6 +112,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\BRONZE.jpg" />
+    <Content Include="Content\img\OURO.jpg" />
+    <Content Include="Content\img\PRATA.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -210,6 +213,7 @@
     <Content Include="Views\Locacao\Locar.cshtml" />
     <Content Include="Views\Locacao\Devolver.cshtml" />
     <Content Include="Views\Locacao\Detalhes.cshtml" />
+    <Content Include="Views\Locacao\CarregarSelo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -33,7 +33,7 @@ namespace Locadora.Repositorio.EF.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cliente", t => t.IdCliente, cascadeDelete: true)
                 .ForeignKey("dbo.Jogo", t => t.IdJogo, cascadeDelete: true)
-                .ForeignKey("dbo.Situacao", t => t.IdJogo, cascadeDelete: true)
+                .ForeignKey("dbo.Situacao", t => t.IdSituacao, cascadeDelete: true)
                 .Index(t => t.IdJogo)
                 .Index(t => t.IdCliente);
             

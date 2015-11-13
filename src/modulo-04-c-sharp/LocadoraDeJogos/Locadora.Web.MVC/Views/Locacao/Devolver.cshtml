@@ -7,21 +7,33 @@
 <h2>@Model.Mensagem</h2>
 
 <div class="form-group">
-    @Html.LabelFor(m => m.IdJogo, new { @class = "col-sm-2 control-label" })
+    @Html.LabelFor(m => m.IdJogo, new { @class = "col-sm-2 control-label", style= "font-size: 1.5em" })
     <div class="col-sm-10">
-        @Html.DropDownListFor(m => m.IdJogo, (IEnumerable<SelectListItem>)@ViewBag.ListaJogos, "Novo jogo", new { @class = "form-control", @onchange = "window.location.href='/Locacao/Devolver/'+this.value;" })
+        @Html.DropDownListFor(m => m.IdJogo, (IEnumerable<SelectListItem>)@ViewBag.ListaJogos, "", new { @class = "form-control", style = "font-size: 1.5em", @onchange = "window.location.href='/Locacao/Devolver/'+this.value;" })
         @Html.ValidationMessageFor(m => m.IdJogo)
     </div>
 </div>
-<h3>Jogo : @Model.Jogo.Nome</h3>
-<h3>Cliente : @Model.Cliente.Nome</h3>
-<h3>Valor : @Model.servicoLocacao.CalcularValor(@Model.Locacao)</h3>
-
-@using (Html.BeginForm("EfetuarDevolucao", "Locacao", @Model, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<div style="height: 50px"></div>
+<h3>Detalhes</h3>
+@if (Model.Jogo != null)
 {
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+    <h3>Cliente : @Model.Cliente.Nome</h3>
+    <h3>Valor : @Model.servicoLocacao.CalcularValor(@Model.Locacao)</h3>
+}
+else
+{
+    <h3>Cliente :</h3>
+    <h3>Valor :</h3>
+}
+@if (Model.Jogo != null)
+{
+    using (Html.BeginForm("EfetuarDevolucao", "Locacao", @Model, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Devolver</button>
+            </div>
         </div>
-    </div>
+
+    }
 }

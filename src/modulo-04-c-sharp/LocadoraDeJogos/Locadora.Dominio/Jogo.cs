@@ -10,7 +10,7 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
-        public Locacao Locacao { get; set; }
+        public virtual Locacao Locacao { get; set; }
 
         public int? IdLocacao { get; set; }
 
