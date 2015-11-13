@@ -28,6 +28,8 @@ namespace Locadora.Repositorio.EF.Repositorios
             }
         }
 
+
+
         public IList<Selo> BuscarPorNome(string nome)
         {
             using (BancoDeDados db = new BancoDeDados())
@@ -42,6 +44,11 @@ namespace Locadora.Repositorio.EF.Repositorios
             {
                 return db.Selo.ToList();
             }
+        }
+
+        public IList<Selo> BuscarTodosDisponiveis()
+        {
+            return BuscarTodos();
         }
 
         public int Criar(Selo entidade)

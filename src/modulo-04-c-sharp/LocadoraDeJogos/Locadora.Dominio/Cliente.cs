@@ -9,6 +9,7 @@ namespace Locadora.Dominio
     public class Cliente : EntidadeBase
     {
         public string Nome { get; set; }
+        public int JogosLocados { get; set; }
 
         public Cliente()
         {

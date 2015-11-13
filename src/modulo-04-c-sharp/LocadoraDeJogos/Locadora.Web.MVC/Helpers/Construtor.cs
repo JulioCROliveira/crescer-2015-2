@@ -18,6 +18,21 @@ namespace Locadora.Web.MVC.Helpers
             return new JogoRepositorio();
         }
 
+        public static IRepositorio<Cliente> CriarClienteRepositorio()
+        {
+            return new ClienteRepositorio();
+        }
+
+        public static IRepositorioLocacao CriarLocacaoRepositorio()
+        {
+            return new LocacaoRepositorio();
+        }
+
+        public static ServicoLocacao CriarServicoLocacao()
+        {
+            return new ServicoLocacao(CriarJogoRepositorio(), CriarClienteRepositorio(), CriarLocacaoRepositorio());
+        }
+
         public static IRepositorio<Selo> CriarSeloRepositorio()
         {
             return new SeloRepositorio();

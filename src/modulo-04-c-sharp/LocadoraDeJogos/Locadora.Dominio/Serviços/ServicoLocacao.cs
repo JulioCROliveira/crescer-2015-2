@@ -29,11 +29,18 @@ namespace Locadora.Dominio.Serviços
             int idLocacao = locacaoRepositorio.LocarJogo(locacao);
             jogo.IdLocacao = idLocacao;
             jogoRepositorio.Atualizar(jogo);
+            cliente.JogosLocados++;
+            clienteRepositorio.Atualizar(cliente);
         }
 
         public void DevolverJogo(Locacao locacao)
         {
-            jogoRepositorio.BuscarPorId(locacao.IdJogo).IdLocacao = null;
+            var jogo = jogoRepositorio.BuscarPorId(locacao.IdJogo);
+            jogo.IdLocacao = null;
+            jogoRepositorio.Atualizar(jogo);
+            var cliente = clienteRepositorio.BuscarPorId(locacao.IdCliente);
+            cliente.JogosLocados--;
+            clienteRepositorio.Atualizar(cliente);
             locacaoRepositorio.DevolverJogo(locacao);
         }
 
@@ -46,7 +53,7 @@ namespace Locadora.Dominio.Serviços
 
         private DateTime CalcularDataEntrega(Jogo jogo)
         {
-            return new DateTime().AddDays((double)jogo.Selo.DiasLocacao);
+            return DateTime.Now.AddDays((double)jogo.Selo.DiasLocacao);
         }
     }
 }

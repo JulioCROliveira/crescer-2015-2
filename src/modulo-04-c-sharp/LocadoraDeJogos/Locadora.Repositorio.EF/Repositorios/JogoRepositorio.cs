@@ -64,5 +64,13 @@ namespace Locadora.Repositorio.EF
                 return db.SaveChanges();
             }
         }
+
+        public IList<Jogo> BuscarTodosDisponiveis()
+        {
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                return db.Jogo.Include("Locacao").Include("Selo").Where(j => j.IdLocacao == null).ToList();
+            }
+        }
     }
 }

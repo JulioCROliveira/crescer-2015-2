@@ -48,6 +48,14 @@ namespace Locadora.Repositorio.EF
             }
         }
 
+        public IList<Cliente> BuscarTodosDisponiveis()
+        {
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                return db.Cliente.Where(c => c.JogosLocados < 3).ToList();
+            }
+        }
+
         public int Criar(Cliente entidade)
         {
             using (BancoDeDados db = new BancoDeDados())

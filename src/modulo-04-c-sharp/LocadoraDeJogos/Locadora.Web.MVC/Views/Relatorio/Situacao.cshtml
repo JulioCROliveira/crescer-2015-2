@@ -1,0 +1,9 @@
+﻿@model JogoModel
+@if(@Model.IdLocacao != null)
+{
+    <a href="~/Locacao/Devolver/@Model.Id">DEVOLVER</a>
+}
+else
+{
+    <a href="~/Locacao/Locar/@Model.Id">LOCAR</a>
+}   

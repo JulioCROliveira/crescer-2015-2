@@ -6,21 +6,21 @@ using Locadora.Dominio;
 
 namespace Locadora.Web.MVC.Models
 {
-    public class JogoModel
+    public class LocarJogoModel
     {
         public int Id { get; set; }
-        public int? IdLocacao { get; set; }
         public string Nome { get; set; }
-        public string Categoria { get; set; }
         public Selo Selo { get; set; }
+        public string Imagem { get; set; }
+        public DateTime DataPrevista { get; set; }
 
-        public JogoModel(int id, string nome, string categoria, Selo selo, int? idLocacao)
+        public LocarJogoModel(int id, string nome, Selo selo, string imagem, DateTime dataPrevista)
         {
             Id = id;
             Nome = nome;
-            Categoria = categoria;
             Selo = selo;
-            IdLocacao = idLocacao;
+            Imagem = imagem;
+            DataPrevista = dataPrevista;
         }
     }
 }

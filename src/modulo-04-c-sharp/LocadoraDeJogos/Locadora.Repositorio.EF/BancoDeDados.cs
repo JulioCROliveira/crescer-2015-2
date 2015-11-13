@@ -75,6 +75,7 @@ namespace Locadora.Repositorio.EF
             HasKey(c => c.Id);
 
             Property(p => p.Nome).IsRequired().HasMaxLength(250);
+            Property(p => p.JogosLocados).IsRequired();
         }
     }
 

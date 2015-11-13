@@ -12,7 +12,8 @@
             <tr>
                 <th style="width: 40%">Jogo</th>            
                 <th style="width: 30%">Categoria</th>
-                <th style="width: 30%">Preço</th>
+                <th style="width: 15%">Preço</th>
+                <th style="width: 15%">Ação</th>
             </tr>
         </thead>
         @foreach (var jogo in @Model.ListaDeJogos)
@@ -21,6 +22,7 @@
                 <td>@jogo.Nome</td>
                 <td>@jogo.Categoria</td>
                 <td>@jogo.Selo.Preco.ToString("c")</td>
+                <td>@Html.Partial("Situacao", jogo)</td>
             </tr>
         }    
 

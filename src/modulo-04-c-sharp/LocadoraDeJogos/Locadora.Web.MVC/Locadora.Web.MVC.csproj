@@ -170,6 +170,7 @@
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
+    <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +178,8 @@
     <Compile Include="Helpers\Construtor.cs" />
     <Compile Include="Models\DescricaoJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
+    <Compile Include="Models\LocarJogoModel.cs" />
+    <Compile Include="Models\LocarModel.cs" />
     <Compile Include="Models\ManterJogoModel.cs" />
     <Compile Include="Models\RelatorioJogosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,6 +205,10 @@
     <Content Include="Views\Jogo\ManterJogo.cshtml" />
     <Content Include="Views\Jogo\Index.cshtml" />
     <Content Include="Views\Conta\Index.cshtml" />
+    <Content Include="Views\Relatorio\Situacao.cshtml" />
+    <Content Include="Views\Locacao\Locar.cshtml" />
+    <Content Include="Views\Locacao\Devolver.cshtml" />
+    <Content Include="Views\Locacao\Detalhes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

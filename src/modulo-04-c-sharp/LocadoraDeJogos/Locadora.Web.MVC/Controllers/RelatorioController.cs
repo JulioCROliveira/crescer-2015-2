@@ -36,7 +36,7 @@ namespace Locadora.Web.MVC.Controllers
             model.ListaDeJogos = new List<JogoModel>();
             foreach (var jogo in listaJogos)
             {
-                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Categoria.ToString(), jogo.Selo));
+                model.ListaDeJogos.Add(new JogoModel(jogo.Id, jogo.Nome, jogo.Categoria.ToString(), jogo.Selo, jogo.IdLocacao));
             }
             model.QuantidadeDeJogos = model.ListaDeJogos.Count;        
 
