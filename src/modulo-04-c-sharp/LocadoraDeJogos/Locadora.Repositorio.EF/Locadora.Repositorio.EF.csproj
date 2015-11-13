@@ -89,6 +89,7 @@
       <DependentUpon>201511121652525_SeloAlteração.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositorios\LocacaoRepositorio.cs" />
     <Compile Include="Repositorios\PermissaoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\SeloRepositorio.cs" />

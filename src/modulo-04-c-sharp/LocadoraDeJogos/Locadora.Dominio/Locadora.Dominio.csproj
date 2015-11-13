@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorio.cs" />
     <Compile Include="Repositorio\IRepositorio.cs" />
+    <Compile Include="Repositorio\IRepositorioLocacao.cs" />
     <Compile Include="Repositorio\IRepositorioPermissao.cs" />
     <Compile Include="Repositorio\IRepositorioUsuario.cs" />
     <Compile Include="Selo.cs" />
