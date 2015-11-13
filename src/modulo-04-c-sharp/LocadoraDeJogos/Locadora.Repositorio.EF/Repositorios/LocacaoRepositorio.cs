@@ -26,12 +26,14 @@ namespace Locadora.Repositorio.EF.Repositorios
             } 
         }
 
-        public int Criar(Locacao locacao)
+        public int LocarJogo(Locacao locacao)
         {
             using (BancoDeDados db = new BancoDeDados())
             {
                 db.Entry(locacao).State = System.Data.Entity.EntityState.Added;
-                return db.SaveChanges();
+                db.SaveChanges();
+
+                return RetornarIdLocacao(locacao.Jogo);
             } 
         }
 
@@ -58,6 +60,14 @@ namespace Locadora.Repositorio.EF.Repositorios
             using (BancoDeDados db = new BancoDeDados())
             {
                 return db.Locacao.Include("Jogo").Include("Cliente").Where(p => p.Situacao == Situacao.ATIVO).ToList();
+            } 
+        }
+
+        public int RetornarIdLocacao(Jogo jogo)
+        {
+            using (BancoDeDados db = new BancoDeDados())
+            {
+                return db.Locacao.FirstOrDefault(p => p.IdJogo == jogo.Id && p.Situacao == Situacao.ATIVO).Id;
             } 
         }
     }

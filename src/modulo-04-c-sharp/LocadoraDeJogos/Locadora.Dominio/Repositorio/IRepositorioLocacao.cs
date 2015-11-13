@@ -14,5 +14,6 @@ namespace Locadora.Dominio.Repositorio
         int DevolverJogo(Locacao locacao);
         Locacao BuscarPorId(int id);
         IList<Locacao> BuscarAtivos();
+        int RetornarIdLocacao(Jogo jogo);
     }
 }
