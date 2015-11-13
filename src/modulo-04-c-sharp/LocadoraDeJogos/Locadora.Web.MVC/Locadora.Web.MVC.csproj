@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Helpers\Construtor.cs" />
     <Compile Include="Models\DescricaoJogoModel.cs" />
+    <Compile Include="Models\DevolverModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\LocarJogoModel.cs" />
     <Compile Include="Models\LocarModel.cs" />

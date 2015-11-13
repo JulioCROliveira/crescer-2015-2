@@ -40,9 +40,34 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Devolver()
+        public ActionResult Devolver(int? id, string mensagem)
         {
-            return View();
+            DevolverModel model = new DevolverModel()
+            {
+                Mensagem = mensagem
+            };
+            ViewBag.ListaJogos = new SelectList(dbJogo.BuscarTodos().Where(p => p.IdLocacao != null), "Id", "Nome");
+
+            if (id.HasValue && id > 0)
+            {
+                Jogo jogoDoBanco = dbJogo.BuscarPorId((int)id);
+                if (jogoDoBanco.IdLocacao != null)
+                {
+                    Locacao locacao = Construtor.CriarLocacaoRepositorio().BuscarPorId((int)jogoDoBanco.IdLocacao);
+                    model.IdLocacao = jogoDoBanco.IdLocacao;
+                    model.Locacao = locacao;
+                    model.IdJogo = jogoDoBanco.Id;
+                    model.Jogo = jogoDoBanco;
+                    model.IdCliente = locacao.IdCliente;
+                    model.Cliente = locacao.Cliente;
+                }
+                else
+                {
+                    model.Mensagem = "O jogo citado não existe ou não está locado";
+                } 
+            }
+
+            return View(model);
         }
 
         [HttpPost]
@@ -56,6 +81,14 @@ namespace Locadora.Web.MVC.Controllers
                 return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
             return View("Locar");
+        }
+
+        [HttpPost]
+        public ActionResult EfetuarDevolucao(DevolverModel model)
+        {
+            servicoLocacao.DevolverJogo(model.Locacao);
+            string mensagem = "Devolução concluída";
+            return View("Devolver", mensagem);
         }
     }
 }

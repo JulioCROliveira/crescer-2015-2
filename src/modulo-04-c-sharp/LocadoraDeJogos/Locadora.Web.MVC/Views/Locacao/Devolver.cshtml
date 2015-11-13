@@ -1,7 +1,27 @@
-﻿
+﻿@model DevolverModel
 @{
     ViewBag.Title = "Devolver";
 }
 
-<h2>Devolver Jogo</h2>
+<h1>Devolver Jogo</h1>
+<h2>@Model.Mensagem</h2>
 
+<div class="form-group">
+    @Html.LabelFor(m => m.IdJogo, new { @class = "col-sm-2 control-label" })
+    <div class="col-sm-10">
+        @Html.DropDownListFor(m => m.IdJogo, (IEnumerable<SelectListItem>)@ViewBag.ListaJogos, "Novo jogo", new { @class = "form-control", @onchange = "window.location.href='/Locacao/Devolver/'+this.value;" })
+        @Html.ValidationMessageFor(m => m.IdJogo)
+    </div>
+</div>
+<h3>Jogo : @Model.Jogo.Nome</h3>
+<h3>Cliente : @Model.Cliente.Nome</h3>
+<h3>Valor : @Model.servicoLocacao.CalcularValor(@Model.Locacao)</h3>
+
+@using (Html.BeginForm("EfetuarDevolucao", "Locacao", @Model, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+}
