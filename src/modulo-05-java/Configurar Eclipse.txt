@@ -1,0 +1,54 @@
+import / create maven project
+
+copiar ojdbc6.jar em C:\java\resources
+
+digitar na linha de comando:
+mvn install:install-file -Dfile=C:\java\resources\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar
+
+Adicionar no pom.xml:
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+       	    <groupId>com.oracle</groupId>
+	    <artifactId>ojdbc6</artifactId>
+	    <version>11.2.0.4</version>
+        </dependency>
+
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+adicionar no application.properties
+
+    server.port = 8081
+
+    spring.thymeleaf.cache=false
+
+    spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+    spring.datasource.username=LAVANDERIA2
+    spring.datasource.password=LAVANDERIA2
+
