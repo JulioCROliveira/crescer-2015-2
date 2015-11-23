@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="home.css" />
+	<link rel="stylesheet" type="text/css" href="menu.css" />
+</head>
+<body>
+	<header>
+		<div class="clearfix header">
+			<nav class="block pull-right menu">
+				<ul>
+					<li class="inline-block list-menu"><a href="@">HomePage</a></li>
+					<li class="inline-block list-menu"><a href="@">Serviços</a></li>
+					<li class="inline-block list-menu"><a href="@">Contato</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<h1 class="mensagem" th:Text="${mensagem}">Index</h1>
+</body>
+</html>
