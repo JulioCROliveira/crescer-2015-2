@@ -1,36 +1,23 @@
 @CHARSET "utf-8";
 
-.block {
-	display: block;
-}
-
-.inline-block {
-	display: inline-block;
-}
-
 .list-menu {
 	padding: 10px 15px;
 	font: 20px/24px tahoma;	
+}
+
+.list-footer {
+	padding: 10px 15px;
+	font: 14px/18px tahoma;	
 }
 
 .header {
 	background-color: #131313;	
 }
 
+.footer {
+	background-color: #131313;	
+}
+
 .menu {
 	padding-right: 45px;
-}
-
-.clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.pull-left {
-	float: left;
-}
-
-.pull-right {
-	float: right;
 }
