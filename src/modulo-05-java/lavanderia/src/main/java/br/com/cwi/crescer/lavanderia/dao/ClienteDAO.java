@@ -31,4 +31,9 @@ public class ClienteDAO extends AbstractDAO {
 
         return em.merge(cliente);
     }
+
+    @Transactional
+    public void delete(Long id) {
+        em.remove(em.getReference(Cliente.class, id));
+    }
 }

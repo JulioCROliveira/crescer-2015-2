@@ -53,4 +53,11 @@ public class ClienteService {
 
         clienteDAO.save(entity);
     }
+
+    public void adicionar(ClienteDTO dto) {
+        Cliente entity = ClienteMapper.getNewEntity(dto);
+        entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
+        entity.setSituacao(SituacaoCliente.ATIVO);
+        clienteDAO.save(entity);
+    }
 }
