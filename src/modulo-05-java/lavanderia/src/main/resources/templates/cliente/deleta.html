@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
-	<title>Exibir cliente</title>
+	<title>Deletar cliente</title>
 	<link rel="stylesheet" type="text/css" href="home.css" />
 	<link rel="stylesheet" type="text/css" href="menu.css" />
 	<link rel="stylesheet" type="text/css" href="style.css" />
@@ -23,7 +23,11 @@
 	<div class="content">
 		<h2>Visualizar</h2>
 		
-		<form th:object="${cliente}">
+		<form th:action="@{/clientes/deletar}" th:object="${cliente}" method="post">
+		
+			<p> Você tem certeza que deseja excluir permamentemente o cliente abaixao!?</p>
+			<button type="submit">Deletar</button> 
+			<button type="button" th:href="${'/clientes/'}">Cancelar</button>
 	
 			<p>
 				<div><label class="control-label">ID: </label></div>

@@ -54,9 +54,20 @@ public class ClienteController {
         return new ModelAndView("cliente/novo", "cliente", new ClienteDTO());
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(path = "/novo", method = RequestMethod.POST)
     public ModelAndView adicinar(ClienteDTO dto) {
         clienteService.adicionar(dto);
+        return new ModelAndView("redirect:/clientes");
+    }
+
+    @RequestMapping(path = "/deletar/{id}", method = RequestMethod.GET)
+    public ModelAndView viewDeleta(@PathVariable("id") Long id) {
+        return new ModelAndView("cliente/deleta", "cliente", clienteService.buscarClientePorId(id));
+    }
+
+    @RequestMapping(path = "/deletar", method = RequestMethod.POST)
+    public ModelAndView deletar(ClienteDTO dto) {
+        clienteService.deletar(dto);
         return new ModelAndView("redirect:/clientes");
     }
 
