@@ -2,15 +2,12 @@ package br.com.cwi.crescer.lavanderia.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.cwi.crescer.lavanderia.dao.CidadeDAO;
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
 import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
 
 public class ClienteMapper {
 
     @Autowired
-    private static CidadeDAO cidadeDAO = new CidadeDAO();
-
     public static Cliente getNewEntity(ClienteDTO dto) {
         Cliente entity = new Cliente();
         entity.setNome(dto.getNome());
@@ -18,7 +15,6 @@ public class ClienteMapper {
         entity.setEmail(dto.getEmail());
         entity.setEndereco(dto.getEndereco());
         entity.setBairro(dto.getBairro());
-        entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
         entity.setCep(dto.getCep());
         return entity;
     }
@@ -42,7 +38,6 @@ public class ClienteMapper {
         entity.setEmail(dto.getEmail());
         entity.setEndereco(dto.getEndereco());
         entity.setBairro(dto.getBairro());
-        entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
         entity.setCep(dto.getCep());
         return entity;
     }

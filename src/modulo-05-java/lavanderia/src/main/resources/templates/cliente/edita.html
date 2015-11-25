@@ -1,26 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
 <head>
-	<meta charset="utf-8" />
 	<title>Editar cliente</title>
-	<link rel="stylesheet" type="text/css" href="home.css" />
-	<link rel="stylesheet" type="text/css" href="menu.css" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-	<header>
-		<div class="clearfix header">
-			<nav class="block pull-right menu">
-				<ul>
-					<li class="inline-block list-menu"><a th:href="${'/'}">HomePage</a></li>
-					<li class="inline-block list-menu"><a th:href="${'/clientes/'}">Clientes</a></li>
-					<li class="inline-block list-menu"><a href="@">Contato</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
 	
-	<div class="content">
+	<div layout:fragment="content">
 		<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
 		
 			<input th:field="*{id}" type="hidden" />
@@ -81,18 +66,6 @@
 		</form>
 
 	</div>
-	
-	<footer>
-		<div class="clearfix footer">
-			<nav class="block text-center menu">
-				<ul>
-					<li class="inline-block list-menu"><a th:href="${'/'}">HomePage</a></li>
-					<li class="inline-block list-menu"><a th:href="${'/clientes/'}">Clientes</a></li>
-					<li class="inline-block list-menu"><a href="@">Contato</a></li>
-				</ul>
-			</nav>
-		</div>
-	</footer>
-	
+
 </body>
 </html>		

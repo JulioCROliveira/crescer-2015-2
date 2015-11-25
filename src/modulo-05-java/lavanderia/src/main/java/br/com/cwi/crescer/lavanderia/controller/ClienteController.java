@@ -67,7 +67,7 @@ public class ClienteController {
 
     @RequestMapping(path = "/deletar", method = RequestMethod.POST)
     public ModelAndView deletar(ClienteDTO dto) {
-        clienteService.deletar(dto);
+        clienteService.inativar(dto);
         return new ModelAndView("redirect:/clientes");
     }
 

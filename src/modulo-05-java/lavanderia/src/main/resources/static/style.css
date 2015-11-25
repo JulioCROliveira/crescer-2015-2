@@ -16,16 +16,16 @@
 }
 
 .th10 {
-	width: 10%
+	width: 10%;
+}
+
+.th20 {
+	width: 20%;
 }
 
 .table90-center {
 	width: 90%; 
-	margin-left: 5%
-}
-
-.th20 {
-	width: 20%
+	margin-left: 5%;
 }
 
 .text-center {
