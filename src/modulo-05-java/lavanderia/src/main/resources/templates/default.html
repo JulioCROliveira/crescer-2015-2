@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<meta charset="utf-8" />
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/home.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/menu.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<meta charset="utf-8" />
+<title>Home</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
 	<header layout:fragment="custom-header">
 		<div class="clearfix header">
 			<nav class="block pull-right menu">
 				<ul>
-					<li class="inline-block list-menu"><a th:href="${'/'}">HomePage</a></li>
-					<li class="inline-block list-menu"><a th:href="${'/clientes/'}">Clientes</a></li>
-					<li class="inline-block list-menu"><a href="@">Contato</a></li>
+					<li class="inline-block list-menu"><a class="white-text"
+						th:href="${'/'}">HomePage</a></li>
+					<li class="inline-block list-menu"><a class="white-text"
+						th:href="${'/clientes/'}">Clientes</a></li>
+					<li class="inline-block list-menu"><a class="white-text"
+						href="@">Contato</a></li>
+					<li sec:authorize="isAuthenticated()" class="inline-block list-menu">
+					<form name="form" th:action="@{/login}" action="/logout" method="POST">
+						<input type="submit" id="login" value="Sair" class="logout-button" />
+					</form>
+					</li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-	
-	<div class="content" layout:fragment="content">
-		
-	</div>
-	
+
+	<div class="content" layout:fragment="content"></div>
+
 	<footer layout:fragment="custom-footer">
 		<div class="clearfix footer">
 			<nav class="block text-center menu">
 				<ul>
-					<li class="inline-block list-menu"><a th:href="${'/'}">HomePage</a></li>
-					<li class="inline-block list-menu"><a th:href="${'/clientes/'}">Clientes</a></li>
-					<li class="inline-block list-menu"><a href="@">Contato</a></li>
+					<li class="inline-block list-menu"><a class="white-text"
+						th:href="${'/'}">HomePage</a></li>
+					<li class="inline-block list-menu"><a class="white-text"
+						th:href="${'/clientes/'}">Clientes</a></li>
+					<li class="inline-block list-menu"><a class="white-text"
+						href="@">Contato</a></li>
 				</ul>
 			</nav>
 		</div>
 	</footer>
-	
+
 </body>
 </html>

@@ -13,6 +13,17 @@
 	color: red;
 }
 
+.white-text {
+	color: white;
+}
+
+.logout-button {
+	background-color: white;
+	width: 90px;
+	height: 23px;
+	border-radius: 50%;
+}
+
 .has-error {
 	vertical-align: top;
 	border: 1px solid red;
