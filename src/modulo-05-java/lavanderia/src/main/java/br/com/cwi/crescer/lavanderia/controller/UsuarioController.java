@@ -30,14 +30,14 @@ public class UsuarioController {
     @ResponseBody
     @RequestMapping(path = "/rest/{username}")
     public UsuarioDTO buscarUsuario(@PathVariable("username") String username) {
-        return UsuarioService.buscarUsuarioPorUsername(username);
+        return usuarioService.buscarUsuarioPorUsername(username);
     }
 
-    // @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    // public ModelAndView viewExibe(@PathVariable("id") Long id) {
-    // return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
-    // }
-    //
+    @RequestMapping(path = "/{username}", method = RequestMethod.GET)
+    public ModelAndView viewExibe(@PathVariable("username") String username) {
+        return new ModelAndView("usuarios/exibe", "usuarios", usuarioService.buscarUsuarioPorUsername(username));
+    }
+
     // @PreAuthorize("hasRole('ADMIN')")
     // @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
     // public ModelAndView viewEdita(@PathVariable("id") Long id) {

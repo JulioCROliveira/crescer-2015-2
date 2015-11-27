@@ -1,79 +1,102 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="default">
+>
 <head>
-	<title>Editar cliente</title>
+<title>Editar cliente</title>
 </head>
 <body>
-	
+
 	<div layout:fragment="content">
-	<h2>Editar cliente</h2>
-		<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
-		
+		<h2>Editar cliente</h2>
+		<form th:action="@{/clientes/editar}" th:object="${cliente}"
+			method="post">
+
 			<input th:field="*{id}" type="hidden" />
-			
+
 			<p>
-				<div style="width: 200px">
-					<label class="control-label">Nome: </label>
-				</div>
-				<input th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'has-error'" type="text" />
-				<span class="help-inline" th:errors="*{nome}"></span>
+			<div style="width: 200px">
+				<label class="control-label">Nome: </label>
+			</div>
+			<input th:field="*{nome}"
+				th:classappend="${#fields.hasErrors('nome')} ? 'has-error'"
+				type="text" /> <span class="help-inline" th:errors="*{nome}"></span>
 			</p>
-			
+
 			<p>
-				<div style="width: 200px">
-					<label class="control-label">CPF: </label>
-				</div>
-		 		<input th:field="*{cpf}" type="text" th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'" />
-		 		<span class="help-inline" th:errors="*{cpf}"></span>
+			<div style="width: 200px">
+				<label class="control-label">CPF: </label>
+			</div>
+			<input th:field="*{cpf}" type="text"
+				th:classappend="${#fields.hasErrors('cpf')} ? 'has-error'" /> <span
+				class="help-inline" th:errors="*{cpf}"></span>
 			</p>
-			
+
 			<p>
 				<div style="width: 200px">
 					<label class="control-label">Email: </label>
 				</div>
-		 		<input th:field="*{email}" type="text" th:classappend="${#fields.hasErrors('email')} ? 'has-error'" />
-		 		<span class="help-inline" th:errors="*{email}"></span>
-	 		</p>
-	 		
-	 		<p>
+				<input th:field="*{email}" type="text"
+					th:classappend="${#fields.hasErrors('email')} ? 'has-error'" /> 
+				<span class="help-inline" th:errors="*{email}"></span>
+			</p>
+
+			<p>
 				<div style="width: 200px">
 					<label class="control-label">CEP: </label>
 				</div>
-		 		<input th:field="*{cep}" type="text" th:classappend="${#fields.hasErrors('cep')} ? 'has-error'" />
-		 		<span class="help-inline" th:errors="*{cep}"></span>
-	 		</p>
-	 		
-	 		<p>
+				<input th:field="*{cep}" type="text"
+					th:classappend="${#fields.hasErrors('cep')} ? 'has-error'" /> 
+				<span class="help-inline" th:errors="*{cep}"></span>
+			</p>
+
+			<p>
 				<div style="width: 200px">
 					<label class="control-label">Endereço: </label>
 				</div>
-		 		<input th:field="*{endereco}" type="text" th:classappend="${#fields.hasErrors('endereco')} ? 'has-error'" />
-		 		<span class="help-inline" th:errors="*{endereco}"></span>
-	 		</p>
-	 		
-	 		<p>
+				<input th:field="*{endereco}" type="text"
+					th:classappend="${#fields.hasErrors('endereco')} ? 'has-error'" />
+				<span class="help-inline" th:errors="*{endereco}"></span>
+			</p>
+
+			<p>
 				<div style="width: 200px">
 					<label class="control-label">Bairro: </label>
 				</div>
-		 		<input th:field="*{bairro}" type="text" th:classappend="${#fields.hasErrors('bairro')} ? 'has-error'" />
-		 		<span class="help-inline" th:errors="*{bairro}"></span>
-	 		</p>
-	 		
-	 		<p>
+				<input th:field="*{bairro}" type="text"
+					th:classappend="${#fields.hasErrors('bairro')} ? 'has-error'" /> 
+				<span class="help-inline" th:errors="*{bairro}"></span>
+			</p>
+
+			<p>
 				<div style="width: 200px">
 					<label class="control-label">Cidade: </label>
 				</div>
-		 		<select th:field="*{idCidade}" th:classappend="${#fields.hasErrors('idCidade')} ? 'has-error'">
-	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" >[option]</option>
-	            </select>
-	            <span class="help-inline" th:errors="*{idCidade}"></span>
-            </p>
-             
-            <button type="submit">Salvar</button>
-		
+				<select th:field="*{idCidade}"
+					th:classappend="${#fields.hasErrors('idCidade')} ? 'has-error'">
+					<option th:each="c : ${cidades}" th:text="${c.nome}"
+						th:value="${c.idCidade}">[option]</option>
+				</select> <span class="help-inline" th:errors="*{idCidade}"></span>
+			</p>
+
+			<p>
+				<div style="width: 200px">
+					<label class="control-label">Situação: </label>
+				</div>
+				<select th:field="*{situacao}">
+					<option th:each="situacao : ${T(br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente).values()}"
+						th:value="${situacao}" th:text="${situacao}">
+					</option>
+				</select> 
+				<span class="help-inline" th:errors="*{situacao}"></span>
+			</p>
+
+			<button type="submit">Salvar</button>
+
 		</form>
 
 	</div>
 
 </body>
-</html>		
+</html>

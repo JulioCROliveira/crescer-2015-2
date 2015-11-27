@@ -7,6 +7,11 @@
 	padding: 20px 60px	
 }
 
+.checkbox {
+	width: 17px;
+	height: 17px;
+}
+
 .help-inline {
 	display: block;
 	font: 12px/16px tahoma;
@@ -67,6 +72,21 @@
 .th30 {
 	width: 420px;
 	max-width: 30%;
+}
+
+.th35 {
+	width: 490px;
+	max-width: 35%;
+}
+
+.th40 {
+	width: 560px;
+	max-width: 40%;
+}
+
+.th45 {
+	width: 640px;
+	max-width: 45%;
 }
 
 .table90-center {

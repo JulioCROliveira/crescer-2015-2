@@ -29,6 +29,7 @@ public class ClienteMapper {
         dto.setIdCidade(entity.getCidade().getIdCidade());
         dto.setBairro(entity.getBairro());
         dto.setCep(entity.getCep());
+        dto.setSituacao(entity.getSituacao());
         return dto;
     }
 

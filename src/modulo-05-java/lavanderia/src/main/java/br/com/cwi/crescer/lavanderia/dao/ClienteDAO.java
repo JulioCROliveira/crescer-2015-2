@@ -21,6 +21,11 @@ public class ClienteDAO extends AbstractDAO {
                 .getResultList();
     }
 
+    public List<Cliente> listAll() {
+        return em.createQuery("FROM Cliente c", Cliente.class)
+                .getResultList();
+    }
+
     @Transactional
     public Cliente save(Cliente cliente) {
 

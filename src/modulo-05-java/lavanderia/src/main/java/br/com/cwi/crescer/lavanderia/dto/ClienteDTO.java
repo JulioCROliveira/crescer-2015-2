@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.cwi.crescer.lavanderia.domain.Cliente;
+
 public class ClienteDTO {
 
     private Long id;
@@ -32,6 +34,9 @@ public class ClienteDTO {
 
     @NotNull
     private Long idCidade;
+
+    @NotNull
+    private Cliente.SituacaoCliente situacao;
 
     private Long cep;
 
@@ -98,4 +103,11 @@ public class ClienteDTO {
         this.cep = cep;
     }
 
+    public Cliente.SituacaoCliente getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Cliente.SituacaoCliente situacao) {
+        this.situacao = situacao;
+    }
 }
