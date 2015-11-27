@@ -15,6 +15,11 @@ public class UsuarioDAO extends AbstractDAO {
         return em.find(Usuario.class, username);
     }
 
+    public List<Usuario> listAll() {
+        return em.createQuery("FROM Usuario", Usuario.class)
+                .getResultList();
+    }
+
     public List<Usuario> searchByUsername(String username) {
         return em.createQuery("FROM Usuario u WHERE u.username like :username", Usuario.class)
                 .setParameter("username", username + "%")

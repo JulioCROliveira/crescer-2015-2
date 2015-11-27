@@ -53,6 +53,13 @@ public class UsuarioDAOTest extends AbstractInfrastructureTest {
     }
 
     @Test
+    public void deveBuscarTodos() throws Exception {
+        List<Usuario> usuarios = usuarioDAO.listAll();
+        Assert.assertNotNull(usuarios);
+        Assert.assertFalse(usuarios.isEmpty());
+    }
+
+    @Test
     public void deveBuscarUsuariosAtivos() throws Exception {
         List<Usuario> usuarios = usuarioDAO.findWhereEnabledIs(true);
         Assert.assertNotNull(usuarios);
