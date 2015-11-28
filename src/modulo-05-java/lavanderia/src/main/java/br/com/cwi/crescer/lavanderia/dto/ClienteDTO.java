@@ -35,7 +35,6 @@ public class ClienteDTO {
     @NotNull
     private Long idCidade;
 
-    @NotNull
     private Cliente.SituacaoCliente situacao;
 
     private Long cep;

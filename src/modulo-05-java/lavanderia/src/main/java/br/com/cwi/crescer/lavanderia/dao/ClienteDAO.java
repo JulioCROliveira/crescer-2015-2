@@ -26,6 +26,12 @@ public class ClienteDAO extends AbstractDAO {
                 .getResultList();
     }
 
+    public List<Cliente> listNamesBegginingWith(String nome) {
+        return em.createQuery("FROM Cliente c where nome like :nome", Cliente.class)
+                .setParameter("nome", nome + "%")
+                .getResultList();
+    }
+
     @Transactional
     public Cliente save(Cliente cliente) {
 

@@ -3,6 +3,7 @@ package br.com.cwi.crescer.lavanderia.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +64,7 @@ public class ClienteService {
         ClienteMapper.merge(dto, entity);
 
         entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
+        entity.setNome(WordUtils.capitalizeFully(entity.getNome()));
         entity.setSituacao(dto.getSituacao());
 
         clienteDAO.save(entity);
@@ -72,6 +74,7 @@ public class ClienteService {
         Cliente entity = ClienteMapper.getNewEntity(dto);
         entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
         entity.setSituacao(SituacaoCliente.ATIVO);
+        entity.setNome(WordUtils.capitalizeFully(entity.getNome()));
         clienteDAO.save(entity);
     }
 
@@ -81,5 +84,17 @@ public class ClienteService {
         entity.setSituacao(SituacaoCliente.INATIVO);
 
         clienteDAO.save(entity);
+    }
+
+    public List<ClienteResumoDTO> filtraPorNome(String nome) {
+        List<Cliente> clientes = clienteDAO.listNamesBegginingWith(WordUtils.capitalizeFully(nome));
+
+        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(new ClienteResumoDTO(cliente));
+        }
+
+        return dtos;
     }
 }
