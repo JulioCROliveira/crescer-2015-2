@@ -85,8 +85,13 @@
 }
 
 .th45 {
-	width: 640px;
+	width: 630px;
 	max-width: 45%;
+}
+
+.th50 {
+	width: 700px;
+	max-width: 50%;
 }
 
 .table90-center {

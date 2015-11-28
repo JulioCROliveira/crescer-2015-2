@@ -51,6 +51,18 @@
 	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 	            </select>
             </p>
+            
+            <p>
+				<div style="width: 200px">
+					<label class="control-label">Situação: </label>
+				</div>
+				<select th:field="*{situacao}" disabled="true">
+					<option th:each="situacao : ${T(br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente).values()}"
+						th:value="${situacao}" th:text="${situacao}">
+					</option>
+				</select> 
+				<span class="help-inline" th:errors="*{situacao}"></span>
+			</p>
              
 		</form>
 	</div>
