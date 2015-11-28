@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
+import br.com.cwi.crescer.lavanderia.dto.cliente.ClienteDTO;
 import br.com.cwi.crescer.lavanderia.services.CidadeService;
 import br.com.cwi.crescer.lavanderia.services.ClienteService;
 

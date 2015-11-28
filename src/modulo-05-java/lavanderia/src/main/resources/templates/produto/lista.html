@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
+<head>
+	<title>Listar clientes</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h2>Listagem de produtos</h2>
+		<br />
+		<h3 th:if="${mensagem}" th:text="${mensagem}"></h3>
+		
+		<div th:if="${not #lists.isEmpty(produtos)}">
+	        
+	        <table class="block text-center simple-border table90-center">
+	        
+	            <tr>
+	                <th class="th05 simple-border">Id</th>
+	                <th class="th20 simple-border">Serviço</th>
+	                <th class="th20 simple-border">Material</th>
+	                <th class="th10 simple-border">Valor</th>
+	                <th class="th10 simple-border">Prazo</th>
+	                <th class="th15 simple-border">Situação</th>
+	                <th class="th15 simple-border">Editar</th>
+	            </tr>
+	            <tr th:each="produto : ${produtos}">
+	            	<td class="th05 simple-border" th:text="${produto.idProduto}"></td>
+	                <td class="th20 simple-border" th:text="${produto.servico}"></td>
+	                <td class="th20 simple-border" th:text="${produto.material}"></td>
+	                <td class="th10 simple-border" th:text="${produto.valor}"></td>
+	                <td class="th10 simple-border" th:text="${produto.prazo} + ' dias'"></td>
+	                <td class="th15 simple-border" th:text="${produto.situacao}"></td>
+	                <td class="th15 simple-border"><a th:href="${'/produtos/editar/' + produto.idProduto}">Editar</a></td>
+	            </tr>
+	        </table>
+	
+	    </div>
+	    <p><a th:href="${'/produtos/novo/'}">Clique aqui para adicionar um produto novo</a></p>
+	</div>
+	
+</body>
+</html>
+
+		

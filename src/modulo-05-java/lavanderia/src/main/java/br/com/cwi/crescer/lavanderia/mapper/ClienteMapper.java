@@ -3,7 +3,7 @@ package br.com.cwi.crescer.lavanderia.mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
-import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
+import br.com.cwi.crescer.lavanderia.dto.cliente.ClienteDTO;
 
 public class ClienteMapper {
 

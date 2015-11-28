@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.lavanderia.dto;
+package br.com.cwi.crescer.lavanderia.dto.cliente;
 
 import javax.validation.constraints.NotNull;
 
