@@ -121,10 +121,16 @@
 
 .pull-right {
 	float: right;
-}.block {
+}
+
+.block {
 	display: block;
 }
 
 .inline-block {
 	display: inline-block;
+}
+
+.inline {
+	display: inline;
 }

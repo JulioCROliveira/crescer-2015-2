@@ -12,6 +12,7 @@
 
 .header {
 	background-color: #131313;	
+	display: 
 }
 
 .footer {
@@ -20,4 +21,9 @@
 
 .menu {
 	padding-right: 45px;
+}
+
+.user-info {
+	font: 12px/14px tahoma;
+	color: white;
 }
