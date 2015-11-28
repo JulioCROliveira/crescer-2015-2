@@ -26,4 +26,10 @@ public class MaterialDAOTest extends AbstractInfrastructureTest {
         Assert.assertNotNull(materiais);
         Assert.assertFalse(materiais.isEmpty());
     }
+
+    @Test
+    public void testalistAllWhereDontcontainsServico() throws Exception {
+        List<Material> materiais = materialDAO.listAllWhereDontcontainsServico(1L);
+        Assert.assertFalse(false);
+    }
 }

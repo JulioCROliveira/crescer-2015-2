@@ -17,4 +17,11 @@ public class MaterialDAO extends AbstractDAO {
         return em.createQuery("FROM Material p")
                 .getResultList();
     }
+
+    public List<Material> listAllWhereDontcontainsServico(Long idServico) {
+        return em.createQuery("SELECT m FROM Material m "
+                + "WHERE idMaterial not in(SELECT material FROM Produto WHERE IDSERVICO = :idServico)")
+                .setParameter("idServico", idServico)
+                .getResultList();
+    }
 }

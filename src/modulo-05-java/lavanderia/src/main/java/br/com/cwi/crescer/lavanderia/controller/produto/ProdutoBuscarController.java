@@ -6,15 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.cwi.crescer.lavanderia.services.MaterialService;
 import br.com.cwi.crescer.lavanderia.services.ProdutoService;
+import br.com.cwi.crescer.lavanderia.services.ServicoService;
 
 @Controller
 @RequestMapping("/produtos")
 public class ProdutoBuscarController extends ProdutoController {
 
     @Autowired
-    public ProdutoBuscarController(ProdutoService produtoService) {
-        super(produtoService);
+    public ProdutoBuscarController(ProdutoService produtoService,
+            ServicoService servicoService, MaterialService materialService) {
+        super(produtoService, servicoService, materialService);
     }
 
     @RequestMapping(method = RequestMethod.GET)

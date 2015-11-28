@@ -6,19 +6,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.cwi.crescer.lavanderia.dao.MaterialDAO;
 import br.com.cwi.crescer.lavanderia.dao.ProdutoDAO;
+import br.com.cwi.crescer.lavanderia.dao.ServicoDAO;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
+import br.com.cwi.crescer.lavanderia.dto.produto.ProdutoInclusaoDTO;
 import br.com.cwi.crescer.lavanderia.dto.produto.ProdutoListagemDTO;
+import br.com.cwi.crescer.lavanderia.mapper.ProdutoInclusaoMapper;
 import br.com.cwi.crescer.lavanderia.mapper.ProdutoListagemMapper;
 
 @Service
 public class ProdutoService {
 
     private ProdutoDAO produtoDAO;
+    private MaterialDAO materialDAO;
+    private ServicoDAO servicoDAO;
 
     @Autowired
-    public ProdutoService(ProdutoDAO produtoDAO) {
+    public ProdutoService(ProdutoDAO produtoDAO, MaterialDAO materialDAO, ServicoDAO servicoDAO) {
         this.produtoDAO = produtoDAO;
+        this.materialDAO = materialDAO;
+        this.servicoDAO = servicoDAO;
     }
 
     public List<ProdutoListagemDTO> listarTodosProdutos() {
@@ -31,6 +39,14 @@ public class ProdutoService {
         }
 
         return dtos;
+    }
+
+    public void adicionar(ProdutoInclusaoDTO dto) {
+        Produto entity = ProdutoInclusaoMapper.getNewEntity(dto);
+        entity.setMaterial(materialDAO.findById(dto.getIdMaterial()));
+        entity.setServico(servicoDAO.findById(dto.getIdServico()));
+        entity.setSituacao(Produto.SituacaoProduto.ATIVO);
+        produtoDAO.save(entity);
     }
 
 }

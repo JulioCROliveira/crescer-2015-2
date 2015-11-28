@@ -2,6 +2,7 @@ package br.com.cwi.crescer.lavanderia.dto.produto;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -16,7 +17,9 @@ public class ProdutoInclusaoDTO {
 
     @NotNull
     @Min(value = 0)
+    @Digits(integer = 12, fraction = 2)
     private BigDecimal valor;
+    // problema com virgula no lugar de ponto
 
     @NotNull
     @Min(value = 0)
