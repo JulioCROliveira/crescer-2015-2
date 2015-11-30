@@ -12,6 +12,7 @@ import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.dto.pedido.PedidoDTO;
 import br.com.cwi.crescer.lavanderia.dto.pedido.PedidoListagemDTO;
 import br.com.cwi.crescer.lavanderia.mapper.pedido.PedidoListagemMapper;
+import br.com.cwi.crescer.lavanderia.mapper.pedido.PedidoMapper;
 
 @Service
 public class PedidoService {
@@ -26,13 +27,7 @@ public class PedidoService {
     }
 
     public PedidoDTO buscarPedidoPorId(Long id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public Object buscarPedidoPorIdExibicao(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return PedidoMapper.toDTO(pedidoDAO.findById(id));
     }
 
     public List<PedidoListagemDTO> listarTodosPedidos() {

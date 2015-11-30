@@ -1,0 +1,88 @@
+package br.com.cwi.crescer.lavanderia.dto.item;
+
+import java.math.BigDecimal;
+
+import javax.validation.constraints.NotNull;
+
+import br.com.cwi.crescer.lavanderia.domain.Item;
+
+public class ItemDTO {
+
+    @NotNull
+    private Long idItem;
+
+    @NotNull
+    private Long idPedido;
+
+    @NotNull
+    private Long idProduto;
+
+    @NotNull
+    private BigDecimal peso;
+
+    @NotNull
+    private BigDecimal valorUnitario;
+
+    @NotNull
+    private BigDecimal valorTotal;
+
+    @NotNull
+    private Item.SituacaoItem situacao;
+
+    public Long getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(Long idItem) {
+        this.idItem = idItem;
+    }
+
+    public Long getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(Long idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public Long getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(Long idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public BigDecimal getPeso() {
+        return peso;
+    }
+
+    public void setPeso(BigDecimal peso) {
+        this.peso = peso;
+    }
+
+    public BigDecimal getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(BigDecimal valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Item.SituacaoItem getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Item.SituacaoItem situacao) {
+        this.situacao = situacao;
+    }
+
+}

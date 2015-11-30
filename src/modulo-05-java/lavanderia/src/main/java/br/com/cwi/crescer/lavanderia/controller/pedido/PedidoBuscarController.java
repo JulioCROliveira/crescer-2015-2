@@ -33,6 +33,6 @@ public class PedidoBuscarController extends PedidoController {
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ModelAndView viewExibe(@PathVariable("id") Long id) {
-        return new ModelAndView("pedido/exibe", "pedido", pedidoService.buscarPedidoPorIdExibicao(id));
+        return new ModelAndView("pedido/exibe", "pedido", pedidoService.buscarPedidoPorId(id));
     }
 }
