@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.lavanderia.services;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +44,14 @@ public class PedidoServiceTest {
 
         List<Pedido> ListaDePedidos = new ArrayList<Pedido>();
         Pedido pedido1 = new Pedido();
+
         Cliente cliente = new Cliente();
         cliente.setIdCliente(1L);
+
         pedido1.setCliente(cliente);
+        pedido1.setIdPedido(1L);
+        pedido1.setValorFinal(new BigDecimal("2"));
+
         ListaDePedidos.add(pedido1);
         Mockito.when(pedidoDAO.listAll()).thenReturn(ListaDePedidos);
         Cliente clienteRetorno = new Cliente();
@@ -53,13 +59,12 @@ public class PedidoServiceTest {
         clienteRetorno.setCpf("CPFTeste");
         Mockito.when(clienteDAO.findById(1L)).thenReturn(clienteRetorno);
 
-        this.pedidoService = pedidoService;
         List<PedidoListagemDTO> pedidos = pedidoService.listarTodosPedidos();
         Assert.assertNotNull(pedidos);
         Assert.assertFalse(pedidos.isEmpty());
 
         for (PedidoListagemDTO pedido : pedidos) {
-            Assert.assertTrue("Teste".equals(pedido.getNomeCliente()));
+            Assert.assertTrue("teste".equals(pedido.getNomeCliente()));
             Assert.assertTrue("CPFTeste".equals(pedido.getCpf()));
         }
 
