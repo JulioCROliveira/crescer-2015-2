@@ -17,12 +17,11 @@
 	            <tr>
 	                <th class="th05 simple-border">Id</th>
 	                <th class="th50 simple-border">
-	                	<!-- <div>	                		
-	                		<form th:action="${'/clientes/?nome=' + @{filtro}" id="myform" method="post">
+	                	<div>	                		
 	                			<label>Nome</label>
-	                			<input type="text" id="filtro" th:field="*{filtro}" placeholder="Filtrar por..." onblur="function() {document.myform.submit()}"/>
-	                		</form>
-	                	</div> -->
+	                			<input type="text" placeholder="Filtrar por..." 	                			
+	                			onkeypress="Javascript: if (event.keyCode==13) window.location.href='/clientes/?nome=' + this.value;"/>
+	                	</div>
 	                </th>
 	                <th class="th15 simple-border">CPF</th>
 	                <th class="th10 simple-border">Situação</th>
