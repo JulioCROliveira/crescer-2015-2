@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
+<head>
+	<title>Listagem de pedidos</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h2>Listagem de pedidos</h2>
+		<br />
+		<h3 th:if="${mensagem}" th:text="${mensagem}"></h3>
+		
+		<div th:if="${not #lists.isEmpty(pedidos)}">
+	        
+	        <table class="block text-center simple-border table90-center">
+	        
+	            <tr>
+	                <th class="th10 simple-border">Nº Pedido</th>
+	                <th class="th15 simple-border">CPF</th>
+	                <th class="th40 simple-border">Nome Cliente</th>
+	                <th class="th15 simple-border">Data de Inclusão</th>
+	                <th class="th10 simple-border">Valor Total</th>
+	                <th class="th10 simple-border">Situação</th>
+	            </tr>
+	            <tr th:each="pedido : ${pedidos}" >
+	            	<td class="th10 simple-border"><a th:text="${pedido.idPedido}" th:href="@{|/pedidos/${pedido.idPedido}|}"></a></td>
+	                <td class="th15 simple-border" th:text="${pedido.cpf}"></td>
+	                <td class="th40 simple-border" th:text="${pedido.nomeCliente}"></td>
+	                <td class="th15 simple-border" th:text="${pedido.dataInclusao}"></td>
+	                <td class="th10 simple-border" th:text="'R$ ' + ${pedido.valorTotal}"></td>
+	                <td class="th10 simple-border" th:text="${pedido.situacao}"></td>
+	            </tr>
+	        </table>
+	
+	    </div>
+	</div>
+	
+</body>
+</html>
+
+		

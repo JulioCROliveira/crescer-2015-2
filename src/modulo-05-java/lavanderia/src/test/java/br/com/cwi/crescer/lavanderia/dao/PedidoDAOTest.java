@@ -36,6 +36,13 @@ public class PedidoDAOTest extends AbstractInfrastructureTest {
     }
 
     @Test
+    public void deveBuscarTodosPedidos() throws Exception {
+        List<Pedido> pedidos = pedidoDAO.listAll();
+        Assert.assertNotNull(pedidos);
+        Assert.assertFalse(pedidos.isEmpty());
+    }
+
+    @Test
     public void deveBuscarPedidosPendentes() throws Exception {
         List<Pedido> pedidos = pedidoDAO.findBySituacao(SituacaoPedido.PENDENTE);
         Assert.assertNotNull(pedidos);

@@ -14,7 +14,7 @@ import br.com.cwi.crescer.lavanderia.services.ServicoService;
 
 @Controller
 @RequestMapping("/produtos")
-public class ProdutoController {
+public abstract class ProdutoController {
 
     protected ProdutoService produtoService;
     protected ServicoService servicoService;

@@ -13,7 +13,7 @@ import br.com.cwi.crescer.lavanderia.services.ClienteService;
 
 @Controller
 @RequestMapping("/clientes")
-public class ClienteController {
+public abstract class ClienteController {
 
     protected ClienteService clienteService;
     protected CidadeService cidadeService;

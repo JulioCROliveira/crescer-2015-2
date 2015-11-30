@@ -19,4 +19,9 @@ public class PedidoDAO extends AbstractDAO {
                 .setParameter("situacao", situacao)
                 .getResultList();
     }
+
+    public List<Pedido> listAll() {
+        return em.createQuery("FROM Pedido c", Pedido.class)
+                .getResultList();
+    }
 }

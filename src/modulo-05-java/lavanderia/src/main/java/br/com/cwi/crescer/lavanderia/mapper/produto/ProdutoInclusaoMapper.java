@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.lavanderia.mapper;
+package br.com.cwi.crescer.lavanderia.mapper.produto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

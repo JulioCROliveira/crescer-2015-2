@@ -13,9 +13,9 @@ import br.com.cwi.crescer.lavanderia.domain.Produto;
 import br.com.cwi.crescer.lavanderia.dto.produto.ProdutoEdicaoDTO;
 import br.com.cwi.crescer.lavanderia.dto.produto.ProdutoInclusaoDTO;
 import br.com.cwi.crescer.lavanderia.dto.produto.ProdutoListagemDTO;
-import br.com.cwi.crescer.lavanderia.mapper.ProdutoEdicaoMapper;
-import br.com.cwi.crescer.lavanderia.mapper.ProdutoInclusaoMapper;
-import br.com.cwi.crescer.lavanderia.mapper.ProdutoListagemMapper;
+import br.com.cwi.crescer.lavanderia.mapper.produto.ProdutoEdicaoMapper;
+import br.com.cwi.crescer.lavanderia.mapper.produto.ProdutoInclusaoMapper;
+import br.com.cwi.crescer.lavanderia.mapper.produto.ProdutoListagemMapper;
 
 @Service
 public class ProdutoService {
