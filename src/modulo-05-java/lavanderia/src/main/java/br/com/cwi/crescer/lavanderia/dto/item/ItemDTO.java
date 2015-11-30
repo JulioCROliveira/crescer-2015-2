@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import br.com.cwi.crescer.lavanderia.domain.Item;
 
 public class ItemDTO {
@@ -22,8 +24,8 @@ public class ItemDTO {
     @NotNull
     private BigDecimal peso;
 
-    @NotNull
-    private BigDecimal valorUnitario;
+    @NotBlank
+    private String valorUnitario;
 
     @NotNull
     private BigDecimal valorTotal;
@@ -63,11 +65,11 @@ public class ItemDTO {
         this.peso = peso;
     }
 
-    public BigDecimal getValorUnitario() {
+    public String getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(BigDecimal valorUnitario) {
+    public void setValorUnitario(String valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 

@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.dao.ClienteDAO;
+import br.com.cwi.crescer.lavanderia.dao.ItemDAO;
 import br.com.cwi.crescer.lavanderia.dao.PedidoDAO;
+import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
+import br.com.cwi.crescer.lavanderia.dto.item.ItemDTO;
 import br.com.cwi.crescer.lavanderia.dto.pedido.PedidoDTO;
 import br.com.cwi.crescer.lavanderia.dto.pedido.PedidoListagemDTO;
+import br.com.cwi.crescer.lavanderia.mapper.ItemMapper;
 import br.com.cwi.crescer.lavanderia.mapper.pedido.PedidoListagemMapper;
 import br.com.cwi.crescer.lavanderia.mapper.pedido.PedidoMapper;
 
@@ -19,18 +23,27 @@ public class PedidoService {
 
     private PedidoDAO pedidoDAO;
     private ClienteDAO clienteDAO;
-    // private ItemService itemService;
+    private ItemDAO itemDAO;
 
     @Autowired
-    public PedidoService(PedidoDAO pedidoDAO, ClienteDAO clienteDAO, ItemService itemService) {
+    public PedidoService(PedidoDAO pedidoDAO, ClienteDAO clienteDAO, ItemDAO itemDAO) {
         this.pedidoDAO = pedidoDAO;
         this.clienteDAO = clienteDAO;
+        this.itemDAO = itemDAO;
         // this.itemService = itemService;
     }
 
     public PedidoDTO buscarPedidoPorId(Long id) {
         PedidoDTO dto = PedidoMapper.toDTO(pedidoDAO.findById(id));
-        // dto.setItens(itemService.retornarItensDePedido(id));
+
+        List<Item> itens = itemDAO.listAllWhereIdPedido(id);
+        List<ItemDTO> ItensDTOs = new ArrayList<ItemDTO>();
+
+        for (Item item : itens) {
+            ItensDTOs.add(ItemMapper.toDTO(item));
+        }
+
+        dto.setItens(ItensDTOs);
         dto.setCpf(clienteDAO.findById(dto.getIdCliente()).getCpf());
         dto.setNomeCliente(clienteDAO.findById(dto.getIdCliente()).getNome());
 

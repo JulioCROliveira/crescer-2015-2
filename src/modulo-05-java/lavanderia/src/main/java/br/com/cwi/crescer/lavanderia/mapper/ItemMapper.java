@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.lavanderia.mapper;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.cwi.crescer.lavanderia.domain.Item;
@@ -14,7 +16,7 @@ public class ItemMapper {
         entity.setPeso(dto.getPeso());
         entity.setSituacao(dto.getSituacao());
         entity.setValorTotal(dto.getValorTotal());
-        entity.setValorUnitario(dto.getValorUnitario());
+        entity.setValorUnitario(new BigDecimal(dto.getValorUnitario()));
         return entity;
     }
 
@@ -26,7 +28,7 @@ public class ItemMapper {
         dto.setPeso(entity.getPeso());
         dto.setSituacao(entity.getSituacao());
         dto.setValorTotal(entity.getValorTotal());
-        dto.setValorUnitario(dto.getValorUnitario());
+        dto.setValorUnitario(entity.getValorUnitario().toString());
         dto.setServico(entity.getProduto().getServico().getDescricao());
         dto.setMaterial(entity.getProduto().getMaterial().getDescricao());
 
@@ -38,7 +40,7 @@ public class ItemMapper {
         entity.setPeso(dto.getPeso());
         entity.setSituacao(dto.getSituacao());
         entity.setValorTotal(dto.getValorTotal());
-        entity.setValorUnitario(dto.getValorUnitario());
+        entity.setValorUnitario(new BigDecimal(dto.getValorUnitario()));
 
         return entity;
     }

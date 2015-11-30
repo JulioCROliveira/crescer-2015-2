@@ -24,7 +24,7 @@ public class PedidoListagemMapper {
         dto.setIdPedido(entity.getIdPedido());
         dto.setIdCliente(entity.getCliente().getIdCliente());
         dto.setDataInclusao(entity.getDataInclusao());
-        dto.setValorTotal(entity.getValorFinal().toString());
+        dto.setValorTotal(entity.getValorFinal() != null ? entity.getValorFinal().toString() : entity.getValorBruto().toString());
         dto.setSituacao(entity.getSituacao());
         return dto;
     }

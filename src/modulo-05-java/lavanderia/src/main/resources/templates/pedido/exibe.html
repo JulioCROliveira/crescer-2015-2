@@ -10,79 +10,84 @@
 		<br />
 		<h3 th:if="${mensagem}" th:text="${mensagem}"></h3>
 		
-		<p>
-			<div><label class="control-label">Cliente: </label></div>
-			<input th:field="*{nomeCliente}" type="text" disabled="true" />
-		</p>
-		
-		<p>
-			<div><label class="control-label">CPF: </label></div>
-	 		<input th:field="*{cpf}" type="text" disabled="true"/>
-		</p>
-		
-		<p>
-	 		<div><label class="control-label">Data inclusão: </label></div>
-	 		<input th:field="*{dataInclusao}" type="text" disabled="true"/>
- 		</p>
- 		
- 		<p>
-	 		<div><label class="control-label">Data entrega: </label></div>
-	 		<input th:field="*{dataEntrega}" type="text" disabled="true"/>
- 		</p>
- 		
- 		<p>
-	 		<div><label class="control-label">Valor bruto: </label></div>
-	 		<input th:field="*{valorBruto}" type="text" disabled="true"/>
- 		</p>
- 		
- 		<p>
-	 		<div><label class="control-label">Valor desconto: </label></div>
-	 		<input th:field="*{valorDesconto}" type="text" disabled="true"/>
- 		</p>
- 		
- 		<p>
-	 		<div><label class="control-label">Valor final: </label></div>
-	 		<input th:field="*{valorFinal}" type="text" disabled="true"/>
- 		</p>
- 		
- 		<p>
-			<div style="width: 200px">
-				<label class="control-label">Situação: </label>
+		<div class="clearfix" style="min-width: 1030px">
+			<div style="width: 200px" class="pull-left" >
+				<p>
+					<div><label class="control-label">Cliente: </label></div>
+					<input th:field="*{pedido.nomeCliente}" type="text" disabled="true" />
+				</p>
+				
+				<p>
+					<div><label class="control-label">CPF: </label></div>
+			 		<input th:field="*{pedido.cpf}" type="text" disabled="true"/>
+				</p>
+				
+				<p>
+			 		<div><label class="control-label">Data inclusão: </label></div>
+			 		<input th:field="*{pedido.dataInclusao}" type="text" disabled="true"/>
+		 		</p>
+		 		
+		 		<p>
+			 		<div><label class="control-label">Data entrega: </label></div>
+			 		<input th:field="*{pedido.dataEntrega}" type="text" disabled="true"/>
+		 		</p>
+		 		
+		 		<p>
+			 		<div><label class="control-label">Valor bruto: </label></div>
+			 		<input th:field="*{pedido.valorBruto}" type="text" disabled="true"/>
+		 		</p>
+		 		
+		 		<p>
+			 		<div><label class="control-label">Valor desconto: </label></div>
+			 		<input th:field="*{pedido.valorDesconto}" type="text" disabled="true"/>
+		 		</p>
+		 		
+		 		<p>
+			 		<div><label class="control-label">Valor final: </label></div>
+			 		<input th:field="*{pedido.valorFinal}" type="text" disabled="true"/>
+		 		</p>
+		 		
+		 		<p>
+					<div style="width: 200px">
+						<label class="control-label">Situação: </label>
+					</div>
+					<select th:field="*{pedido.situacao}">
+						<option th:each="situacao : ${T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).values()}"
+							th:value="${pedido.situacao}" th:text="${pedido.situacao}">
+						</option>
+					</select> 
+					<span class="help-inline" th:errors="*{pedido.situacao}"></span>
+				</p>
 			</div>
-			<select th:field="*{situacao}">
-				<option th:each="situacao : ${T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).values()}"
-					th:value="${situacao}" th:text="${situacao}">
-				</option>
-			</select> 
-			<span class="help-inline" th:errors="*{situacao}"></span>
-		</p>
 	 		
-	 	<div th:if="${not #lists.isEmpty(pedido.itens)}">
-	        
-	        <table class="block text-center simple-border table90-center">
-	        
-	            <tr>
-	                <th class="th10 simple-border">Id item</th>
-	                <th class="th25 simple-border">Descrição</th>
-	                <th class="th10 simple-border">Peso</th>
-	                <th class="th15 simple-border">Valor unitário</th>
-	                <th class="th15 simple-border">Valor total</th>
-	                <th class="th15 simple-border">Situação</th>
-	                <th class="th10 simple-border">Ação</th>
-	            </tr>
-	            <tr th:each="item : ${produto.itens}">
-	            	<td class="th10 simple-border" th:text="${item.idItem}"></td>
-	                <td class="th25 simple-border" th:text="${item.servico} + ' ' + ${item.material}"></td>
-	                <td class="th10 simple-border" th:text="${item.peso}"></td>
-	                <td class="th15 simple-border" th:text="${item.valorUnitario}"></td>
-	                <td class="th15 simple-border" th:text="${item.ValorTotal} + ' dias'"></td>
-	                <td class="th15 simple-border" th:text="${item.situacao}"></td>
-	                <td class="th10 simple-border"><a th:href="">Ação</a></td>
-	            </tr>
-	        </table>
-	
-	    </div>
+		 	<div class="pull-right" style="max-width: 80%" th:if="${not #lists.isEmpty(pedido.itens)}">
+		 	
+		 		<h2 class="text-center">Itens do pedido</h2>
+		        
+		        <table class="block text-center simple-border table90-center">
+		        
+		            <tr>
+		                <th class="th10 simple-border">Id item</th>
+		                <th class="th20 simple-border">Descrição</th>
+		                <th class="th10 simple-border">Peso</th>
+		                <th class="th15 simple-border">Valor unitário</th>
+		                <th class="th15 simple-border">Valor total</th>
+		                <th class="th15 simple-border">Situação</th>
+		                <th class="th15 simple-border">Ação</th>
+		            </tr>
+		            <tr th:each="item : ${pedido.itens}">
+		            	<td class="th10 simple-border" th:text="${item.idItem}"></td>
+		                <td class="th20 simple-border" th:text="${item.servico} + ' ' + ${item.material}"></td>
+		                <td class="th10 simple-border" th:text="${item.peso}+'Kg'"></td>
+		                <td class="th15 simple-border" th:text="'R$ ' + ${item.valorUnitario}"></td>
+		                <td class="th15 simple-border" th:text="'R$ '+ ${item.ValorTotal}"></td>
+		                <td class="th15 simple-border" th:text="${item.situacao}"></td>
+		                <td class="th15 simple-border"><a >Ação</a></td>
+		            </tr>
+		        </table>
 		
+		    </div>
+		</div>
 	</div>
 	
 </body>
