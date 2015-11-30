@@ -45,4 +45,22 @@ public class ItemDAOTest extends AbstractInfrastructureTest {
             Assert.assertEquals(SituacaoItem.PENDENTE, item.getSituacao());
         }
     }
+
+    @Test
+    public void listAllItensTeste() throws Exception {
+        List<Item> itens = itemDAO.listAll();
+        Assert.assertNotNull(itens);
+        Assert.assertFalse(itens.isEmpty());
+    }
+
+    @Test
+    public void listAllItensDoPedidoUm() throws Exception {
+        List<Item> itens = itemDAO.listAllWhereIdPedido(1L);
+        Assert.assertNotNull(itens);
+        Assert.assertFalse(itens.isEmpty());
+
+        for (Item item : itens) {
+            Assert.assertEquals("1", item.getPedido().getIdPedido().toString());
+        }
+    }
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
+<head>
+	<title>Detalhes do pedido</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h2>Detalhes do pedido</h2>
+		<br />
+		<h3 th:if="${mensagem}" th:text="${mensagem}"></h3>
+		
+		<p>
+			<div><label class="control-label">Cliente: </label></div>
+			<input th:field="*{nomeCliente}" type="text" disabled="true" />
+		</p>
+		
+		<p>
+			<div><label class="control-label">CPF: </label></div>
+	 		<input th:field="*{cpf}" type="text" disabled="true"/>
+		</p>
+		
+		<p>
+	 		<div><label class="control-label">Data inclusão: </label></div>
+	 		<input th:field="*{dataInclusao}" type="text" disabled="true"/>
+ 		</p>
+ 		
+ 		<p>
+	 		<div><label class="control-label">Data entrega: </label></div>
+	 		<input th:field="*{dataEntrega}" type="text" disabled="true"/>
+ 		</p>
+ 		
+ 		<p>
+	 		<div><label class="control-label">Valor bruto: </label></div>
+	 		<input th:field="*{valorBruto}" type="text" disabled="true"/>
+ 		</p>
+ 		
+ 		<p>
+	 		<div><label class="control-label">Valor desconto: </label></div>
+	 		<input th:field="*{valorDesconto}" type="text" disabled="true"/>
+ 		</p>
+ 		
+ 		<p>
+	 		<div><label class="control-label">Valor final: </label></div>
+	 		<input th:field="*{valorFinal}" type="text" disabled="true"/>
+ 		</p>
+ 		
+ 		<p>
+			<div style="width: 200px">
+				<label class="control-label">Situação: </label>
+			</div>
+			<select th:field="*{situacao}">
+				<option th:each="situacao : ${T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).values()}"
+					th:value="${situacao}" th:text="${situacao}">
+				</option>
+			</select> 
+			<span class="help-inline" th:errors="*{situacao}"></span>
+		</p>
+	 		
+		
+	</div>
+	
+</body>
+</html>
+
+		

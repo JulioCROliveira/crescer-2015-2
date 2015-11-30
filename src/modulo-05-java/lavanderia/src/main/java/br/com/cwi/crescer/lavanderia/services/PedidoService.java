@@ -19,15 +19,22 @@ public class PedidoService {
 
     private PedidoDAO pedidoDAO;
     private ClienteDAO clienteDAO;
+    // private ItemService itemService;
 
     @Autowired
-    public PedidoService(PedidoDAO pedidoDAO, ClienteDAO clienteDAO) {
+    public PedidoService(PedidoDAO pedidoDAO, ClienteDAO clienteDAO, ItemService itemService) {
         this.pedidoDAO = pedidoDAO;
         this.clienteDAO = clienteDAO;
+        // this.itemService = itemService;
     }
 
     public PedidoDTO buscarPedidoPorId(Long id) {
-        return PedidoMapper.toDTO(pedidoDAO.findById(id));
+        PedidoDTO dto = PedidoMapper.toDTO(pedidoDAO.findById(id));
+        // dto.setItens(itemService.retornarItensDePedido(id));
+        dto.setCpf(clienteDAO.findById(dto.getIdCliente()).getCpf());
+        dto.setNomeCliente(clienteDAO.findById(dto.getIdCliente()).getNome());
+
+        return dto;
     }
 
     public List<PedidoListagemDTO> listarTodosPedidos() {

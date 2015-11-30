@@ -16,6 +16,8 @@ public class PedidoDTO {
 
     @NotNull
     private Long idCliente;
+    private String nomeCliente;
+    private String cpf;
 
     private List<ItemDTO> itens;
 
@@ -106,6 +108,22 @@ public class PedidoDTO {
 
     public void setValorFinal(String valorFinal) {
         this.valorFinal = valorFinal;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
 }

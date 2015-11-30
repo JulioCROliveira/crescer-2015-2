@@ -19,4 +19,15 @@ public class ItemDAO extends AbstractDAO {
                 .setParameter("situacao", situacao)
                 .getResultList();
     }
+
+    public List<Item> listAll() {
+        return em.createQuery("FROM Item i", Item.class)
+                .getResultList();
+    }
+
+    public List<Item> listAllWhereIdPedido(Long idPedido) {
+        return em.createQuery("FROM Item i WHERE IDPedido = :idPedido", Item.class)
+                .setParameter("idPedido", idPedido)
+                .getResultList();
+    }
 }
