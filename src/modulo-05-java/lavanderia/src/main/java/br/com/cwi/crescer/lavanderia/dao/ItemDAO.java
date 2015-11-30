@@ -30,4 +30,19 @@ public class ItemDAO extends AbstractDAO {
                 .setParameter("idPedido", idPedido)
                 .getResultList();
     }
+
+    public void proccessAllItensFromPedido(Long idPedido) {
+        em.createQuery("UPDATE Item SET situacao = :situacao WHERE idPedido = :idPedido")
+                .setParameter("situacao", Item.SituacaoItem.PROCESSADO)
+                .setParameter("idPedido", idPedido)
+                .executeUpdate();
+
+    }
+
+    public void proccessItem(Long idItem) {
+        em.createQuery("UPDATE Item SET situacao = :situacao WHERE idItem = :idItem")
+                .setParameter("situacao", Item.SituacaoItem.PROCESSADO)
+                .setParameter("idItem", idItem)
+                .executeUpdate();
+    }
 }

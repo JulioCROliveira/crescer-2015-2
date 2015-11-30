@@ -6,9 +6,9 @@
 <body>
 
 	<div layout:fragment="content">
+		<h2 class="text-center" th:if="${mensagem}" th:text="${mensagem}"></h2>
 		<h2>Detalhes do pedido</h2>
-		<br />
-		<h3 th:if="${mensagem}" th:text="${mensagem}"></h3>
+		<br />		
 		
 		<div class="clearfix" style="min-width: 1030px">
 			<div style="width: 200px" class="pull-left" >
@@ -51,7 +51,7 @@
 					<div style="width: 200px">
 						<label class="control-label">Situação: </label>
 					</div>
-					<select th:field="*{pedido.situacao}">
+					<select th:field="*{pedido.situacao}" disabled="true">
 						<option th:each="situacao : ${T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).values()}"
 							th:value="${pedido.situacao}" th:text="${pedido.situacao}">
 						</option>
@@ -73,7 +73,12 @@
 		                <th class="th15 simple-border">Valor unitário</th>
 		                <th class="th15 simple-border">Valor total</th>
 		                <th class="th15 simple-border">Situação</th>
-		                <th class="th15 simple-border">Ação</th>
+		                <th class="th15 simple-border">
+		                	<form th:action="@{/itens/processartodos}" th:object="${pedido}" method='post'>
+							   <input type="hidden" th:field="*{idPedido}"></input>
+							   <button type='submit' >Processar todos</button>
+							</form>
+						</th>
 		            </tr>
 		            <tr th:each="item : ${pedido.itens}">
 		            	<td class="th10 simple-border" th:text="${item.idItem}"></td>
@@ -82,7 +87,12 @@
 		                <td class="th15 simple-border" th:text="'R$ ' + ${item.valorUnitario}"></td>
 		                <td class="th15 simple-border" th:text="'R$ '+ ${item.ValorTotal}"></td>
 		                <td class="th15 simple-border" th:text="${item.situacao}"></td>
-		                <td class="th15 simple-border"><a >Ação</a></td>
+		                <td class="th15 simple-border">
+		                	<form th:action="@{/itens/processar?idItem=} + @{idPedido}" th:object="${pedido}" method='post'>
+							   <input type="hidden" th:field="*{idPedido}"></input>
+							   <button type='submit' >Processar item</button>
+							</form>
+						</td>
 		            </tr>
 		        </table>
 		
