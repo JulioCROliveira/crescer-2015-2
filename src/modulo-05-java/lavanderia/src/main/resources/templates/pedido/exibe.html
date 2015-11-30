@@ -57,6 +57,31 @@
 			<span class="help-inline" th:errors="*{situacao}"></span>
 		</p>
 	 		
+	 	<div th:if="${not #lists.isEmpty(pedido.itens)}">
+	        
+	        <table class="block text-center simple-border table90-center">
+	        
+	            <tr>
+	                <th class="th10 simple-border">Id item</th>
+	                <th class="th25 simple-border">Descrição</th>
+	                <th class="th10 simple-border">Peso</th>
+	                <th class="th15 simple-border">Valor unitário</th>
+	                <th class="th15 simple-border">Valor total</th>
+	                <th class="th15 simple-border">Situação</th>
+	                <th class="th10 simple-border">Ação</th>
+	            </tr>
+	            <tr th:each="item : ${produto.itens}">
+	            	<td class="th10 simple-border" th:text="${item.idItem}"></td>
+	                <td class="th25 simple-border" th:text="${item.servico} + ' ' + ${item.material}"></td>
+	                <td class="th10 simple-border" th:text="${item.peso}"></td>
+	                <td class="th15 simple-border" th:text="${item.valorUnitario}"></td>
+	                <td class="th15 simple-border" th:text="${item.ValorTotal} + ' dias'"></td>
+	                <td class="th15 simple-border" th:text="${item.situacao}"></td>
+	                <td class="th10 simple-border"><a th:href="">Ação</a></td>
+	            </tr>
+	        </table>
+	
+	    </div>
 		
 	</div>
 	

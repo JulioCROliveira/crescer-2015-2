@@ -16,6 +16,8 @@ public class ItemDTO {
 
     @NotNull
     private Long idProduto;
+    private String servico;
+    private String material;
 
     @NotNull
     private BigDecimal peso;
@@ -83,6 +85,22 @@ public class ItemDTO {
 
     public void setSituacao(Item.SituacaoItem situacao) {
         this.situacao = situacao;
+    }
+
+    public String getServico() {
+        return servico;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
     }
 
 }

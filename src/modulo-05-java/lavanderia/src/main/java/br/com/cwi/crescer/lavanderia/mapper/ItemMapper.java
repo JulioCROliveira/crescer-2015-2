@@ -27,6 +27,8 @@ public class ItemMapper {
         dto.setSituacao(entity.getSituacao());
         dto.setValorTotal(entity.getValorTotal());
         dto.setValorUnitario(dto.getValorUnitario());
+        dto.setServico(entity.getProduto().getServico().getDescricao());
+        dto.setMaterial(entity.getProduto().getMaterial().getDescricao());
 
         return dto;
     }
