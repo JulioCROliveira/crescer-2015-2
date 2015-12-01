@@ -31,18 +31,18 @@ public class ItemDAO extends AbstractDAO {
                 .getResultList();
     }
 
-    public void proccessAllItensFromPedido(Long idPedido) {
+    public void processAllItensFromPedido(Long idPedido) {
         em.createQuery("UPDATE Item SET situacao = :situacao WHERE idPedido = :idPedido")
-                .setParameter("situacao", Item.SituacaoItem.PROCESSADO)
-                .setParameter("idPedido", idPedido)
-                .executeUpdate();
+        .setParameter("situacao", Item.SituacaoItem.PROCESSADO)
+        .setParameter("idPedido", idPedido)
+        .executeUpdate();
 
     }
 
-    public void proccessItem(Long idItem) {
+    public void processItem(Long idItem) {
         em.createQuery("UPDATE Item SET situacao = :situacao WHERE idItem = :idItem")
-                .setParameter("situacao", Item.SituacaoItem.PROCESSADO)
-                .setParameter("idItem", idItem)
-                .executeUpdate();
+        .setParameter("situacao", Item.SituacaoItem.PROCESSADO)
+        .setParameter("idItem", idItem)
+        .executeUpdate();
     }
 }

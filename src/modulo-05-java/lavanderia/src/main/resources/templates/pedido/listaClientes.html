@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
+<head>
+	<title>Selecionar cliente</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h2>Selecione o cliente do pedido</h2>
+		<br />
+		
+		<div th:if="${not #lists.isEmpty(clientes)}">
+	        
+	        <table class="block text-center simple-border table90-center">
+	        
+	            <tr>
+	                <th class="th05 simple-border">Id</th>
+	                <th class="th50 simple-border">
+	                	<div>	                		
+	                			<label>Nome</label>
+	                			<input type="text" placeholder="Filtrar por..." 	                			
+	                			onkeypress="Javascript: if (event.keyCode==13) window.location.href='/pedidos/clientes?nome=' + this.value;"/>
+	                	</div>
+	                </th>
+	                <th class="th15 simple-border">CPF</th>
+	                <th class="th10 simple-border">Situação</th>
+	                <th class="th10 simple-border">Visualizar</th>
+	                <th class="th10 simple-border">Selecionar cliente</th>
+	            </tr>
+	            <tr th:each="cliente : ${clientes}">
+	                <td class="th05 simple-border" th:text="${cliente.id}"><a th:href="@{|/clientes/${cliente.id}|}"></a></td>
+	                <td class="th50 simple-border text-left" style="padding-left: 30px" th:text="${cliente.nome}"></td>
+	                <td class="th15 simple-border" th:text="${cliente.cpf}"></td>
+	                <td class="th10 simple-border" th:text="${cliente.situacao}"></td>
+	                <td class="th10 simple-border"><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
+	                <td class="th10 simple-border"><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
+	            </tr>
+	        </table>
+	
+	    </div>
+	    <p><a th:href="${'/clientes/novo/'}">Clique aqui para adicionar um cliente novo</a></p>
+	</div>
+	
+</body>
+</html>
+
+		

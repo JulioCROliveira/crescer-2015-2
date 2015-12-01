@@ -3,6 +3,8 @@ package br.com.cwi.crescer.lavanderia.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +64,16 @@ public class PedidoService {
         }
 
         return dtos;
+    }
+
+    @Transactional
+    public void cancelarPedido(PedidoDTO dto) {
+        pedidoDAO.cancelPedido(dto.getIdPedido());
+    }
+
+    @Transactional
+    public void retirarPedido(PedidoDTO dto) {
+        pedidoDAO.recoverPedido(dto.getIdPedido());
     }
 
 }

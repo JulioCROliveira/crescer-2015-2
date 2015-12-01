@@ -88,8 +88,7 @@
 		                <td class="th15 simple-border" th:text="'R$ '+ ${item.ValorTotal}"></td>
 		                <td class="th15 simple-border" th:text="${item.situacao}"></td>
 		                <td class="th15 simple-border">
-		                	<form th:action="@{/itens/processar?idItem=} + @{idPedido}" th:object="${pedido}" method='post'>
-							   <input type="hidden" th:field="*{idPedido}"></input>
+		                	<form th:action="@{/itens/processar?idItem=} + ${item.idItem}" th:object="${pedido}" method='post'>
 							   <button type='submit' >Processar item</button>
 							</form>
 						</td>

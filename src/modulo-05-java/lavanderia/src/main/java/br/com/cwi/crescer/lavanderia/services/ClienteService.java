@@ -97,4 +97,16 @@ public class ClienteService {
 
         return dtos;
     }
+
+    public Object filtraAtivosPorNome(String nome) {
+        List<Cliente> clientes = clienteDAO.listNamesActivesBegginingWith(WordUtils.capitalizeFully(nome));
+
+        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(new ClienteResumoDTO(cliente));
+        }
+
+        return dtos;
+    }
 }

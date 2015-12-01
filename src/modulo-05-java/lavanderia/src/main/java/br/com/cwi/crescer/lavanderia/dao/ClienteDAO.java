@@ -47,4 +47,11 @@ public class ClienteDAO extends AbstractDAO {
     public void delete(Long id) {
         em.remove(em.getReference(Cliente.class, id));
     }
+
+    public List<Cliente> listNamesActivesBegginingWith(String nome) {
+        return em.createQuery("FROM Cliente c where nome like :nome and situacao = :situacao", Cliente.class)
+                .setParameter("nome", nome + "%")
+                .setParameter("situacao", Cliente.SituacaoCliente.ATIVO)
+                .getResultList();
+    }
 }

@@ -16,19 +16,34 @@
 	        
 	            <tr>
 	                <th class="th10 simple-border">Nº Pedido</th>
-	                <th class="th15 simple-border">CPF</th>
-	                <th class="th40 simple-border">Nome Cliente</th>
+	                <th class="th10 simple-border">CPF</th>
+	                <th class="th30 simple-border">Nome Cliente</th>
 	                <th class="th15 simple-border">Data de Inclusão</th>
 	                <th class="th10 simple-border">Valor Total</th>
 	                <th class="th10 simple-border">Situação</th>
+	                <th class="th15 simple-border">Operação</th>
 	            </tr>
 	            <tr th:each="pedido : ${pedidos}" >
 	            	<td class="th10 simple-border"><a th:text="${pedido.idPedido}" th:href="@{|/pedidos/${pedido.idPedido}|}"></a></td>
-	                <td class="th15 simple-border" th:text="${pedido.cpf}"></td>
-	                <td class="th40 simple-border" th:text="${pedido.nomeCliente}"></td>
+	                <td class="th10 simple-border" th:text="${pedido.cpf}"></td>
+	                <td class="th30 simple-border" th:text="${pedido.nomeCliente}"></td>
 	                <td class="th15 simple-border" th:text="${pedido.dataInclusao}"></td>
 	                <td class="th10 simple-border" th:text="'R$ ' + ${pedido.valorTotal}"></td>
 	                <td class="th10 simple-border" th:text="${pedido.situacao}"></td>
+	                <td class="th15 simple-border" th:if="${pedido.situacao == T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).PENDENTE}">
+	                	<form th:action="@{/pedidos/cancelar}" th:object="${pedido}" method='post'>
+						   <button type='submit' >Cancelar peddio</button>
+						</form>
+					</td>
+					<td class="th15 simple-border" th:if="${pedido.situacao == T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).PROCESSADO}">
+	                	<form th:action="@{/pedidos/retirar}" th:object="${pedido}" method='post'>
+						   <input type="hidden" th:field="*{idPedido}"></input>
+						   <button type='submit' >Retirar peddio</button>
+						</form>
+					</td>
+					<td class="th15 simple-border" th:text="${pedido.situacao}"
+					th:if="${pedido.situacao != T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).PROCESSADO and 
+					 pedido.situacao != T(br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido).PENDENTE}"></td>
 	            </tr>
 	        </table>
 	

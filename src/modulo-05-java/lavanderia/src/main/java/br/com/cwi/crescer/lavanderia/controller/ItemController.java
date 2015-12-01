@@ -37,11 +37,11 @@ public class ItemController {
     @RequestMapping(path = "/processar", method = RequestMethod.POST)
     public ModelAndView editar(@ModelAttribute("pedido") PedidoDTO dto,
             RedirectAttributes redirectAttributes, HttpServletRequest request) {
-        Long idItem = Long.parseLong(request.getParameter("nome"));
+        Long idItem = Long.parseLong(request.getParameter("idItem"));
 
         redirectAttributes.addFlashAttribute("mensagem", "Item do pedido processado com sucesso!");
 
-        itemService.processarItemDoPedido(idItem);
-        return new ModelAndView("redirect:/pedidos/" + dto.getIdPedido(), "pedido", dto);
+        itemService.processarItemDoPedido(idItem, dto);
+        return new ModelAndView("redirect:/pedidos/" + dto.getIdPedido());
     }
 }
