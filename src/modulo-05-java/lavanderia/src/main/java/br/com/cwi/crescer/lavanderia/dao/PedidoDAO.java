@@ -34,7 +34,7 @@ public class PedidoDAO extends AbstractDAO {
     }
 
     public int getActiveItens(Long idPedido) {
-        List<Item> contador = em.createQuery("FROM Item i WHERE pedido = :idPedido and situacao = :situacao")
+        List<Item> contador = em.createQuery("FROM Item i WHERE idPedido = :idPedido and situacao = :situacao")
                 .setParameter("situacao", Item.SituacaoItem.PENDENTE)
                 .setParameter("idPedido", idPedido)
                 .getResultList();

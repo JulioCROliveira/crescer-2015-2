@@ -51,7 +51,7 @@ public class Item {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
-    private SituacaoItem situacao;
+    private Item.SituacaoItem situacao;
 
     public static enum SituacaoItem {
         PENDENTE, PROCESSADO
