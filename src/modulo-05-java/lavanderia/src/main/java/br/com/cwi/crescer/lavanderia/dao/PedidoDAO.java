@@ -45,7 +45,7 @@ public class PedidoDAO extends AbstractDAO {
     public void cancelPedido(Long idPedido) {
         em.createQuery("UPDATE Pedido SET situacao = :situacao WHERE IDPedido = :idPedido")
         .setParameter("situacao", Pedido.SituacaoPedido.CANCELADO)
-                .setParameter("idPedido", idPedido)
+        .setParameter("idPedido", idPedido)
         .executeUpdate();
     }
 
