@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="default">>
+<head>
+	<title>Novo Pedido</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h2>Novo Pedido</h2>
+		<br />
+		
+		<h3>Cliente:</h3>
+		
+		<div class="clearfix">
+			<div class="pull-left" style="margin-right: 60px">
+				<label class="control-label">Nome: </label>
+				<input th:field="*{cliente.nome}" type="text" disabled="true" />
+			</div>
+			
+			<div class="pull-left" style="margin-right: 60px">
+				<label class="control-label">CPF: </label>
+		 		<input th:field="*{cliente.cpf}" type="text" disabled="true"/>
+			</div>
+		</div>
+		
+	</div>
+	
+</body>
+</html>
+
+		
